@@ -2,8 +2,10 @@ import React, { useState } from 'react';
 import { Stores } from './types';
 import ValerioStore from './stores/ValerioStore';
 import { ThemeProvider } from 'styled-components';
+import { Redirect, Route, BrowserRouter, Switch } from 'react-router-dom';
 import { valerioTheme } from './theme';
 import { StoresContext } from './contexts';
+import HomeScreen from './screens/WelcomeScreen';
 
 export const App: React.FC = () => {
   const [stores] = useState<Stores>(() => {
@@ -11,10 +13,16 @@ export const App: React.FC = () => {
     root.home = new ValerioStore();
     return root;
   });
+
   return (
     <ThemeProvider theme={valerioTheme}>
       <StoresContext.Provider value={stores}>
-        <div>{`Valerio Portfolio`}</div>
+        <BrowserRouter>
+          <Switch>
+            <Route path={'/home'} component={HomeScreen} />
+            <Redirect to={'/home'} />
+          </Switch>
+        </BrowserRouter>
       </StoresContext.Provider>
     </ThemeProvider>
   );
