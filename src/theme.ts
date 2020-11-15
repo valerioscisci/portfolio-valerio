@@ -5,6 +5,8 @@ const valerioTheme: DefaultTheme = {
   name: 'default',
   colors: {
     primary: '#CEE9CA',
+    secondary: '#fbd46d',
+    background: '#222831',
   },
 };
 

@@ -19,8 +19,8 @@ export const App: React.FC = () => {
       <StoresContext.Provider value={stores}>
         <BrowserRouter>
           <Switch>
-            <Route path={'/home'} component={HomeScreen} />
-            <Redirect to={'/home'} />
+            <Route path={'/'} component={HomeScreen} />
+            <Redirect to={'/'} />
           </Switch>
         </BrowserRouter>
       </StoresContext.Provider>

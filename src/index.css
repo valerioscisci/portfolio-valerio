@@ -1,3 +1,7 @@
+html {
+  overflow-x: hidden;
+}
+
 body {
   margin: 0;
   font-size: 12px;
@@ -38,7 +42,7 @@ code {
 }
 
 #root {
-  background-color: #335399;
+  background-color: #ffffff;
   height: 100vh;
   display: flex;
 }
@@ -47,4 +51,10 @@ code {
   font-family: 'Montserrat';
   src: local('Montserrat'),
     url(/src/fonts/Montserrat/Montserrat-Regular.ttf) format('truetype');
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
 }
