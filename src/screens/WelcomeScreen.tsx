@@ -3,15 +3,18 @@ import { observer } from 'mobx-react';
 import { useStores } from '../hooks/useStores';
 import CircleLoader from 'react-spinners/CircleLoader';
 import { Navbar } from '../components/Navbar';
+import { useTranslation } from 'react-i18next';
 
 const HomeScreen = observer(() => {
   const { home } = useStores();
   const [width, setWidth] = useState(window.innerWidth); // width state
+  const { t } = useTranslation();
+
   const navLinks = [
-    { name: 'home', route: '/' },
-    { name: 'about', route: '/about' },
-    { name: 'portfolio', route: '/portfolio' },
-    { name: 'contact me', route: '/contact' },
+    { name: t(`navbar.home`), route: '/' },
+    { name: t(`navbar.about`), route: '/about' },
+    { name: t(`navbar.portfolio`), route: '/portfolio' },
+    { name: t(`navbar.contact`), route: '/contact-me' },
   ];
   const updateWidth = () => {
     setWidth(window.innerWidth);
