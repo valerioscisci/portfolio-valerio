@@ -38,10 +38,10 @@ const Container = styled.div<{ menuOpen: boolean }>`
   display: flex;
   background: ${(props) => props.theme.colors.background};
   border-radius: 50%;
-  width: 10em;
-  height: 9em;
-  right: -5em;
-  top: -5em;
+  width: 5em;
+  height: 5em;
+  right: 0em;
+  top: -1em;
   cursor: pointer;
   transition: 0.5s ease;
 
@@ -52,7 +52,7 @@ const Container = styled.div<{ menuOpen: boolean }>`
   & svg {
     display: block;
     position: absolute;
-    top: 6.3em;
+    top: 2.3em;
     left: 2.3em;
     color: ${(props) => props.theme.colors.primary};
     width: 2.5em;
@@ -63,7 +63,7 @@ const Container = styled.div<{ menuOpen: boolean }>`
       css`
         width: 3em;
         height: 3em;
-        top: 6em;
+        top: 2em;
         left: 2em;
       `}
   }

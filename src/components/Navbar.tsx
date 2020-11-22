@@ -11,7 +11,6 @@ export interface NavbarProps {
 }
 
 export const Navbar: React.FC<NavbarProps> = ({ navLinks, width }) => {
-  const { home } = useStores();
   const [menuOpen, setMenuOpen] = useState(false);
 
   return (
@@ -52,6 +51,7 @@ const NavbarContainer = styled.nav`
   text-transform: uppercase;
   justify-content: space-between;
   background: ${(props) => props.theme.colors.background};
+  z-index: 2;
 `;
 
 const Logo = styled.img`
