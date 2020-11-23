@@ -4,6 +4,8 @@ import { useStores } from '../hooks/useStores';
 import CircleLoader from 'react-spinners/CircleLoader';
 import { Navbar } from '../components/Navbar';
 import { useTranslation } from 'react-i18next';
+import styled from 'styled-components';
+import { MainSlider } from '../components/Slider';
 
 const HomeScreen = observer(() => {
   const { home } = useStores();
@@ -16,13 +18,15 @@ const HomeScreen = observer(() => {
     { name: t(`navbar.portfolio`), route: '/portfolio' },
     { name: t(`navbar.contact`), route: '/contact-me' },
   ];
+
   const updateWidth = () => {
     setWidth(window.innerWidth);
   };
 
   // Temp to fake loading
   useEffect(() => {
-    setTimeout(() => (home.isAppLoading = false), 1000);
+    home.fetchImages();
+    // setTimeout(() => (home.isAppLoading = false), 1000);
   }, [home]);
 
   // Update width on resize
@@ -41,8 +45,17 @@ const HomeScreen = observer(() => {
       loading={true}
     />
   ) : (
-    <Navbar width={width} navLinks={navLinks} />
+    <Container>
+      <Navbar width={width} navLinks={navLinks} />
+      <MainSlider imagesArray={home.sliderImages} />
+    </Container>
   );
 });
 
 export default HomeScreen;
+
+const Container = styled.div`
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+`;
