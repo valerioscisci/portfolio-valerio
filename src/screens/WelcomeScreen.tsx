@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import { observer } from 'mobx-react';
 import { useStores } from '../hooks/useStores';
-import CircleLoader from 'react-spinners/CircleLoader';
 import { Navbar } from '../components/Navbar';
 import { useTranslation } from 'react-i18next';
 import styled from 'styled-components';
 import { MainSlider } from '../components/Slider';
+import { Spinner } from '../components/Spinner';
 
 const HomeScreen = observer(() => {
   const { home } = useStores();
@@ -36,14 +36,7 @@ const HomeScreen = observer(() => {
   });
 
   return home.isAppLoading ? (
-    <CircleLoader
-      css={`
-        margin: auto;
-      `}
-      size={150}
-      color={'#222831'}
-      loading={true}
-    />
+    <Spinner />
   ) : (
     <Container>
       <Navbar width={width} navLinks={navLinks} />

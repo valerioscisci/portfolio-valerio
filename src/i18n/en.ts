@@ -7,5 +7,11 @@ const en: typeof it = {
     portfolio: 'Portfolio',
     contact: 'Contact Me',
   },
+  slider: {
+    heading1: '',
+    heading2: '',
+    heading3: '',
+    heading4: '',
+  },
 };
 export default en;

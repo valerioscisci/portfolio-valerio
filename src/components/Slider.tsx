@@ -3,29 +3,57 @@ import styled from 'styled-components';
 import { CarouselProvider, Slide, Slider, Image } from 'pure-react-carousel';
 
 import 'pure-react-carousel/dist/react-carousel.es.css';
+import { useTranslation } from 'react-i18next';
+import { Spinner } from '../components/Spinner';
 
 export interface SliderProps {
   imagesArray: { alt: string; img: { default: string } }[];
 }
 
+// Component used https://www.npmjs.com/package/pure-react-carousel
 export const MainSlider: React.FC<SliderProps> = ({ imagesArray }) => {
+  const { t } = useTranslation();
+
+  const imagesOverlayTexts: Array<string> = [
+    t(`slider.heading1`),
+    t(`slider.heading2`),
+    t(`slider.heading3`),
+    t(`slider.heading4`),
+  ];
+
   return (
     <CarouselContainer>
       <CarouselProvider
         interval={3000}
         isPlaying={true}
         naturalSlideWidth={1920}
+        hasMasterSpinner={true}
         naturalSlideHeight={1080}
         totalSlides={4}
-        dragEnabled={true}
-        touchEnabled={true}
+        dragEnabled={false}
+        touchEnabled={false}
         infinite={true}
       >
-        <Slider>
+        <Slider
+          spinner={() => (
+            <div
+              style={{
+                display: 'flex',
+                flexDirection: 'column',
+                alignItems: 'center',
+                height: '100%',
+              }}
+            >
+              <Spinner />
+            </div>
+          )}
+        >
           {imagesArray.map((image, index) => {
             return (
               <Slide index={index} key={index}>
-                <OverlayShadow></OverlayShadow>
+                <OverlayShadow>
+                  <Header>{imagesOverlayTexts[index]}</Header>
+                </OverlayShadow>
                 <Image
                   isBgImage={true}
                   hasMasterSpinner={true}
@@ -73,6 +101,9 @@ const CarouselContainer = styled.div`
 
 const OverlayShadow = styled.div`
   position: absolute;
+  display: flex;
+  justify-content: center;
+  text-align: center;
   top: 0;
   left: 0;
   width: 100%;
@@ -82,4 +113,13 @@ const OverlayShadow = styled.div`
     rgba(34, 40, 49, 0.5) 100%,
     ${(props) => props.theme.colors.background}
   );
+`;
+
+const Header = styled.h1`
+  color: ${(props) => props.theme.colors.textColorWhite};
+  letter-spacing: 0.1em;
+  font-family: Corben;
+  margin-top: 10%;
+  font-size: 2em;
+  max-width: 75%;
 `;

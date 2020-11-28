@@ -44,9 +44,15 @@ code {
 }
 
 @font-face {
-  font-family: 'Montserrat';
-  src: local('Montserrat'),
-    url(/src/fonts/Montserrat/Montserrat-Regular.ttf) format('truetype');
+  font-family: 'Manrope';
+  src: local('Manrope'),
+    url(/src/fonts/Manrope/Manrope-Regular.ttf) format('truetype');
+}
+
+@font-face {
+  font-family: 'Corben';
+  src: local('Corben'),
+    url(/src/fonts/Corben/Corben-Regular.ttf) format('truetype');
 }
 
 *,
