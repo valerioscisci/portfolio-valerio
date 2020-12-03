@@ -8,6 +8,7 @@ const valerioTheme: DefaultTheme = {
     secondary: '#fbd46d',
     background: '#222831',
     textColorWhite: '#fff',
+    textColorBlack: '#333333',
   },
 };
 

@@ -10,6 +10,7 @@ declare module 'styled-components' {
       secondary: string;
       background: string;
       textColorWhite: string;
+      textColorBlack: string;
     };
   }
 }
