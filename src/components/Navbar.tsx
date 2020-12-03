@@ -60,7 +60,11 @@ const Logo = styled.img`
 
 const NavbarRight = styled.ul<{ menuOpen: boolean }>`
   list-style: none;
+  margin: 0;
+  padding: 0;
   display: flex;
+  z-index: 2;
+
   ${(props) =>
     props.menuOpen
       ? css`
