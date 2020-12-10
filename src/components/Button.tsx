@@ -10,7 +10,7 @@ export const Button: React.FC<ButtonProps> = ({ buttonText, iconRight }) => {
   return (
     <Container>
       {buttonText}
-      <IconSpan>{iconRight}</IconSpan>
+      {iconRight && <IconSpan>{iconRight}</IconSpan>}
     </Container>
   );
 };
@@ -58,6 +58,7 @@ const Container = styled.button`
   align-items: center;
   cursor: pointer;
   padding: 0.4em;
+  margin: auto;
   border-radius: 0.3em;
   font-family: Manrope;
   font-size: 1em;
@@ -95,7 +96,7 @@ const Container = styled.button`
     content: '';
     opacity: 0;
     top: -0.3em;
-    left: -0.6em;
+    left: -0.35em;
     width: 110%;
     padding: 1.3em;
     border: 1px solid ${(props) => props.theme.colors.background};
