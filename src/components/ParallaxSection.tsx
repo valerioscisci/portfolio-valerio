@@ -169,13 +169,15 @@ const PlaneText = styled.h1`
 
   &:before{
     content: "“";
-    font-size: 8em;
+    font-size: 4em;
     line-height: 2em;
     position: absolute;
     top: -0.9em;
     color: ${(props) => props.theme.colors.secondary}
     right: 0;
     opacity: 0.4;
+    font-weight: 400;
     display: inline-block;
+    text-shadow: white 2px 2px 2px, #4E7CC9 4px 4px 2px, 6px 6px, #918A84 8px 8px; 
   }
 `;
