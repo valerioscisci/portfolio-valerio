@@ -94,7 +94,7 @@ const ControlsContainer = styled.div`
 `;
 
 const ControlButton = styled.button<{ buttonType: 'up' | 'down' }>`
-  margin: 1.5em 0;
+  margin: 1em 0;
   width: 3em;
   height: auto;
   background-color: transparent;
@@ -108,10 +108,12 @@ const ControlButton = styled.button<{ buttonType: 'up' | 'down' }>`
   ${(props) => {
     if (props.buttonType === 'up') {
       return css`
+        padding-bottom: 1em;
         transform: rotate(-30deg);
       `;
     } else {
       return css`
+        padding-top: 1em;
         transform: rotate(30deg);
       `;
     }
