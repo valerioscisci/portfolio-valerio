@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import styled, { css } from 'styled-components';
 import LogoImage from '../assets/images/Logo.png';
 import { Link, BrowserRouter } from 'react-router-dom';
@@ -11,6 +11,14 @@ export interface NavbarProps {
 
 export const Navbar: React.FC<NavbarProps> = ({ navLinks, width }) => {
   const [menuOpen, setMenuOpen] = useState(false);
+
+  useEffect(() => {
+    if (menuOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'initial';
+    }
+  }, [menuOpen]);
 
   return (
     <NavbarContainer>
