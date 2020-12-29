@@ -44,6 +44,7 @@ const Container = styled.div<{ menuOpen: boolean }>`
   top: -1em;
   cursor: pointer;
   transition: 0.5s ease;
+  z-index: 2;
 
   @media (min-width: 768px) {
     display: none;

@@ -6,11 +6,13 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+
+  overflow-x: hidden;
 }
 
 @media (min-width: 576px) {
   body {
-    font-size: 14px;
+    font-size: 16px;
   }
 }
 
@@ -22,7 +24,7 @@ body {
 
 @media (min-width: 992px) {
   body {
-    font-size: 16px;
+    font-size: 18px;
   }
 }
 
@@ -44,9 +46,15 @@ code {
 }
 
 @font-face {
-  font-family: 'Montserrat';
-  src: local('Montserrat'),
-    url(/src/fonts/Montserrat/Montserrat-Regular.ttf) format('truetype');
+  font-family: 'Manrope';
+  src: local('Manrope'),
+    url(/src/fonts/Manrope/Manrope-Regular.ttf) format('truetype');
+}
+
+@font-face {
+  font-family: 'Corben';
+  src: local('Corben'),
+    url(/src/fonts/Corben/Corben-Regular.ttf) format('truetype');
 }
 
 *,

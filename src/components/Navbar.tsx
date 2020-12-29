@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { useStores } from '../hooks/useStores';
 import styled, { css } from 'styled-components';
 import LogoImage from '../assets/images/Logo.png';
 import { Link, BrowserRouter } from 'react-router-dom';
@@ -44,7 +43,7 @@ export const Navbar: React.FC<NavbarProps> = ({ navLinks, width }) => {
 const NavbarContainer = styled.nav`
   height: 4.5em;
   width: 100%;
-  font-family: Monserrat;
+  font-family: Manrope;
   letter-spacing: 0.08rem;
   display: flex;
   padding: 0.2em;
@@ -61,7 +60,11 @@ const Logo = styled.img`
 
 const NavbarRight = styled.ul<{ menuOpen: boolean }>`
   list-style: none;
+  margin: 0;
+  padding: 0;
   display: flex;
+  z-index: 2;
+
   ${(props) =>
     props.menuOpen
       ? css`
