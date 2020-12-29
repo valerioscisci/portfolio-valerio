@@ -149,6 +149,10 @@ const Overlap = styled.div`
   align-content: center;
   justifycontent: center;
   z-index: 1;
+
+  -webkit-box-shadow: inset 0px 0px 15px 10px rgba(0, 0, 0, 0.3);
+  -moz-box-shadow: inset 0px 0px 15px 10px rgba(0, 0, 0, 0.3);
+  box-shadow: inset 0px 0px 15px 10px rgba(0, 0, 0, 0.3);
 `;
 
 const PlaneText = styled.h1`
