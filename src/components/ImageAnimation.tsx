@@ -6,7 +6,7 @@ export interface SlidingImageProps {
   image: { default: string };
   imageAlt: string;
   imageStyle?: React.CSSProperties | undefined;
-  animationDirection: 'RightToLeft' | 'LeftToRight' | 'BottomToTop';
+  animationDirection: 'RightToLeft' | 'LeftToRight' | 'BottomToTop' | 'FadeIn';
   animationX?: string;
   animationRotation?: string;
   animationDuration?: number;
@@ -51,7 +51,7 @@ export const SlidingImage: React.FC<SlidingImageProps> = ({
 
 const Image = styled.img<{
   isVisible: boolean;
-  animationDirection: 'RightToLeft' | 'LeftToRight' | 'BottomToTop';
+  animationDirection: 'RightToLeft' | 'LeftToRight' | 'BottomToTop' | 'FadeIn';
   animationX?: string;
   animationRotation?: string;
   animationDuration?: number;
@@ -201,6 +201,28 @@ const Image = styled.img<{
     }
   }
 
+  /**
+   * ----------------------------------------
+   * animation fade-in
+   * ----------------------------------------
+   */
+  @-webkit-keyframes fade-in {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+  @keyframes fade-in {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+
   ${(props) =>
     props.showOnPhone
       ? css`
@@ -242,6 +264,16 @@ const Image = styled.img<{
       -webkit-animation: slide-top var(--animationDuration)
         cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
       animation: slide-top var(--animationDuration)
+        cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+    `}
+
+    ${(props) =>
+    props.isVisible &&
+    props.animationDirection === 'FadeIn' &&
+    css`
+      -webkit-animation: fade-in var(--animationDuration)
+        cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+      animation: fade-in var(--animationDuration)
         cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
     `}
 `;
