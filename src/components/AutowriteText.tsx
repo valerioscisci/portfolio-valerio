@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 
 export interface AutowriteTextProps {
-  text: string;
+  text?: string;
   textStyle?: React.CSSProperties | undefined;
   letterGenerationTiming: number;
 }
@@ -10,7 +10,7 @@ export interface AutowriteTextProps {
 const alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';
 
 export const AutowriteText: React.FC<AutowriteTextProps> = ({
-  text,
+  text = '',
   textStyle,
   letterGenerationTiming,
 }) => {
@@ -40,7 +40,13 @@ export const AutowriteText: React.FC<AutowriteTextProps> = ({
         setLockTextUpdate(false);
       }, letterGenerationTiming);
     }
-  }, [text, currentShownText, lockTextUpdate, currentTextIndex]);
+  }, [
+    text,
+    letterGenerationTiming,
+    currentShownText,
+    lockTextUpdate,
+    currentTextIndex,
+  ]);
 
   return <Container style={textStyle}>{currentShownText}</Container>;
 };

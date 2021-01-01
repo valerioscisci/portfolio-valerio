@@ -87,7 +87,7 @@ const TechMenu = styled.ul`
 `;
 
 const ControlsContainer = styled.div`
-  width: 1em;
+  width: 2em;
   display: flex;
   flex-direction: column;
   justify-content: center;
