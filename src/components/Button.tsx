@@ -1,21 +1,40 @@
 import React from 'react';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 export interface ButtonProps {
   buttonText: string;
   iconRight?: JSX.Element;
+  iconLeft?: JSX.Element;
+  arrowAnimation?: boolean;
+  style?: React.CSSProperties;
+  onClickUrl?: string;
 }
 
-export const Button: React.FC<ButtonProps> = ({ buttonText, iconRight }) => {
+export const Button: React.FC<ButtonProps> = ({
+  buttonText,
+  iconRight,
+  iconLeft,
+  arrowAnimation,
+  style,
+  onClickUrl,
+}) => {
   return (
-    <Container>
+    <Container
+      as={Container}
+      arrowAnimation={arrowAnimation}
+      style={style}
+      href={onClickUrl}
+      target={'_blank'}
+      rel={'noreferrer'}
+    >
+      {iconLeft && <IconSpan margin={'right'}>{iconLeft}</IconSpan>}
       {buttonText}
-      {iconRight && <IconSpan>{iconRight}</IconSpan>}
+      {iconRight && <IconSpan margin={'left'}>{iconRight}</IconSpan>}
     </Container>
   );
 };
 
-const Container = styled.button`
+const Container = styled.a<{ arrowAnimation?: boolean }>`
   @-webkit-keyframes buttonHover {
     0% {
       opacity: 1;
@@ -53,15 +72,16 @@ const Container = styled.button`
     }
   }
 
-  display: flex;
+  display: inline-flex;
   flex-direction: row;
   align-items: center;
   cursor: pointer;
-  padding: 0.4em;
+  padding: 0.4em 1.4em;
   margin: auto;
   border-radius: 0.3em;
   font-family: Manrope;
   font-size: 1em;
+  text-decoration: none;
   text-transform: uppercase;
   color: ${(props) => props.theme.colors.background};
   background: ${(props) => props.theme.colors.textColorWhite};
@@ -70,9 +90,7 @@ const Container = styled.button`
   font-weight: bold;
   transition: all 0.3s ease;
 
-  &:hover,
-  &:focus,
-  &:active {
+  &:hover {
     color: ${(props) => props.theme.colors.primary};
     background: rgba(34, 40, 49, 0.7);
     &:before {
@@ -81,9 +99,9 @@ const Container = styled.button`
       -o-animation: buttonHover 0.5s ease;
       animation: buttonHover 0.5s ease;
     }
-    & span {
-      margin-left: 0.8em;
-    }
+    ${(props) => {
+      return props.arrowAnimation && '& span {transform: translateX(0.8em);}';
+    }}
   }
 
   &:focus {
@@ -96,7 +114,7 @@ const Container = styled.button`
     content: '';
     opacity: 0;
     top: -0.3em;
-    left: -0.35em;
+    left: -0.5em;
     width: 110%;
     padding: 1.3em;
     border: 1px solid ${(props) => props.theme.colors.background};
@@ -104,8 +122,16 @@ const Container = styled.button`
   }
 `;
 
-const IconSpan = styled.span`
-  margin-left: 0.3em;
+const IconSpan = styled.span<{ margin: 'right' | 'left' }>`
+  ${(props) => {
+    return props.margin === 'right'
+      ? css`
+          margin-right: 0.3em;
+        `
+      : css`
+          margin-left: 0.3em;
+        `;
+  }}
   transition: all 0.3s ease-out;
   height: 1em;
 `;
