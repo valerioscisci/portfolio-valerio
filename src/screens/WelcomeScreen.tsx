@@ -9,7 +9,7 @@ import { Spinner } from '../components/Spinner';
 import brush from '../assets/images/brush.png';
 import { Button } from '../components/Button';
 import { FaArrowRight } from 'react-icons/fa';
-import { SlidingImage } from '../components/ImageAnimation';
+import { ImageAnimation } from '../components/ImageAnimation';
 import { ParallaxSection } from '../components/ParallaxSection';
 import { KnownTechSection } from '../components/KnownTechSection';
 
@@ -68,7 +68,7 @@ const HomeScreen = observer(() => {
         <MainHeading>{t(`welcome.heading`)}</MainHeading>
         <FirstSection>
           <CVImage>
-            <SlidingImage
+            <ImageAnimation
               image={require('../assets/images/valerio_scisci.jpg')}
               imageAlt={'Valerio Scisci'}
               animationDirection={'BottomToTop'}
@@ -77,11 +77,18 @@ const HomeScreen = observer(() => {
               showOnPhone={true}
             />
           </CVImage>
-          <div>
+          <div
+            style={{
+              display: 'flex',
+              flexDirection: 'column',
+            }}
+          >
             <Paragraph color={'black'}>{t(`welcome.introParagraph`)}</Paragraph>
             <Button
               buttonText={t(`welcome.introButton`)}
               iconRight={<FaArrowRight size={'1.2em'} />}
+              arrowAnimation={true}
+              style={{ margin: '1em auto' }}
             ></Button>
           </div>
         </FirstSection>
@@ -89,7 +96,7 @@ const HomeScreen = observer(() => {
           <SecondHeading>"TEST"</SecondHeading>
           <Paragraph color={'white'}>{t(`welcome.secondParagraph`)}</Paragraph>
           <Button buttonText={t(`welcome.secondButton`)}></Button>
-          <SlidingImage
+          <ImageAnimation
             image={require('../assets/images/pc.jpg')}
             imageAlt={'Smart'}
             imageStyle={{

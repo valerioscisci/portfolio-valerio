@@ -1,0 +1,16 @@
+{
+  "portfolioData": [
+    {
+      "projectName": "Aenl",
+      "projectData": {
+        "titleIT": "Sito web Associazione degli Economisti di Lingua Neolatina",
+        "titleEN": "Web site for \"Associazione degli Economisti di Lingua Neolatina\"",
+        "descriptionIT": "Realizzazione di un sito web responsive per l'AENL, utilizzando i linguaggi/tecnologie HTML5, CSS3 e Bootstrap. L'hosting del sito è avvenuto tramite cPanel.",
+        "descriptionEN": "Development of a responsive website for as association called AENL: I've used languages/technologies like HTML5, CSS3 and Bootstrap. The website was hosted through cPanel.",
+        "projectUrl": "http://www.aenl.org/",
+        "portfolioUrl": "http://www.aenl.org/",
+        "githubUrl": "http://www.aenl.org/"
+      }
+    }
+  ]
+}

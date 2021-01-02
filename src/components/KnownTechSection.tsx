@@ -1,70 +1,68 @@
-import React, { useCallback, useState } from 'react';
-import styled, { css } from 'styled-components';
+import React, { useCallback, useEffect, useRef, useState } from 'react';
+import styled from 'styled-components';
 import { useTranslation } from 'react-i18next';
 import { TechList } from './TechList';
 import { observer } from 'mobx-react';
 import { useStores } from '../hooks/useStores';
-import { SlidingImage } from './ImageAnimation';
+import { ProjectsShow } from './ProjectsShow';
+import { portfolioProject } from '../types';
 
-export interface KnowsTechProps {}
+export interface KnowsTechSectionProps {}
 
-export const KnownTechSection: React.FC<KnowsTechProps> = observer(({}) => {
-  const { home } = useStores();
-  const { t } = useTranslation();
-  const [selectedTech, setSelectedTech] = useState<string>('');
+export const KnownTechSection: React.FC<KnowsTechSectionProps> = observer(
+  ({}) => {
+    const { home } = useStores();
+    const { t } = useTranslation();
+    const [selectedTech, setSelectedTech] = useState<string>('');
 
-  const onTechChange = useCallback(
-    (newTech: string) => {
-      setSelectedTech(newTech);
-    },
-    [setSelectedTech],
-  );
+    const onTechChange = useCallback(
+      (newTech: string) => {
+        setSelectedTech(newTech);
+      },
+      [setSelectedTech],
+    );
 
-  return (
-    <>
-      <SectionHeading>{t(`knownTechs.heading`)}</SectionHeading>{' '}
-      <TechName key={selectedTech}>
-        <em>{selectedTech}</em>
-      </TechName>
-      <Section>
-        <SideMenu>
-          <TechList onTechChange={onTechChange} />
-        </SideMenu>
-        {home.portfolioImages
-          .filter((portfolioImage) => {
-            return portfolioImage.madeWith.includes(selectedTech);
-          })
-          .map((projectDoneWithTechX) => {
-            return (
-              <ProjectsShow>
-                <ProjectImageContainer>
-                  <SlidingImage
-                    image={projectDoneWithTechX.img}
-                    imageAlt={projectDoneWithTechX.alt}
-                    imageStyle={{
-                      width: '20em',
-                      height: 'auto',
-                      opacity: 0,
-                      position: 'absolute',
-                    }}
-                    animationDirection={'FadeIn'}
-                    showOnPhone={true}
-                  />
-                </ProjectImageContainer>
-                <ProjectDescription>
-                  <CodeContainer></CodeContainer>
-                </ProjectDescription>
-              </ProjectsShow>
-            );
-          })}
-      </Section>
-    </>
-  );
-});
+    const projectsDoneWithTechX: Array<portfolioProject> = home.portfolioImages.filter(
+      (portfolioImage) => {
+        return portfolioImage.madeWith.includes(selectedTech);
+      },
+    );
+
+    return (
+      <>
+        <SectionHeading>{t(`knownTechs.heading`)}</SectionHeading>{' '}
+        <TechName key={selectedTech}>
+          <em>{selectedTech}</em>
+        </TechName>
+        <SectionSeparator />
+        <Section>
+          <SideMenu>
+            <TechList onTechChange={onTechChange} />
+          </SideMenu>
+          {!!projectsDoneWithTechX.length ? (
+            <ProjectsShow key={selectedTech} projects={projectsDoneWithTechX} />
+          ) : (
+            <ProjectsShow
+              key={selectedTech}
+              noProjects={true}
+              projects={[
+                {
+                  alt: t('knownTechs.noProjects'),
+                  img: require('../assets/images/portfolio/no_projects.svg'),
+                  madeWith: [selectedTech],
+                },
+              ]}
+            />
+          )}
+        </Section>
+      </>
+    );
+  },
+);
 
 const Section = styled.section`
   width: 100%;
-  min-height: 28em;
+  min-height: 30em;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
@@ -75,25 +73,6 @@ const Section = styled.section`
 const SideMenu = styled.div`
   height: 100%;
   width: 20%;
-`;
-
-const ProjectsShow = styled.div`
-  width: 80%;
-  display: flex;
-  flex-direction: row-reverse;
-`;
-
-const ProjectDescription = styled.div`
-  background-color: red;
-  height: 100%;
-`;
-
-const CodeContainer = styled.div``;
-
-const ProjectImageContainer = styled.div`
-  display: flex;
-  align-items: center;
-  min-width: 20em;
 `;
 
 const SectionHeading = styled.h1`
@@ -191,4 +170,16 @@ const TechName = styled.div`
   text-transform: uppercase;
   font-size: 2em;
   margin-top: -0.5em;
+`;
+
+const SectionSeparator = styled.hr`
+  width: 100%;
+  border: 0;
+  height: 1px;
+  background-image: linear-gradient(
+    to right,
+    rgba(0, 0, 0, 0),
+    rgba(0, 0, 0, 0.75),
+    rgba(0, 0, 0, 0)
+  );
 `;

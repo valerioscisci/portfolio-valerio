@@ -16,7 +16,7 @@ const en: typeof it = {
   welcome: {
     heading: 'The waderer developer',
     introParagraph: '',
-    introButton: 'clicca per saperne di più',
+    introButton: 'scopri altro su di me',
     secondParagraph: '',
     secondButton: '',
     citParagraph:
@@ -27,6 +27,12 @@ const en: typeof it = {
   },
   knownTechs: {
     heading: 'Projects created with ',
+    noProjectsTitle: 'No projects found...',
+    visitProject: 'Visit the website',
+    learnMore: 'More info',
+    github: 'Open source code',
+    noProjectsDescription:
+      "I haven't done any projects using this specific technology yet: YOUR project could be the first! For this reason, you will also be entitled to a discount if you decide to collaborate with me for the first time.",
   },
 };
 export default en;

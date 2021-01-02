@@ -17,7 +17,7 @@ const it = {
       'Il mio nome è Valerio e sono un ingegnere informatico specializzato in sviluppo web oltre ad essere un appassionato di tutto ciò che riguarda il mondo dei viaggi. ' +
       'Da qualche anno a questa parte ho preso la decisione di non voler passare la maggior parte della vita chiuso tra le quattro mura di un ufficio. ' +
       'Pertanto, ho voluto sfruttare la tecnologia e le mie conoscenze per organizzare la mia vita lavorativa svincolandomi dal dover vivere in un solo luogo: sono a tutti gli effetti un nomade digitale. ',
-    introButton: 'clicca per saperne di più',
+    introButton: 'scopri altro su di me',
     secondParagraph:
       "Se hai un progetto in mente che preveda la realizzazione di un sito web o di un'applicazione mobile, contattami! Allo stesso modo, se sei un developer e vuoi fare due chiacchiere sul lavoro da remoto, sulle scelte che ho preso o riguardo qualcosa di più specifico, sono a disposizione.",
     secondButton: 'Contattami',
@@ -29,6 +29,12 @@ const it = {
   },
   knownTechs: {
     heading: 'Progetti realizzati con ',
+    noProjectsTitle: 'Nessun progetto trovato...',
+    visitProject: 'Visita il sito',
+    learnMore: 'Altre informazioni',
+    github: 'Codice open source',
+    noProjectsDescription:
+      'Non ho ancora realizzato alcun progetto utilizzando questa tecnologia quindi il TUO potrebbe essere il primo! Per questo, avrai anche diritto ad uno sconto se decidi di collaborare con me per la prima volta.',
   },
 };
 

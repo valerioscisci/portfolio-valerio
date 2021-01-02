@@ -119,6 +119,7 @@ const Container = styled.a<{ arrowAnimation?: boolean }>`
     padding: 1.3em;
     border: 1px solid ${(props) => props.theme.colors.background};
     transition: all 0.3s ease;
+    z-index: 2;
   }
 `;
 

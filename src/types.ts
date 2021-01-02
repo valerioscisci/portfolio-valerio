@@ -16,3 +16,16 @@ export interface knownTech extends ImageSource {
 export interface portfolioProject extends ImageSource {
   madeWith: string[];
 }
+
+export interface projectData {
+  projectName: string;
+  projectData: {
+    titleIT: string;
+    titleEN: string;
+    descriptionIT: string;
+    descriptionEN: string;
+    projectUrl: string;
+    portfolioUrl: string;
+    githubUrl: string;
+  };
+}
