@@ -1,64 +1,71 @@
-import React, { useCallback, useEffect, useRef, useState } from 'react';
+import React, { useCallback, useState } from 'react';
 import styled from 'styled-components';
 import { useTranslation } from 'react-i18next';
 import { TechList } from './TechList';
-import { observer } from 'mobx-react';
 import { useStores } from '../hooks/useStores';
 import { ProjectsShow } from './ProjectsShow';
 import { portfolioProject } from '../types';
 
-export interface KnowsTechSectionProps {}
+interface KnownTechSectionProps {
+  width: number;
+}
 
-export const KnownTechSection: React.FC<KnowsTechSectionProps> = observer(
-  ({}) => {
-    const { home } = useStores();
-    const { t } = useTranslation();
-    const [selectedTech, setSelectedTech] = useState<string>('');
+export const KnownTechSection: React.FC<KnownTechSectionProps> = ({
+  width,
+}) => {
+  const { home } = useStores();
+  const { t } = useTranslation();
+  const [selectedTech, setSelectedTech] = useState<string>('');
 
-    const onTechChange = useCallback(
-      (newTech: string) => {
-        setSelectedTech(newTech);
-      },
-      [setSelectedTech],
-    );
+  const onTechChange = useCallback(
+    (newTech: string) => {
+      setSelectedTech(newTech);
+    },
+    [setSelectedTech],
+  );
 
-    const projectsDoneWithTechX: Array<portfolioProject> = home.portfolioImages.filter(
-      (portfolioImage) => {
-        return portfolioImage.madeWith.includes(selectedTech);
-      },
-    );
+  const projectsDoneWithTechX: Array<portfolioProject> = home.portfolioImages.filter(
+    (portfolioImage) => {
+      return portfolioImage.madeWith.includes(selectedTech);
+    },
+  );
 
-    return (
-      <>
-        <SectionHeading>{t(`knownTechs.heading`)}</SectionHeading>{' '}
-        <TechName key={selectedTech}>
-          <em>{selectedTech}</em>
-        </TechName>
-        <SectionSeparator />
-        <Section>
-          <SideMenu>
-            <TechList onTechChange={onTechChange} />
-          </SideMenu>
-          {!!projectsDoneWithTechX.length ? (
-            <ProjectsShow key={selectedTech} projects={projectsDoneWithTechX} />
-          ) : (
-            <ProjectsShow
-              key={selectedTech}
-              noProjects={true}
-              projects={[
-                {
-                  alt: t('knownTechs.noProjects'),
-                  img: require('../assets/images/portfolio/no_projects.svg'),
-                  madeWith: [selectedTech],
-                },
-              ]}
-            />
-          )}
-        </Section>
-      </>
-    );
-  },
-);
+  return (
+    <>
+      <SectionHeading>{t(`knownTechs.heading`)}</SectionHeading>{' '}
+      <TechName key={selectedTech}>
+        <em>{selectedTech}</em>
+      </TechName>
+      {width > 768 && <SectionSeparator />}
+      <Section>
+        <SideMenu>
+          <TechList onTechChange={onTechChange} />
+        </SideMenu>
+        {width < 768 && <SectionSeparator />}
+        {!!projectsDoneWithTechX.length ? (
+          <ProjectsShow
+            width={width}
+            key={selectedTech}
+            projects={projectsDoneWithTechX}
+          />
+        ) : (
+          <ProjectsShow
+            width={width}
+            key={selectedTech}
+            noProjects={true}
+            projects={[
+              {
+                alt: t('knownTechs.noProjects'),
+                img: require('../assets/images/portfolio/no_projects.svg'),
+                madeWith: [selectedTech],
+              },
+            ]}
+          />
+        )}
+      </Section>
+    </>
+  );
+};
 
 const Section = styled.section`
   width: 100%;
@@ -71,8 +78,13 @@ const Section = styled.section`
 `;
 
 const SideMenu = styled.div`
-  height: 100%;
-  width: 20%;
+  height: 10em;
+  width: 100%;
+
+  @media (min-width: 768px) {
+    height: 100%;
+    width: 20%;
+  }
 `;
 
 const SectionHeading = styled.h1`

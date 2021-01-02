@@ -113,9 +113,9 @@ const Container = styled.a<{ arrowAnimation?: boolean }>`
     border-radius: 0.3em;
     content: '';
     opacity: 0;
-    top: -0.3em;
     left: -0.5em;
     width: 110%;
+    height: 120%;
     padding: 1.3em;
     border: 1px solid ${(props) => props.theme.colors.background};
     transition: all 0.3s ease;

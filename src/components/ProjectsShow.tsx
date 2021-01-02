@@ -4,11 +4,13 @@ import { portfolioProject } from '../types';
 import { ProjectSlide } from './ProjectSlide';
 
 export interface ProjectsShowProps {
+  width: number;
   projects: Array<portfolioProject>;
   noProjects?: boolean;
 }
 
 export const ProjectsShow: React.FC<ProjectsShowProps> = ({
+  width,
   projects,
   noProjects = false,
 }) => {
@@ -17,6 +19,7 @@ export const ProjectsShow: React.FC<ProjectsShowProps> = ({
       {projects.map((projectDoneWithTechX, i) => {
         return (
           <ProjectSlide
+            width={width}
             key={i}
             project={projectDoneWithTechX}
             noProjects={noProjects}

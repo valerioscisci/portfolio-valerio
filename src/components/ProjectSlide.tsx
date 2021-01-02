@@ -11,11 +11,13 @@ import { Button } from './Button';
 import jsonDB from '../db/data.json';
 
 export interface ProjectSlideProps {
+  width: number;
   project: portfolioProject;
   noProjects: boolean;
 }
 
 export const ProjectSlide: React.FC<ProjectSlideProps> = ({
+  width,
   project,
   noProjects,
 }) => {
@@ -93,7 +95,7 @@ export const ProjectSlide: React.FC<ProjectSlideProps> = ({
           }
           textStyle={{
             fontFamily: 'Corben',
-            minHeight: '10em',
+            minHeight: width < 576 ? undefined : '10em',
           }}
         />
         <LinksContainer>
@@ -103,7 +105,8 @@ export const ProjectSlide: React.FC<ProjectSlideProps> = ({
               iconRight={<FaArrowRight size={'1.2em'} />}
               arrowAnimation={true}
               style={{
-                fontSize: '0.8em',
+                fontSize: width < 768 ? '1em' : '0.7em',
+                margin: width < 768 ? '2em auto 1em auto' : '1em 1em 0 0',
               }}
               onClickUrl={projectData?.projectData.portfolioUrl}
             />
@@ -113,7 +116,8 @@ export const ProjectSlide: React.FC<ProjectSlideProps> = ({
               buttonText={t(`knownTechs.github`)}
               iconLeft={<FaGithub size={'1.2em'} />}
               style={{
-                fontSize: '0.8em',
+                fontSize: width < 768 ? '1em' : '0.7em',
+                margin: width < 768 ? '1em auto' : '1em 0 0 0',
               }}
               onClickUrl={projectData?.projectData.githubUrl}
             />
@@ -126,8 +130,13 @@ export const ProjectSlide: React.FC<ProjectSlideProps> = ({
 
 const Container = styled.div`
   display: flex;
-  flex-direction: row-reverse;
+  flex-direction: column;
+  align-items: center;
   flex: 1;
+
+  @media (min-width: 576px) {
+    flex-direction: row-reverse;
+  }
 `;
 
 const ProjectDescription = styled.div`
@@ -141,6 +150,8 @@ const ProjectDescription = styled.div`
 const LinksContainer = styled.div`
   display: flex;
   flex-direction: column;
+  justify-content: center;
+
   @media (min-width: 768px) {
     flex-direction: row;
   }
@@ -151,8 +162,12 @@ const ProjectImageContainer = styled.div`
   align-items: center;
   justify-content: center;
   padding: 2em 0.2em;
-  max-width: 50%;
+  width: 80%;
   position: relative;
+
+  @media (min-width: 576px) {
+    max-width: 50%;
+  }
 `;
 
 const ProjectImageOverlay = styled.div`

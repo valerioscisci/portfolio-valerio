@@ -113,7 +113,7 @@ const HomeScreen = observer(() => {
             animationDuration={1}
           />
         </SecondSection>
-        <KnownTechSection />
+        <KnownTechSection width={width} />
         <ParallaxSection scrollY={scrollY} />
         <p style={{ height: '500px', width: '100%', backgroundColor: 'white' }}>
           Portfolio anicipation
