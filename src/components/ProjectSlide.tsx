@@ -1,5 +1,5 @@
 import React from 'react';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import { ImageAnimation } from './ImageAnimation';
 import { AutowriteText } from './AutowriteText';
 import { projectData, portfolioProject } from '../types';
@@ -14,12 +14,14 @@ export interface ProjectSlideProps {
   width: number;
   project: portfolioProject;
   noProjects: boolean;
+  activeProject: boolean;
 }
 
 export const ProjectSlide: React.FC<ProjectSlideProps> = ({
   width,
   project,
   noProjects,
+  activeProject,
 }) => {
   const { t } = useTranslation();
   const projectData: projectData | undefined = jsonDB.portfolioData.find(
@@ -29,7 +31,7 @@ export const ProjectSlide: React.FC<ProjectSlideProps> = ({
   );
 
   return (
-    <Container>
+    <ProjectContainer activeProject={activeProject}>
       <ProjectImageContainer>
         <ConditionalWrapper
           condition={!!projectData?.projectData.projectUrl}
@@ -124,19 +126,32 @@ export const ProjectSlide: React.FC<ProjectSlideProps> = ({
           )}
         </LinksContainer>
       </ProjectDescription>
-    </Container>
+    </ProjectContainer>
   );
 };
 
-const Container = styled.div`
+const ProjectContainer = styled.div<{ activeProject: boolean }>`
   display: flex;
   flex-direction: column;
   align-items: center;
   flex: 1;
+  -webkit-transition: all 0.6s ease-out,
+    -webkit-all 0.6s cubic-bezier(0.8, 1.35, 0.75, 1.45);
+  transition: all 0.6s ease-out,
+    -webkit-all 0.6s cubic-bezier(0.8, 1.35, 0.75, 1.45);
+  transition: all 0.6s;
 
   @media (min-width: 576px) {
     flex-direction: row-reverse;
   }
+
+  ${(props) =>
+    !props.activeProject &&
+    css`
+      position: absolute;
+      transform: translateY(100vh);
+      opacity: 0;
+    `}
 `;
 
 const ProjectDescription = styled.div`

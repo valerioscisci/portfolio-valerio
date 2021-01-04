@@ -113,6 +113,7 @@ const ControlButton = styled.button<{ buttonType: 'up' | 'down' }>`
   background-color: transparent;
   border: none;
   outline: none;
+  cursor: pointer;
 
   @media (min-width: 768px) {
     width: 3em;
