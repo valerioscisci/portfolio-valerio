@@ -12,7 +12,7 @@ export const ParallaxSection: React.FC<ParallaxSectionProps> = ({
   scrollY,
 }) => {
   const { t } = useTranslation();
-  const [isVisible, setIsVisible] = useState<boolean>(false);
+  const [isVisible, setIsVisible] = useState<boolean>(true);
   const [offsetTop, setOffsetTop] = useState<number>(0);
   const [planesStartingInfo, setPlanesStartingInfo] = useState<
     Array<{
@@ -69,19 +69,19 @@ export const ParallaxSection: React.FC<ParallaxSectionProps> = ({
                   ? {
                       WebkitTransform: `scaleX(-1) translateX(${
                         (scrollY / planeInfo.width) * 15
-                      }px) translateZ(0)`,
+                      }px) translateY(0) translateZ(0)`,
                       transform: `scaleX(-1) translateX(${
                         (scrollY / planeInfo.width) * 15
-                      }px) translateZ(0)`,
+                      }px) translateY(0) translateZ(0)`,
                       right: -window.innerWidth / planeInfo.width,
                     }
                   : {
                       WebkitTransform: `translateX(${
                         (scrollY / planeInfo.width) * 15
-                      }px) translateZ(0)`,
+                      }px) translateY(0) translateZ(0)`,
                       transform: ` translateX(${
                         (scrollY / planeInfo.width) * 15
-                      }px) translateZ(0)`,
+                      }px) translateY(0) translateZ(0)`,
                       left: -window.innerWidth / planeInfo.width,
                     }),
               }}
@@ -97,8 +97,9 @@ export const ParallaxSection: React.FC<ParallaxSectionProps> = ({
       partialVisibility
       onChange={(isVisibleNewValue: boolean) => {
         setIsVisible(isVisibleNewValue);
-        if (!isVisible) {
+        if (isVisible) {
           generatePlanes();
+          console.log('genplane');
         }
       }}
     >
@@ -107,7 +108,10 @@ export const ParallaxSection: React.FC<ParallaxSectionProps> = ({
           src={require('../assets/images/cappadocia.jpg').default}
           alt={'parallax'}
           style={{
-            transform: `translateY(${offsetTop * 0.5}px)`,
+            transform: `translateY(${
+              offsetTop * 0.5
+            }px) translateX(0) translateZ(0)`,
+            willChange: 'transform',
           }}
         />
         {showPlanes()}
@@ -124,6 +128,7 @@ const Section = styled.section`
   justify-content: center;
   position: relative;
   overflow: hidden;
+  will-change: transform;
 `;
 
 const BackgroundImage = styled.img`
@@ -134,11 +139,6 @@ const BackgroundImage = styled.img`
   height: 100%;
   object-fit: cover;
   z-index: 0;
-  -webkit-transform: translateZ(0);
-  -moz-transform: translateZ(0);
-  -ms-transform: translateZ(0);
-  -o-transform: translateZ(0);
-  transform: translateZ(0);
 `;
 
 const Overlap = styled.div`
