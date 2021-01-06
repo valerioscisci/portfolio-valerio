@@ -83,7 +83,7 @@ const SideMenu = styled.div`
 
   @media (min-width: 768px) {
     height: 100%;
-    width: 20%;
+    width: 15%;
   }
 `;
 

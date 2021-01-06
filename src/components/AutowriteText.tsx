@@ -5,6 +5,7 @@ export interface AutowriteTextProps {
   text?: string;
   textStyle?: React.CSSProperties | undefined;
   letterGenerationTiming: number;
+  canStart?: boolean;
 }
 
 const alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';
@@ -13,6 +14,7 @@ export const AutowriteText: React.FC<AutowriteTextProps> = ({
   text = '',
   textStyle,
   letterGenerationTiming,
+  canStart = true,
 }) => {
   const [currentShownText, setCurrentShownText] = useState<string>('');
   const [currentTextIndex, setCurrentTextIndex] = useState<number>(0);
@@ -24,7 +26,8 @@ export const AutowriteText: React.FC<AutowriteTextProps> = ({
     if (
       currentTextIndex < text.length &&
       !lockTextUpdate &&
-      isMountedRef.current
+      isMountedRef.current &&
+      canStart
     ) {
       setLockTextUpdate(true);
       setCurrentShownText(currentShownText + '_');
@@ -54,6 +57,7 @@ export const AutowriteText: React.FC<AutowriteTextProps> = ({
   }, [
     text,
     letterGenerationTiming,
+    canStart,
     currentShownText,
     lockTextUpdate,
     currentTextIndex,

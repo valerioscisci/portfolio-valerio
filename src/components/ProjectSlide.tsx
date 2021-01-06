@@ -59,11 +59,12 @@ export const ProjectSlide: React.FC<ProjectSlideProps> = ({
               display: 'block',
             }}
             animationDirection={'FadeIn'}
+            animationDuration={1.5}
             showOnPhone={true}
           />
         </ConditionalWrapper>
       </ProjectImageContainer>
-      <ProjectDescription>
+      <ProjectDescription activeProject={activeProject}>
         <AutowriteText
           text={
             noProjects
@@ -83,6 +84,7 @@ export const ProjectSlide: React.FC<ProjectSlideProps> = ({
             minHeight: '4em',
             marginBottom: '1em',
           }}
+          canStart={activeProject}
         />
         <AutowriteText
           text={
@@ -100,6 +102,7 @@ export const ProjectSlide: React.FC<ProjectSlideProps> = ({
             minHeight: width < 576 ? undefined : '10em',
             flex: 1,
           }}
+          canStart={activeProject}
         />
         <LinksContainer>
           {projectData?.projectData.portfolioUrl && (
@@ -141,9 +144,11 @@ const ProjectContainer = styled.div<{ activeProject: boolean }>`
   transition: all 0.6s ease-out,
     -webkit-all 0.6s cubic-bezier(0.8, 1.35, 0.75, 1.45);
   transition: all 0.6s;
+  min-height: 80vh;
 
   @media (min-width: 576px) {
     flex-direction: row-reverse;
+    min-height: 100vh;
   }
 
   ${(props) =>
@@ -155,13 +160,19 @@ const ProjectContainer = styled.div<{ activeProject: boolean }>`
     `}
 `;
 
-const ProjectDescription = styled.div`
+const ProjectDescription = styled.div<{ activeProject: boolean }>`
   display: flex;
   flex-direction: column;
   justify-content: center;
   padding: 1em;
   height: 100%;
   flex: 1;
+
+  ${(props) =>
+    !props.activeProject &&
+    css`
+      display: none;
+    `}
 `;
 
 const LinksContainer = styled.div`
@@ -183,7 +194,7 @@ const ProjectImageContainer = styled.div`
   position: relative;
 
   @media (min-width: 576px) {
-    max-width: 50%;
+    max-width: 40%;
   }
 `;
 

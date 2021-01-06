@@ -28,10 +28,9 @@ export const ImageAnimation: React.FC<ImageAnimationProps> = ({
   return (
     <VisibilitySensor
       partialVisibility
+      active={!isVisible}
       onChange={(isVisibleNewValue: boolean) => {
-        if (!isVisible) {
-          setIsVisible(isVisibleNewValue);
-        }
+        setIsVisible(isVisibleNewValue);
       }}
     >
       <Image
