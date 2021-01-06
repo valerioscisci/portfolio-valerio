@@ -95,7 +95,7 @@ export const ProjectSlide: React.FC<ProjectSlideProps> = ({
               : projectData?.projectData.descriptionEN
           }
           letterGenerationTiming={
-            t('knownTechs.noProjectsDescription').length / 20
+            t('knownTechs.noProjectsDescription').length / 50
           }
           textStyle={{
             fontFamily: 'Corben',
@@ -148,7 +148,6 @@ const ProjectContainer = styled.div<{ activeProject: boolean }>`
 
   @media (min-width: 576px) {
     flex-direction: row-reverse;
-    min-height: 100vh;
   }
 
   ${(props) =>

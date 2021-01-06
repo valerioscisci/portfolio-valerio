@@ -4,7 +4,7 @@ import { ImageSource, knownTech, portfolioProject } from '../types';
 
 export default class HomeStore {
   @observable isAppLoading: boolean = true;
-  @observable language: I18NLang = 'en';
+  @observable language: I18NLang = 'it';
   @observable sliderImages: Array<ImageSource> = [];
   @observable techMenuImages: Array<knownTech> = [];
   @observable portfolioImages: Array<portfolioProject> = [];

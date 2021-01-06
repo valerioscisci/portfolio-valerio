@@ -29,9 +29,9 @@ export const ProjectsShow: React.FC<ProjectsShowProps> = ({
           />
         );
       })}
-      {projects.length > 1 && (
-        <DotGroup>
-          {projects.map((projectDoneWithTechX, i) => {
+      <DotGroup>
+        {projects.length > 1 &&
+          projects.map((projectDoneWithTechX, i) => {
             return (
               <Dot key={i}>
                 <DotButton
@@ -43,8 +43,7 @@ export const ProjectsShow: React.FC<ProjectsShowProps> = ({
               </Dot>
             );
           })}
-        </DotGroup>
-      )}
+      </DotGroup>
     </Container>
   );
 };
