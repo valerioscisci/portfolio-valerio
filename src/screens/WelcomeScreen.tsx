@@ -115,9 +115,6 @@ const HomeScreen = observer(() => {
         </SecondSection>
         <KnownTechSection width={width} />
         <ParallaxSection scrollY={scrollY} />
-        <p style={{ height: '500px', width: '100%', backgroundColor: 'white' }}>
-          Portfolio anicipation
-        </p>
         <p style={{ height: '500px', width: '100%', backgroundColor: 'black' }}>
           Blog Articles
         </p>

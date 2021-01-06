@@ -8,8 +8,68 @@
         "descriptionIT": "Realizzazione di un sito web responsive per l'AENL, utilizzando i linguaggi/tecnologie HTML5, CSS3 e Bootstrap. L'hosting del sito è avvenuto tramite cPanel.",
         "descriptionEN": "Development of a responsive website for as association called AENL: I've used languages/technologies like HTML5, CSS3 and Bootstrap. The website was hosted through cPanel.",
         "projectUrl": "http://www.aenl.org/",
-        "portfolioUrl": "http://www.aenl.org/",
-        "githubUrl": "http://www.aenl.org/"
+        "portfolioUrl": "",
+        "githubUrl": ""
+      }
+    },
+    {
+      "projectName": "Malta",
+      "projectData": {
+        "titleIT": "Applicazione web per la gestione delle proposte di progetti al MEAE",
+        "titleEN": "Web application for the management of the project proposals to MEAE",
+        "descriptionIT": "Sviluppo completo dell'applicazione web utilizzata dal Ministero per gli Affari Europei di Malta per consentire alle autorità maltesi, in particolare i diversi ministeri, di scambiare informazioni sulle proposte di progetti che saranno finanziate con fondi UE come l’ESIF. \n Realizzato in collaborazione dell'azienda T33 s.r.l.",
+        "descriptionEN": "Full development of the web application used by the Ministry for European Affairs and Equality of Malta to allow the Maltese Authorities, including the MEAE and the different Line Ministries, to exchange information about projects proposals that will be funded with EU funds such as ESIF. \n Made in collaboration with the company T33 s.r.l.",
+        "projectUrl": "http://linux01.ricpic.com/",
+        "portfolioUrl": "",
+        "githubUrl": ""
+      }
+    },
+    {
+      "projectName": "Crossborder",
+      "projectData": {
+        "titleIT": "Crossborder Web App",
+        "titleEN": "Crossborder Web App",
+        "descriptionIT": "Progettazione e realizzazione di un'applicazione web che permette l'analisi del mercato immobiliare nelle aree di confine italiane e dei paesi limitrofi. Gli utenti possono interagire con una mappa e trovare delle informazioni d'interesse sotto forma di dashboard.",
+        "descriptionEN": "Design and implementation of a web application that allows the analysis of the real estate market in the Italian border areas and neighboring countries. Users can interact with a map and find information of interest in the form of a dashboard.",
+        "projectUrl": "",
+        "portfolioUrl": "",
+        "githubUrl": "https://github.com/valerioscisci/Thesis_CrossBorder-Housing-Market"
+      }
+    },
+    {
+      "projectName": "Recwind",
+      "projectData": {
+        "titleIT": "Recwind",
+        "titleEN": "Recwind",
+        "descriptionIT": "ReCwind è un servizio web (sito+app mobile) che rende la raccolta differenziata un’esperienza informativa, trasparente, incentivante e di valore per il cittadino e per l’azienda/ente pubblico che lo utilizza. Essa è il risultato ottenuto alla fine di una competizione (hackaton) durata 36 ore presso l'Università Politecnica delle Marche.",
+        "descriptionEN": "ReCwind is a web service (website + mobile app) that makes recycling an informative, transparent, incentive and valuable experience for the citizen and for the company/public authority that uses it. It is the result obtained at the end of a competition (hackaton) lasted 36 hours at the Polytechnic University of Marche.",
+        "projectUrl": "",
+        "portfolioUrl": "",
+        "githubUrl": "https://github.com/valerioscisci/hackaton"
+      }
+    },
+    {
+      "projectName": "Portfolio",
+      "projectData": {
+        "titleIT": "Il mio sito web",
+        "titleEN": "My own website",
+        "descriptionIT": "Pensato inizialmente come un sito vetrina dove mostrare il lavoro da me svolto, si è poi evoluto in qualcosa di più: un blog, una fonte di ispirazione, un reminder di cosa mi rende felice e che potrebbe rendere felice anche te. Divertiti ad esplorarlo!",
+        "descriptionEN": "Initially conceived as a showcase site to show my work, it then evolved into something more: a blog, a source of inspiration, a reminder of what makes me happy and that could make you happy too. Enjoy exploring it!",
+        "projectUrl": "#",
+        "portfolioUrl": "",
+        "githubUrl": "https://github.com/valerioscisci/portfolio-valerio"
+      }
+    },
+    {
+      "projectName": "Smartcontract",
+      "projectData": {
+        "titleIT": "Applicazione web per la gestione di SmartContract riguardanti dei contratti di appalto",
+        "titleEN": "Web application for the management of SmartContract regarding procurement contracts",
+        "descriptionIT": "Il progetto è consistito nella realizzazione di un’applicazione web che permettesse agli stakeholders coinvolti in un contratto di appalto di poter gestire i documenti che lo compongono (Libretto delle Misure, Registro di Contabilità, Stato Avanzamento Lavori, Giornale dei Lavori) in maniera digitale. Il progetto ha previsto il salvataggio dei dati considerati immutabili all'interno della blockchain Ethereum e l'uso di firme digitali per garantire l'autenticità degli interventi.",
+        "descriptionEN": "The project consisted in the creation of a web application that would allow the stakeholders involved in a procurement contract, to be able to manage the documents that compose it (Measurement Book, Accounting Register, Work Progress Status, Work Journal). The project involved saving immutable data within the Ethereum blockchain and using digital signatures to guarantee the authenticity of the interventions.",
+        "projectUrl": "",
+        "portfolioUrl": "",
+        "githubUrl": "https://github.com/valerioscisci/SmartContract"
       }
     }
   ]

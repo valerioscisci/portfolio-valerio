@@ -98,6 +98,7 @@ export const ProjectSlide: React.FC<ProjectSlideProps> = ({
           textStyle={{
             fontFamily: 'Corben',
             minHeight: width < 576 ? undefined : '10em',
+            flex: 1,
           }}
         />
         <LinksContainer>
@@ -158,7 +159,8 @@ const ProjectDescription = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
-  padding: 2em;
+  padding: 1em;
+  height: 100%;
   flex: 1;
 `;
 
