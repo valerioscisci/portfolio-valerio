@@ -34,6 +34,18 @@ body {
   }
 }
 
+@media (min-width: 1440px) {
+  body {
+    font-size: 22px;
+  }
+}
+
+@media (min-width: 1600px) {
+  body {
+    font-size: 24px;
+  }
+}
+
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
