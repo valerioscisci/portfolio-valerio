@@ -12,13 +12,14 @@ import { FaArrowRight } from 'react-icons/fa';
 import { ImageAnimation } from '../components/ImageAnimation';
 import { ParallaxSection } from '../components/ParallaxSection';
 import { KnownTechSection } from '../components/KnownTechSection';
+import { useWindowSize } from '../hooks/useWindowSize';
+import useScrollPosition from '@react-hook/window-scroll';
 
 const HomeScreen = observer(() => {
   const { home } = useStores();
-  const [width, setWidth] = useState(window.innerWidth); // width state
+  const [width, height] = useWindowSize();
   const { t } = useTranslation();
-  const [scrollY, setScrollY] = useState(0);
-
+  const scrollY = useScrollPosition(144);
   const navLinks = [
     { name: t(`navbar.home`), route: '/' },
     { name: t(`navbar.about`), route: '/about' },
@@ -26,35 +27,11 @@ const HomeScreen = observer(() => {
     { name: t(`navbar.contact`), route: '/contact-me' },
   ];
 
-  useEffect(() => {
-    const updateScrollY = () => {
-      setScrollY(window.pageYOffset);
-    };
-    const watchScroll = () => {
-      window.addEventListener('scroll', updateScrollY);
-    };
-    watchScroll();
-
-    return () => {
-      window.removeEventListener('scroll', updateScrollY);
-    };
-  }, []);
-
-  const updateWidth = () => {
-    setWidth(window.innerWidth);
-  };
-
   // Temp to fake loading
   useEffect(() => {
     home.fetchImages();
     // setTimeout(() => (home.isAppLoading = false), 1000);
   }, [home]);
-
-  // Update width on resize
-  useEffect(() => {
-    window.addEventListener('resize', updateWidth);
-    return () => window.removeEventListener('resize', updateWidth);
-  }, []);
 
   return home.isAppLoading ? (
     <Spinner />
