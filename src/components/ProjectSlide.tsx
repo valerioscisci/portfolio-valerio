@@ -228,9 +228,9 @@ const ProjectImageOverlay = styled.div`
 `;
 
 const VisitSite = styled.h3`
-  fontfamily: 'Corben';
-  fontweight: 'bold';
-  textalign: 'center';
+  font-family: Corben;
+  font-weight: bold;
+  text-align: center;
   position: absolute;
   bottom: 3.5em;
   text-shadow: -1px -1px 1px rgba(255, 255, 255, 0.1),

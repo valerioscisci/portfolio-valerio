@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { observer } from 'mobx-react';
 import { useStores } from '../hooks/useStores';
 import { Navbar } from '../components/Navbar';
@@ -6,19 +6,19 @@ import { useTranslation } from 'react-i18next';
 import styled from 'styled-components';
 import { MainSlider } from '../components/Slider';
 import { Spinner } from '../components/Spinner';
-import brush from '../assets/images/brush.png';
+import brush from '../assets/images/homepage/brush.png';
 import { Button } from '../components/Button';
 import { FaArrowRight } from 'react-icons/fa';
 import { ImageAnimation } from '../components/ImageAnimation';
 import { ParallaxSection } from '../components/ParallaxSection';
 import { KnownTechSection } from '../components/KnownTechSection';
-import { useWindowSize } from '../hooks/useWindowSize';
 import useScrollPosition from '@react-hook/window-scroll';
+import { useWindowSize } from '../hooks/useWindowSize';
 
-const HomeScreen = observer(() => {
+const HomeScreen: React.FC = observer((props) => {
   const { home } = useStores();
-  const [width, height] = useWindowSize();
   const { t } = useTranslation();
+  const [width] = useWindowSize();
   const scrollY = useScrollPosition(144);
   const navLinks = [
     { name: t(`navbar.home`), route: '/' },
@@ -27,7 +27,6 @@ const HomeScreen = observer(() => {
     { name: t(`navbar.contact`), route: '/contact-me' },
   ];
 
-  // Temp to fake loading
   useEffect(() => {
     home.fetchImages();
     // setTimeout(() => (home.isAppLoading = false), 1000);
@@ -46,7 +45,7 @@ const HomeScreen = observer(() => {
         <FirstSection>
           <CVImage>
             <ImageAnimation
-              image={require('../assets/images/valerio_scisci.jpg')}
+              image={require('../assets/images/homepage/valerio_scisci.jpg')}
               imageAlt={'Valerio Scisci'}
               animationDirection={'BottomToTop'}
               animationX={'9.5em'}
@@ -74,7 +73,7 @@ const HomeScreen = observer(() => {
           <Paragraph color={'white'}>{t(`welcome.secondParagraph`)}</Paragraph>
           <Button buttonText={t(`welcome.secondButton`)}></Button>
           <ImageAnimation
-            image={require('../assets/images/pc.jpg')}
+            image={require('../assets/images/homepage/pc.jpg')}
             imageAlt={'Smart'}
             imageStyle={{
               bottom: '-2.5em',
@@ -95,15 +94,16 @@ const HomeScreen = observer(() => {
         <p style={{ height: '500px', width: '100%', backgroundColor: 'black' }}>
           Blog Articles
         </p>
-        <p style={{ height: '500px', width: '100%', backgroundColor: 'white' }}>
-          Instagram section
-        </p>
+        {props.children}
         <p style={{ height: '500px', width: '100%', backgroundColor: 'black' }}>
           Companies I've worked for
         </p>
+        <p style={{ height: '500px', width: '100%', backgroundColor: 'white' }}>
+          Contact me form
+        </p>
       </Main>
       <footer
-        style={{ height: '500px', width: '100%', backgroundColor: 'white' }}
+        style={{ height: '500px', width: '100%', backgroundColor: 'black' }}
       >
         footer
       </footer>
@@ -130,6 +130,7 @@ const Main = styled.main`
 
 const MainHeading = styled.h1`
   color: ${(props) => props.theme.colors.textColorBlack};
+  background-color: ${(props) => props.theme.colors.background};
   font-family: Corben;
   text-transform: uppercase;
   background: url(${brush});

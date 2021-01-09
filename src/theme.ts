@@ -11,6 +11,7 @@ const valerioTheme: DefaultTheme = {
     backgroundLight: '#8090a7',
     textColorWhite: '#fff',
     textColorBlack: '#333333',
+    textColorGrey: '#7c8088',
   },
 };
 

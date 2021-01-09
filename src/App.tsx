@@ -8,9 +8,10 @@ import { StoresContext } from './contexts';
 import HomeScreen from './screens/WelcomeScreen';
 import { I18NLang } from './i18n';
 import { useTranslation } from 'react-i18next';
+import InstagramFeed from './components/InstagramFeed';
 
 export const App: React.FC = () => {
-  const { t, i18n } = useTranslation();
+  const { i18n } = useTranslation();
   const [stores] = useState<Stores>(() => {
     const root: Stores = {} as Stores;
     root.home = new ValerioStore();
@@ -26,7 +27,18 @@ export const App: React.FC = () => {
       <StoresContext.Provider value={stores}>
         <BrowserRouter>
           <Switch>
-            <Route path={'/'} component={HomeScreen} />
+            <Route
+              path={'/'}
+              render={() => (
+                <HomeScreen>
+                  <InstagramFeed
+                    account="valerioscisci"
+                    numberOfMediaElements={12}
+                    discardVideos={true}
+                  />
+                </HomeScreen>
+              )}
+            />
             <Redirect to={'/'} />
           </Switch>
         </BrowserRouter>
