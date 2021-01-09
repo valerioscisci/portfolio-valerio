@@ -1,7 +1,8 @@
-import { useLayoutEffect, useState } from 'react';
+import { useLayoutEffect } from 'react';
+import { useThrottle } from '@react-hook/throttle';
 
 export const useWindowSize = () => {
-  const [size, setSize] = useState([0, 0]);
+  const [size, setSize] = useThrottle([0, 0], 144);
   useLayoutEffect(() => {
     function updateSize() {
       setSize([window.innerWidth, window.innerHeight]);
@@ -9,6 +10,6 @@ export const useWindowSize = () => {
     window.addEventListener('resize', updateSize);
     updateSize();
     return () => window.removeEventListener('resize', updateSize);
-  }, []);
+  }, [setSize]);
   return size;
 };

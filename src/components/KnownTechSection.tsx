@@ -32,11 +32,13 @@ export const KnownTechSection: React.FC<KnownTechSectionProps> = ({
 
   return (
     <>
-      <SectionHeading>{t(`knownTechs.heading`)}</SectionHeading>{' '}
-      <TechName key={selectedTech}>
-        <em>{selectedTech}</em>
-      </TechName>
-      {width > 768 && <SectionSeparator />}
+      <SectionHeader>
+        <SectionHeading>{t(`knownTechs.heading`)}</SectionHeading>{' '}
+        <TechName key={selectedTech}>
+          <em>{selectedTech}</em>
+        </TechName>
+        {width > 768 && <SectionSeparator />}
+      </SectionHeader>
       <Section>
         <SideMenu>
           <TechList onTechChange={onTechChange} />
@@ -67,7 +69,15 @@ export const KnownTechSection: React.FC<KnownTechSectionProps> = ({
   );
 };
 
+const SectionHeader = styled.div`
+  background-color: ${(props) => props.theme.colors.background};
+  width: 100%;
+  flex-direction: column;
+  text-align: center;
+`;
+
 const Section = styled.section`
+  background-color: ${(props) => props.theme.colors.background};
   width: 100%;
   min-height: 30em;
   display: flex;

@@ -36,7 +36,7 @@ export const MenuIcon: React.FC<MenuIconProps> = ({
 const Container = styled.div<{ menuOpen: boolean }>`
   position: absolute;
   display: flex;
-  background: ${(props) => props.theme.colors.background};
+  background: ${(props) => props.theme.colors.backgroundDark};
   border-radius: 50%;
   width: 5em;
   height: 5em;
@@ -72,9 +72,9 @@ const Container = styled.div<{ menuOpen: boolean }>`
     props.menuOpen &&
     css`
        {
-        box-shadow: 0 0 0 20em ${(props) => props.theme.colors.background},
-          0 0 0 50em ${(props) => props.theme.colors.background},
-          0 0 0 100em ${(props) => props.theme.colors.background};
+        box-shadow: 0 0 0 20em ${(props) => props.theme.colors.backgroundDark},
+          0 0 0 50em ${(props) => props.theme.colors.backgroundDark},
+          0 0 0 100em ${(props) => props.theme.colors.backgroundDark};
         border-radius: 0;
       }
     `}

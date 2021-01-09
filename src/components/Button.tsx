@@ -83,10 +83,10 @@ const Container = styled.a<{ arrowAnimation?: boolean }>`
   font-size: 1em;
   text-decoration: none;
   text-transform: uppercase;
-  color: ${(props) => props.theme.colors.background};
-  background: ${(props) => props.theme.colors.textColorWhite};
+  color: ${(props) => props.theme.colors.backgroundDark};
+  background: ${(props) => props.theme.colors.background};
   position: relative;
-  border: 1px solid ${(props) => props.theme.colors.background};
+  border: 1px solid ${(props) => props.theme.colors.backgroundDark};
   font-weight: bold;
   transition: all 0.3s ease;
 
@@ -117,7 +117,7 @@ const Container = styled.a<{ arrowAnimation?: boolean }>`
     width: 110%;
     height: 120%;
     padding: 1.3em;
-    border: 1px solid ${(props) => props.theme.colors.background};
+    border: 1px solid ${(props) => props.theme.colors.backgroundDark};
     transition: all 0.3s ease;
     z-index: 2;
   }

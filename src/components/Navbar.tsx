@@ -57,7 +57,7 @@ const NavbarContainer = styled.nav`
   padding: 0.2em;
   text-transform: uppercase;
   justify-content: space-between;
-  background: ${(props) => props.theme.colors.background};
+  background: ${(props) => props.theme.colors.backgroundDark};
   z-index: 2;
 `;
 
