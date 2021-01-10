@@ -71,6 +71,7 @@ export const MainSlider: React.FC<SliderProps> = ({ imagesArray }) => {
 
 const CarouselContainer = styled.div`
   position: relative;
+  background-color: ${(props) => props.theme.colors.background};
 
   & .carousel {
     & .carousel__slider {
@@ -111,7 +112,7 @@ const OverlayShadow = styled.div`
   background-image: radial-gradient(
     ellipse,
     rgba(34, 40, 49, 0.5) 100%,
-    ${(props) => props.theme.colors.background}
+    ${(props) => props.theme.colors.backgroundDark}
   );
 `;
 

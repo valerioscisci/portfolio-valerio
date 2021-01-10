@@ -34,13 +34,25 @@ body {
   }
 }
 
+@media (min-width: 1440px) {
+  body {
+    font-size: 22px;
+  }
+}
+
+@media (min-width: 1600px) {
+  body {
+    font-size: 24px;
+  }
+}
+
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
 
 #root {
-  background-color: #ffffff;
+  background-color: #fcfcfc;
   height: 100vh;
   display: flex;
 }

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { observer } from 'mobx-react';
 import { useStores } from '../hooks/useStores';
 import { Navbar } from '../components/Navbar';
@@ -6,19 +6,24 @@ import { useTranslation } from 'react-i18next';
 import styled from 'styled-components';
 import { MainSlider } from '../components/Slider';
 import { Spinner } from '../components/Spinner';
-import brush from '../assets/images/brush.png';
+import brush from '../assets/images/homepage/brush.png';
 import { Button } from '../components/Button';
 import { FaArrowRight } from 'react-icons/fa';
-import { SlidingImage } from '../components/ImageAnimation';
+import { ImageAnimation } from '../components/ImageAnimation';
 import { ParallaxSection } from '../components/ParallaxSection';
 import { KnownTechSection } from '../components/KnownTechSection';
+import useScrollPosition from '@react-hook/window-scroll';
+import { useWindowSize } from '../hooks/useWindowSize';
+import { BlogSection } from '../components/BlogSection';
+import { Paragraph } from '../components/Paragraph';
+import { HeadingTitle } from '../components/HeadingTitle';
+import { valerioTheme } from '../theme';
 
-const HomeScreen = observer(() => {
+const HomeScreen: React.FC = observer((props) => {
   const { home } = useStores();
-  const [width, setWidth] = useState(window.innerWidth); // width state
   const { t } = useTranslation();
-  const [scrollY, setScrollY] = useState(0);
-
+  const [width] = useWindowSize();
+  const scrollY = useScrollPosition(144);
   const navLinks = [
     { name: t(`navbar.home`), route: '/' },
     { name: t(`navbar.about`), route: '/about' },
@@ -27,34 +32,9 @@ const HomeScreen = observer(() => {
   ];
 
   useEffect(() => {
-    const updateScrollY = () => {
-      setScrollY(window.pageYOffset);
-    };
-    const watchScroll = () => {
-      window.addEventListener('scroll', updateScrollY);
-    };
-    watchScroll();
-
-    return () => {
-      window.removeEventListener('scroll', updateScrollY);
-    };
-  }, []);
-
-  const updateWidth = () => {
-    setWidth(window.innerWidth);
-  };
-
-  // Temp to fake loading
-  useEffect(() => {
     home.fetchImages();
     // setTimeout(() => (home.isAppLoading = false), 1000);
   }, [home]);
-
-  // Update width on resize
-  useEffect(() => {
-    window.addEventListener('resize', updateWidth);
-    return () => window.removeEventListener('resize', updateWidth);
-  }, []);
 
   return home.isAppLoading ? (
     <Spinner />
@@ -65,11 +45,21 @@ const HomeScreen = observer(() => {
         <MainSlider imagesArray={home.sliderImages} />
       </header>
       <Main>
-        <MainHeading>{t(`welcome.heading`)}</MainHeading>
+        <HeadingTitle
+          style={{
+            backgroundColor: valerioTheme.colors.background,
+            background: ' url(' + brush + ')',
+            backgroundRepeat: ' no-repeat',
+            backgroundSize: ' 100% 95%',
+            marginTop: 0,
+          }}
+        >
+          {t(`welcome.heading`)}
+        </HeadingTitle>
         <FirstSection>
           <CVImage>
-            <SlidingImage
-              image={require('../assets/images/valerio_scisci.jpg')}
+            <ImageAnimation
+              image={require('../assets/images/homepage/valerio_scisci.jpg')}
               imageAlt={'Valerio Scisci'}
               animationDirection={'BottomToTop'}
               animationX={'9.5em'}
@@ -77,20 +67,34 @@ const HomeScreen = observer(() => {
               showOnPhone={true}
             />
           </CVImage>
-          <div>
-            <Paragraph color={'black'}>{t(`welcome.introParagraph`)}</Paragraph>
+          <div
+            style={{
+              display: 'flex',
+              flexDirection: 'column',
+            }}
+          >
+            <Paragraph style={{ marginBottom: '0' }}>
+              {t(`welcome.introParagraph`)}
+            </Paragraph>
             <Button
               buttonText={t(`welcome.introButton`)}
               iconRight={<FaArrowRight size={'1.2em'} />}
+              arrowAnimation={true}
+              style={{ margin: '2em auto' }}
             ></Button>
           </div>
         </FirstSection>
         <SecondSection>
-          <SecondHeading>"TEST"</SecondHeading>
+          <HeadingTitle style={{ marginTop: '4em' }} color={'white'}>
+            SEZIONE DUE
+          </HeadingTitle>
           <Paragraph color={'white'}>{t(`welcome.secondParagraph`)}</Paragraph>
-          <Button buttonText={t(`welcome.secondButton`)}></Button>
-          <SlidingImage
-            image={require('../assets/images/pc.jpg')}
+          <Button
+            buttonText={t(`welcome.secondButton`)}
+            style={{ margin: '2em auto' }}
+          ></Button>
+          <ImageAnimation
+            image={require('../assets/images/homepage/pc.jpg')}
             imageAlt={'Smart'}
             imageStyle={{
               bottom: '-2.5em',
@@ -106,23 +110,19 @@ const HomeScreen = observer(() => {
             animationDuration={1}
           />
         </SecondSection>
-        <KnownTechSection />
+        <KnownTechSection width={width} />
         <ParallaxSection scrollY={scrollY} />
-        <p style={{ height: '500px', width: '100%', backgroundColor: 'white' }}>
-          Portfolio anicipation
-        </p>
-        <p style={{ height: '500px', width: '100%', backgroundColor: 'black' }}>
-          Blog Articles
-        </p>
-        <p style={{ height: '500px', width: '100%', backgroundColor: 'white' }}>
-          Instagram section
-        </p>
+        <BlogSection />
+        {/*{props.children} */}
         <p style={{ height: '500px', width: '100%', backgroundColor: 'black' }}>
           Companies I've worked for
         </p>
+        <p style={{ height: '500px', width: '100%', backgroundColor: 'white' }}>
+          Contact me form
+        </p>
       </Main>
       <footer
-        style={{ height: '500px', width: '100%', backgroundColor: 'white' }}
+        style={{ height: '500px', width: '100%', backgroundColor: 'black' }}
       >
         footer
       </footer>
@@ -137,25 +137,15 @@ const Container = styled.div`
   flex-direction: column;
   width: 100%;
   height: 100%;
+  position: relative;
 `;
 
 const Main = styled.main`
+  background-color: ${(props) => props.theme.colors.background};
   display: flex;
   flex-direction: column;
   align-items: center;
   margin-top: 3em;
-`;
-
-const MainHeading = styled.h1`
-  color: ${(props) => props.theme.colors.textColorBlack};
-  font-family: Corben;
-  text-transform: uppercase;
-  background: url(${brush});
-  background-repeat: no-repeat;
-  background-size: 100% 95%;
-  padding: 0.2em 0;
-  text-align: center;
-  margin-bottom: 2em;
 `;
 
 const FirstSection = styled.section`
@@ -195,30 +185,12 @@ const CVImage = styled.div`
   }
 `;
 
-const Paragraph = styled.p<{ color: string }>`
-  color: ${(props) =>
-    props.color === 'white'
-      ? props.theme.colors.textColorWhite
-      : props.theme.colors.textColorBlack};
-  font-family: Corben;
-  font-size: 1em;
-`;
-
 const SecondSection = styled.section`
   position: relative;
   display: flex;
   flex-direction: column;
   background-color: ${(props) => props.theme.colors.backgroundLight};
   margin-top: 5em;
-  padding: 5em;
-  clip-path: polygon(50% 15%, 100% 0, 100% 100%, 0 200%, 0 0);
-`;
-
-const SecondHeading = styled.h1`
-  color: ${(props) => props.theme.colors.textColorWhite};
-  font-family: Corben;
-  text-transform: uppercase;
-  padding: 0.2em 0;
-  text-align: center;
-  margin-bottom: 2em;
+  padding: 0 5em 5em 5em;
+  clip-path: polygon(50% 10%, 100% 0, 100% 100%, 0 200%, 0 0);
 `;

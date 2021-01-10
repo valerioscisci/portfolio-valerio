@@ -3,17 +3,18 @@ import { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import VisibilitySensor from 'react-visibility-sensor';
 import { useTranslation } from 'react-i18next';
+import { useThrottle } from '@react-hook/throttle';
 
 export interface ParallaxSectionProps {
-  scrollY: any;
+  scrollY: number;
 }
 
 export const ParallaxSection: React.FC<ParallaxSectionProps> = ({
   scrollY,
 }) => {
   const { t } = useTranslation();
-  const [isVisible, setIsVisible] = useState<boolean>(false);
-  const [offsetTop, setOffsetTop] = useState<number>(0);
+  const [isVisible, setIsVisible] = useState<boolean>(true);
+  const [offsetTop, setOffsetTop] = useThrottle<number>(0, 144);
   const [planesStartingInfo, setPlanesStartingInfo] = useState<
     Array<{
       startingHeight: number;
@@ -28,9 +29,9 @@ export const ParallaxSection: React.FC<ParallaxSectionProps> = ({
     if (isVisible) {
       setOffsetTop(scrollY - sectionRef.current.offsetTop);
     }
-  }, [offsetTop, isVisible, sectionRef, scrollY]);
+  }, [isVisible, setOffsetTop, scrollY]);
 
-  const generatePlanes = () => {
+  const generatePlanes = async () => {
     const numberOfPlanes = Math.floor(Math.random() * (12 - 8 + 1) + 8);
     const width = 22;
     const newPlanesArray = [];
@@ -54,10 +55,15 @@ export const ParallaxSection: React.FC<ParallaxSectionProps> = ({
     return (
       <Overlap>
         {planesStartingInfo.map((planeInfo, index) => {
+          const startingPlanePosition = -window.innerWidth / planeInfo.width;
+          const commonPlaneTransform = `translateX(${
+            (scrollY / planeInfo.width) * 15
+          }px) translateY(0) translateZ(0)`;
+
           return (
             <img
               key={index}
-              src={require('../assets/images/plane.svg').default}
+              src={require('../assets/images/homepage/plane.svg').default}
               alt={'freedom'}
               style={{
                 width: planeInfo.width,
@@ -67,22 +73,14 @@ export const ParallaxSection: React.FC<ParallaxSectionProps> = ({
                 top: planeInfo.startingHeight,
                 ...(planeInfo.direction === 'left'
                   ? {
-                      WebkitTransform: `scaleX(-1) translateX(${
-                        (scrollY / planeInfo.width) * 15
-                      }px) translateZ(0)`,
-                      transform: `scaleX(-1) translateX(${
-                        (scrollY / planeInfo.width) * 15
-                      }px) translateZ(0)`,
-                      right: -window.innerWidth / planeInfo.width,
+                      WebkitTransform: 'scaleX(-1)' + commonPlaneTransform,
+                      transform: 'scaleX(-1)' + commonPlaneTransform,
+                      right: startingPlanePosition,
                     }
                   : {
-                      WebkitTransform: `translateX(${
-                        (scrollY / planeInfo.width) * 15
-                      }px) translateZ(0)`,
-                      transform: ` translateX(${
-                        (scrollY / planeInfo.width) * 15
-                      }px) translateZ(0)`,
-                      left: -window.innerWidth / planeInfo.width,
+                      WebkitTransform: commonPlaneTransform,
+                      transform: commonPlaneTransform,
+                      left: startingPlanePosition,
                     }),
               }}
             />
@@ -95,19 +93,22 @@ export const ParallaxSection: React.FC<ParallaxSectionProps> = ({
   return (
     <VisibilitySensor
       partialVisibility
-      onChange={(isVisibleNewValue: boolean) => {
+      onChange={async (isVisibleNewValue: boolean) => {
         setIsVisible(isVisibleNewValue);
-        if (!isVisible) {
-          generatePlanes();
+        if (isVisible) {
+          await generatePlanes();
         }
       }}
     >
       <Section ref={sectionRef}>
         <BackgroundImage
-          src={require('../assets/images/cappadocia.jpg').default}
+          src={require('../assets/images/homepage/cappadocia.jpg').default}
           alt={'parallax'}
           style={{
-            transform: `translateY(${offsetTop * 0.5}px)`,
+            transform: `translateY(${
+              offsetTop * 0.2
+            }px) translateX(0) translateZ(0)`,
+            willChange: 'transform',
           }}
         />
         {showPlanes()}
@@ -124,6 +125,7 @@ const Section = styled.section`
   justify-content: center;
   position: relative;
   overflow: hidden;
+  will-change: transform;
 `;
 
 const BackgroundImage = styled.img`
@@ -134,11 +136,6 @@ const BackgroundImage = styled.img`
   height: 100%;
   object-fit: cover;
   z-index: 0;
-  -webkit-transform: translateZ(0);
-  -moz-transform: translateZ(0);
-  -ms-transform: translateZ(0);
-  -o-transform: translateZ(0);
-  transform: translateZ(0);
 `;
 
 const Overlap = styled.div`
@@ -165,7 +162,7 @@ const PlaneText = styled.h1`
   width: 55%;
   z-index: 2;
   position: relative;
-  
+  cursor: default;  
   
   @media (min-width: 1200px) {
     font-size: 2.5em;

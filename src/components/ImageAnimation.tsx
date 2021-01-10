@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import styled, { css } from 'styled-components';
 import VisibilitySensor from 'react-visibility-sensor';
 
-export interface SlidingImageProps {
+export interface ImageAnimationProps {
   image: { default: string };
   imageAlt: string;
   imageStyle?: React.CSSProperties | undefined;
@@ -13,7 +13,7 @@ export interface SlidingImageProps {
   showOnPhone?: boolean;
 }
 
-export const SlidingImage: React.FC<SlidingImageProps> = ({
+export const ImageAnimation: React.FC<ImageAnimationProps> = ({
   image,
   imageAlt,
   imageStyle,
@@ -28,10 +28,9 @@ export const SlidingImage: React.FC<SlidingImageProps> = ({
   return (
     <VisibilitySensor
       partialVisibility
+      active={!isVisible}
       onChange={(isVisibleNewValue: boolean) => {
-        if (!isVisible) {
-          setIsVisible(isVisibleNewValue);
-        }
+        setIsVisible(isVisibleNewValue);
       }}
     >
       <Image

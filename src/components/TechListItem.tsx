@@ -26,31 +26,43 @@ const Container = styled.li<{
   list-style: none;
   height: auto;
   transition: all 0.3s ease-out;
-  transform: translateY(-50%);
+  transform: translateX(-50%) translateY(-50%);
+  top: 50%;
+
+  @media (min-width: 768px) {
+    transform: translateY(-50%);
+  }
 
   ${(props) => {
     const moveElementCss: any = () => {
       switch (true) {
         case props.animationState === 0:
           return css`
-            left: -1em;
-            top: 0%;
+            left: 0%;
             opacity: 0;
             width: 0em;
+
+            @media (min-width: 768px) {
+              left: -1em;
+              top: 0%;
+            }
           `;
         case props.animationState === 1:
           return css`
-            left: 1em;
-            top: 15%;
+            left: 20%;
             opacity: 0.5;
             width: 3em;
+
+            @media (min-width: 768px) {
+              left: 1em;
+              top: 15%;
+            }
           `;
         case props.animationState === 2:
           return css`
-            left: 1em;
-            top: 50%;
             opacity: 1;
             width: 5em;
+            left: 50%;
 
             @media (min-width: 768px) {
               left: 50%;
@@ -58,17 +70,25 @@ const Container = styled.li<{
           `;
         case props.animationState === 3:
           return css`
-            left: 1em;
-            top: 85%;
+            left: 75%;
             opacity: 0.5;
             width: 3em;
+
+            @media (min-width: 768px) {
+              left: 1em;
+              top: 85%;
+            }
           `;
         case props.animationState === 4:
           return css`
-            left: -1em;
-            top: 100%;
+            left: 100%;
             opacity: 0;
             width: 0em;
+
+            @media (min-width: 768px) {
+              left: -1em;
+              top: 100%;
+            }
           `;
       }
     };

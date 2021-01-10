@@ -73,46 +73,75 @@ const Container = styled.div`
   height: 100%;
   width: 100%;
   display: flex;
-  flex-direction: row;
-  justify-center: center;
-  align-items: center;
+  flex-direction: column;
+
+  @media (min-width: 768px) {
+    flex-direction: row;
+    justify-center: center;
+    align-items: center;
+  }
 `;
 
 const TechMenu = styled.ul`
   position: relative;
   padding: 0;
-  margin: 0 1em 0 0;
+  margin: 0;
   width: 100%;
   height: 100%;
+
+  @media (min-width: 768px) {
+    margin: 0 1em 0 0;
+  }
 `;
 
 const ControlsContainer = styled.div`
-  width: 1em;
+  width: 100%;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   justify-content: center;
+
+  @media (min-width: 768px) {
+    width: 2em;
+    flex-direction: column;
+  }
 `;
 
 const ControlButton = styled.button<{ buttonType: 'up' | 'down' }>`
-  margin: 1.5em 0;
-  width: 3em;
+  margin: 0 1em;
+  width: 2em;
   height: auto;
   background-color: transparent;
   border: none;
   outline: none;
+  cursor: pointer;
+
+  @media (min-width: 768px) {
+    width: 3em;
+    margin: 1em 0;
+  }
 
   & svg {
-  transition: all 0.3s ease;
+    transition: all 0.3s ease;
   }
 
   ${(props) => {
     if (props.buttonType === 'up') {
       return css`
-        transform: rotate(-30deg);
+        transform: rotate(-90deg);
+
+        @media (min-width: 768px) {
+          padding-bottom: 1em;
+          transform: rotate(-30deg);
+        }
       `;
     } else {
       return css`
-        transform: rotate(30deg);
+        transform: rotate(-90deg);
+
+        @media (min-width: 768px) {
+          padding-top: 1em;
+          transform: rotate(30deg);
+        }
       `;
     }
   }}

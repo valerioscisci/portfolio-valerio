@@ -6,10 +6,12 @@ const valerioTheme: DefaultTheme = {
   colors: {
     primary: '#CEE9CA',
     secondary: '#fbd46d',
-    background: '#222831',
+    background: '#FCFCFC',
+    backgroundDark: '#222831',
     backgroundLight: '#8090a7',
     textColorWhite: '#fff',
     textColorBlack: '#333333',
+    textColorGrey: '#7c8088',
   },
 };
 

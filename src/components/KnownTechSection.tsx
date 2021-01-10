@@ -1,14 +1,20 @@
 import React, { useCallback, useState } from 'react';
-import styled, { css } from 'styled-components';
+import styled from 'styled-components';
 import { useTranslation } from 'react-i18next';
 import { TechList } from './TechList';
-import { observer } from 'mobx-react';
 import { useStores } from '../hooks/useStores';
-import { SlidingImage } from './ImageAnimation';
+import { ProjectsShow } from './ProjectsShow';
+import { portfolioProject } from '../types';
+import { HeadingTitle } from './HeadingTitle';
+import { valerioTheme } from '../theme';
 
-export interface KnowsTechProps {}
+interface KnownTechSectionProps {
+  width: number;
+}
 
-export const KnownTechSection: React.FC<KnowsTechProps> = observer(({}) => {
+export const KnownTechSection: React.FC<KnownTechSectionProps> = ({
+  width,
+}) => {
   const { home } = useStores();
   const { t } = useTranslation();
   const [selectedTech, setSelectedTech] = useState<string>('');
@@ -20,90 +26,95 @@ export const KnownTechSection: React.FC<KnowsTechProps> = observer(({}) => {
     [setSelectedTech],
   );
 
+  const projectsDoneWithTechX: Array<portfolioProject> = home.portfolioImages.filter(
+    (portfolioImage) => {
+      return portfolioImage.madeWith.includes(selectedTech);
+    },
+  );
+
   return (
-    <>
-      <SectionHeading>{t(`knownTechs.heading`)}</SectionHeading>{' '}
-      <TechName key={selectedTech}>
-        <em>{selectedTech}</em>
-      </TechName>
+    <section
+      style={{
+        padding: '4em 0 2em 0',
+        display: 'flex',
+        flexDirection: 'column',
+        backgroundColor: valerioTheme.colors.background,
+        overflow: 'hidden',
+        width: '100%',
+      }}
+    >
+      <SectionHeader>
+        <HeadingTitle style={{ marginBottom: '0' }}>
+          {t(`knownTechs.heading`)}
+        </HeadingTitle>{' '}
+        <TechName key={selectedTech}>
+          <em>{selectedTech}</em>
+        </TechName>
+        {width > 768 && <SectionSeparator />}
+      </SectionHeader>
       <Section>
         <SideMenu>
           <TechList onTechChange={onTechChange} />
         </SideMenu>
-        {home.portfolioImages
-          .filter((portfolioImage) => {
-            return portfolioImage.madeWith.includes(selectedTech);
-          })
-          .map((projectDoneWithTechX) => {
-            return (
-              <ProjectsShow>
-                <ProjectImageContainer>
-                  <SlidingImage
-                    image={projectDoneWithTechX.img}
-                    imageAlt={projectDoneWithTechX.alt}
-                    imageStyle={{
-                      width: '20em',
-                      height: 'auto',
-                      opacity: 0,
-                      position: 'absolute',
-                    }}
-                    animationDirection={'FadeIn'}
-                    showOnPhone={true}
-                  />
-                </ProjectImageContainer>
-                <ProjectDescription>
-                  <CodeContainer></CodeContainer>
-                </ProjectDescription>
-              </ProjectsShow>
-            );
-          })}
+        {width < 768 && <SectionSeparator />}
+        {!!projectsDoneWithTechX.length ? (
+          <ProjectsShow
+            width={width}
+            key={selectedTech}
+            projects={projectsDoneWithTechX}
+          />
+        ) : (
+          <ProjectsShow
+            width={width}
+            key={selectedTech}
+            noProjects={true}
+            projects={[
+              {
+                alt: t('knownTechs.noProjects'),
+                img: require('../assets/images/portfolio/no_projects.svg'),
+                madeWith: [selectedTech],
+              },
+            ]}
+          />
+        )}
       </Section>
-    </>
+    </section>
   );
-});
+};
 
-const Section = styled.section`
+const SectionHeader = styled.div`
+  background-color: ${(props) => props.theme.colors.background};
   width: 100%;
-  min-height: 28em;
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  align-content: center;
-  justify-content: space-between;
+  flex-direction: column;
+  text-align: center;
+`;
+
+const Section = styled.div`
+  background-color: ${(props) => props.theme.colors.background};
+  width: 100%;
+  height: 100%;
+  @media (min-width: 768px) {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-content: center;
+    justify-content: space-between;
+  }
 `;
 
 const SideMenu = styled.div`
-  height: 100%;
-  width: 20%;
-`;
+  height: 10em;
+  width: 100%;
 
-const ProjectsShow = styled.div`
-  width: 80%;
-  display: flex;
-  flex-direction: row-reverse;
-`;
+  @media (min-width: 768px) {
+    height: 100%;
+    width: 20%;
+  }
 
-const ProjectDescription = styled.div`
-  background-color: red;
-  height: 100%;
-`;
-
-const CodeContainer = styled.div``;
-
-const ProjectImageContainer = styled.div`
-  display: flex;
-  align-items: center;
-  min-width: 20em;
-`;
-
-const SectionHeading = styled.h1`
-  color: ${(props) => props.theme.colors.textColorBlack};
-  font-family: Corben;
-  text-transform: uppercase;
-  padding: 0.2em 0;
-  text-align: center;
-  margin-top: 4em;
-  margin-bottom: 0;
+  @media (min-width: 992px) {
+    height: 100%;
+    width: 20%;
+  }
 `;
 
 const TechName = styled.div`
@@ -191,4 +202,16 @@ const TechName = styled.div`
   text-transform: uppercase;
   font-size: 2em;
   margin-top: -0.5em;
+`;
+
+const SectionSeparator = styled.hr`
+  width: 100%;
+  border: 0;
+  height: 1px;
+  background-image: linear-gradient(
+    to right,
+    rgba(0, 0, 0, 0),
+    rgba(0, 0, 0, 0.75),
+    rgba(0, 0, 0, 0)
+  );
 `;

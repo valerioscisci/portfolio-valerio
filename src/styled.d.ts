@@ -9,9 +9,11 @@ declare module 'styled-components' {
       primary: string;
       secondary: string;
       background: string;
+      backgroundDark: string;
       backgroundLight: string;
       textColorWhite: string;
       textColorBlack: string;
+      textColorGrey: string;
     };
   }
 }
