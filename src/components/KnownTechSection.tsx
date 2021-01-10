@@ -5,6 +5,8 @@ import { TechList } from './TechList';
 import { useStores } from '../hooks/useStores';
 import { ProjectsShow } from './ProjectsShow';
 import { portfolioProject } from '../types';
+import { HeadingTitle } from './HeadingTitle';
+import { valerioTheme } from '../theme';
 
 interface KnownTechSectionProps {
   width: number;
@@ -31,9 +33,20 @@ export const KnownTechSection: React.FC<KnownTechSectionProps> = ({
   );
 
   return (
-    <>
+    <section
+      style={{
+        padding: '4em 0 2em 0',
+        display: 'flex',
+        flexDirection: 'column',
+        backgroundColor: valerioTheme.colors.background,
+        overflow: 'hidden',
+        width: '100%',
+      }}
+    >
       <SectionHeader>
-        <SectionHeading>{t(`knownTechs.heading`)}</SectionHeading>{' '}
+        <HeadingTitle style={{ marginBottom: '0' }}>
+          {t(`knownTechs.heading`)}
+        </HeadingTitle>{' '}
         <TechName key={selectedTech}>
           <em>{selectedTech}</em>
         </TechName>
@@ -65,7 +78,7 @@ export const KnownTechSection: React.FC<KnownTechSectionProps> = ({
           />
         )}
       </Section>
-    </>
+    </section>
   );
 };
 
@@ -76,15 +89,17 @@ const SectionHeader = styled.div`
   text-align: center;
 `;
 
-const Section = styled.section`
+const Section = styled.div`
   background-color: ${(props) => props.theme.colors.background};
   width: 100%;
-  min-height: 30em;
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  align-content: center;
-  justify-content: space-between;
+  height: 100%;
+  @media (min-width: 768px) {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-content: center;
+    justify-content: space-between;
+  }
 `;
 
 const SideMenu = styled.div`
@@ -100,16 +115,6 @@ const SideMenu = styled.div`
     height: 100%;
     width: 20%;
   }
-`;
-
-const SectionHeading = styled.h1`
-  color: ${(props) => props.theme.colors.textColorBlack};
-  font-family: Corben;
-  text-transform: uppercase;
-  padding: 0.2em 0;
-  text-align: center;
-  margin-top: 4em;
-  margin-bottom: 0;
 `;
 
 const TechName = styled.div`

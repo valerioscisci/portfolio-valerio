@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 import styled from 'styled-components';
+import { Paragraph } from './Paragraph';
 
 export interface AutowriteTextProps {
   text?: string;
@@ -63,7 +64,5 @@ export const AutowriteText: React.FC<AutowriteTextProps> = ({
     currentTextIndex,
   ]);
 
-  return <Container style={textStyle}>{currentShownText}</Container>;
+  return <Paragraph style={textStyle}>{currentShownText}</Paragraph>;
 };
-
-const Container = styled.div``;

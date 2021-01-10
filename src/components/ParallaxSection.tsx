@@ -162,7 +162,7 @@ const PlaneText = styled.h1`
   width: 55%;
   z-index: 2;
   position: relative;
-  
+  cursor: default;  
   
   @media (min-width: 1200px) {
     font-size: 2.5em;

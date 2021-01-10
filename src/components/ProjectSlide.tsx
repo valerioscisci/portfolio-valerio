@@ -9,6 +9,7 @@ import { ConditionalWrapper } from './ConditionalWrapper';
 import { FaArrowRight, FaExternalLinkAlt, FaGithub } from 'react-icons/fa';
 import { Button } from './Button';
 import jsonDB from '../db/data.json';
+import { valerioTheme } from '../theme';
 
 export interface ProjectSlideProps {
   width: number;
@@ -83,6 +84,7 @@ export const ProjectSlide: React.FC<ProjectSlideProps> = ({
             textAlign: 'center',
             minHeight: '4em',
             marginBottom: '1em',
+            color: valerioTheme.colors.textColorBlack,
           }}
           canStart={activeProject}
         />
@@ -101,6 +103,7 @@ export const ProjectSlide: React.FC<ProjectSlideProps> = ({
             fontFamily: 'Corben',
             minHeight: width < 576 ? undefined : '10em',
             flex: 1,
+            color: valerioTheme.colors.textColorBlack,
           }}
           canStart={activeProject}
         />
@@ -139,6 +142,7 @@ const ProjectContainer = styled.div<{ activeProject: boolean }>`
   flex-direction: column;
   align-items: center;
   flex: 1;
+
   -webkit-transition: all 0.6s ease-out,
     -webkit-all 0.6s cubic-bezier(0.8, 1.35, 0.75, 1.45);
   transition: all 0.6s ease-out,
