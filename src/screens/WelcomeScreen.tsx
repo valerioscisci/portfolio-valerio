@@ -14,6 +14,10 @@ import { ParallaxSection } from '../components/ParallaxSection';
 import { KnownTechSection } from '../components/KnownTechSection';
 import useScrollPosition from '@react-hook/window-scroll';
 import { useWindowSize } from '../hooks/useWindowSize';
+import { BlogSection } from '../components/BlogSection';
+import { Paragraph } from '../components/Paragraph';
+import { HeadingTitle } from '../components/HeadingTitle';
+import { valerioTheme } from '../theme';
 
 const HomeScreen: React.FC = observer((props) => {
   const { home } = useStores();
@@ -41,7 +45,17 @@ const HomeScreen: React.FC = observer((props) => {
         <MainSlider imagesArray={home.sliderImages} />
       </header>
       <Main>
-        <MainHeading>{t(`welcome.heading`)}</MainHeading>
+        <HeadingTitle
+          style={{
+            backgroundColor: valerioTheme.colors.background,
+            background: ' url(' + brush + ')',
+            backgroundRepeat: ' no-repeat',
+            backgroundSize: ' 100% 95%',
+            marginTop: 0,
+          }}
+        >
+          {t(`welcome.heading`)}
+        </HeadingTitle>
         <FirstSection>
           <CVImage>
             <ImageAnimation
@@ -59,19 +73,26 @@ const HomeScreen: React.FC = observer((props) => {
               flexDirection: 'column',
             }}
           >
-            <Paragraph color={'black'}>{t(`welcome.introParagraph`)}</Paragraph>
+            <Paragraph style={{ marginBottom: '0' }}>
+              {t(`welcome.introParagraph`)}
+            </Paragraph>
             <Button
               buttonText={t(`welcome.introButton`)}
               iconRight={<FaArrowRight size={'1.2em'} />}
               arrowAnimation={true}
-              style={{ margin: '1em auto' }}
+              style={{ margin: '2em auto' }}
             ></Button>
           </div>
         </FirstSection>
         <SecondSection>
-          <SecondHeading>"TEST"</SecondHeading>
+          <HeadingTitle style={{ marginTop: '4em' }} color={'white'}>
+            SEZIONE DUE
+          </HeadingTitle>
           <Paragraph color={'white'}>{t(`welcome.secondParagraph`)}</Paragraph>
-          <Button buttonText={t(`welcome.secondButton`)}></Button>
+          <Button
+            buttonText={t(`welcome.secondButton`)}
+            style={{ margin: '2em auto' }}
+          ></Button>
           <ImageAnimation
             image={require('../assets/images/homepage/pc.jpg')}
             imageAlt={'Smart'}
@@ -91,10 +112,8 @@ const HomeScreen: React.FC = observer((props) => {
         </SecondSection>
         <KnownTechSection width={width} />
         <ParallaxSection scrollY={scrollY} />
-        <p style={{ height: '500px', width: '100%', backgroundColor: 'black' }}>
-          Blog Articles
-        </p>
-        {props.children}
+        <BlogSection />
+        {/*{props.children} */}
         <p style={{ height: '500px', width: '100%', backgroundColor: 'black' }}>
           Companies I've worked for
         </p>
@@ -122,23 +141,11 @@ const Container = styled.div`
 `;
 
 const Main = styled.main`
+  background-color: ${(props) => props.theme.colors.background};
   display: flex;
   flex-direction: column;
   align-items: center;
   margin-top: 3em;
-`;
-
-const MainHeading = styled.h1`
-  color: ${(props) => props.theme.colors.textColorBlack};
-  background-color: ${(props) => props.theme.colors.background};
-  font-family: Corben;
-  text-transform: uppercase;
-  background: url(${brush});
-  background-repeat: no-repeat;
-  background-size: 100% 95%;
-  padding: 0.2em 0;
-  text-align: center;
-  margin-bottom: 2em;
 `;
 
 const FirstSection = styled.section`
@@ -178,30 +185,12 @@ const CVImage = styled.div`
   }
 `;
 
-const Paragraph = styled.p<{ color: string }>`
-  color: ${(props) =>
-    props.color === 'white'
-      ? props.theme.colors.textColorWhite
-      : props.theme.colors.textColorBlack};
-  font-family: Corben;
-  font-size: 1em;
-`;
-
 const SecondSection = styled.section`
   position: relative;
   display: flex;
   flex-direction: column;
   background-color: ${(props) => props.theme.colors.backgroundLight};
   margin-top: 5em;
-  padding: 5em;
-  clip-path: polygon(50% 15%, 100% 0, 100% 100%, 0 200%, 0 0);
-`;
-
-const SecondHeading = styled.h1`
-  color: ${(props) => props.theme.colors.textColorWhite};
-  font-family: Corben;
-  text-transform: uppercase;
-  padding: 0.2em 0;
-  text-align: center;
-  margin-bottom: 2em;
+  padding: 0 5em 5em 5em;
+  clip-path: polygon(50% 10%, 100% 0, 100% 100%, 0 200%, 0 0);
 `;

@@ -41,6 +41,13 @@ const it = {
     noPhotosDescription:
       "Non è stato possibile caricare le foto dal mio profilo Instagram...Visitalo direttamente dall'app o dal sito cliccando su questo riquadro!",
   },
+  blogSection: {
+    title: 'Blog su viaggi e tecnologia',
+    description:
+      'A breve verrà aggiunta una sezione dove parlerò di come sia possibile lavorare viaggiando e pubblicherò articoli sulle mie conoscenze riguardanti principalmente lo sviluppo web. \n\n...STAY TUNED...',
+    comingSoon: 'Coming Soon',
+    subscribe: 'Iscriviti alla newsletter',
+  },
 };
 
 export type I18NStrings = typeof it;

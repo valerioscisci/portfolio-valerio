@@ -39,5 +39,12 @@ const en: typeof it = {
     noPhotosDescription:
       'It was not possible to get photos from my Instagram profile ... Visit it directly from the app or the website clicking on this box!',
   },
+  blogSection: {
+    title: 'Tech & Travel Blog',
+    description:
+      'Soon a new section will be added where I will talk about how it is possible to work and travel sustainably and I will publish articles on web development.\n\n ...STAY TUNED...',
+    comingSoon: 'Coming Soon',
+    subscribe: 'Subscribe',
+  },
 };
 export default en;
