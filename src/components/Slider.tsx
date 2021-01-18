@@ -55,7 +55,7 @@ export const MainSlider: React.FC<SliderProps> = ({ imagesArray }) => {
                   <Header>{imagesOverlayTexts[index]}</Header>
                 </OverlayShadow>
                 <Image
-                  isBgImage={true}
+                  isBgImage={false}
                   hasMasterSpinner={true}
                   alt={image.alt}
                   src={image.img.default}

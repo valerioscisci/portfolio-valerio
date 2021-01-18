@@ -29,3 +29,18 @@ export interface projectData {
     githubUrl: string;
   };
 }
+
+export interface instagramPic {
+  accessibilityCaption: string;
+  caption: string;
+  commentsNumber: number;
+  dimensions: {
+    height: number;
+    width: number;
+  };
+  displayImage: string;
+  id: string;
+  likes: number;
+  postLink: string;
+  thumbnail: string;
+}

@@ -113,7 +113,7 @@ const HomeScreen: React.FC = observer((props) => {
         <KnownTechSection width={width} />
         <ParallaxSection scrollY={scrollY} />
         <BlogSection />
-        {/*{props.children} */}
+        {props.children}
         <p style={{ height: '500px', width: '100%', backgroundColor: 'black' }}>
           Companies I've worked for
         </p>

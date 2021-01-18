@@ -28,7 +28,7 @@ export const Button: React.FC<ButtonProps> = ({
       arrowAnimation={arrowAnimation}
       style={style}
       href={onClickUrl}
-      target={onClickUrlNewPage && '_blank'}
+      target={onClickUrlNewPage ? '_blank' : '_self'}
       rel={'noreferrer'}
       gradientBackground={gradientBackground}
     >

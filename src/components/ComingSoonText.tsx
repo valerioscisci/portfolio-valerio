@@ -17,6 +17,7 @@ export const ComingSoonText: React.FC<ComingSoonTextProps> = ({
       {words.map((word) => {
         return (
           <ComingSoon
+            key={word}
             mouseX={isActive ? position.x : 0}
             mouseY={isActive ? position.y : 0}
             isActive={isActive}

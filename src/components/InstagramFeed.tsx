@@ -4,44 +4,153 @@ import compose from 'recompose/compose';
 import { Spinner } from './Spinner';
 import styled from 'styled-components';
 import { useTranslation } from 'react-i18next';
+import { useWindowSize } from '../hooks/useWindowSize';
 import igSectionBackground from '../assets/images/homepage/ig_section_background.svg';
+import { useEffect, useState } from 'react';
+import { FaHeart, FaInstagram } from 'react-icons/fa';
+import { instagramPic } from '../types';
 
 export type Props = {
-  media?: Array<{
-    displayImage: string;
-    id?: string;
-    postLink?: string;
-    accessibilityCaption?: string;
-  }>;
+  media?: Array<instagramPic>;
   account: string;
   status: 'completed' | 'loading' | 'failed';
+  profilePic: string;
 };
 
-const InstaGrid = ({ media, account, status }: Props) => {
+export interface HeaderProps {
+  account: string;
+  profilePic: string;
+}
+
+const InstagramSectionHeader: React.FC<HeaderProps> = ({
+  account,
+  profilePic,
+}) => {
   const { t } = useTranslation();
-  console.log(media, account, status);
+  return (
+    <HeaderContainer>
+      <ProfilePicContainer
+        href={`https://www.instagram.com/${account}/`}
+        target={'_blank'}
+        rel={'noreferrer'}
+      >
+        <InstagramProfilePic src={profilePic} />
+        <span>
+          <FaInstagram size={'2em'} color={'white'} />
+        </span>
+      </ProfilePicContainer>
+      <VisitInstagramTitle>
+        {t('instagram.visitProfile')}
+        <InstagramLogo
+          src={require('../assets/images/homepage/instagram.svg').default}
+        />
+      </VisitInstagramTitle>
+    </HeaderContainer>
+  );
+};
+
+const InstaGrid = ({
+  media = [],
+  account,
+  status = 'failed',
+  profilePic,
+}: Props) => {
+  const { t } = useTranslation();
+  const [currentShownPics, setCurrentShownPics] = useState<Array<instagramPic>>(
+    media,
+  );
+  const [width] = useWindowSize();
+
+  useEffect(() => {
+    if (media && status === 'completed') {
+      switch (true) {
+        case width < 576 || width < 768:
+          setCurrentShownPics(media.slice(0, 4));
+          break;
+        case width < 1200:
+          setCurrentShownPics(media.slice(0, 8));
+          break;
+        default:
+          setCurrentShownPics(media);
+          break;
+      }
+    }
+  }, [media, status, width]);
+
   return (
     <Container>
-      {media &&
-        status === 'completed' &&
-        media.map(({ displayImage, id, postLink, accessibilityCaption }) => (
-          <div key={id || displayImage}>
-            <a href={postLink || `https://www.instagram.com/${account}/`}>
-              <img
-                src={displayImage}
-                alt={accessibilityCaption || 'Instagram picture'}
-              />
-            </a>
-          </div>
-        ))}
+      {media && status === 'completed' && (
+        <>
+          <InstagramSectionHeader account={account} profilePic={profilePic} />
+          <PicsShow>
+            {currentShownPics.map((instagramPic, i) => {
+              console.log(instagramPic);
+              return (
+                <ImageContainer key={i}>
+                  <ImageFront className={'image-front'}>
+                    <a
+                      href={
+                        instagramPic.postLink ||
+                        `https://www.instagram.com/${account}/`
+                      }
+                      target={'_blank'}
+                      rel={'noreferrer'}
+                    >
+                      <Image
+                        src={instagramPic.displayImage}
+                        alt={
+                          instagramPic.accessibilityCaption ||
+                          'Instagram picture'
+                        }
+                      />
+                      {width < 576 && (
+                        <>
+                          <Caption>{instagramPic.caption}</Caption>
+                          <Likes>
+                            <FaHeart size={'2em'} color={'white'} />
+                            <LikesNumber>{instagramPic.likes}</LikesNumber>
+                          </Likes>
+                        </>
+                      )}
+                    </a>
+                  </ImageFront>
+                  <ImageBack className={'image-back'}>
+                    <a
+                      href={
+                        instagramPic.postLink ||
+                        `https://www.instagram.com/${account}/`
+                      }
+                      target={'_blank'}
+                      rel={'noreferrer'}
+                    >
+                      <Image
+                        src={instagramPic.displayImage}
+                        alt={
+                          instagramPic.accessibilityCaption ||
+                          'Instagram picture'
+                        }
+                      />
+                      <Caption>{instagramPic.caption}</Caption>
+                      <Likes>
+                        <FaHeart size={'2em'} color={'white'} />
+                        <LikesNumber>{instagramPic.likes}</LikesNumber>
+                      </Likes>
+                    </a>
+                  </ImageBack>
+                </ImageContainer>
+              );
+            })}
+          </PicsShow>
+        </>
+      )}
       {status === 'loading' && <Spinner />}
       {status === 'failed' && (
         <IgOfflineContainer
           href={`https://www.instagram.com/${account}/`}
           target={'_blank'}
-          rel={'noreferral'}
+          rel={'noreferrer'}
         >
-          <VisitInstagramTitle>{t('instagram.noPhotos')}</VisitInstagramTitle>
+          <InstagramSectionHeader account={account} profilePic={profilePic} />
           <NoPhotosImage
             src={require('../assets/images/homepage/ig_offline.png').default}
             alt={t('instagram.noPhotos')}
@@ -55,25 +164,209 @@ const InstaGrid = ({ media, account, status }: Props) => {
   );
 };
 
-InstaGrid.defaultProps = {
-  media: undefined,
-};
-
+//(withInstagramFeed)
 export default compose(withInstagramFeed)(InstaGrid);
 
 const Container = styled.div`
+  margin-top: 5em;
   background-color: ${(props) => props.theme.colors.background};
-  background-image: url(${igSectionBackground});
-  background-size: cover;
+  background-image: linear-gradient(
+      to bottom,
+      ${(props) => props.theme.colors.background} 0%,
+      transparent 10%,
+      transparent 90%,
+      ${(props) => props.theme.colors.background} 100%
+    ),
+    url(${igSectionBackground});
+  background-size: contain;
   width: 100%;
-  min-height: 40em;
+  min-height: 50em;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
 
   @media (min-width: 576px) {
-    min-height: 35em;
+    min-height: 40em;
+    background-size: cover;
   }
+`;
+
+const HeaderContainer = styled.div`
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+`;
+
+const ProfilePicContainer = styled.a`
+  width: 30%;
+  display: flex;
+  justify-content: center;
+  position: relative;
+
+  & span {
+    display: none;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-50%);
+  }
+  &:hover {
+    @media (min-width: 576px) {
+      & img {
+        filter: brightness(0.5);
+      }
+
+      & span {
+        display: initial;
+      }
+    }
+  }
+`;
+
+const InstagramLogo = styled.img`
+  width: 2em;
+  height: 2em;
+  margin-left: 1em;
+`;
+
+const InstagramProfilePic = styled.img`
+  width: 100%;
+  border-radius: 50%;
+  height: auto;
+`;
+
+const PicsShow = styled.div`
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  width: 100%;
+  justify-content: center;
+  overflow: hidden;
+`;
+
+const ImageContainer = styled.div`
+  width: 100%;
+  margin: 1em 0;
+  position: relative;
+
+  @media (min-width: 576px) {
+    width: calc(50% - 1em);
+    margin: 0.5em;
+
+    transform-style: preserve-3d;
+    perspective: 40em;
+    transition: 0.5s;
+
+    &:hover .image-front {
+      transform: rotateX(-180deg) scale(2);
+    }
+    &:hover .image-back {
+      transform: rotateX(0deg) scale(1.1);
+      z-index: 5;
+    }
+  }
+
+  @media (min-width: 768px) {
+    width: calc(25% - 0.5em);
+    margin: 0.25em;
+
+    &:hover .image-back {
+      transform: rotateX(0deg) scale(1.1);
+    }
+  }
+
+  @media (min-width: 992px) {
+    width: calc(25% - 2em);
+    margin: 0.5em;
+  }
+
+  @media (min-width: 1200px) {
+    width: calc(25% - 2em);
+    margin: 0.5em;
+  }
+`;
+
+const ImageFront = styled.div`
+  height: 100%;
+  width: 100%;
+  backface-visibility: hidden;
+  transform: rotateX(0deg);
+  transition: 0.5s;
+`;
+
+const ImageBack = styled.div`
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  backface-visibility: hidden;
+  transform: rotateX(180deg);
+  transition: 0.5s;
+  text-align: center;
+
+  & img {
+    transform: scaleY(-1);
+    filter: brightness(0.5);
+  }
+`;
+
+const Image = styled.img`
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+
+  @media (min-width: 576px) {
+    border-radius: 5px;
+  }
+`;
+
+const Likes = styled.span`
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+  display: flex;
+  flex-direction: row;
+  z-index: 2;
+
+  @media (min-width: 576px) {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+`;
+
+const Caption = styled.span`
+  position: absolute;
+  font-size: 1em;
+  width: 50%;
+  text-shadow: 3px 0px 7px rgba(0, 0, 0, 0.8), -3px 0px 7px rgba(0, 0, 0, 0.8),
+    0px 4px 7px rgba(0, 0, 0, 0.8);
+  top: 20px;
+  right: 20px;
+  text-align: right;
+  color: ${(props) => props.theme.colors.textColorWhite};
+  z-index: 2;
+
+  @media (min-width: 576px) {
+    text-align: center;
+    width: 95%;
+    position: absolute;
+    left: 50%;
+    right: initial;
+    transform: translateX(-50%);
+  }
+`;
+
+const LikesNumber = styled.span`
+  color: ${(props) => props.theme.colors.textColorWhite};
+  font-family: Corben;
+  font-size: 1em;
+  word-spacing: 0.15em;
+  letter-spacing: 0.02em;
+  margin: 0 0.5em;
 `;
 
 const IgOfflineContainer = styled.a`
@@ -93,7 +386,7 @@ const IgOfflineContainer = styled.a`
   color: ${(props) => props.theme.colors.textColorBlack};
 
   @media (min-width: 576px) {
-    max-width: 360px;
+    max-width: 420px;
   }
 
   @media (min-width: 1440px) {
@@ -128,7 +421,9 @@ const NoPhotosDescription = styled.p`
   z-index: 2;
 `;
 
-const VisitInstagramTitle = styled.h3`
+const VisitInstagramTitle = styled.h2`
+  display: flex;
+  align-items: center;
   text-align: center;
   background: #d6249f;
   background: radial-gradient(
