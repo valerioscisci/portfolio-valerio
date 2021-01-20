@@ -1,13 +1,29 @@
-import { action, observable } from 'mobx';
+import { action, computed, observable } from 'mobx';
 import { i18n, I18NLang } from '../i18n';
-import { ImageSource, knownTech, portfolioProject } from '../types';
+import {
+  ImageSource,
+  instagramPic,
+  knownTech,
+  portfolioProject,
+} from '../types';
+import instagram from '../utils/instagram';
 
 export default class HomeStore {
-  @observable isAppLoading: boolean = true;
+  @observable isFetchingImages: boolean = true;
+  @observable instagramFetchingStatus: 'completed' | 'loading' | 'failed' =
+    'failed';
+
   @observable language: I18NLang = 'it';
+
   @observable sliderImages: Array<ImageSource> = [];
   @observable techMenuImages: Array<knownTech> = [];
   @observable portfolioImages: Array<portfolioProject> = [];
+  @observable instagramImages: Array<instagramPic> = [];
+
+  @computed
+  get isAppLoading() {
+    return this.isFetchingImages || this.instagramFetchingStatus === 'loading';
+  }
 
   @action
   setLanguage = (lang: I18NLang) => {
@@ -17,7 +33,7 @@ export default class HomeStore {
 
   @action
   fetchImages = async () => {
-    this.isAppLoading = true;
+    this.isFetchingImages = true;
     this.sliderImages = [
       { alt: 'skydive', img: require('../assets/images/slider/0.jpg') },
       { alt: 'work anywhere', img: require('../assets/images/slider/1.jpg') },
@@ -118,6 +134,18 @@ export default class HomeStore {
         madeWith: ['Django', 'Html5', 'Css3', 'SQLite', 'Ethereum'],
       },
     ];
-    this.isAppLoading = false;
+    this.isFetchingImages = false;
+  };
+
+  @action
+  fetchInstagramPics = async (account: string) => {
+    this.instagramFetchingStatus = 'loading';
+    try {
+      this.instagramImages = await instagram.getFeed(account);
+      this.instagramFetchingStatus = 'completed';
+    } catch (error) {
+      console.warn(error);
+      this.instagramFetchingStatus = 'failed';
+    }
   };
 }

@@ -1,20 +1,19 @@
 import * as React from 'react';
-import withInstagramFeed from 'origen-react-instagram-feed';
-import compose from 'recompose/compose';
 import { Spinner } from './Spinner';
 import styled from 'styled-components';
 import { useTranslation } from 'react-i18next';
 import { useWindowSize } from '../hooks/useWindowSize';
 import igSectionBackground from '../assets/images/homepage/ig_section_background.svg';
+import igProfilePic from '../assets/images/homepage/ig_profile_pic.jpg';
 import { useEffect, useState } from 'react';
 import { FaHeart, FaInstagram } from 'react-icons/fa';
 import { instagramPic } from '../types';
 
 export type Props = {
-  media?: Array<instagramPic>;
+  media: Array<instagramPic>;
   account: string;
   status: 'completed' | 'loading' | 'failed';
-  profilePic: string;
+  numberOfMediaElements: number;
 };
 
 export interface HeaderProps {
@@ -49,20 +48,85 @@ const InstagramSectionHeader: React.FC<HeaderProps> = ({
   );
 };
 
-const InstaGrid = ({
-  media = [],
+export interface InstagramMediaProps {
+  instagramPic: instagramPic;
+  account: string;
+  width: number;
+}
+
+/* <a href={this.props.url} rel="noopener" target="_blank">
+<img src={this.props.src} alt={this.props.alt}></img>
+</a> */
+
+const InstagramMedia: React.FC<InstagramMediaProps> = ({
+  instagramPic,
   account,
+  width,
+}) => {
+  return (
+    <ImageContainer>
+      <ImageFront className={'image-front'}>
+        <a
+          href={
+            instagramPic.postLink || `https://www.instagram.com/${account}/`
+          }
+          target={'_blank'}
+          rel={'noreferrer'}
+        >
+          <Image
+            src={instagramPic.displayImage}
+            alt={instagramPic.accessibilityCaption || 'Instagram picture'}
+          />
+          {width < 576 && (
+            <>
+              <Caption>{instagramPic.caption}</Caption>
+              <Likes>
+                <FaHeart size={'2em'} color={'white'} />
+                <LikesNumber>{instagramPic.likes}</LikesNumber>
+              </Likes>
+            </>
+          )}
+        </a>
+      </ImageFront>
+      <ImageBack className={'image-back'}>
+        <a
+          href={
+            instagramPic.postLink || `https://www.instagram.com/${account}/`
+          }
+          target={'_blank'}
+          rel={'noreferrer'}
+        >
+          <Image
+            src={instagramPic.displayImage}
+            alt={instagramPic.accessibilityCaption || 'Instagram picture'}
+          />
+          <Caption>{instagramPic.caption}</Caption>
+          <Likes>
+            <FaHeart size={'2em'} color={'white'} />
+            <LikesNumber>{instagramPic.likes}</LikesNumber>
+          </Likes>
+        </a>
+      </ImageBack>
+    </ImageContainer>
+  );
+};
+
+const InstaGrid = ({
+  media,
+  account,
+  numberOfMediaElements,
   status = 'failed',
-  profilePic,
 }: Props) => {
   const { t } = useTranslation();
   const [currentShownPics, setCurrentShownPics] = useState<Array<instagramPic>>(
-    media,
+    media.slice(0, numberOfMediaElements),
   );
   const [width] = useWindowSize();
 
   useEffect(() => {
-    if (media && status === 'completed') {
+    console.log('media', media);
+
+    if (!!media.length && status === 'completed') {
       switch (true) {
         case width < 576 || width < 768:
           setCurrentShownPics(media.slice(0, 4));
@@ -79,65 +143,18 @@ const InstaGrid = ({
 
   return (
     <Container>
-      {media && status === 'completed' && (
+      {!!media.length && status === 'completed' && (
         <>
-          <InstagramSectionHeader account={account} profilePic={profilePic} />
+          <InstagramSectionHeader account={account} profilePic={igProfilePic} />
           <PicsShow>
             {currentShownPics.map((instagramPic, i) => {
-              console.log(instagramPic);
               return (
-                <ImageContainer key={i}>
-                  <ImageFront className={'image-front'}>
-                    <a
-                      href={
-                        instagramPic.postLink ||
-                        `https://www.instagram.com/${account}/`
-                      }
-                      target={'_blank'}
-                      rel={'noreferrer'}
-                    >
-                      <Image
-                        src={instagramPic.displayImage}
-                        alt={
-                          instagramPic.accessibilityCaption ||
-                          'Instagram picture'
-                        }
-                      />
-                      {width < 576 && (
-                        <>
-                          <Caption>{instagramPic.caption}</Caption>
-                          <Likes>
-                            <FaHeart size={'2em'} color={'white'} />
-                            <LikesNumber>{instagramPic.likes}</LikesNumber>
-                          </Likes>
-                        </>
-                      )}
-                    </a>
-                  </ImageFront>
-                  <ImageBack className={'image-back'}>
-                    <a
-                      href={
-                        instagramPic.postLink ||
-                        `https://www.instagram.com/${account}/`
-                      }
-                      target={'_blank'}
-                      rel={'noreferrer'}
-                    >
-                      <Image
-                        src={instagramPic.displayImage}
-                        alt={
-                          instagramPic.accessibilityCaption ||
-                          'Instagram picture'
-                        }
-                      />
-                      <Caption>{instagramPic.caption}</Caption>
-                      <Likes>
-                        <FaHeart size={'2em'} color={'white'} />
-                        <LikesNumber>{instagramPic.likes}</LikesNumber>
-                      </Likes>
-                    </a>
-                  </ImageBack>
-                </ImageContainer>
+                <InstagramMedia
+                  key={i}
+                  instagramPic={instagramPic}
+                  account={account}
+                  width={width}
+                />
               );
             })}
           </PicsShow>
@@ -150,7 +167,7 @@ const InstaGrid = ({
           target={'_blank'}
           rel={'noreferrer'}
         >
-          <InstagramSectionHeader account={account} profilePic={profilePic} />
+          <InstagramSectionHeader account={account} profilePic={igProfilePic} />
           <NoPhotosImage
             src={require('../assets/images/homepage/ig_offline.png').default}
             alt={t('instagram.noPhotos')}
@@ -164,8 +181,7 @@ const InstaGrid = ({
   );
 };
 
-//(withInstagramFeed)
-export default compose(withInstagramFeed)(InstaGrid);
+export default InstaGrid;
 
 const Container = styled.div`
   margin-top: 5em;

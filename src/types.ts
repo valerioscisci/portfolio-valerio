@@ -31,16 +31,16 @@ export interface projectData {
 }
 
 export interface instagramPic {
-  accessibilityCaption: string;
-  caption: string;
-  commentsNumber: number;
-  dimensions: {
-    height: number;
-    width: number;
+  accessibilityCaption?: string;
+  caption?: string;
+  commentsNumber?: number;
+  dimensions?: {
+    height?: number;
+    width?: number;
   };
-  displayImage: string;
-  id: string;
-  likes: number;
-  postLink: string;
-  thumbnail: string;
+  displayImage?: string;
+  id?: string;
+  likes?: number;
+  postLink?: string;
+  thumbnail?: string;
 }
