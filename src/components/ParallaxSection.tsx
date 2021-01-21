@@ -61,28 +61,15 @@ export const ParallaxSection: React.FC<ParallaxSectionProps> = ({
           }px) translateY(0) translateZ(0)`;
 
           return (
-            <img
+            <Plane
               key={index}
               src={require('../assets/images/homepage/plane.svg').default}
               alt={'freedom'}
-              style={{
-                width: planeInfo.width,
-                height: 'auto',
-                position: 'absolute',
-                filter: `blur(${planeInfo.width / 30}px)`,
-                top: planeInfo.startingHeight,
-                ...(planeInfo.direction === 'left'
-                  ? {
-                      WebkitTransform: 'scaleX(-1)' + commonPlaneTransform,
-                      transform: 'scaleX(-1)' + commonPlaneTransform,
-                      right: startingPlanePosition,
-                    }
-                  : {
-                      WebkitTransform: commonPlaneTransform,
-                      transform: commonPlaneTransform,
-                      left: startingPlanePosition,
-                    }),
-              }}
+              startingPlanePosition={startingPlanePosition}
+              startingPlaneHeight={planeInfo.startingHeight}
+              commonPlaneTransform={commonPlaneTransform}
+              planeWidth={planeInfo.width}
+              planeDirection={planeInfo.direction}
             />
           );
         })}
@@ -150,6 +137,36 @@ const Overlap = styled.div`
   -webkit-box-shadow: inset 0px 0px 15px 10px rgba(0, 0, 0, 0.3);
   -moz-box-shadow: inset 0px 0px 15px 10px rgba(0, 0, 0, 0.3);
   box-shadow: inset 0px 0px 15px 10px rgba(0, 0, 0, 0.3);
+`;
+
+interface PlaneProps {
+  startingPlanePosition: number;
+  startingPlaneHeight: number;
+  commonPlaneTransform: string;
+  planeWidth: number;
+  planeDirection: string;
+}
+
+const Plane = styled.img.attrs<PlaneProps>((props) => ({
+  style: {
+    filter: `blur(${props.planeWidth / 30}px)`,
+    width: props.planeWidth,
+    top: props.startingPlaneHeight,
+    ...(props.planeDirection === 'left'
+      ? {
+          WebkitTransform: 'scaleX(-1)' + props.commonPlaneTransform,
+          transform: 'scaleX(-1)' + props.commonPlaneTransform,
+          right: props.startingPlanePosition,
+        }
+      : {
+          WebkitTransform: props.commonPlaneTransform,
+          transform: props.commonPlaneTransform,
+          left: props.startingPlanePosition,
+        }),
+  },
+}))<PlaneProps>`
+  height: auto;
+  position: absolute;
 `;
 
 const PlaneText = styled.h1`

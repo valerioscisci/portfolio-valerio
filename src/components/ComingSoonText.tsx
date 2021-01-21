@@ -17,6 +17,7 @@ export const ComingSoonText: React.FC<ComingSoonTextProps> = ({
       {words.map((word) => {
         return (
           <ComingSoon
+            key={word}
             mouseX={isActive ? position.x : 0}
             mouseY={isActive ? position.y : 0}
             isActive={isActive}
@@ -59,11 +60,23 @@ const textShadow = css`
     0 0 75px ${(props) => props.theme.colors.secondary};
 `;
 
-const ComingSoon = styled.span<{
+interface ComingSoonProps {
   mouseX?: number;
   mouseY?: number;
   isActive?: boolean;
-}>`
+}
+
+const ComingSoon = styled.span.attrs<ComingSoonProps>((props) => ({
+  style: {
+    transition: 'transform 0.15s ease',
+    transform:
+      ' translateY(calc(' +
+      props.mouseY +
+      'px / -10)) translateX(calc(' +
+      props.mouseX +
+      'px / -10))',
+  },
+}))<ComingSoonProps>`
   color: ${(props) => props.theme.colors.textColorBlack};
   font-size: 4em;
   font-weight: 600;
@@ -80,12 +93,4 @@ const ComingSoon = styled.span<{
   &: hover {
     ${textShadow};
   }
-
-  ${(props) =>
-    props.mouseY !== 0 &&
-    props.mouseX !== 0 &&
-    css`
-      transform: translateY(calc(${props.mouseY}px / -10))
-        translateX(calc(${props.mouseX}px / -10));
-    `}
 `;

@@ -35,7 +35,7 @@ const en: typeof it = {
       "I haven't done any projects using this specific technology yet: YOUR project could be the first! For this reason, you will also be entitled to a discount if you decide to collaborate with me for the first time.",
   },
   instagram: {
-    noPhotos: 'Check my Instagram profile :)',
+    visitProfile: 'Check my Instagram profile',
     noPhotosDescription:
       'It was not possible to get photos from my Instagram profile ... Visit it directly from the app or the website clicking on this box!',
   },

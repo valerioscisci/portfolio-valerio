@@ -1,5 +1,4 @@
 import React, { useEffect, useRef, useState } from 'react';
-import styled from 'styled-components';
 import { Paragraph } from './Paragraph';
 
 export interface AutowriteTextProps {

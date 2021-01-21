@@ -1,11 +1,10 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { observer } from 'mobx-react';
 import { useStores } from '../hooks/useStores';
 import { Navbar } from '../components/Navbar';
 import { useTranslation } from 'react-i18next';
 import styled from 'styled-components';
 import { MainSlider } from '../components/Slider';
-import { Spinner } from '../components/Spinner';
 import brush from '../assets/images/homepage/brush.png';
 import { Button } from '../components/Button';
 import { FaArrowRight } from 'react-icons/fa';
@@ -31,14 +30,7 @@ const HomeScreen: React.FC = observer((props) => {
     { name: t(`navbar.contact`), route: '/contact-me' },
   ];
 
-  useEffect(() => {
-    home.fetchImages();
-    // setTimeout(() => (home.isAppLoading = false), 1000);
-  }, [home]);
-
-  return home.isAppLoading ? (
-    <Spinner />
-  ) : (
+  return (
     <Container>
       <header>
         <Navbar width={width} navLinks={navLinks} />
@@ -113,7 +105,7 @@ const HomeScreen: React.FC = observer((props) => {
         <KnownTechSection width={width} />
         <ParallaxSection scrollY={scrollY} />
         <BlogSection />
-        {/*{props.children} */}
+        {props.children}
         <p style={{ height: '500px', width: '100%', backgroundColor: 'black' }}>
           Companies I've worked for
         </p>

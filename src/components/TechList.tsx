@@ -1,5 +1,5 @@
 import { observer } from 'mobx-react';
-import React, { useEffect, useState } from 'react';
+import React, { Fragment, useEffect, useState } from 'react';
 import { FaArrowDown, FaArrowUp } from 'react-icons/fa';
 import styled, { css } from 'styled-components';
 import { useStores } from '../hooks/useStores';
@@ -41,6 +41,8 @@ export const TechList: React.FC<TechListProps> = observer(
                   animationState={i - currentFirstElement}
                 />
               );
+            } else {
+              return <Fragment key={i}></Fragment>;
             }
           })}
         </TechMenu>

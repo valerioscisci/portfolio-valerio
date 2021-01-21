@@ -37,7 +37,7 @@ const it = {
       'Non ho ancora realizzato alcun progetto utilizzando questa tecnologia quindi il TUO potrebbe essere il primo! Per questo, avrai anche diritto ad uno sconto se decidi di collaborare con me per la prima volta.',
   },
   instagram: {
-    noPhotos: 'Visita il mio profilo Instagram :)',
+    visitProfile: 'Visita il mio profilo Instagram',
     noPhotosDescription:
       "Non è stato possibile caricare le foto dal mio profilo Instagram...Visitalo direttamente dall'app o dal sito cliccando su questo riquadro!",
   },
