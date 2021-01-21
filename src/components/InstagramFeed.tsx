@@ -124,8 +124,6 @@ const InstaGrid = ({
   const [width] = useWindowSize();
 
   useEffect(() => {
-    console.log('media', media);
-
     if (!!media.length && status === 'completed') {
       switch (true) {
         case width < 576 || width < 768:
@@ -189,8 +187,8 @@ const Container = styled.div`
   background-image: linear-gradient(
       to bottom,
       ${(props) => props.theme.colors.background} 0%,
-      transparent 10%,
-      transparent 90%,
+      transparent 15%,
+      transparent 85%,
       ${(props) => props.theme.colors.background} 100%
     ),
     url(${igSectionBackground});
@@ -215,7 +213,7 @@ const HeaderContainer = styled.div`
 `;
 
 const ProfilePicContainer = styled.a`
-  width: 30%;
+  width: 10em;
   display: flex;
   justify-content: center;
   position: relative;
@@ -259,6 +257,8 @@ const PicsShow = styled.div`
   width: 100%;
   justify-content: center;
   overflow: hidden;
+  padding: 5em 0;
+  margin-bottom: 10em;
 `;
 
 const ImageContainer = styled.div`
@@ -438,6 +438,8 @@ const NoPhotosDescription = styled.p`
 `;
 
 const VisitInstagramTitle = styled.h2`
+  font-size: 2em;
+  font-family: Corben;
   display: flex;
   align-items: center;
   text-align: center;
