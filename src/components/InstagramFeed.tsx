@@ -7,10 +7,10 @@ import igSectionBackground from '../assets/images/homepage/ig_section_background
 import igProfilePic from '../assets/images/homepage/ig_profile_pic.jpg';
 import { useEffect, useState } from 'react';
 import { FaHeart, FaInstagram } from 'react-icons/fa';
-import { instagramPic } from '../types';
+import { InstagramPic } from '../types';
 
 export type Props = {
-  media: Array<instagramPic>;
+  media: Array<InstagramPic>;
   account: string;
   status: 'completed' | 'loading' | 'failed';
   numberOfMediaElements: number;
@@ -49,7 +49,7 @@ const InstagramSectionHeader: React.FC<HeaderProps> = ({
 };
 
 export interface InstagramMediaProps {
-  instagramPic: instagramPic;
+  instagramPic: InstagramPic;
   account: string;
   width: number;
 }
@@ -194,14 +194,14 @@ const Container = styled.div`
     url(${igSectionBackground});
   background-size: contain;
   width: 100%;
-  min-height: 50em;
+  min-height: 55em;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 
   @media (min-width: 576px) {
-    min-height: 40em;
+    min-height: 50em;
     background-size: cover;
   }
 `;

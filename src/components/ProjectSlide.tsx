@@ -2,7 +2,7 @@ import React from 'react';
 import styled, { css } from 'styled-components';
 import { ImageAnimation } from './ImageAnimation';
 import { AutowriteText } from './AutowriteText';
-import { projectData, portfolioProject } from '../types';
+import { ProjectData, PortfolioProject } from '../types';
 import { useTranslation } from 'react-i18next';
 import i18next from 'i18next';
 import { ConditionalWrapper } from './ConditionalWrapper';
@@ -13,7 +13,7 @@ import { valerioTheme } from '../theme';
 
 export interface ProjectSlideProps {
   width: number;
-  project: portfolioProject;
+  project: PortfolioProject;
   noProjects: boolean;
   activeProject: boolean;
 }
@@ -25,7 +25,7 @@ export const ProjectSlide: React.FC<ProjectSlideProps> = ({
   activeProject,
 }) => {
   const { t } = useTranslation();
-  const projectData: projectData | undefined = jsonDB.portfolioData.find(
+  const projectData: ProjectData | undefined = jsonDB.portfolioData.find(
     (projectData) => {
       return projectData.projectName === project.alt;
     },

@@ -9,15 +9,15 @@ export interface ImageSource {
   img: { default: string };
 }
 
-export interface knownTech extends ImageSource {
+export interface KnownTech extends ImageSource {
   techName: string;
 }
 
-export interface portfolioProject extends ImageSource {
+export interface PortfolioProject extends ImageSource {
   madeWith: string[];
 }
 
-export interface projectData {
+export interface ProjectData {
   projectName: string;
   projectData: {
     titleIT: string;
@@ -30,7 +30,7 @@ export interface projectData {
   };
 }
 
-export interface instagramPic {
+export interface InstagramPic {
   accessibilityCaption?: string;
   caption?: string;
   commentsNumber?: number;
@@ -43,4 +43,11 @@ export interface instagramPic {
   likes?: number;
   postLink?: string;
   thumbnail?: string;
+}
+
+export interface Review {
+  writerName: string;
+  reviewIT: string;
+  reviewEN: string;
+  company: string;
 }
