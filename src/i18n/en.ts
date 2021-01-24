@@ -46,5 +46,9 @@ const en: typeof it = {
     comingSoon: 'Coming Soon',
     subscribe: 'Subscribe',
   },
+  reviewsSection: {
+    title: 'Companies and clients I have worked with',
+    talkAboutMe: 'Clients reviews',
+  },
 };
 export default en;

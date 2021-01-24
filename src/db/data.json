@@ -72,5 +72,13 @@
         "githubUrl": "https://github.com/valerioscisci/SmartContract"
       }
     }
+  ],
+  "reviews": [
+    {
+      "writerName": "Prof. Giuseppe Canullo",
+      "reviewIT": "Valerio mi è stato indicato da un amico per la ristrutturazione del sito WEB dell’Associazione degli Economisti di Lingua Neolatina (AENL). Miglior suggerimento non potevo ricevere. Valerio è serio, puntuale, creativo, comprende perfettamente le esigenze del committente e sempre disponibile quando c’è bisogno di lui. Una garanzia di lavoro ben fatto.",
+      "reviewEN": "Valerio was suggested to me by a friend for the restructuring of the website of the Association of Economists of the New Latin Language (AENL). Best tip I couldn't get. Valerio is serious, punctual, creative, he perfectly understands the client's needs and is always available when he is needed. A guarantee of a well done job .",
+      "company": "Segretario AENL"
+    }
   ]
 }

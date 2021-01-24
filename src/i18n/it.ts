@@ -48,6 +48,10 @@ const it = {
     comingSoon: 'Coming Soon',
     subscribe: 'Iscriviti alla newsletter',
   },
+  reviewsSection: {
+    title: 'Compagnie e clienti con cui ho collaborato',
+    talkAboutMe: 'Dicono di me...',
+  },
 };
 
 export type I18NStrings = typeof it;

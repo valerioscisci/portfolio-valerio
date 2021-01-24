@@ -17,6 +17,7 @@ import { BlogSection } from '../components/BlogSection';
 import { Paragraph } from '../components/Paragraph';
 import { HeadingTitle } from '../components/HeadingTitle';
 import { valerioTheme } from '../theme';
+import { ReviewsSection } from '../components/ReviewsSection';
 
 const HomeScreen: React.FC = observer((props) => {
   const { home } = useStores();
@@ -96,7 +97,7 @@ const HomeScreen: React.FC = observer((props) => {
               borderRadius: '1.5em',
               position: 'absolute',
             }}
-            animationDirection={'LeftToRight'}
+            animationDirection={'TopLeftToRight'}
             animationX={'5.5em'}
             animationRotation={'-10deg'}
             animationDuration={1}
@@ -106,9 +107,7 @@ const HomeScreen: React.FC = observer((props) => {
         <ParallaxSection scrollY={scrollY} />
         <BlogSection />
         {props.children}
-        <p style={{ height: '500px', width: '100%', backgroundColor: 'black' }}>
-          Companies I've worked for
-        </p>
+        <ReviewsSection />
         <p style={{ height: '500px', width: '100%', backgroundColor: 'white' }}>
           Contact me form
         </p>

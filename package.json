@@ -23,6 +23,7 @@
     "react-dom": "^17.0.1",
     "react-i18next": "^11.8.5",
     "react-icons": "^3.11.0",
+    "react-indiana-drag-scroll": "^1.8.0",
     "react-instagram-authless-feed": "git+https://github.com/valerioscisci/react-instagram-authless-feed.git",
     "react-router": "^5.2.0",
     "react-router-dom": "^5.2.0",

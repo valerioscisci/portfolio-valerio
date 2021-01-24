@@ -10,6 +10,10 @@ body {
   overflow-x: hidden;
 }
 
+html {
+  background-color: #fcfcfc;
+}
+
 @media (min-width: 576px) {
   body {
     font-size: 16px;
