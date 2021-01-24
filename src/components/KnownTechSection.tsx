@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { useTranslation } from 'react-i18next';
 import { TechList } from './TechList';
 import { useStores } from '../hooks/useStores';
-import { Slideshow } from './Slideshow';
+import { ProjectsShow } from './ProjectsShow';
 import { PortfolioProject } from '../types';
 import { HeadingTitle } from './HeadingTitle';
 import { valerioTheme } from '../theme';
@@ -58,13 +58,13 @@ export const KnownTechSection: React.FC<KnownTechSectionProps> = ({
         </SideMenu>
         {width < 768 && <SectionSeparator />}
         {!!projectsDoneWithTechX.length ? (
-          <Slideshow
+          <ProjectsShow
             width={width}
             key={selectedTech}
             projects={projectsDoneWithTechX}
           />
         ) : (
-          <Slideshow
+          <ProjectsShow
             width={width}
             key={selectedTech}
             noProjects={true}

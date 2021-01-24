@@ -111,14 +111,14 @@ const InstagramMedia: React.FC<InstagramMediaProps> = ({
   );
 };
 
-const InstaGrid = ({
+export const InstagramFeed: React.FC<Props> = ({
   media,
   account,
   numberOfMediaElements,
   status = 'failed',
-}: Props) => {
+}) => {
   const { t } = useTranslation();
-  const [currentShownPics, setCurrentShownPics] = useState<Array<instagramPic>>(
+  const [currentShownPics, setCurrentShownPics] = useState<Array<InstagramPic>>(
     media.slice(0, numberOfMediaElements),
   );
   const [width] = useWindowSize();
@@ -178,8 +178,6 @@ const InstaGrid = ({
     </Container>
   );
 };
-
-export default InstaGrid;
 
 const Container = styled.div`
   margin-top: 5em;
