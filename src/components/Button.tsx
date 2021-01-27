@@ -10,6 +10,8 @@ export interface ButtonProps {
   onClickUrl?: string;
   onClickUrlNewPage?: boolean;
   gradientBackground?: boolean;
+  disabled?: boolean;
+  type?: string;
 }
 
 export const Button: React.FC<ButtonProps> = ({
@@ -21,6 +23,8 @@ export const Button: React.FC<ButtonProps> = ({
   onClickUrl,
   onClickUrlNewPage,
   gradientBackground,
+  disabled = false,
+  type,
 }) => {
   return (
     <Container
@@ -31,6 +35,8 @@ export const Button: React.FC<ButtonProps> = ({
       target={onClickUrlNewPage ? '_blank' : '_self'}
       rel={'noreferrer'}
       gradientBackground={gradientBackground}
+      type={type}
+      disabled={disabled}
     >
       {iconLeft && (
         <IconSpan margin={'right'} className={'icon-right'}>
@@ -50,6 +56,7 @@ export const Button: React.FC<ButtonProps> = ({
 const Container = styled.a<{
   arrowAnimation?: boolean;
   gradientBackground?: boolean;
+  disabled?: boolean;
 }>`
   @-webkit-keyframes buttonHover {
     0% {
@@ -91,7 +98,7 @@ const Container = styled.a<{
   display: inline-flex;
   flex-direction: row;
   align-items: center;
-  cursor: pointer;
+  cursor: ${(props) => (props.disabled ? 'initial' : 'pointer')};
   padding: 0.4em 1.4em;
   margin: auto;
   border-radius: 0.3em;
@@ -99,7 +106,10 @@ const Container = styled.a<{
   font-size: 1em;
   text-decoration: none;
   text-transform: uppercase;
-  color: ${(props) => props.theme.colors.backgroundDark};
+  color: ${(props) =>
+    props.disabled
+      ? props.theme.colors.textColorGrey
+      : props.theme.colors.backgroundDark};
   background: ${(props) => props.theme.colors.background};
   position: relative;
   border: 1px solid ${(props) => props.theme.colors.backgroundDark};
@@ -135,34 +145,41 @@ const Container = styled.a<{
           );
           background-size: 200% auto;
 
-          &:hover {
-            background-position: right center;
-            text-decoration: none;
+          ${!props.disabled &&
+          css`
+            &:hover {
+              background-position: right center;
+              text-decoration: none;
 
-            ${() => {
-              return (
-                props.arrowAnimation &&
-                '& span.icon-right {transform: rotate(360deg);} & span.icon-left {transform: rotate(-360deg);}'
-              );
-            }}
-          }
+              ${() => {
+                return (
+                  props.arrowAnimation &&
+                  '& span.icon-right {transform: rotate(360deg);} & span.icon-left {transform: rotate(-360deg);}'
+                );
+              }}
+            }
+          `}
         `
       : css`
-          &:hover {
-            color: ${(props) => props.theme.colors.primary};
-            background: rgba(34, 40, 49, 0.7);
-            &:before {
-              -webkit-animation: buttonHover 0.5s ease;
-              -moz-animation: buttonHover 0.5s ease;
-              -o-animation: buttonHover 0.5s ease;
-              animation: buttonHover 0.5s ease;
+          ${!props.disabled &&
+          css`
+            &:hover {
+              color: ${(props) => props.theme.colors.primary};
+              background: rgba(34, 40, 49, 0.7);
+              &:before {
+                -webkit-animation: buttonHover 0.5s ease;
+                -moz-animation: buttonHover 0.5s ease;
+                -o-animation: buttonHover 0.5s ease;
+                animation: buttonHover 0.5s ease;
+              }
+              ${() => {
+                return (
+                  props.arrowAnimation &&
+                  '& span {transform: translateX(0.8em);}'
+                );
+              }}
             }
-            ${() => {
-              return (
-                props.arrowAnimation && '& span {transform: translateX(0.8em);}'
-              );
-            }}
-          }
+          `}
         `}
 `;
 
@@ -170,10 +187,10 @@ const IconSpan = styled.span<{ margin: 'right' | 'left' }>`
   ${(props) => {
     return props.margin === 'right'
       ? css`
-          margin-right: 0.3em;
+          margin-right: 0.5em;
         `
       : css`
-          margin-left: 0.3em;
+          margin-left: 0.5em;
         `;
   }}
   transition: all 0.3s ease-out;

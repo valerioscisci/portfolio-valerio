@@ -9,7 +9,7 @@ import HomeScreen from './screens/WelcomeScreen';
 import { I18NLang } from './i18n';
 import { useTranslation } from 'react-i18next';
 import { Spinner } from './components/Spinner';
-import InstagramFeed from './components/InstagramFeed';
+import { InstagramFeed } from './components/InstagramFeed';
 import { observer } from 'mobx-react';
 
 export const App: React.FC = observer(() => {
@@ -23,7 +23,7 @@ export const App: React.FC = observer(() => {
   useEffect(() => {
     stores.home.setLanguage(i18n.language as I18NLang);
     stores.home.fetchImages();
-    stores.home.fetchInstagramPics('valerioscisci');
+    //stores.home.fetchInstagramPics('valerioscisci');
   }, [stores.home, i18n]);
 
   return (

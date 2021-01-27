@@ -52,6 +52,16 @@ const it = {
     title: 'Compagnie e clienti con cui ho collaborato',
     talkAboutMe: 'Dicono di me...',
   },
+  contactForm: {
+    title: 'Costruiamo insieme il tuo progetto!',
+    formLabels: {
+      name: 'Nome',
+      email: 'Email',
+      message: 'Messaggio',
+      send: 'Invia',
+    },
+    thanks: 'Grazie per il messaggio!',
+  },
 };
 
 export type I18NStrings = typeof it;

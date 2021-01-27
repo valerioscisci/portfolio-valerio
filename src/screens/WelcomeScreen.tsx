@@ -18,6 +18,7 @@ import { Paragraph } from '../components/Paragraph';
 import { HeadingTitle } from '../components/HeadingTitle';
 import { valerioTheme } from '../theme';
 import { ReviewsSection } from '../components/ReviewsSection';
+import { ContactForm } from '../components/ContactForm';
 
 const HomeScreen: React.FC = observer((props) => {
   const { home } = useStores();
@@ -108,9 +109,7 @@ const HomeScreen: React.FC = observer((props) => {
         <BlogSection />
         {props.children}
         <ReviewsSection />
-        <p style={{ height: '500px', width: '100%', backgroundColor: 'white' }}>
-          Contact me form
-        </p>
+        <ContactForm width={width} />
       </Main>
       <footer
         style={{ height: '500px', width: '100%', backgroundColor: 'black' }}
