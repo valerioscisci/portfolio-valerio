@@ -23,7 +23,7 @@ export const App: React.FC = observer(() => {
   useEffect(() => {
     stores.home.setLanguage(i18n.language as I18NLang);
     stores.home.fetchImages();
-    //stores.home.fetchInstagramPics('valerioscisci');
+    stores.home.fetchInstagramPics('valerioscisci');
   }, [stores.home, i18n]);
 
   return (

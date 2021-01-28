@@ -44,6 +44,7 @@ export const ContactForm: React.FC<ContactFormProps> = observer(({ width }) => {
         wrapper={(children) => <FormContainer>{children}</FormContainer>}
       >
         <form
+          id={'ContactForm'}
           name={'contact'}
           method={'POST'}
           action="/contact/?success=true"

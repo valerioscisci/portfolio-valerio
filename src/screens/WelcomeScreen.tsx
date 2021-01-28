@@ -29,7 +29,7 @@ const HomeScreen: React.FC = observer((props) => {
     { name: t(`navbar.home`), route: '/' },
     { name: t(`navbar.about`), route: '/about' },
     { name: t(`navbar.portfolio`), route: '/portfolio' },
-    { name: t(`navbar.contact`), route: '/contact-me' },
+    { name: t(`navbar.contact`), route: '/#ContactForm' },
   ];
 
   return (
@@ -86,6 +86,7 @@ const HomeScreen: React.FC = observer((props) => {
           <Button
             buttonText={t(`welcome.secondButton`)}
             style={{ margin: '2em auto' }}
+            onClickUrl={'#ContactForm'}
           ></Button>
           <ImageAnimation
             image={require('../assets/images/homepage/pc.jpg')}
