@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import styled, { css } from 'styled-components';
 
 export interface TextInputProps {
@@ -6,6 +6,7 @@ export interface TextInputProps {
   label: string;
   type: 'text' | 'email' | 'textarea';
   required: boolean;
+  isValid: boolean;
   onChange: (newValue: string) => void;
 }
 
@@ -14,10 +15,21 @@ export const TextInput: React.FC<TextInputProps> = ({
   label,
   type,
   required,
+  isValid,
   onChange,
 }) => {
   const [focused, setFocused] = useState<boolean>(false);
   const [value, setValue] = useState<string>('');
+  const fieldRef = useRef<any>();
+
+  useEffect(() => {
+    let interval = setInterval(() => {
+      if (fieldRef.current) {
+        setValue(fieldRef.current.value);
+        clearInterval(interval);
+      }
+    }, 100);
+  });
 
   return (
     <InputContainer>
@@ -26,6 +38,7 @@ export const TextInput: React.FC<TextInputProps> = ({
       </Label>
       {['text', 'email'].includes(type) ? (
         <Textbox
+          ref={fieldRef}
           type={type}
           id={name}
           name={name}
@@ -39,7 +52,7 @@ export const TextInput: React.FC<TextInputProps> = ({
             setValue(event.target.value);
             onChange(event.target.value);
           }}
-          value={value}
+          isValid={isValid}
         />
       ) : (
         type === 'textarea' && (
@@ -56,7 +69,7 @@ export const TextInput: React.FC<TextInputProps> = ({
               setValue(event.target.value);
               onChange(event.target.value);
             }}
-            value={value}
+            isValid={isValid}
           />
         )
       )}
@@ -66,6 +79,10 @@ export const TextInput: React.FC<TextInputProps> = ({
 const InputContainer = styled.div`
   position: relative;
   margin: 0 0 2em 0;
+
+  @media (min-width: 992px) {
+    margin: 0 0 3em 0;
+  }
 `;
 
 const Label = styled.label<{ focused: boolean }>`
@@ -89,12 +106,19 @@ const Label = styled.label<{ focused: boolean }>`
       -webkit-box-shadow: 0 10px 6px -6px #777;
       -moz-box-shadow: 0 10px 6px -6px #777;
       box-shadow: 0 10px 6px -6px #777;
+
+      @media (min-width: 992px) {
+        font-size: 0.7em;
+        -webkit-box-shadow: 0 7px 6px -6px #777;
+        -moz-box-shadow: 0 7px 6px -6px #777;
+        box-shadow: 0 7px 6px -6px #777;
+      }
     `}
 `;
 
 const TextboxCommon = css`
   position: relative;
-  padding: 12px 1em 5px 1em;
+  padding: 1em 1em 0.7em 1em;
   width: 35%;
   outline: 0;
   border: 0;
@@ -104,20 +128,35 @@ const TextboxCommon = css`
   &:focus {
     box-shadow: 0 4px 0 0 ${(props) => props.theme.colors.secondary};
     width: 45%;
+
+    @media (min-width: 992px) {
+      width: 75%;
+      box-shadow: 0 4px 4px 0 ${(props) => props.theme.colors.secondary};
+    }
+  }
+
+  @media (min-width: 992px) {
+    width: 60%;
+    box-shadow: 2px 2px 0 0 #e5e5e5;
+    font-size: 0.7em;
   }
 `;
 
-const Textbox = styled.input<{ value: string }>`
+const Textbox = styled.input<{ isValid: boolean }>`
   ${TextboxCommon};
 
   ${(props) =>
-    props.value &&
+    props.isValid &&
     css`
       box-shadow: 0 4px 0 0 ${(props) => props.theme.colors.primary};
+
+      @media (min-width: 992px) {
+        box-shadow: 4px 4px 0 0 ${(props) => props.theme.colors.primary};
+      }
     `}
 `;
 
-const TextArea = styled.textarea<{ value: string }>`
+const TextArea = styled.textarea<{ isValid: boolean }>`
   ${TextboxCommon};
   width: 55%;
   height: 6em;
@@ -125,11 +164,20 @@ const TextArea = styled.textarea<{ value: string }>`
   &:focus {
     box-shadow: 0 4px 0 0 ${(props) => props.theme.colors.secondary};
     width: 65%;
+
+    @media (min-width: 992px) {
+      width: 85%;
+      box-shadow: 4px 4px 0 0 ${(props) => props.theme.colors.secondary};
+    }
   }
 
   ${(props) =>
-    props.value &&
+    props.isValid &&
     css`
       box-shadow: 0 4px 0 0 ${(props) => props.theme.colors.primary};
+
+      @media (min-width: 992px) {
+        box-shadow: 4px 4px 0 0 ${(props) => props.theme.colors.primary};
+      }
     `}
 `;
