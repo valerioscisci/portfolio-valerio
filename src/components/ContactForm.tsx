@@ -31,8 +31,40 @@ export const ContactForm: React.FC<ContactFormProps> = observer(({ width }) => {
     }
   }, []);
 
+  const encode = (data: any) => {
+    return Object.keys(data)
+      .map(
+        (key) => encodeURIComponent(key) + '=' + encodeURIComponent(data[key]),
+      )
+      .join('&');
+  };
+
+  const handleSubmit = (e: any) => {
+    fetch('/', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      body: encode({
+        'form-name': 'contact',
+        name: name,
+        email: email,
+        message: message,
+      }),
+    })
+      .then(() => alert('Success!'))
+      .catch((error) => alert(error));
+
+    e.preventDefault();
+  };
+
   return (
     <Section>
+      {/* Hidden form used by netlify to recognize it */}
+      {/* @ts-ignore */}
+      <form name="contact" netlify netlify-honeypot="bot-field" hidden>
+        <input type="text" name="name" />
+        <input type="email" name="email" />
+        <textarea name="message"></textarea>
+      </form>
       <HeadingTitle
         color={width < 992 ? 'black' : 'white'}
         style={width > 992 ? { marginBottom: '5em' } : {}}
@@ -47,7 +79,7 @@ export const ContactForm: React.FC<ContactFormProps> = observer(({ width }) => {
           id={'ContactForm'}
           name={'contact'}
           method={'POST'}
-          action="/contact/?success=true"
+          onSubmit={handleSubmit}
           data-netlify={'true'}
           autoComplete="off"
         >
