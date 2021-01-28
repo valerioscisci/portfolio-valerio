@@ -46,5 +46,19 @@ const en: typeof it = {
     comingSoon: 'Coming Soon',
     subscribe: 'Subscribe',
   },
+  reviewsSection: {
+    title: 'Companies and clients I have worked with',
+    talkAboutMe: 'Clients reviews',
+  },
+  contactForm: {
+    title: "Let's work together!",
+    formLabels: {
+      name: 'Nome',
+      email: 'Email',
+      message: 'Messaggio',
+      send: 'Invia',
+    },
+    thanks: 'Thanks for your message!',
+  },
 };
 export default en;

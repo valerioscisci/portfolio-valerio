@@ -17,6 +17,8 @@ import { BlogSection } from '../components/BlogSection';
 import { Paragraph } from '../components/Paragraph';
 import { HeadingTitle } from '../components/HeadingTitle';
 import { valerioTheme } from '../theme';
+import { ReviewsSection } from '../components/ReviewsSection';
+import { ContactForm } from '../components/ContactForm';
 
 const HomeScreen: React.FC = observer((props) => {
   const { home } = useStores();
@@ -27,7 +29,7 @@ const HomeScreen: React.FC = observer((props) => {
     { name: t(`navbar.home`), route: '/' },
     { name: t(`navbar.about`), route: '/about' },
     { name: t(`navbar.portfolio`), route: '/portfolio' },
-    { name: t(`navbar.contact`), route: '/contact-me' },
+    { name: t(`navbar.contact`), route: '/#ContactForm' },
   ];
 
   return (
@@ -84,6 +86,7 @@ const HomeScreen: React.FC = observer((props) => {
           <Button
             buttonText={t(`welcome.secondButton`)}
             style={{ margin: '2em auto' }}
+            onClickUrl={'#ContactForm'}
           ></Button>
           <ImageAnimation
             image={require('../assets/images/homepage/pc.jpg')}
@@ -96,7 +99,7 @@ const HomeScreen: React.FC = observer((props) => {
               borderRadius: '1.5em',
               position: 'absolute',
             }}
-            animationDirection={'LeftToRight'}
+            animationDirection={'TopLeftToRight'}
             animationX={'5.5em'}
             animationRotation={'-10deg'}
             animationDuration={1}
@@ -106,12 +109,8 @@ const HomeScreen: React.FC = observer((props) => {
         <ParallaxSection scrollY={scrollY} />
         <BlogSection />
         {props.children}
-        <p style={{ height: '500px', width: '100%', backgroundColor: 'black' }}>
-          Companies I've worked for
-        </p>
-        <p style={{ height: '500px', width: '100%', backgroundColor: 'white' }}>
-          Contact me form
-        </p>
+        <ReviewsSection />
+        <ContactForm width={width} />
       </Main>
       <footer
         style={{ height: '500px', width: '100%', backgroundColor: 'black' }}

@@ -2,9 +2,9 @@ import { action, computed, observable } from 'mobx';
 import { i18n, I18NLang } from '../i18n';
 import {
   ImageSource,
-  instagramPic,
-  knownTech,
-  portfolioProject,
+  InstagramPic,
+  KnownTech,
+  PortfolioProject,
 } from '../types';
 import instagram from '../utils/instagram';
 
@@ -16,9 +16,10 @@ export default class HomeStore {
   @observable language: I18NLang = 'it';
 
   @observable sliderImages: Array<ImageSource> = [];
-  @observable techMenuImages: Array<knownTech> = [];
-  @observable portfolioImages: Array<portfolioProject> = [];
-  @observable instagramImages: Array<instagramPic> = [];
+  @observable techMenuImages: Array<KnownTech> = [];
+  @observable portfolioImages: Array<PortfolioProject> = [];
+  @observable instagramImages: Array<InstagramPic> = [];
+  @observable companiesLogos: Array<ImageSource> = [];
 
   @computed
   get isAppLoading() {
@@ -132,6 +133,28 @@ export default class HomeStore {
         alt: 'Smartcontract',
         img: require('../assets/images/portfolio/smartcontract.jpg'),
         madeWith: ['Django', 'Html5', 'Css3', 'SQLite', 'Ethereum'],
+      },
+    ];
+    this.companiesLogos = [
+      {
+        alt: 'Regione Marche',
+        img: require('../assets/images/companies/logo_regione_marche.png'),
+      },
+      {
+        alt: 'ETT',
+        img: require('../assets/images/companies/logo_ett.png'),
+      },
+      {
+        alt: 'T33',
+        img: require('../assets/images/companies/logo_t33.png'),
+      },
+      {
+        alt: 'Mostaza',
+        img: require('../assets/images/companies/logo_mostaza.png'),
+      },
+      {
+        alt: 'aenl',
+        img: require('../assets/images/companies/logo_aenl.png'),
       },
     ];
     this.isFetchingImages = false;

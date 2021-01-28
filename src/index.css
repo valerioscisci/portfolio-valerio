@@ -10,6 +10,11 @@ body {
   overflow-x: hidden;
 }
 
+html {
+  background-color: #fcfcfc;
+  scroll-behavior: smooth;
+}
+
 @media (min-width: 576px) {
   body {
     font-size: 16px;

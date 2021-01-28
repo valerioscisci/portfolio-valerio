@@ -4,7 +4,7 @@ import { useTranslation } from 'react-i18next';
 import { TechList } from './TechList';
 import { useStores } from '../hooks/useStores';
 import { ProjectsShow } from './ProjectsShow';
-import { portfolioProject } from '../types';
+import { PortfolioProject } from '../types';
 import { HeadingTitle } from './HeadingTitle';
 import { valerioTheme } from '../theme';
 
@@ -26,7 +26,7 @@ export const KnownTechSection: React.FC<KnownTechSectionProps> = ({
     [setSelectedTech],
   );
 
-  const projectsDoneWithTechX: Array<portfolioProject> = home.portfolioImages.filter(
+  const projectsDoneWithTechX: Array<PortfolioProject> = home.portfolioImages.filter(
     (portfolioImage) => {
       return portfolioImage.madeWith.includes(selectedTech);
     },
