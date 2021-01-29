@@ -59,6 +59,7 @@ const en: typeof it = {
       send: 'Invia',
     },
     thanks: 'Thanks for your message!',
+    error: 'Error while sending the message, please try again.',
   },
 };
 export default en;

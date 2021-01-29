@@ -14,6 +14,7 @@ declare module 'styled-components' {
       textColorWhite: string;
       textColorBlack: string;
       textColorGrey: string;
+      error: string;
     };
   }
 }

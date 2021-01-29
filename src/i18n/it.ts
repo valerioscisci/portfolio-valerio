@@ -61,6 +61,7 @@ const it = {
       send: 'Invia',
     },
     thanks: 'Grazie per il messaggio!',
+    error: "Errore durante l'invio, per favore prova di nuovo.",
   },
 };
 

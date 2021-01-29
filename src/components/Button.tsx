@@ -11,7 +11,6 @@ export interface ButtonProps {
   onClickUrlNewPage?: boolean;
   gradientBackground?: boolean;
   disabled?: boolean;
-  type?: string;
 }
 
 export const Button: React.FC<ButtonProps> = ({
@@ -24,7 +23,6 @@ export const Button: React.FC<ButtonProps> = ({
   onClickUrlNewPage,
   gradientBackground,
   disabled = false,
-  type,
 }) => {
   return (
     <Container
@@ -35,7 +33,6 @@ export const Button: React.FC<ButtonProps> = ({
       target={onClickUrlNewPage ? '_blank' : '_self'}
       rel={'noreferrer'}
       gradientBackground={gradientBackground}
-      type={type}
       disabled={disabled}
     >
       {iconLeft && (

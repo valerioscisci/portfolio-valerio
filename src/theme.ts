@@ -12,6 +12,7 @@ const valerioTheme: DefaultTheme = {
     textColorWhite: '#fff',
     textColorBlack: '#333333',
     textColorGrey: '#7c8088',
+    error: '#FF3D3D',
   },
 };
 

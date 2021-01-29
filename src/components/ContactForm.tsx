@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from 'react';
-import styled from 'styled-components';
+import React, { useState } from 'react';
+import styled, { css } from 'styled-components';
 import { observer } from 'mobx-react';
 import contactFormBackground from '../assets/images/homepage/contact_form.jpg';
 import { HeadingTitle } from './HeadingTitle';
@@ -9,7 +9,6 @@ import { TextInput } from './TextInput';
 import ReCAPTCHA from 'react-google-recaptcha';
 import { validateEmail } from '../utils/validation';
 import { useStores } from '../hooks/useStores';
-import { Button } from './Button';
 import { FaEnvelope } from 'react-icons/fa';
 
 export interface ContactFormProps {
@@ -19,17 +18,17 @@ export interface ContactFormProps {
 export const ContactForm: React.FC<ContactFormProps> = observer(({ width }) => {
   const { home } = useStores();
   const { t } = useTranslation();
-  const [success, setSuccess] = useState<boolean>(false);
+  const [success, setSuccess] = useState<boolean | undefined>(undefined);
   const [notRobot, setNotRobot] = useState<boolean>(false);
   const [name, setName] = useState<string>('');
   const [email, setEmail] = useState<string>('');
   const [message, setMessage] = useState<string>('');
 
-  useEffect(() => {
-    if (window.location.search.includes('success=true')) {
-      setSuccess(true);
-    }
-  }, []);
+  const resetForm = () => {
+    setName('');
+    setEmail('');
+    setMessage('');
+  };
 
   const encode = (data: any) => {
     return Object.keys(data)
@@ -40,18 +39,22 @@ export const ContactForm: React.FC<ContactFormProps> = observer(({ width }) => {
   };
 
   const handleSubmit = (e: any) => {
+    setSuccess(undefined);
     fetch('/', {
       method: 'POST',
       headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
       body: encode({
         'form-name': 'contact',
-        name: name,
-        email: email,
-        message: message,
+        ...{ name: name, email: email, message: message },
       }),
     })
-      .then(() => alert('Success!'))
-      .catch((error) => alert(error));
+      .then(() => {
+        setSuccess(true);
+        resetForm();
+      })
+      .catch((error) => {
+        setSuccess(false);
+      });
 
     e.preventDefault();
   };
@@ -79,7 +82,9 @@ export const ContactForm: React.FC<ContactFormProps> = observer(({ width }) => {
           id={'ContactForm'}
           name={'contact'}
           method={'POST'}
-          onSubmit={handleSubmit}
+          onSubmit={(e) => {
+            handleSubmit(e);
+          }}
           data-netlify={'true'}
           autoComplete="off"
         >
@@ -128,8 +133,7 @@ export const ContactForm: React.FC<ContactFormProps> = observer(({ width }) => {
             hl={home.language}
           />
           <ButtonContainer>
-            <Button
-              buttonText={t('contactForm.formLabels.send')}
+            <SubmitButton
               disabled={
                 !notRobot ||
                 !name ||
@@ -137,11 +141,16 @@ export const ContactForm: React.FC<ContactFormProps> = observer(({ width }) => {
                 !message ||
                 !validateEmail(email)
               }
-              type="submit"
-              iconRight={<FaEnvelope size={'1em'} />}
-            />
-            {success && (
+            >
+              {t('contactForm.formLabels.send')}{' '}
+              <FaEnvelope size={'1.2em'} style={{ marginLeft: '1em' }} />
+            </SubmitButton>
+            {success ? (
               <SuccessMessage>{t('contactForm.thanks')}</SuccessMessage>
+            ) : (
+              success !== undefined && (
+                <ErrorMessage>{t('contactForm.error')}</ErrorMessage>
+              )
             )}
           </ButtonContainer>
         </form>
@@ -218,4 +227,45 @@ const SuccessMessage = styled.span`
   color: ${(props) => props.theme.colors.primary};
   font-weight: bold;
   font-size: 1.2em;
+`;
+
+const ErrorMessage = styled(SuccessMessage)`
+  color: ${(props) => props.theme.colors.error};
+`;
+
+const SubmitButton = styled.button<{ disabled?: boolean }>`
+  display: inline-flex;
+  flex-direction: row;
+  align-items: center;
+  cursor: ${(props) => (props.disabled ? 'initial' : 'pointer')};
+  padding: 0.4em 1.4em;
+  margin: auto;
+  border-radius: 0.3em;
+  font-family: Manrope;
+  font-size: 1em;
+  text-decoration: none;
+  text-transform: uppercase;
+  color: ${(props) =>
+    props.disabled
+      ? props.theme.colors.textColorGrey
+      : props.theme.colors.backgroundDark};
+  background: ${(props) => props.theme.colors.background};
+  position: relative;
+  border: 1px solid ${(props) => props.theme.colors.backgroundDark};
+  font-weight: bold;
+  transition: all 0.3s ease;
+
+  &:focus {
+    outline: none;
+  }
+
+  &:hover,
+  &:focus,
+  &:active {
+    ${(props) =>
+      !props.disabled &&
+      css`
+        background: ${(props) => props.theme.colors.backgroundDark};
+        color: ${(props) => props.theme.colors.primary};
+      `}
 `;
