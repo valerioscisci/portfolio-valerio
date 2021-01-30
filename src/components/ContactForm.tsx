@@ -87,6 +87,7 @@ export const ContactForm: React.FC<ContactFormProps> = observer(({ width }) => {
             handleSubmit(e);
           }}
           data-netlify={'true'}
+          netlify-honeypot="bot-field"
           autoComplete="off"
         >
           <input
