@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useState } from 'react';
+import React, { Ref, useCallback, useEffect, useState } from 'react';
 import styled, { css } from 'styled-components';
 import { IoIosMenu, IoIosClose } from 'react-icons/io';
 
@@ -7,31 +7,30 @@ export interface MenuIconProps {
   width: number;
 }
 
-export const MenuIcon: React.FC<MenuIconProps> = ({
-  updateMenuState,
-  width,
-}) => {
-  const [menuOpen, setMenuOpen] = useState(false);
+export const MenuIcon = React.forwardRef(
+  ({ updateMenuState, width }: MenuIconProps, ref: Ref<HTMLDivElement>) => {
+    const [menuOpen, setMenuOpen] = useState(false);
 
-  const onClickCallback = useCallback(() => {
-    setMenuOpen(!menuOpen);
-    updateMenuState(!menuOpen);
-  }, [menuOpen, setMenuOpen, updateMenuState]);
+    const onClickCallback = useCallback(() => {
+      setMenuOpen(!menuOpen);
+      updateMenuState(!menuOpen);
+    }, [menuOpen, setMenuOpen, updateMenuState]);
 
-  useEffect(() => {
-    if (width > 768 && menuOpen) onClickCallback();
-  }, [width, menuOpen, onClickCallback]);
+    useEffect(() => {
+      if (width > 768 && menuOpen) onClickCallback();
+    }, [width, menuOpen, onClickCallback]);
 
-  return (
-    <Container menuOpen={menuOpen}>
-      {menuOpen ? (
-        <IoIosClose onClick={onClickCallback} />
-      ) : (
-        <IoIosMenu onClick={onClickCallback} />
-      )}
-    </Container>
-  );
-};
+    return (
+      <Container ref={ref} menuOpen={menuOpen} onClick={onClickCallback}>
+        {menuOpen ? (
+          <IoIosClose onClick={onClickCallback} />
+        ) : (
+          <IoIosMenu onClick={onClickCallback} />
+        )}
+      </Container>
+    );
+  },
+);
 
 const Container = styled.div<{ menuOpen: boolean }>`
   position: absolute;

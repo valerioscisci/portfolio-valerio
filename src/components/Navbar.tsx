@@ -12,6 +12,7 @@ export interface NavbarProps {
 
 export const Navbar: React.FC<NavbarProps> = ({ navLinks, width }) => {
   const [menuOpen, setMenuOpen] = useState(false);
+  const menuIconRef = React.createRef<HTMLDivElement>();
 
   useEffect(() => {
     if (menuOpen) {
@@ -31,6 +32,7 @@ export const Navbar: React.FC<NavbarProps> = ({ navLinks, width }) => {
         </BrowserRouter>
       )}
       <MenuIcon
+        ref={menuIconRef}
         width={width}
         updateMenuState={(menuOpen) => setMenuOpen(menuOpen)}
       />
@@ -39,7 +41,16 @@ export const Navbar: React.FC<NavbarProps> = ({ navLinks, width }) => {
           return (
             <li key={i}>
               <BrowserRouter>
-                <Link to={link.route}>{link.name}</Link>
+                <Link
+                  to={link.route}
+                  onClick={() => {
+                    if (menuIconRef.current) {
+                      menuIconRef.current?.click();
+                    }
+                  }}
+                >
+                  {link.name}
+                </Link>
               </BrowserRouter>
             </li>
           );
