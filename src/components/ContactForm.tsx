@@ -56,7 +56,7 @@ export const ContactForm: React.FC<ContactFormProps> = observer(({ width }) => {
         setSuccess(false);
       });
 
-    e.preventDefault();
+    event.preventDefault();
   };
 
   return (
