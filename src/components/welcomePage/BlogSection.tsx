@@ -46,7 +46,9 @@ export const BlogSection: React.FC = () => {
           </ReactCursorPosition>
         )}
         <BlogDescription>
-          <Paragraph style={{ textTransform: 'uppercase' }}>
+          <Paragraph
+            style={{ textTransform: 'uppercase', fontFamily: 'Manrope' }}
+          >
             {t('blogSection.description')}
           </Paragraph>
           <Button

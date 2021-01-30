@@ -13,6 +13,8 @@ const it = {
   },
   welcome: {
     heading: 'The wanderer developer',
+    subHeading:
+      'Realizzo siti web e applicazioni mobile, viaggiando e documentando il tutto',
     introParagraph:
       'Il mio nome è Valerio e sono un ingegnere informatico specializzato in sviluppo web oltre ad essere un appassionato di tutto ciò che riguarda il mondo dei viaggi. ' +
       'Da qualche anno a questa parte ho preso la decisione di non voler passare la maggior parte della vita chiuso tra le quattro mura di un ufficio. ' +

@@ -19,6 +19,7 @@ import { HeadingTitle } from '../components/common/HeadingTitle';
 import { valerioTheme } from '../theme';
 import { ReviewsSection } from '../components/welcomePage/ReviewsSection';
 import { ContactForm } from '../components/welcomePage/ContactForm';
+import { SubHeading } from '../components/common/SubHeading';
 
 const HomeScreen: React.FC = observer((props) => {
   const { home } = useStores();
@@ -45,12 +46,14 @@ const HomeScreen: React.FC = observer((props) => {
             background: ' url(' + brush + ')',
             backgroundRepeat: ' no-repeat',
             backgroundSize: ' 100% 95%',
-            marginTop: 0,
+            margin: 0,
           }}
         >
           {t(`welcome.heading`)}
         </HeadingTitle>
-        Realizzo siti web e applicazioni viaggiando e documentando il tutto
+        <SubHeading style={{ marginBottom: '4em' }}>
+          {t('welcome.subHeading')}
+        </SubHeading>
         <FirstSection>
           <CVImage>
             <ImageAnimation

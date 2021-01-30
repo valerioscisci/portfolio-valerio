@@ -15,6 +15,8 @@ const en: typeof it = {
   },
   welcome: {
     heading: 'The waderer developer',
+    subHeading:
+      'I create websites and mobile applications while traveling around the world',
     introParagraph: '',
     introButton: 'scopri altro su di me',
     secondParagraph: '',

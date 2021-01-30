@@ -165,9 +165,10 @@ const ReviewContainer = styled.div<{ activeReview: boolean }>`
 const ReviewText = styled.p`
   position: relative;
   font-size: 1.3em;
+  line-height: 1.8em;
   font-style: italic;
   letter-spacing: 0.1em;
-  font-family: Corben;
+  font-family: Manrope;
   margin: auto;
   width: 85%;
   position: relative;
@@ -175,6 +176,7 @@ const ReviewText = styled.p`
 
   &:before {
     content: '“';
+    font-family: Corben;
     font-size: 5em;
     line-height: 2em;
     position: absolute;
