@@ -141,6 +141,7 @@ export const ContactForm: React.FC<ContactFormProps> = observer(({ width }) => {
                 !message ||
                 !validateEmail(email)
               }
+              type={'submit'}
             >
               {t('contactForm.formLabels.send')}{' '}
               <FaEnvelope size={'1.2em'} style={{ marginLeft: '1em' }} />
