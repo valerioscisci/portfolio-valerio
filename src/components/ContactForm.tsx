@@ -61,14 +61,6 @@ export const ContactForm: React.FC<ContactFormProps> = observer(({ width }) => {
 
   return (
     <Section>
-      {/* Hidden form used by netlify to recognize it */}
-      {/* @ts-ignore */}
-      <form name="contact" netlify netlify-honeypot="bot-field" hidden>
-        <input type="hidden" name="form-name" value="contact" />
-        <input type="text" name="name" />
-        <input type="email" name="email" />
-        <textarea name="message"></textarea>
-      </form>
       <HeadingTitle
         color={width < 992 ? 'black' : 'white'}
         style={width > 992 ? { marginBottom: '5em' } : {}}
@@ -86,6 +78,7 @@ export const ContactForm: React.FC<ContactFormProps> = observer(({ width }) => {
           onSubmit={(e) => {
             handleSubmit(e);
           }}
+          action={'/#ContactForm'}
           data-netlify={'true'}
           netlify-honeypot="bot-field"
           autoComplete="off"
