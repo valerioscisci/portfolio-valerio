@@ -38,13 +38,13 @@ export const ContactForm: React.FC<ContactFormProps> = observer(({ width }) => {
       .join('&');
   };
 
-  const handleSubmit = (e: any) => {
+  const handleSubmit = (event: any) => {
     setSuccess(undefined);
     fetch('/', {
       method: 'POST',
       headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
       body: encode({
-        'form-name': 'contact',
+        'form-name': event.target.getAttribute('name'),
         ...{ name: name, email: email, message: message },
       }),
     })
@@ -64,6 +64,7 @@ export const ContactForm: React.FC<ContactFormProps> = observer(({ width }) => {
       {/* Hidden form used by netlify to recognize it */}
       {/* @ts-ignore */}
       <form name="contact" netlify netlify-honeypot="bot-field" hidden>
+        <input type="hidden" name="form-name" value="contact" />
         <input type="text" name="name" />
         <input type="email" name="email" />
         <textarea name="message"></textarea>
