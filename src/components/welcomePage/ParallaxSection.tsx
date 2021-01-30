@@ -63,7 +63,7 @@ export const ParallaxSection: React.FC<ParallaxSectionProps> = ({
           return (
             <Plane
               key={index}
-              src={require('../assets/images/homepage/plane.svg').default}
+              src={require('../../assets/images/homepage/plane.svg').default}
               alt={'freedom'}
               startingPlanePosition={startingPlanePosition}
               startingPlaneHeight={planeInfo.startingHeight}
@@ -89,7 +89,7 @@ export const ParallaxSection: React.FC<ParallaxSectionProps> = ({
     >
       <Section ref={sectionRef}>
         <BackgroundImage
-          src={require('../assets/images/homepage/cappadocia.jpg').default}
+          src={require('../../assets/images/homepage/cappadocia.jpg').default}
           alt={'parallax'}
           style={{
             transform: `translateY(${

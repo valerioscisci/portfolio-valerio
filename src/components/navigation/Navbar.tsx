@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import styled, { css } from 'styled-components';
-import LogoImage from '../assets/images/common/Logo.png';
+import LogoImage from '../../assets/images/common/Logo.png';
 import { BrowserRouter } from 'react-router-dom';
 import { MenuIcon } from './MenuIcon';
 import { HashLink as Link } from 'react-router-hash-link';

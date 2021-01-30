@@ -2,7 +2,7 @@ import { observer } from 'mobx-react';
 import React, { Fragment, useEffect, useState } from 'react';
 import { FaArrowDown, FaArrowUp } from 'react-icons/fa';
 import styled, { css } from 'styled-components';
-import { useStores } from '../hooks/useStores';
+import { useStores } from '../../hooks/useStores';
 import { TechListItem } from './TechListItem';
 
 export interface TechListProps {

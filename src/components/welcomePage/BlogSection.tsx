@@ -4,10 +4,10 @@ import styled from 'styled-components';
 import ReactCursorPosition, { INTERACTIONS } from 'react-cursor-position';
 import { ComingSoonText } from './ComingSoonText';
 import VisibilitySensor from 'react-visibility-sensor';
-import comingSoon from '../assets/images/homepage/coming_soon.svg';
-import { Paragraph } from './Paragraph';
-import { HeadingTitle } from './HeadingTitle';
-import { Button } from './Button';
+import comingSoon from '../../assets/images/homepage/coming_soon.svg';
+import { Paragraph } from '../common/Paragraph';
+import { HeadingTitle } from '../common/HeadingTitle';
+import { Button } from '../common/Button';
 import { FaArrowDown } from 'react-icons/fa';
 
 export const BlogSection: React.FC = () => {

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
-import { PortfolioProject } from '../types';
-import { DotGroup } from './DotGroup';
+import { PortfolioProject } from '../../types';
+import { DotGroup } from '../common/DotGroup';
 import { ProjectSlide } from './ProjectSlide';
 
 export interface ProjectsShowProps {

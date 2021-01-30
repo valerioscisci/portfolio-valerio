@@ -1,13 +1,13 @@
 import * as React from 'react';
-import { Spinner } from './Spinner';
+import { Spinner } from '../common/Spinner';
 import styled from 'styled-components';
 import { useTranslation } from 'react-i18next';
-import { useWindowSize } from '../hooks/useWindowSize';
-import igSectionBackground from '../assets/images/homepage/ig_section_background.svg';
-import igProfilePic from '../assets/images/homepage/ig_profile_pic.jpg';
+import { useWindowSize } from '../../hooks/useWindowSize';
+import igSectionBackground from '../../assets/images/homepage/ig_section_background.svg';
+import igProfilePic from '../../assets/images/homepage/ig_profile_pic.jpg';
 import { useEffect, useState } from 'react';
 import { FaHeart, FaInstagram } from 'react-icons/fa';
-import { InstagramPic } from '../types';
+import { InstagramPic } from '../../types';
 
 export type Props = {
   media: Array<InstagramPic>;
@@ -41,7 +41,7 @@ const InstagramSectionHeader: React.FC<HeaderProps> = ({
       <VisitInstagramTitle>
         {t('instagram.visitProfile')}
         <InstagramLogo
-          src={require('../assets/images/homepage/instagram.svg').default}
+          src={require('../../assets/images/homepage/instagram.svg').default}
         />
       </VisitInstagramTitle>
     </HeaderContainer>
@@ -167,7 +167,7 @@ export const InstagramFeed: React.FC<Props> = ({
         >
           <InstagramSectionHeader account={account} profilePic={igProfilePic} />
           <NoPhotosImage
-            src={require('../assets/images/homepage/ig_offline.png').default}
+            src={require('../../assets/images/homepage/ig_offline.png').default}
             alt={t('instagram.noPhotos')}
           />
           <NoPhotosDescription>

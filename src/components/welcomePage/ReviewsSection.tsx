@@ -1,16 +1,16 @@
 import React, { useState } from 'react';
 import styled, { css } from 'styled-components';
 import { useTranslation } from 'react-i18next';
-import { HeadingTitle } from './HeadingTitle';
+import { HeadingTitle } from '../common/HeadingTitle';
 import i18next from 'i18next';
 import ScrollContainer from 'react-indiana-drag-scroll';
 
-import jsonDB from '../db/data.json';
+import jsonDB from '../../db/data.json';
 import { observer } from 'mobx-react';
-import { useStores } from '../hooks/useStores';
-import { ImageAnimation } from './ImageAnimation';
-import { DotGroup } from './DotGroup';
-import { Review } from '../types';
+import { useStores } from '../../hooks/useStores';
+import { ImageAnimation } from '../common/ImageAnimation';
+import { DotGroup } from '../common/DotGroup';
+import { Review } from '../../types';
 
 export interface ReviewProps {
   review: Review;

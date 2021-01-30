@@ -1,24 +1,24 @@
 import React from 'react';
 import { observer } from 'mobx-react';
 import { useStores } from '../hooks/useStores';
-import { Navbar } from '../components/Navbar';
+import { Navbar } from '../components/navigation/Navbar';
 import { useTranslation } from 'react-i18next';
 import styled from 'styled-components';
-import { MainSlider } from '../components/Slider';
+import { MainSlider } from '../components/welcomePage/Slider';
 import brush from '../assets/images/homepage/brush.png';
-import { Button } from '../components/Button';
+import { Button } from '../components/common/Button';
 import { FaArrowRight } from 'react-icons/fa';
-import { ImageAnimation } from '../components/ImageAnimation';
-import { ParallaxSection } from '../components/ParallaxSection';
-import { KnownTechSection } from '../components/KnownTechSection';
+import { ImageAnimation } from '../components/common/ImageAnimation';
+import { ParallaxSection } from '../components/welcomePage/ParallaxSection';
+import { KnownTechSection } from '../components/welcomePage/KnownTechSection';
 import useScrollPosition from '@react-hook/window-scroll';
 import { useWindowSize } from '../hooks/useWindowSize';
-import { BlogSection } from '../components/BlogSection';
-import { Paragraph } from '../components/Paragraph';
-import { HeadingTitle } from '../components/HeadingTitle';
+import { BlogSection } from '../components/welcomePage/BlogSection';
+import { Paragraph } from '../components/common/Paragraph';
+import { HeadingTitle } from '../components/common/HeadingTitle';
 import { valerioTheme } from '../theme';
-import { ReviewsSection } from '../components/ReviewsSection';
-import { ContactForm } from '../components/ContactForm';
+import { ReviewsSection } from '../components/welcomePage/ReviewsSection';
+import { ContactForm } from '../components/welcomePage/ContactForm';
 
 const HomeScreen: React.FC = observer((props) => {
   const { home } = useStores();
@@ -50,6 +50,7 @@ const HomeScreen: React.FC = observer((props) => {
         >
           {t(`welcome.heading`)}
         </HeadingTitle>
+        Realizzo siti web e applicazioni viaggiando e documentando il tutto
         <FirstSection>
           <CVImage>
             <ImageAnimation

@@ -1,14 +1,14 @@
 import React, { useState } from 'react';
 import styled, { css } from 'styled-components';
 import { observer } from 'mobx-react';
-import contactFormBackground from '../assets/images/homepage/contact_form.jpg';
-import { HeadingTitle } from './HeadingTitle';
-import { ConditionalWrapper } from './ConditionalWrapper';
+import contactFormBackground from '../../assets/images/homepage/contact_form.jpg';
+import { HeadingTitle } from '../common/HeadingTitle';
+import { ConditionalWrapper } from '../common/ConditionalWrapper';
 import { useTranslation } from 'react-i18next';
-import { TextInput } from './TextInput';
+import { TextInput } from '../common/TextInput';
 import ReCAPTCHA from 'react-google-recaptcha';
-import { validateEmail } from '../utils/validation';
-import { useStores } from '../hooks/useStores';
+import { validateEmail } from '../../utils/validation';
+import { useStores } from '../../hooks/useStores';
 import { FaEnvelope } from 'react-icons/fa';
 
 export interface ContactFormProps {

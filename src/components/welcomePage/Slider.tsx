@@ -4,7 +4,7 @@ import { CarouselProvider, Slide, Slider, Image } from 'pure-react-carousel';
 
 import 'pure-react-carousel/dist/react-carousel.es.css';
 import { useTranslation } from 'react-i18next';
-import { Spinner } from '../components/Spinner';
+import { Spinner } from '../common/Spinner';
 
 export interface SliderProps {
   imagesArray: { alt: string; img: { default: string } }[];
