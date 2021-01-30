@@ -63,5 +63,13 @@ const en: typeof it = {
     thanks: 'Thanks for your message!',
     error: 'Error while sending the message, please try again.',
   },
+  footer: {
+    copyright: 'The Wanderer Developer',
+    contactInformation: 'Contact information',
+    usefulLinks: 'Link utili',
+    policy: 'Policy',
+    privacyPolicy: 'Privacy Policy',
+    cookiePolicy: 'Cookie Policy',
+  },
 };
 export default en;

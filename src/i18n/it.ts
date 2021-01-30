@@ -65,6 +65,14 @@ const it = {
     thanks: 'Grazie per il messaggio!',
     error: "Errore durante l'invio, per favore prova di nuovo.",
   },
+  footer: {
+    copyright: 'The Wanderer Developer',
+    contactInformation: 'Informazioni di contatto',
+    usefulLinks: 'Link utili',
+    policy: 'Policy',
+    privacyPolicy: 'Privacy Policy',
+    cookiePolicy: 'Cookie Policy',
+  },
 };
 
 export type I18NStrings = typeof it;

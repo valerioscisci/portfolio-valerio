@@ -20,6 +20,7 @@ import { valerioTheme } from '../theme';
 import { ReviewsSection } from '../components/welcomePage/ReviewsSection';
 import { ContactForm } from '../components/welcomePage/ContactForm';
 import { SubHeading } from '../components/common/SubHeading';
+import { Footer } from '../components/navigation/Footer';
 
 const HomeScreen: React.FC = observer((props) => {
   const { home } = useStores();
@@ -116,11 +117,7 @@ const HomeScreen: React.FC = observer((props) => {
         <ReviewsSection />
         <ContactForm width={width} />
       </Main>
-      <footer
-        style={{ height: '500px', width: '100%', backgroundColor: 'black' }}
-      >
-        footer
-      </footer>
+      <Footer />
     </Container>
   );
 });
