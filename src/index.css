@@ -13,6 +13,7 @@ body {
 html {
   background-color: #fcfcfc;
   scroll-behavior: smooth;
+  overflow-x: hidden;
 }
 
 @media (min-width: 576px) {

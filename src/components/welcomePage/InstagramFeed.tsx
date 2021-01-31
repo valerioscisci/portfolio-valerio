@@ -180,7 +180,7 @@ export const InstagramFeed: React.FC<Props> = ({
 };
 
 const Container = styled.div`
-  margin-top: 5em;
+  margin-top: 1em;
   background-color: ${(props) => props.theme.colors.background};
   background-image: linear-gradient(
       to bottom,

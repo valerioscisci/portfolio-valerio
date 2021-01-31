@@ -116,6 +116,7 @@ export const Footer: React.FC = () => {
             socialData.map((social: { name: string; url: string }, i) => {
               return (
                 <SocialLink
+                  key={social.name}
                   href={social.url}
                   target={'_blank'}
                   rel={'noreferrer'}
