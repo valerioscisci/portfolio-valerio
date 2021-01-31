@@ -1,6 +1,10 @@
 import it from './it';
 
 const en: typeof it = {
+  common: {
+    contactMe: 'Contattami',
+    blog: 'Blog',
+  },
   navbar: {
     home: 'Home',
     about: 'About',
@@ -20,7 +24,6 @@ const en: typeof it = {
     introParagraph: '',
     introButton: 'scopri altro su di me',
     secondParagraph: '',
-    secondButton: '',
     citParagraph:
       'Freedom is living life as you want to live it. You can have that freedom now. Cit. ',
   },

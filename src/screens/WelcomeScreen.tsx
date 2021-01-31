@@ -89,7 +89,7 @@ const HomeScreen: React.FC = observer((props) => {
           </HeadingTitle>
           <Paragraph color={'white'}>{t(`welcome.secondParagraph`)}</Paragraph>
           <Button
-            buttonText={t(`welcome.secondButton`)}
+            buttonText={t(`common.contactMe`)}
             style={{ margin: '2em auto' }}
             onClickUrl={'#ContactForm'}
           ></Button>

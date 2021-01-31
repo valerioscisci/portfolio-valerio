@@ -60,7 +60,7 @@ export const ContactForm: React.FC<ContactFormProps> = observer(({ width }) => {
   };
 
   return (
-    <Section>
+    <Section id={'ContactForm'}>
       <HeadingTitle
         color={width < 992 ? 'black' : 'white'}
         style={width > 992 ? { marginBottom: '5em' } : {}}
@@ -72,7 +72,6 @@ export const ContactForm: React.FC<ContactFormProps> = observer(({ width }) => {
         wrapper={(children) => <FormContainer>{children}</FormContainer>}
       >
         <form
-          id={'ContactForm'}
           name={'contact'}
           method={'POST'}
           onSubmit={(e) => {

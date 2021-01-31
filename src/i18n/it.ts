@@ -1,4 +1,8 @@
 const it = {
+  common: {
+    contactMe: 'Contattami',
+    blog: 'Blog',
+  },
   navbar: {
     home: 'Home',
     about: 'Chi Sono',
@@ -22,7 +26,6 @@ const it = {
     introButton: 'scopri altro su di me',
     secondParagraph:
       "Se hai un progetto in mente che preveda la realizzazione di un sito web o di un'applicazione mobile, contattami! Allo stesso modo, se sei un developer e vuoi fare due chiacchiere sul lavoro da remoto, sulle scelte che ho preso o riguardo qualcosa di più specifico, sono a disposizione.",
-    secondButton: 'Contattami',
     citParagraph:
       'Freedom is living life as you want to live it. You can have that freedom now. Cit. ',
   },

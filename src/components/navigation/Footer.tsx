@@ -10,6 +10,7 @@ import {
 import styled from 'styled-components';
 import LogoImage from '../../assets/images/common/Logo.png';
 import { Paragraph } from '../common/Paragraph';
+import { StyledLink } from '../common/StyledLink';
 
 const socialData = [
   {
@@ -45,8 +46,8 @@ export const Footer: React.FC = () => {
     let SOCIAL_ICON_WIDTH = divWidth / socialData.length;
     SOCIAL_ICON_WIDTH =
       SOCIAL_ICON_WIDTH - (divWidth * socialData.length) / 100;
-    if (SOCIAL_ICON_WIDTH > 40) {
-      SOCIAL_ICON_WIDTH = 40;
+    if (SOCIAL_ICON_WIDTH > 30) {
+      SOCIAL_ICON_WIDTH = 30;
     }
     socialDataIcons.push(
       ...[
@@ -69,26 +70,47 @@ export const Footer: React.FC = () => {
     <Container>
       <FooterColumn>
         <LogoContainer>
-          <a href={'#'} rel={'noreferrer'}>
+          <StyledLink href={'#'}>
             <Logo src={LogoImage} />
-          </a>
+          </StyledLink>
           <Paragraph color={'white'}>
             © {currentYear} {t('footer.copyright')}
           </Paragraph>
         </LogoContainer>
       </FooterColumn>
       <FooterColumn>
-        <h5>{t('footer.usefulLinks')}</h5>
-        <h5>{t('footer.policy')}</h5>
-        <a href={'#'} rel={'noreferrer'}>
-          {t('footer.privacyPolicy')}
-        </a>
-        <a href={'#'} rel={'noreferrer'}>
-          {t('footer.cookiePolicy')}
-        </a>
+        <FooterTitle>{t('footer.usefulLinks')}</FooterTitle>
+        <LinkContainer>
+          <StyledLink href={'#BlogSection'} color={'white'}>
+            {t('common.blog')}
+          </StyledLink>
+        </LinkContainer>
+        <LinkContainer>
+          <StyledLink href={'#'} color={'white'}>
+            {t('navbar.about')}
+          </StyledLink>
+        </LinkContainer>
+        <LinkContainer>
+          <StyledLink href={'#ContactForm'} color={'white'}>
+            {t('common.contactMe')}
+          </StyledLink>
+        </LinkContainer>
+      </FooterColumn>
+      <FooterColumn>
+        <FooterTitle>{t('footer.policy')}</FooterTitle>
+        <LinkContainer>
+          <StyledLink href={'#'} color={'white'}>
+            {t('footer.privacyPolicy')}
+          </StyledLink>
+        </LinkContainer>
+        <LinkContainer>
+          <StyledLink href={'#'} color={'white'}>
+            {t('footer.cookiePolicy')}
+          </StyledLink>
+        </LinkContainer>
       </FooterColumn>
       <FooterColumn ref={contactColumnRef}>
-        <h5>{t('footer.contactInformation')}</h5>
+        <FooterTitle>{t('footer.contactInformation')}</FooterTitle>
         <SocialContainer>
           {!!socialDataIcons.length &&
             socialData.map((social: { name: string; url: string }, i) => {
@@ -109,33 +131,52 @@ export const Footer: React.FC = () => {
 };
 
 const Container = styled.footer`
-  display: block;
-  justify-content: space-between;
   background-color: ${(props) => props.theme.colors.backgroundDark};
+  display: flex;
+  flex-direction: column-reverse;
+  justify-content: space-between;
 
-  @media (min-width: 576px) {
-    display: flex;
+  @media (min-width: 768px) {
+    flex-direction: row;
   }
 `;
 
 const FooterColumn = styled.div`
+  wisth: 100%;
   color: ${(props) => props.theme.colors.textColorWhite};
   flex: 1;
   flex-direction: column;
-  width: 32%;
-  padding: 2em;
+  padding: 1em 2em;
+
+  @media (min-width: 768px) {
+    width: 24%;
+    padding: 2em;
+  }
+`;
+
+const FooterTitle = styled.h5`
+  font-size: 1.5em;
+  color: ${(props) => props.theme.colors.secondary};
+
+  @media (min-width: 768px) {
+    font-size: 1.3em;
+  }
 `;
 
 const LogoContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin-top: 4em;
 `;
 
 const Logo = styled.img`
-  width: 13em;
-  height: 4em;
+  width: 20em;
   margin-bottom: 1.5em;
+
+  @media (min-width: 768px) {
+    width: 15em;
+  }
 `;
 
 const SocialContainer = styled.div`
@@ -152,5 +193,19 @@ const SocialLink = styled.a`
   &:active,
   &:focus {
     color: ${(props) => props.theme.colors.primary};
+  }
+`;
+
+const LinkContainer = styled.span`
+  margin: 0 0.8em;
+  font-size: 1.3em;
+
+  @media (min-width: 576px) {
+    margin: 0.3em 0;
+    display: block;
+  }
+
+  @media (min-width: 768px) {
+    font-size: 1em;
   }
 `;

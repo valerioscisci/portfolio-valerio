@@ -23,7 +23,7 @@ export const BlogSection: React.FC = () => {
         setIsVisible(isVisibleNewValue);
       }}
     >
-      <Container>
+      <Container id={'BlogSection'}>
         <HeadingTitle
           style={{
             position: 'absolute',
