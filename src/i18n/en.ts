@@ -1,6 +1,10 @@
 import it from './it';
 
 const en: typeof it = {
+  common: {
+    contactMe: 'Contattami',
+    blog: 'Blog',
+  },
   navbar: {
     home: 'Home',
     about: 'About',
@@ -15,10 +19,11 @@ const en: typeof it = {
   },
   welcome: {
     heading: 'The waderer developer',
+    subHeading:
+      'I create websites and mobile applications while traveling around the world',
     introParagraph: '',
     introButton: 'scopri altro su di me',
     secondParagraph: '',
-    secondButton: '',
     citParagraph:
       'Freedom is living life as you want to live it. You can have that freedom now. Cit. ',
   },
@@ -46,20 +51,65 @@ const en: typeof it = {
     comingSoon: 'Coming Soon',
     subscribe: 'Subscribe',
   },
+  servicesSection: {
+    title: 'Services I offer',
+    services: {
+      newWebsite: {
+        name: 'Website creation',
+        description:
+          'I can help you in the process of designing, creating and hosting your website.',
+      },
+      newMobileApp: {
+        name: 'I create mobile applications',
+        description:
+          'I can develop your mobile app compatible with Android and Apple devices.',
+      },
+      helpYourTeam: {
+        name: 'Development team support',
+        description:
+          'If your team is in trouble due to high workload, I am available to carry out some tasks to complete on time the development of your project.',
+      },
+      one2one: {
+        name: '1-to-1 talks',
+        description:
+          'If you are a developer who is perhaps just starting out and you want to have a chat, I am always available :)',
+      },
+      codeReview: {
+        name: 'Code review',
+        description:
+          'If you have some code you want to improve and review, we can do it together.',
+      },
+    },
+  },
   reviewsSection: {
     title: 'Companies and clients I have worked with',
-    talkAboutMe: 'Clients reviews',
+    talkAboutMe: 'Testimonials',
   },
   contactForm: {
     title: "Let's work together!",
     formLabels: {
-      name: 'Nome',
+      name: 'Name',
       email: 'Email',
-      message: 'Messaggio',
-      send: 'Invia',
+      message: 'Message',
+      send: 'Submit',
+    },
+    warning: 'Please read this before submitting your message:',
+    warnings: {
+      one: 'I am not interested in an employee job',
+      two: 'Do not contact me with the intention of spamming',
+      three:
+        'I am not the person for you if you are not willing to collaborate 100% remotely',
     },
     thanks: 'Thanks for your message!',
     error: 'Error while sending the message, please try again.',
+  },
+  footer: {
+    copyright: 'The Wanderer Developer',
+    contactInformation: 'Contact information',
+    usefulLinks: 'Link utili',
+    policy: 'Policy',
+    privacyPolicy: 'Privacy Policy',
+    cookiePolicy: 'Cookie Policy',
   },
 };
 export default en;

@@ -1,16 +1,16 @@
 import React, { useState } from 'react';
 import styled, { css } from 'styled-components';
 import { useTranslation } from 'react-i18next';
-import { HeadingTitle } from './HeadingTitle';
+import { HeadingTitle } from '../common/HeadingTitle';
 import i18next from 'i18next';
 import ScrollContainer from 'react-indiana-drag-scroll';
 
-import jsonDB from '../db/data.json';
+import jsonDB from '../../db/data.json';
 import { observer } from 'mobx-react';
-import { useStores } from '../hooks/useStores';
-import { ImageAnimation } from './ImageAnimation';
-import { DotGroup } from './DotGroup';
-import { Review } from '../types';
+import { useStores } from '../../hooks/useStores';
+import { ImageAnimation } from '../common/ImageAnimation';
+import { DotGroup } from '../common/DotGroup';
+import { Review } from '../../types';
 
 export interface ReviewProps {
   review: Review;
@@ -165,9 +165,10 @@ const ReviewContainer = styled.div<{ activeReview: boolean }>`
 const ReviewText = styled.p`
   position: relative;
   font-size: 1.3em;
+  line-height: 1.8em;
   font-style: italic;
   letter-spacing: 0.1em;
-  font-family: Corben;
+  font-family: Manrope;
   margin: auto;
   width: 85%;
   position: relative;
@@ -175,6 +176,7 @@ const ReviewText = styled.p`
 
   &:before {
     content: '“';
+    font-family: Corben;
     font-size: 5em;
     line-height: 2em;
     position: absolute;

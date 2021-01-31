@@ -1,15 +1,15 @@
 import React from 'react';
 import styled, { css } from 'styled-components';
-import { ImageAnimation } from './ImageAnimation';
-import { AutowriteText } from './AutowriteText';
-import { ProjectData, PortfolioProject } from '../types';
+import { ImageAnimation } from '../common/ImageAnimation';
+import { AutowriteText } from '../common/AutowriteText';
+import { ProjectData, PortfolioProject } from '../../types';
 import { useTranslation } from 'react-i18next';
 import i18next from 'i18next';
-import { ConditionalWrapper } from './ConditionalWrapper';
+import { ConditionalWrapper } from '../common/ConditionalWrapper';
 import { FaArrowRight, FaExternalLinkAlt, FaGithub } from 'react-icons/fa';
-import { Button } from './Button';
-import jsonDB from '../db/data.json';
-import { valerioTheme } from '../theme';
+import { Button } from '../common/Button';
+import jsonDB from '../../db/data.json';
+import { valerioTheme } from '../../theme';
 
 export interface ProjectSlideProps {
   width: number;

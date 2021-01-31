@@ -2,11 +2,11 @@ import React, { useCallback, useState } from 'react';
 import styled from 'styled-components';
 import { useTranslation } from 'react-i18next';
 import { TechList } from './TechList';
-import { useStores } from '../hooks/useStores';
+import { useStores } from '../../hooks/useStores';
 import { ProjectsShow } from './ProjectsShow';
-import { PortfolioProject } from '../types';
-import { HeadingTitle } from './HeadingTitle';
-import { valerioTheme } from '../theme';
+import { PortfolioProject } from '../../types';
+import { HeadingTitle } from '../common/HeadingTitle';
+import { valerioTheme } from '../../theme';
 
 interface KnownTechSectionProps {
   width: number;
@@ -71,7 +71,7 @@ export const KnownTechSection: React.FC<KnownTechSectionProps> = ({
             projects={[
               {
                 alt: t('knownTechs.noProjects'),
-                img: require('../assets/images/portfolio/no_projects.svg'),
+                img: require('../../assets/images/portfolio/no_projects.svg'),
                 madeWith: [selectedTech],
               },
             ]}

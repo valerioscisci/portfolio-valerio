@@ -1,4 +1,8 @@
 const it = {
+  common: {
+    contactMe: 'Contattami',
+    blog: 'Blog',
+  },
   navbar: {
     home: 'Home',
     about: 'Chi Sono',
@@ -13,6 +17,8 @@ const it = {
   },
   welcome: {
     heading: 'The wanderer developer',
+    subHeading:
+      'Realizzo siti web e applicazioni mobile, viaggiando e documentando il tutto',
     introParagraph:
       'Il mio nome è Valerio e sono un ingegnere informatico specializzato in sviluppo web oltre ad essere un appassionato di tutto ciò che riguarda il mondo dei viaggi. ' +
       'Da qualche anno a questa parte ho preso la decisione di non voler passare la maggior parte della vita chiuso tra le quattro mura di un ufficio. ' +
@@ -20,7 +26,6 @@ const it = {
     introButton: 'scopri altro su di me',
     secondParagraph:
       "Se hai un progetto in mente che preveda la realizzazione di un sito web o di un'applicazione mobile, contattami! Allo stesso modo, se sei un developer e vuoi fare due chiacchiere sul lavoro da remoto, sulle scelte che ho preso o riguardo qualcosa di più specifico, sono a disposizione.",
-    secondButton: 'Contattami',
     citParagraph:
       'Freedom is living life as you want to live it. You can have that freedom now. Cit. ',
   },
@@ -48,6 +53,36 @@ const it = {
     comingSoon: 'Coming Soon',
     subscribe: 'Iscriviti alla newsletter',
   },
+  servicesSection: {
+    title: 'Cosa posso fare per te',
+    services: {
+      newWebsite: {
+        name: 'Creazione di siti web',
+        description:
+          'Posso aiutarti nel processo di progettazione, creazione e hosting del tuo sito web.',
+      },
+      newMobileApp: {
+        name: 'Creazione di applicazioni mobile',
+        description:
+          'Posso sviluppare la tua app mobile compatibile con dispositivi Android e Apple.',
+      },
+      helpYourTeam: {
+        name: 'Supporto team di sviluppo',
+        description:
+          'Se il tuo team è in difficoltà per il troppo carico di lavoro, sono disponibile a svolgere alcuni task per portare a termine lo sviluppo del tuo progetto per tempo.',
+      },
+      one2one: {
+        name: '1-to-1 talks',
+        description:
+          'Se sei uno sviluppatore che magari si sta affacciando al mondo del lavoro e vuoi fare una chiacchierata sono a disposizione :)',
+      },
+      codeReview: {
+        name: 'Revisione di codice',
+        description:
+          "Se hai del codice che vuoi migliorare, possiamo senz'altro farlo insieme.",
+      },
+    },
+  },
   reviewsSection: {
     title: 'Compagnie e clienti con cui ho collaborato',
     talkAboutMe: 'Dicono di me...',
@@ -60,8 +95,23 @@ const it = {
       message: 'Messaggio',
       send: 'Invia',
     },
+    warning: 'Ti prego di leggere queste note prima di inviarmi un messaggio:',
+    warnings: {
+      one: 'Non sono interessato ad un lavoro come dipendente',
+      two: "Non contattarmi con l'intenzione di fare spam",
+      three:
+        'Non sono la persona che fa per te se non sei disposto a collaborare al 100% da remoto e se non sei flessibile con gli orari',
+    },
     thanks: 'Grazie per il messaggio!',
     error: "Errore durante l'invio, per favore prova di nuovo.",
+  },
+  footer: {
+    copyright: 'The Wanderer Developer',
+    contactInformation: 'Informazioni di contatto',
+    usefulLinks: 'Link utili',
+    policy: 'Policy',
+    privacyPolicy: 'Privacy Policy',
+    cookiePolicy: 'Cookie Policy',
   },
 };
 

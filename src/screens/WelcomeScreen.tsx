@@ -1,24 +1,27 @@
 import React from 'react';
 import { observer } from 'mobx-react';
 import { useStores } from '../hooks/useStores';
-import { Navbar } from '../components/Navbar';
+import { Navbar } from '../components/navigation/Navbar';
 import { useTranslation } from 'react-i18next';
 import styled from 'styled-components';
-import { MainSlider } from '../components/Slider';
+import { MainSlider } from '../components/welcomePage/Slider';
 import brush from '../assets/images/homepage/brush.png';
-import { Button } from '../components/Button';
+import { Button } from '../components/common/Button';
 import { FaArrowRight } from 'react-icons/fa';
-import { ImageAnimation } from '../components/ImageAnimation';
-import { ParallaxSection } from '../components/ParallaxSection';
-import { KnownTechSection } from '../components/KnownTechSection';
+import { ImageAnimation } from '../components/common/ImageAnimation';
+import { ParallaxSection } from '../components/welcomePage/ParallaxSection';
+import { KnownTechSection } from '../components/welcomePage/KnownTechSection';
 import useScrollPosition from '@react-hook/window-scroll';
 import { useWindowSize } from '../hooks/useWindowSize';
-import { BlogSection } from '../components/BlogSection';
-import { Paragraph } from '../components/Paragraph';
-import { HeadingTitle } from '../components/HeadingTitle';
+import { BlogSection } from '../components/welcomePage/BlogSection';
+import { Paragraph } from '../components/common/Paragraph';
+import { HeadingTitle } from '../components/common/HeadingTitle';
 import { valerioTheme } from '../theme';
-import { ReviewsSection } from '../components/ReviewsSection';
-import { ContactForm } from '../components/ContactForm';
+import { ReviewsSection } from '../components/welcomePage/ReviewsSection';
+import { ContactForm } from '../components/welcomePage/ContactForm';
+import { SubHeading } from '../components/common/SubHeading';
+import { Footer } from '../components/navigation/Footer';
+import { ServicesSection } from '../components/welcomePage/ServicesSection';
 
 const HomeScreen: React.FC = observer((props) => {
   const { home } = useStores();
@@ -45,11 +48,14 @@ const HomeScreen: React.FC = observer((props) => {
             background: ' url(' + brush + ')',
             backgroundRepeat: ' no-repeat',
             backgroundSize: ' 100% 95%',
-            marginTop: 0,
+            margin: 0,
           }}
         >
           {t(`welcome.heading`)}
         </HeadingTitle>
+        <SubHeading style={{ marginBottom: '4em' }}>
+          {t('welcome.subHeading')}
+        </SubHeading>
         <FirstSection>
           <CVImage>
             <ImageAnimation
@@ -84,7 +90,7 @@ const HomeScreen: React.FC = observer((props) => {
           </HeadingTitle>
           <Paragraph color={'white'}>{t(`welcome.secondParagraph`)}</Paragraph>
           <Button
-            buttonText={t(`welcome.secondButton`)}
+            buttonText={t(`common.contactMe`)}
             style={{ margin: '2em auto' }}
             onClickUrl={'#ContactForm'}
           ></Button>
@@ -103,20 +109,18 @@ const HomeScreen: React.FC = observer((props) => {
             animationX={'5.5em'}
             animationRotation={'-10deg'}
             animationDuration={1}
+            boxShadow={true}
           />
         </SecondSection>
         <KnownTechSection width={width} />
         <ParallaxSection scrollY={scrollY} />
         <BlogSection />
+        <ServicesSection />
         {props.children}
         <ReviewsSection />
         <ContactForm width={width} />
       </Main>
-      <footer
-        style={{ height: '500px', width: '100%', backgroundColor: 'black' }}
-      >
-        footer
-      </footer>
+      <Footer />
     </Container>
   );
 });

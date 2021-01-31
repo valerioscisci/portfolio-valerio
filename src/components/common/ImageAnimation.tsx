@@ -16,6 +16,7 @@ export interface ImageAnimationProps {
   animationRotation?: string;
   animationDuration?: number;
   showOnPhone?: boolean;
+  boxShadow?: boolean;
 }
 
 export const ImageAnimation: React.FC<ImageAnimationProps> = ({
@@ -27,6 +28,7 @@ export const ImageAnimation: React.FC<ImageAnimationProps> = ({
   animationRotation,
   animationDuration,
   showOnPhone,
+  boxShadow,
 }) => {
   const [isVisible, setIsVisible] = useState<boolean>(false);
 
@@ -48,6 +50,7 @@ export const ImageAnimation: React.FC<ImageAnimationProps> = ({
         animationDuration={animationDuration}
         showOnPhone={showOnPhone}
         style={imageStyle}
+        boxShadow={boxShadow}
       />
     </VisibilitySensor>
   );
@@ -65,6 +68,7 @@ const Image = styled.img<{
   animationRotation?: string;
   animationDuration?: number;
   showOnPhone?: boolean;
+  boxShadow?: boolean;
 }>`
   --animationX: ${(props) => (props.animationX ? props.animationX : '100px')};
   --negativeAnimationX: calc(-1 * var(--animationX));
@@ -294,6 +298,13 @@ const Image = styled.img<{
         cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
       animation: slide-bl var(--animationDuration)
         cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+
+      ${props.boxShadow &&
+      css`
+        box-shadow: 5px -5px rgb(33, 41, 48, 0.4),
+          10px -10px rgb(33, 41, 48, 0.3), 15px -15px rgb(33, 41, 48, 0.2),
+          20px -20px rgb(33, 41, 48, 0.1), 25px -25px rgb(33, 41, 48, 0.05);
+      `}
     `}
 
   ${(props) =>
@@ -304,6 +315,13 @@ const Image = styled.img<{
         cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
       animation: slide-br var(--animationDuration)
         cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+
+      ${props.boxShadow &&
+      css`
+        box-shadow: -5px -5px rgb(33, 41, 48, 0.4),
+          -10px -10px rgb(33, 41, 48, 0.3), -15px -15px rgb(33, 41, 48, 0.2),
+          -20px -20px rgb(33, 41, 48, 0.1), -25px -25px rgb(33, 41, 48, 0.05);
+      `}
     `}
 
     ${(props) =>

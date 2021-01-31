@@ -1,15 +1,16 @@
 import React, { useState } from 'react';
 import styled, { css } from 'styled-components';
 import { observer } from 'mobx-react';
-import contactFormBackground from '../assets/images/homepage/contact_form.jpg';
-import { HeadingTitle } from './HeadingTitle';
-import { ConditionalWrapper } from './ConditionalWrapper';
+import contactFormBackground from '../../assets/images/homepage/contact_form.jpg';
+import { HeadingTitle } from '../common/HeadingTitle';
+import { ConditionalWrapper } from '../common/ConditionalWrapper';
 import { useTranslation } from 'react-i18next';
-import { TextInput } from './TextInput';
+import { TextInput } from '../common/TextInput';
 import ReCAPTCHA from 'react-google-recaptcha';
-import { validateEmail } from '../utils/validation';
-import { useStores } from '../hooks/useStores';
+import { validateEmail } from '../../utils/validation';
+import { useStores } from '../../hooks/useStores';
 import { FaEnvelope } from 'react-icons/fa';
+import { Paragraph } from '../common/Paragraph';
 
 export interface ContactFormProps {
   width: number;
@@ -60,7 +61,7 @@ export const ContactForm: React.FC<ContactFormProps> = observer(({ width }) => {
   };
 
   return (
-    <Section>
+    <Section id={'ContactForm'}>
       <HeadingTitle
         color={width < 992 ? 'black' : 'white'}
         style={width > 992 ? { marginBottom: '5em' } : {}}
@@ -72,7 +73,6 @@ export const ContactForm: React.FC<ContactFormProps> = observer(({ width }) => {
         wrapper={(children) => <FormContainer>{children}</FormContainer>}
       >
         <form
-          id={'ContactForm'}
           name={'contact'}
           method={'POST'}
           onSubmit={(e) => {
@@ -128,6 +128,17 @@ export const ContactForm: React.FC<ContactFormProps> = observer(({ width }) => {
             hl={home.language}
           />
           <ButtonContainer>
+            <Paragraph
+              color={width < 992 ? 'white' : 'black'}
+              style={{ fontSize: width < 992 ? '1em' : '0.6em' }}
+            >
+              {t('contactForm.warning')}
+            </Paragraph>
+            <Notes>
+              <li>{t('contactForm.warnings.one')}</li>
+              <li>{t('contactForm.warnings.two')}</li>
+              <li>{t('contactForm.warnings.three')}</li>
+            </Notes>
             <SubmitButton
               disabled={
                 !notRobot ||
@@ -162,7 +173,6 @@ const Section = styled.section`
   flex-direction: column;
   position: relative;
   width: 100%;
-  height: 50em;
   margin-top: 10em;
   padding: 0 3em;
 
@@ -178,7 +188,7 @@ const Section = styled.section`
     ),
     url(${contactFormBackground});
   background-size: cover;
-  background-position: 30% 0%;
+  background-position: 35% 0%;
 
   @media (min-width: 992px) {
     flex-direction: row;
@@ -208,10 +218,13 @@ const FormContainer = styled.div`
 const ButtonContainer = styled.div`
   margin: 2em 0;
   width: 100%;
+  padding: 0.5em;
+  background-color: rgba(255, 255, 255, 0.25);
 
   @media (min-width: 992px) {
-    margin: 1em 0 0 0;
+    margin: 0;
     display: flex;
+    flex-direction: column;
     justify-content: center;
   }
 `;
@@ -264,4 +277,32 @@ const SubmitButton = styled.button<{ disabled?: boolean }>`
         background: ${(props) => props.theme.colors.backgroundDark};
         color: ${(props) => props.theme.colors.primary};
       `}
+`;
+
+const Notes = styled.ul`
+  list-style-type: '* ';
+  padding: 0;
+  margin: 1em;
+
+  & li {
+    font-size: 1em;
+    color: ${(props) => props.theme.colors.error};
+    font-weight: bold;
+    font-family: Manrope;
+    letter-spacing: 0.1em;
+    margin: 0.3em 0;
+
+    @media (min-width: 992px) {
+      font-size: 0.5em;
+      margin: 0.2em 0;
+    }
+
+    &:not(:last-child):after {
+      content: ';';
+    }
+
+    &:last-child:after {
+      content: '.';
+    }
+  }
 `;
