@@ -79,10 +79,6 @@ export const TextInput: React.FC<TextInputProps> = ({
 const InputContainer = styled.div`
   position: relative;
   margin: 0 0 2em 0;
-
-  @media (min-width: 992px) {
-    margin: 0 0 3em 0;
-  }
 `;
 
 const Label = styled.label<{ focused: boolean }>`
