@@ -21,6 +21,7 @@ import { ReviewsSection } from '../components/welcomePage/ReviewsSection';
 import { ContactForm } from '../components/welcomePage/ContactForm';
 import { SubHeading } from '../components/common/SubHeading';
 import { Footer } from '../components/navigation/Footer';
+import { ServicesSection } from '../components/welcomePage/ServicesSection';
 
 const HomeScreen: React.FC = observer((props) => {
   const { home } = useStores();
@@ -108,11 +109,13 @@ const HomeScreen: React.FC = observer((props) => {
             animationX={'5.5em'}
             animationRotation={'-10deg'}
             animationDuration={1}
+            boxShadow={true}
           />
         </SecondSection>
         <KnownTechSection width={width} />
         <ParallaxSection scrollY={scrollY} />
         <BlogSection />
+        <ServicesSection />
         {props.children}
         <ReviewsSection />
         <ContactForm width={width} />
