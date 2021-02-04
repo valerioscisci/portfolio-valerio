@@ -22,6 +22,7 @@ import { ContactForm } from '../components/welcomePage/ContactForm';
 import { SubHeading } from '../components/common/SubHeading';
 import { Footer } from '../components/navigation/Footer';
 import { ServicesSection } from '../components/welcomePage/ServicesSection';
+import { NewsletterForm } from '../components/common/NewsletterForm';
 
 const HomeScreen: React.FC = observer((props) => {
   const { home } = useStores();
@@ -116,7 +117,8 @@ const HomeScreen: React.FC = observer((props) => {
         <ParallaxSection scrollY={scrollY} />
         <BlogSection />
         <ServicesSection />
-        {props.children}
+        {/* {props.children} */}
+        <NewsletterForm />
         <ReviewsSection />
         <ContactForm width={width} />
       </Main>

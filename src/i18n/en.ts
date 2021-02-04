@@ -51,6 +51,12 @@ const en: typeof it = {
     comingSoon: 'Coming Soon',
     subscribe: 'Subscribe',
   },
+  newsletter: {
+    subscribe: 'Iscriviti alla newsletter',
+    infoText:
+      'If you subscribe you will receive emails containing updates on my travels and interesting topics for web developers.',
+    subscribeButton: 'Subscribe',
+  },
   servicesSection: {
     title: 'Services I offer',
     services: {

@@ -51,11 +51,13 @@ export const ReviewsSection: React.FC = observer(() => {
             />
           );
         })}
-        <DotGroup
-          slidesNumber={reviews.length}
-          activeIndex={currentShownReview}
-          onDotClick={setCurrentShownReview}
-        />
+        {!reviews.length && (
+          <DotGroup
+            slidesNumber={reviews.length}
+            activeIndex={currentShownReview}
+            onDotClick={setCurrentShownReview}
+          />
+        )}
       </ReviewsContainer>
       <HeadingTitle>{t('reviewsSection.title')}</HeadingTitle>
       <ScrollContainer vertical={false} className={'companies-scroll'}>
@@ -137,8 +139,12 @@ const CompaniesContainer = styled.div`
 const ReviewsContainer = styled.div`
   background-color: ${(props) => props.theme.colors.backgroundLight};
   color: ${(props) => props.theme.colors.textColorWhite};
-  padding: 3em;
-  padding-bottom: 0;
+  clip-path: polygon(0 0, 100% 19%, 100% 100%, 0 82%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 10em 1em;
 `;
 
 const ReviewContainer = styled.div<{ activeReview: boolean }>`

@@ -53,6 +53,12 @@ const it = {
     comingSoon: 'Coming Soon',
     subscribe: 'Iscriviti alla newsletter',
   },
+  newsletter: {
+    subscribe: 'Iscriviti alla newsletter',
+    infoText:
+      "Iscrivendoti riceverai delle email contenenti aggiornamenti sui miei viaggi e argomenti d'interesse per sviluppatori web.",
+    subscribeButton: 'Iscriviti',
+  },
   servicesSection: {
     title: 'Cosa posso fare per te',
     services: {
