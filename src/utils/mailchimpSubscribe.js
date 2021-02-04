@@ -10,23 +10,12 @@ const subscribe = (url) =>
       param: 'c',
     },
     (err, data) => {
-      console.log(err, data);
-
       if (err) {
-        return {
-          status: 'error',
-          message: err,
-        };
+        return 'error';
       } else if (data.result !== 'success') {
-        return {
-          status: 'error',
-          message: data.msg,
-        };
+        return 'error';
       } else {
-        return {
-          status: 'success',
-          message: data.msg,
-        };
+        return 'success';
       }
     },
   );

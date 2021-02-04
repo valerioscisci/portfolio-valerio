@@ -9,6 +9,7 @@ import { HeadingTitle } from './HeadingTitle';
 import subscbribeButton from '../../assets/images/homepage/subscribeButton.svg';
 import { Paragraph } from './Paragraph';
 import { StyledLink } from './StyledLink';
+import { Spinner } from './Spinner';
 
 const textBoxStyle = {
   width: '100%',
@@ -22,7 +23,9 @@ const textInputStyle = {
 
 export const NewsletterForm: React.FC = observer(() => {
   const { t } = useTranslation();
-  const [success, setSuccess] = useState<boolean | undefined>(undefined);
+  const [status, setStatus] = useState<
+    'onHold' | 'loading' | 'success' | 'failed'
+  >('onHold');
   const [name, setName] = useState<string>('');
   const [email, setEmail] = useState<string>('');
   const [checkboxChoice, setCheckboxChoice] = useState<boolean>(false);
@@ -33,32 +36,26 @@ export const NewsletterForm: React.FC = observer(() => {
   };
 
   const submit = async () => {
-    const subscribeResponde = await subscribeToMailingList(
+    const subscribeResponde: string = await subscribeToMailingList(
       process.env.REACT_APP_MAILCHIMP_URL,
       {
         email: email,
         name: name,
       },
     );
-    console.log(subscribeResponde);
+    if (subscribeResponde === 'error') {
+      setStatus('failed');
+    } else if (subscribeResponde === 'success') {
+      setStatus('success');
+      resetForm();
+    } else {
+      setStatus('onHold');
+    }
   };
 
   return (
     <Section id={'Newsletter'}>
       <Container>
-        {/* {status === "sending" && <div style={{ color: "blue" }}>sending...</div>}
-      {status === "error" && (
-        <div
-          style={{ color: "red" }}
-          dangerouslySetInnerHTML={{ __html: message }}
-        />
-      )}
-      {status === "success" && (
-        <div
-          style={{ color: "green" }}
-          dangerouslySetInnerHTML={{ __html: message }}
-        />
-      )} */}
         <div>
           <HeadingTitle color={'white'}>
             {t('newsletter.subscribe')}
@@ -110,15 +107,27 @@ export const NewsletterForm: React.FC = observer(() => {
           >
             <Paragraph color={'white'}>
               Accetta{' '}
-              <StyledLink href={'#'} color={'white'} onHoverSpacing={false}>
+              <StyledLink href={'#'} color={'white'} hoverSpacing={false}>
                 {t('footer.privacyPolicy')}
               </StyledLink>
             </Paragraph>
             <CheckboxPrivacy type={'checkbox'} checked={checkboxChoice} />
             <span></span>
           </CheckboxContainer>
+          {status === 'loading' ? (
+            <Spinner size={10} />
+          ) : status === 'failed' ? (
+            <Paragraph color={'red'}>{t('newsletter.failure')}</Paragraph>
+          ) : (
+            status === 'success' && (
+              <Paragraph color={'white'}>{t('newsletter.success')}</Paragraph>
+            )
+          )}
           <ButtonSubscribe
-            onClick={submit}
+            onClick={() => {
+              setStatus('loading');
+              submit();
+            }}
             disabled={!validateEmail(email) || !checkboxChoice}
           >
             {t('newsletter.subscribeButton')}
@@ -140,10 +149,6 @@ const Section = styled.section`
   clip-path: polygon(0 20%, 100% 0%, 100% 80%, 0% 100%);
 
   @media (min-width: 768px) {
-    height: 25em;
-  }
-
-  @media (min-width: 1200px) {
     height: 35em;
   }
 `;
@@ -185,19 +190,6 @@ const FieldsContainer = styled.div`
 const InfoText = styled.div`
   padding: 2em 1em;
   margin-top: -4em;
-`;
-
-const SuccessMessage = styled.span`
-  margin-left: 1em;
-  font-family: Corben;
-  letter-spacing: 0.2em;
-  color: ${(props) => props.theme.colors.primary};
-  font-weight: bold;
-  font-size: 1.2em;
-`;
-
-const ErrorMessage = styled(SuccessMessage)`
-  color: ${(props) => props.theme.colors.error};
 `;
 
 const CheckboxPrivacy = styled.input`

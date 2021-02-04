@@ -58,6 +58,8 @@ const it = {
     infoText:
       "Iscrivendoti riceverai delle email contenenti aggiornamenti sui miei viaggi e argomenti d'interesse per sviluppatori web.",
     subscribeButton: 'Iscriviti',
+    success: 'Iscritto con successo!',
+    failure: "Errore durante l'isrcrizione, riprova per favore.",
   },
   servicesSection: {
     title: 'Cosa posso fare per te',

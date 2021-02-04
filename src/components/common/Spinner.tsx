@@ -1,13 +1,17 @@
 import React from 'react';
 import CircleLoader from 'react-spinners/CircleLoader';
 
-export const Spinner: React.FC = () => {
+interface Props {
+  size?: number;
+}
+
+export const Spinner: React.FC<Props> = ({ size = 150 }) => {
   return (
     <CircleLoader
       css={`
         margin: auto;
       `}
-      size={150}
+      size={size}
       color={'#222831'}
       loading={true}
     />
