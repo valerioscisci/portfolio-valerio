@@ -1,10 +1,7 @@
 import React from 'react';
 import { observer } from 'mobx-react';
-import { useStores } from '../hooks/useStores';
-import { Navbar } from '../components/navigation/Navbar';
 import { useTranslation } from 'react-i18next';
 import styled from 'styled-components';
-import { MainSlider } from '../components/welcomePage/Slider';
 import brush from '../assets/images/homepage/brush.png';
 import { Button } from '../components/common/Button';
 import { FaArrowRight } from 'react-icons/fa';
@@ -23,26 +20,17 @@ import { SubHeading } from '../components/common/SubHeading';
 import { Footer } from '../components/navigation/Footer';
 import { ServicesSection } from '../components/welcomePage/ServicesSection';
 import { NewsletterForm } from '../components/common/NewsletterForm';
+import { Header } from '../components/navigation/Header';
+import { GitHubCorner } from '../components/common/GitHubCorner';
 
 const HomeScreen: React.FC = observer((props) => {
-  const { home } = useStores();
   const { t } = useTranslation();
   const [width] = useWindowSize();
   const scrollY = useScrollPosition(144);
-  const navLinks = [
-    { name: t('navbar.home'), route: '/' },
-    { name: t('navbar.about'), route: '/about' },
-    { name: t('navbar.portfolio'), route: '/portfolio' },
-    { name: t('navbar.contact'), route: '/#ContactForm' },
-    { name: t('newsletter.subscribeButton'), route: '/#Newsletter' },
-  ];
 
   return (
     <Container>
-      <header>
-        <Navbar width={width} navLinks={navLinks} />
-        <MainSlider imagesArray={home.sliderImages} />
-      </header>
+      <Header width={width} />
       <Main>
         <HeadingTitle
           style={{
@@ -124,6 +112,7 @@ const HomeScreen: React.FC = observer((props) => {
         <ContactForm width={width} />
       </Main>
       <Footer />
+      {width > 768 && <GitHubCorner />}
     </Container>
   );
 });

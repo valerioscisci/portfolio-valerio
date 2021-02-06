@@ -4,6 +4,8 @@ import LogoImage from '../../assets/images/common/Logo.png';
 import { BrowserRouter } from 'react-router-dom';
 import { MenuIcon } from './MenuIcon';
 import { HashLink as Link } from 'react-router-hash-link';
+import { i18n } from '../../i18n';
+import itaFlag from '../../assets/images/common/ita_flag.png';
 
 export interface NavbarProps {
   navLinks: any;
@@ -21,6 +23,10 @@ export const Navbar: React.FC<NavbarProps> = ({ navLinks, width }) => {
       document.body.style.overflow = 'initial';
     }
   }, [menuOpen]);
+
+  const changeLanguage = (lng: string) => {
+    i18n.changeLanguage(lng);
+  };
 
   return (
     <NavbarContainer>
@@ -58,6 +64,14 @@ export const Navbar: React.FC<NavbarProps> = ({ navLinks, width }) => {
           );
         })}
       </NavbarRight>
+      <LanguageSelector>
+        <ChangeLanguageButton flag={'it'} onClick={() => changeLanguage('it')}>
+          it
+        </ChangeLanguageButton>
+        <ChangeLanguageButton flag={'en'} onClick={() => changeLanguage('en')}>
+          en
+        </ChangeLanguageButton>
+      </LanguageSelector>
     </NavbarContainer>
   );
 };
@@ -73,6 +87,7 @@ const NavbarContainer = styled.nav`
   justify-content: space-between;
   background: ${(props) => props.theme.colors.backgroundDark};
   z-index: 2;
+  position: relative;
 `;
 
 const Logo = styled.img`
@@ -247,4 +262,35 @@ const NavbarItem = styled.li<{ menuOpen: boolean; route: string }>`
     transition: transform 0.4s ease;
   }
   `}
+`;
+
+const LanguageSelector = styled.div`
+  position: absolute;
+  left: 1em;
+  bottom: -3em;
+`;
+
+const ChangeLanguageButton = styled.button<{ flag?: string }>`
+  width: 2.2em;
+  height: 2.2em;
+  outline: none;
+  font-size: 1em;
+  font-family: Manrope;
+  background-color: ${(props) => props.theme.colors.backgroundDark};
+  color: ${(props) => props.theme.colors.textColorWhite};
+  margin-right: 1em;
+  border-radius: 50%;
+  text-transform: uppercase;
+  cursor: pointer;
+  border: none;
+
+  ${(props) => {
+    switch (true) {
+      case props.flag === 'it':
+        return css`
+          background-image: url(${itaFlag});
+          background-size: contain;
+        `;
+    }
+  }}
 `;
