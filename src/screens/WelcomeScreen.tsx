@@ -30,10 +30,11 @@ const HomeScreen: React.FC = observer((props) => {
   const [width] = useWindowSize();
   const scrollY = useScrollPosition(144);
   const navLinks = [
-    { name: t(`navbar.home`), route: '/' },
-    { name: t(`navbar.about`), route: '/about' },
-    { name: t(`navbar.portfolio`), route: '/portfolio' },
-    { name: t(`navbar.contact`), route: '/#ContactForm' },
+    { name: t('navbar.home'), route: '/' },
+    { name: t('navbar.about'), route: '/about' },
+    { name: t('navbar.portfolio'), route: '/portfolio' },
+    { name: t('navbar.contact'), route: '/#ContactForm' },
+    { name: t('newsletter.subscribeButton'), route: '/#Newsletter' },
   ];
 
   return (
@@ -117,7 +118,7 @@ const HomeScreen: React.FC = observer((props) => {
         <ParallaxSection scrollY={scrollY} />
         <BlogSection />
         <ServicesSection />
-        {/* {props.children} */}
+        {props.children}
         <NewsletterForm />
         <ReviewsSection />
         <ContactForm width={width} />
