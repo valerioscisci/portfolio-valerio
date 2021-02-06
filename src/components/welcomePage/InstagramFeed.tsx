@@ -246,6 +246,8 @@ const InstagramProfilePic = styled.img`
   width: 100%;
   border-radius: 50%;
   height: auto;
+  max-height: 10em;
+  max-width: 10em;
 `;
 
 const PicsShow = styled.div`

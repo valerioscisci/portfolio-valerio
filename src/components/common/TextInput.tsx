@@ -7,6 +7,8 @@ export interface TextInputProps {
   type: 'text' | 'email' | 'textarea';
   required: boolean;
   isValid: boolean;
+  textBoxStyle?: React.CSSProperties;
+  style?: React.CSSProperties;
   onChange: (newValue: string) => void;
 }
 
@@ -16,6 +18,8 @@ export const TextInput: React.FC<TextInputProps> = ({
   type,
   required,
   isValid,
+  textBoxStyle,
+  style,
   onChange,
 }) => {
   const [focused, setFocused] = useState<boolean>(false);
@@ -32,7 +36,7 @@ export const TextInput: React.FC<TextInputProps> = ({
   });
 
   return (
-    <InputContainer>
+    <InputContainer style={style}>
       <Label htmlFor={name} focused={focused}>
         {label} {required && <span style={{ color: 'red' }}>*</span>}
       </Label>
@@ -53,6 +57,7 @@ export const TextInput: React.FC<TextInputProps> = ({
             onChange(event.target.value);
           }}
           isValid={isValid}
+          style={textBoxStyle}
         />
       ) : (
         type === 'textarea' && (

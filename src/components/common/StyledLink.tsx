@@ -1,10 +1,11 @@
 import React from 'react';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 export interface StyledLinkProps {
   color?: string;
   href: string;
   target?: string;
+  hoverSpacing?: boolean;
   style?: React.CSSProperties;
 }
 
@@ -12,6 +13,7 @@ export const StyledLink: React.FC<StyledLinkProps> = ({
   color,
   href,
   target,
+  hoverSpacing = true,
   style,
   ...props
 }) => {
@@ -21,6 +23,7 @@ export const StyledLink: React.FC<StyledLinkProps> = ({
       color={color}
       rel={'noreferrer'}
       target={target}
+      hoverSpacing={hoverSpacing}
       style={style}
     >
       {props.children}
@@ -28,7 +31,7 @@ export const StyledLink: React.FC<StyledLinkProps> = ({
   );
 };
 
-const Container = styled.a<{ color?: string }>`
+const Container = styled.a<{ color?: string; hoverSpacing?: boolean }>`
   color: ${(props) =>
     props.color === 'white'
       ? props.theme.colors.textColorWhite
@@ -45,7 +48,11 @@ const Container = styled.a<{ color?: string }>`
   &:active {
     @media (min-width: 576px) {
       color: ${(props) => props.theme.colors.primary};
-      letter-spacing: 0.15em;
+      ${(props) =>
+        props.hoverSpacing &&
+        css`
+          letter-spacing: 0.15em;
+        `}
     }
   }
 `;

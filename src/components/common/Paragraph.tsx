@@ -1,5 +1,5 @@
 import React from 'react';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 export interface ParagraphProps {
   color?: string;
@@ -19,10 +19,26 @@ export const Paragraph: React.FC<ParagraphProps> = ({
 };
 
 const Container = styled.p<{ color?: string }>`
-  color: ${(props) =>
-    props.color === 'white'
-      ? props.theme.colors.textColorWhite
-      : props.theme.colors.textColorBlack};
+  ${(props) => {
+    switch (true) {
+      case props.color === 'white':
+        return css`
+          color: ${(props) => props.theme.colors.textColorWhite};
+        `;
+      case props.color === 'green':
+        return css`
+          color: ${(props) => props.theme.colors.primary};
+        `;
+      case props.color === 'red':
+        return css`
+          color: ${(props) => props.theme.colors.error};
+        `;
+      default:
+        return css`
+          color: ${(props) => props.theme.colors.textColorBlack};
+        `;
+    }
+  }}
   font-family: Corben;
   font-size: 1em;
   word-spacing: 0.15em;
