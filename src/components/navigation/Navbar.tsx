@@ -290,6 +290,7 @@ const ChangeLanguageButton = styled.button<{ flag?: string }>`
         return css`
           background-image: url(${itaFlag});
           background-size: contain;
+          text-shadow: 0 5px 5px ${(props) => props.theme.colors.textColorBlack};
         `;
     }
   }}

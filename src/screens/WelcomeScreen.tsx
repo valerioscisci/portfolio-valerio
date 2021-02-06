@@ -17,20 +17,17 @@ import { valerioTheme } from '../theme';
 import { ReviewsSection } from '../components/welcomePage/ReviewsSection';
 import { ContactForm } from '../components/welcomePage/ContactForm';
 import { SubHeading } from '../components/common/SubHeading';
-import { Footer } from '../components/navigation/Footer';
 import { ServicesSection } from '../components/welcomePage/ServicesSection';
 import { NewsletterForm } from '../components/common/NewsletterForm';
-import { Header } from '../components/navigation/Header';
-import { GitHubCorner } from '../components/common/GitHubCorner';
+import { ScreenContainer } from './ScreenContainer';
 
-const HomeScreen: React.FC = observer((props) => {
+export const HomeScreen: React.FC = observer((props) => {
   const { t } = useTranslation();
   const [width] = useWindowSize();
   const scrollY = useScrollPosition(144);
 
   return (
-    <Container>
-      <Header width={width} />
+    <ScreenContainer>
       <Main>
         <HeadingTitle
           style={{
@@ -111,21 +108,9 @@ const HomeScreen: React.FC = observer((props) => {
         <ReviewsSection />
         <ContactForm width={width} />
       </Main>
-      <Footer />
-      {width > 768 && <GitHubCorner />}
-    </Container>
+    </ScreenContainer>
   );
 });
-
-export default HomeScreen;
-
-const Container = styled.div`
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  height: 100%;
-  position: relative;
-`;
 
 const Main = styled.main`
   background-color: ${(props) => props.theme.colors.background};
