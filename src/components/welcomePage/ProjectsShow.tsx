@@ -30,19 +30,33 @@ export const ProjectsShow: React.FC<ProjectsShowProps> = ({
           />
         );
       })}
-      <DotGroup
-        slidesNumber={projects.length}
-        activeIndex={currentShownProject}
-        onDotClick={setCurrentShownProject}
-      />
+      <DotGroupContainer>
+        <DotGroup
+          slidesNumber={projects.length}
+          activeIndex={currentShownProject}
+          onDotClick={setCurrentShownProject}
+        />
+      </DotGroupContainer>
     </Container>
   );
 };
 
 const Container = styled.div`
   display: flex;
-  flex-direction: column;
+  flex-direction: column-reverse;
   justify-content: flex-end;
   flex: 1;
   position: relative;
+
+  @media (min-width: 768px) {
+    flex-direction: column;
+  }
+`;
+
+const DotGroupContainer = styled.div`
+  padding: 1em 0;
+
+  @media (min-width: 768px) {
+    padding: 1em 0 0 0;
+  }
 `;
