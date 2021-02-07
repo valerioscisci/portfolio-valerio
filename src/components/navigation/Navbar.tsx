@@ -6,6 +6,7 @@ import { MenuIcon } from './MenuIcon';
 import { HashLink as Link } from 'react-router-hash-link';
 import { i18n } from '../../i18n';
 import itaFlag from '../../assets/images/common/ita_flag.png';
+import engFlag from '../../assets/images/common/eng_flag.png';
 
 export interface NavbarProps {
   navLinks: any;
@@ -283,14 +284,28 @@ const ChangeLanguageButton = styled.button<{ flag?: string }>`
   text-transform: uppercase;
   cursor: pointer;
   border: none;
-
+  background-size: contain;
+  text-shadow: 
+  2px   0  0   #000, 
+ -2px   0  0   #000, 
+  0    2px 0   #000, 
+  0   -2px 0   #000, 
+  1px  1px 0   #000, 
+ -1px -1px 0   #000, 
+  1px -1px 0   #000, 
+ -1px  1px 0   #000,
+  1px  1px 5px #000;
+}
   ${(props) => {
     switch (true) {
       case props.flag === 'it':
         return css`
           background-image: url(${itaFlag});
-          background-size: contain;
-          text-shadow: 0 5px 5px ${(props) => props.theme.colors.textColorBlack};
+        `;
+      case props.flag === 'en':
+        return css`
+          background-image: url(${engFlag});
+          background-position: 0% 50%;
         `;
     }
   }}
