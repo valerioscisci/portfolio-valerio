@@ -45,6 +45,7 @@ export const NewsletterForm: React.FC = observer(() => {
   };
 
   const subscribe = async (url: string) => {
+    console.log(url);
     jsonp(
       url,
       {
@@ -66,8 +67,8 @@ export const NewsletterForm: React.FC = observer(() => {
   const submit = async () => {
     setStatus('loading');
     const params = toQueryString({
-      email: email,
-      name: name,
+      EMAIL: email,
+      NAME: name,
     });
     const urlRequest =
       (await getAjaxUrl(process.env.REACT_APP_MAILCHIMP_URL)) + '&' + params;
