@@ -4,12 +4,13 @@ import { observer } from 'mobx-react';
 import { useTranslation } from 'react-i18next';
 import { TextInput } from '../common/TextInput';
 import { validateEmail } from '../../utils/validation';
-import { subscribeToMailingList } from '../../utils/mailchimpSubscribe';
 import { HeadingTitle } from './HeadingTitle';
 import subscbribeButton from '../../assets/images/homepage/subscribeButton.svg';
 import { Paragraph } from './Paragraph';
 import { StyledLink } from './StyledLink';
 import { Spinner } from './Spinner';
+import jsonp from 'jsonp';
+import toQueryString from 'to-querystring';
 
 const textBoxStyle = {
   width: '100%',
@@ -35,22 +36,43 @@ export const NewsletterForm: React.FC = observer(() => {
     setEmail('');
   };
 
-  const submit = async () => {
-    const subscribeResponde: string = await subscribeToMailingList(
-      process.env.REACT_APP_MAILCHIMP_URL,
+  const getAjaxUrl = async (url?: string) => {
+    if (url) {
+      return url.replace('/post?', '/post-json?');
+    } else {
+      return '';
+    }
+  };
+
+  const subscribe = async (url: string) => {
+    jsonp(
+      url,
       {
-        email: email,
-        name: name,
+        param: 'c',
+      },
+      (err, data) => {
+        if (err) {
+          setStatus('failed');
+        } else if (data.result !== 'success') {
+          setStatus('failed');
+        } else {
+          setStatus('success');
+          resetForm();
+        }
       },
     );
-    if (subscribeResponde === 'error') {
-      setStatus('failed');
-    } else if (subscribeResponde === 'success') {
-      setStatus('success');
-      resetForm();
-    } else {
-      setStatus('onHold');
-    }
+  };
+
+  const submit = async () => {
+    setStatus('loading');
+    const params = toQueryString({
+      email: email,
+      name: name,
+    });
+    const urlRequest =
+      (await getAjaxUrl(process.env.REACT_APP_MAILCHIMP_URL)) + '&' + params;
+
+    await subscribe(urlRequest);
   };
 
   return (
@@ -100,11 +122,7 @@ export const NewsletterForm: React.FC = observer(() => {
               style={textInputStyle}
             />
           </FieldsContainer>
-          <CheckboxContainer
-            onChange={() => {
-              setCheckboxChoice(!checkboxChoice);
-            }}
-          >
+          <CheckboxContainer>
             <Paragraph color={'white'}>
               Accetta{' '}
               <StyledLink href={'#'} color={'white'} hoverSpacing={false}>
@@ -112,10 +130,14 @@ export const NewsletterForm: React.FC = observer(() => {
               </StyledLink>
             </Paragraph>
             <CheckboxPrivacy type={'checkbox'} checked={checkboxChoice} />
-            <span></span>
+            <span
+              onClick={() => {
+                setCheckboxChoice(!checkboxChoice);
+              }}
+            ></span>
           </CheckboxContainer>
           {status === 'loading' ? (
-            <Spinner size={10} />
+            <Spinner size={10} style={'margin: 0 0 1em 0;'} />
           ) : status === 'failed' ? (
             <Paragraph color={'red'}>{t('newsletter.failure')}</Paragraph>
           ) : (
@@ -125,7 +147,6 @@ export const NewsletterForm: React.FC = observer(() => {
           )}
           <ButtonSubscribe
             onClick={() => {
-              setStatus('loading');
               submit();
             }}
             disabled={!validateEmail(email) || !checkboxChoice}
