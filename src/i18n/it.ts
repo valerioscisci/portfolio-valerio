@@ -121,6 +121,7 @@ const it = {
     privacyPolicy: 'Privacy Policy',
     cookiePolicy: 'Cookie Policy',
   },
+  githubCorner: 'Questo sito è open source',
 };
 
 export type I18NStrings = typeof it;

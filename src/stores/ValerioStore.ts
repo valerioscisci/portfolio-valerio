@@ -164,7 +164,18 @@ export default class HomeStore {
   fetchInstagramPics = async (account: string) => {
     this.instagramFetchingStatus = 'loading';
     try {
-      this.instagramImages = await instagram.getFeed(account);
+      const cachedInstagramPics = localStorage.getItem('instagramPics');
+      if (cachedInstagramPics) {
+        this.instagramImages = JSON.parse(
+          cachedInstagramPics,
+        ) as InstagramPic[];
+      } else {
+        this.instagramImages = await instagram.getFeed(account);
+        localStorage.setItem(
+          'instagramPics',
+          JSON.stringify(this.instagramImages),
+        );
+      }
       this.instagramFetchingStatus = 'completed';
     } catch (error) {
       console.warn(error);

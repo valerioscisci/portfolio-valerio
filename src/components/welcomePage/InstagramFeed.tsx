@@ -100,7 +100,11 @@ const InstagramMedia: React.FC<InstagramMediaProps> = ({
             src={instagramPic.displayImage}
             alt={instagramPic.accessibilityCaption || 'Instagram picture'}
           />
-          <Caption>{instagramPic.caption}</Caption>
+          <Caption>
+            {instagramPic.caption && instagramPic.caption.length > 100
+              ? instagramPic.caption?.substring(0, 100) + '...'
+              : instagramPic.caption}
+          </Caption>
           <Likes>
             <FaHeart size={'2em'} color={'white'} />
             <LikesNumber>{instagramPic.likes}</LikesNumber>

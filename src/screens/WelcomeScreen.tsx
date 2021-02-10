@@ -1,10 +1,7 @@
 import React from 'react';
 import { observer } from 'mobx-react';
-import { useStores } from '../hooks/useStores';
-import { Navbar } from '../components/navigation/Navbar';
 import { useTranslation } from 'react-i18next';
 import styled from 'styled-components';
-import { MainSlider } from '../components/welcomePage/Slider';
 import brush from '../assets/images/homepage/brush.png';
 import { Button } from '../components/common/Button';
 import { FaArrowRight } from 'react-icons/fa';
@@ -20,28 +17,17 @@ import { valerioTheme } from '../theme';
 import { ReviewsSection } from '../components/welcomePage/ReviewsSection';
 import { ContactForm } from '../components/welcomePage/ContactForm';
 import { SubHeading } from '../components/common/SubHeading';
-import { Footer } from '../components/navigation/Footer';
 import { ServicesSection } from '../components/welcomePage/ServicesSection';
 import { NewsletterForm } from '../components/common/NewsletterForm';
+import { ScreenContainer } from './ScreenContainer';
 
-const HomeScreen: React.FC = observer((props) => {
-  const { home } = useStores();
+export const HomeScreen: React.FC = observer((props) => {
   const { t } = useTranslation();
   const [width] = useWindowSize();
   const scrollY = useScrollPosition(144);
-  const navLinks = [
-    { name: t(`navbar.home`), route: '/' },
-    { name: t(`navbar.about`), route: '/about' },
-    { name: t(`navbar.portfolio`), route: '/portfolio' },
-    { name: t(`navbar.contact`), route: '/#ContactForm' },
-  ];
 
   return (
-    <Container>
-      <header>
-        <Navbar width={width} navLinks={navLinks} />
-        <MainSlider imagesArray={home.sliderImages} />
-      </header>
+    <ScreenContainer>
       <Main>
         <HeadingTitle
           style={{
@@ -117,25 +103,14 @@ const HomeScreen: React.FC = observer((props) => {
         <ParallaxSection scrollY={scrollY} />
         <BlogSection />
         <ServicesSection />
-        {/* {props.children} */}
+        {props.children}
         <NewsletterForm />
         <ReviewsSection />
         <ContactForm width={width} />
       </Main>
-      <Footer />
-    </Container>
+    </ScreenContainer>
   );
 });
-
-export default HomeScreen;
-
-const Container = styled.div`
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  height: 100%;
-  position: relative;
-`;
 
 const Main = styled.main`
   background-color: ${(props) => props.theme.colors.background};

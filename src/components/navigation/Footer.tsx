@@ -8,7 +8,7 @@ import {
   FaLinkedin,
 } from 'react-icons/fa';
 import styled from 'styled-components';
-import LogoImage from '../../assets/images/common/Logo.png';
+import LogoImage from '../../assets/images/common/LogoWhite.png';
 import { Paragraph } from '../common/Paragraph';
 import { StyledLink } from '../common/StyledLink';
 

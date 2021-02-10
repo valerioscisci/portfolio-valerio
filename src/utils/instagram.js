@@ -1,5 +1,8 @@
 class Instagram {
-  static async getFeed(userName) {
+  static async getFeed(username) {
+    const INSTAGRAM_ID = '4096919577';
+    const PHOTO_COUNT = 12;
+
     const mapMedia = (json) => {
       try {
         const thumbnailIndex = (node) => {
@@ -39,44 +42,30 @@ class Instagram {
           }
         };
 
-        const edges =
-          json.entry_data.ProfilePage[0].graphql.user
-            .edge_owner_to_timeline_media.edges;
+        const edges = json.data.user.edge_owner_to_timeline_media.edges;
 
         return edges.map((edge) => {
           return {
-            accessibilityCaption: edge.node.accessibility_caption,
+            accessibilityCaption: alt(edge.node),
             caption: alt(edge.node),
             commentsNumber: edge.node.edge_media_to_comment.count,
             dimensions: edge.node.dimensions,
             displayImage: src(edge.node),
             id: edge.node.id,
-            likes: edge.node.edge_liked_by.count,
+            likes: edge.node.edge_media_preview_like.count,
             postLink: url(edge.node),
             thumbnail: src(edge.node),
           };
         });
       } catch (err) {
-        throw Error('cannot map media array');
+        throw Error(err);
       }
     };
 
-    const getJSON = (body) => {
-      try {
-        const data = body
-          .split('window._sharedData = ')[1]
-          .split('</script>')[0];
-        return JSON.parse(data.substr(0, data.length - 1));
-      } catch (err) {
-        throw Error('cannot parse response body');
-      }
-    };
-
-    const url = 'https://www.instagram.com/' + userName + '/';
+    const url = `https://www.instagram.com/graphql/query?query_id=17888483320059182&variables={"id":"${INSTAGRAM_ID}","first":${PHOTO_COUNT},"after":null}`;
 
     return fetch(url)
-      .then((resp) => resp.text())
-      .then((body) => getJSON(body))
+      .then((resp) => resp.json())
       .then((json) => mapMedia(json));
   }
 }

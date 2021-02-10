@@ -119,5 +119,6 @@ const en: typeof it = {
     privacyPolicy: 'Privacy Policy',
     cookiePolicy: 'Cookie Policy',
   },
+  githubCorner: 'Check this website on GitHub',
 };
 export default en;
