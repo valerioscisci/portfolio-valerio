@@ -2,6 +2,7 @@ import it from './it';
 
 const en: typeof it = {
   common: {
+    websiteName: 'The Wanderer Developer',
     contactMe: 'Contattami',
     blog: 'Blog',
   },
@@ -18,7 +19,6 @@ const en: typeof it = {
     heading4: '',
   },
   welcome: {
-    heading: 'The waderer developer',
     subHeading:
       'I create websites and mobile applications while traveling around the world',
     introParagraph: '',
@@ -112,7 +112,6 @@ const en: typeof it = {
     error: 'Error while sending the message, please try again.',
   },
   footer: {
-    copyright: 'The Wanderer Developer',
     contactInformation: 'Contact information',
     usefulLinks: 'Link utili',
     policy: 'Policy',
@@ -120,5 +119,15 @@ const en: typeof it = {
     cookiePolicy: 'Cookie Policy',
   },
   githubCorner: 'Check this website on GitHub',
+  about: {
+    introText: '',
+    digitalNomad: '',
+    secondParagraph: '',
+    thirdParagraph: '',
+    fourthParagraph: '',
+    fifthParagraph: '',
+    TWDProject: '',
+  },
 };
+
 export default en;
