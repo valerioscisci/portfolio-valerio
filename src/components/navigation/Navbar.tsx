@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import styled, { css } from 'styled-components';
 import LogoImage from '../../assets/images/common/LogoWhite.png';
-import { BrowserRouter } from 'react-router-dom';
+import { HashRouter } from 'react-router-dom';
 import { MenuIcon } from './MenuIcon';
 import { HashLink as Link } from 'react-router-hash-link';
 import { i18n } from '../../i18n';
@@ -30,24 +30,22 @@ export const Navbar: React.FC<NavbarProps> = ({ navLinks, width }) => {
   };
 
   return (
-    <NavbarContainer>
-      {!menuOpen && (
-        <BrowserRouter>
+    <HashRouter>
+      <NavbarContainer>
+        {!menuOpen && (
           <Link to={navLinks[0].route}>
             <Logo src={LogoImage} />
           </Link>
-        </BrowserRouter>
-      )}
-      <MenuIcon
-        ref={menuIconRef}
-        width={width}
-        updateMenuState={(menuOpen) => setMenuOpen(menuOpen)}
-      />
-      <NavbarRight menuOpen={menuOpen}>
-        {navLinks.map((link: any, i: number) => {
-          return (
-            <NavbarItem key={i} menuOpen={menuOpen} route={link.route}>
-              <BrowserRouter>
+        )}
+        <MenuIcon
+          ref={menuIconRef}
+          width={width}
+          updateMenuState={(menuOpen) => setMenuOpen(menuOpen)}
+        />
+        <NavbarRight menuOpen={menuOpen}>
+          {navLinks.map((link: any, i: number) => {
+            return (
+              <NavbarItem key={i} menuOpen={menuOpen} route={link.route}>
                 <Link
                   to={link.route}
                   onClick={() => {
@@ -60,20 +58,26 @@ export const Navbar: React.FC<NavbarProps> = ({ navLinks, width }) => {
                 >
                   {link.name}
                 </Link>
-              </BrowserRouter>
-            </NavbarItem>
-          );
-        })}
-      </NavbarRight>
-      <LanguageSelector>
-        <ChangeLanguageButton flag={'it'} onClick={() => changeLanguage('it')}>
-          it
-        </ChangeLanguageButton>
-        <ChangeLanguageButton flag={'en'} onClick={() => changeLanguage('en')}>
-          en
-        </ChangeLanguageButton>
-      </LanguageSelector>
-    </NavbarContainer>
+              </NavbarItem>
+            );
+          })}
+        </NavbarRight>
+        <LanguageSelector>
+          <ChangeLanguageButton
+            flag={'it'}
+            onClick={() => changeLanguage('it')}
+          >
+            it
+          </ChangeLanguageButton>
+          <ChangeLanguageButton
+            flag={'en'}
+            onClick={() => changeLanguage('en')}
+          >
+            en
+          </ChangeLanguageButton>
+        </LanguageSelector>
+      </NavbarContainer>
+    </HashRouter>
   );
 };
 
