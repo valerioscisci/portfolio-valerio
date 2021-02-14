@@ -44,4 +44,5 @@ const Container = styled.p<{ color?: string }>`
   word-spacing: 0.15em;
   letter-spacing: 0.02em;
   margin: 0;
+  white-space: pre-wrap;
 `;

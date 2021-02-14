@@ -38,7 +38,7 @@ export const HomeScreen: React.FC = observer((props) => {
             margin: 0,
           }}
         >
-          {t(`welcome.heading`)}
+          {t(`common.websiteName`)}
         </HeadingTitle>
         <SubHeading style={{ marginBottom: '4em' }}>
           {t('welcome.subHeading')}

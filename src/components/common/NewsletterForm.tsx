@@ -45,7 +45,6 @@ export const NewsletterForm: React.FC = observer(() => {
   };
 
   const subscribe = async (url: string) => {
-    console.log(url);
     jsonp(
       url,
       {
@@ -163,7 +162,7 @@ export const NewsletterForm: React.FC = observer(() => {
 const Section = styled.section`
   width: 100%;
   height: 60em;
-  margin: 10em 0 5em 0;
+  margin: 10em 0 0 0;
   display: flex;
   align-items: center;
   justify-content: center;

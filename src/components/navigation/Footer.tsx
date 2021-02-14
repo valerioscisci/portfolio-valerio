@@ -74,7 +74,7 @@ export const Footer: React.FC = () => {
             <Logo src={LogoImage} />
           </StyledLink>
           <Paragraph color={'white'}>
-            © {currentYear} {t('footer.copyright')}
+            © {currentYear} {t('common.websiteName')}
           </Paragraph>
         </LogoContainer>
       </FooterColumn>

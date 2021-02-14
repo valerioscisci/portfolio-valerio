@@ -18,7 +18,7 @@ export const HeadingTitle: React.FC<HeadingTitleProps> = ({
   );
 };
 
-const Container = styled.h1<{ color?: string }>`
+const Container = styled.h2<{ color?: string }>`
   color: ${(props) =>
     props.color === 'white'
       ? props.theme.colors.textColorWhite
