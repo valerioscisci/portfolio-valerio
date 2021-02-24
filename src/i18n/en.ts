@@ -127,6 +127,8 @@ const en: typeof it = {
     fourthParagraph: '',
     fifthParagraph: '',
     TWDProject: '',
+    TWDdescription: '',
+    conclusion: '',
   },
 };
 

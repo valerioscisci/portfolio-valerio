@@ -127,16 +127,20 @@ const it = {
       " necessità di essere in uno specifico luogo; mi basta avere una buona connessione ad internet e ogni tanto un po' di tranquillità" +
       ' per essere produttivo e portare a termine i progetti su cui sto lavorando.',
     digitalNomad:
-      'Sono definite tali quelle persone che sfruttano la diffusione della \nbanda larga in tutto il mondo per poter lavorare da posti diversi in base\n alle loro esigenze, conducendo una vita poco sedentaria e "nomadica".',
+      'Sono definite tali quelle persone che sfruttano la diffusione della banda\nlarga intutto il mondo per poter lavorare da posti diversi in base alle\nloro esigenze, conducendo una vita poco sedentaria e "nomadica".',
     secondParagraph:
       'Ma non è sempre stato così...cinque anni fa sono venuto a conoscenza del mondo del lavoro da remoto e da allora per me è cambiato tutto. Ho deciso di concentrare gli ultimi anni di università sullo studio delle tecnologie web.',
     thirdParagraph:
-      "Tre mesi dopo aver scoperto questa moalità di lavoro, ho trovato il mio primo lavoro da sviluppatore web, 1 anno dopo ho fatto la mia prima esperienza all'estero e al rientro in Italia mi sono iscritto alla magistrale per terminare gli studi.\nIn questo periodo ho lavorato per un'azienda chiamata t33 e ho progettato i miei primi siti web in autonomia, partecipando anche ad un Hackaton organizzato dall'università.",
+      "Tre mesi dopo aver scoperto questa modalità di lavoro, ho trovato il mio primo lavoro da sviluppatore web, 1 anno dopo ho fatto la mia prima esperienza all'estero e al rientro in Italia mi sono iscritto alla magistrale per terminare gli studi.\nIn questo periodo ho lavorato per un'azienda chiamata t33 e ho progettato i miei primi siti web in autonomia, partecipando anche ad un Hackaton organizzato dall'università.",
     fourthParagraph:
       "Nel frattempo ho continuato a viaggiare e a studiare quanto più possibile, riuscendo alla fine a conseguire uno dei più grandi traguardi della mia vita (fin'ora): il titolo di dottore magistrale in ingegneria informatica e dell'automazione con votazione 110L su 110.",
     fifthParagraph:
       "Da poco meno di un anno collaboro con un'innovativa azienda chiamata Mostaza, dove principalmente mi occupo di sviluppo di applicazioni web e di realizzazione di applicazioni.",
     TWDProject: 'Il progetto ',
+    TWDdescription:
+      'Inizialmente volevo progettare il classico sito-portfolio dove mostravo i miei lavori passati e mettermi in contatto con altri sviluppatori e nuovi clienti. Subito mi sono reso conto di voler fare di più: questo progetto nasce dalla voglia che ho di inspirare altri a seguire questo stile di vita e dal desiderio che ho di condividere ciò che imparo ed ho imparato nel mio persorso di sviluppatore web on the road.',
+    conclusion:
+      'Seguimi sui miei canali social o iscriviti alla newsletter per rimanere aggiornato. \nA presto.\nValerio',
   },
 };
 

@@ -6,9 +6,14 @@ import { HeadingTitle } from '../components/common/HeadingTitle';
 import { ScreenContainer } from './ScreenContainer';
 import laptopImage from '../assets/images/about/laptop.png';
 import degreeImage from '../assets/images/about/laurea.png';
+import beerImage from '../assets/images/about/beer.png';
 import { Paragraph } from '../components/common/Paragraph';
-import ReactTooltip from 'react-tooltip';
 import { Tooltip } from '../components/common/Tooltip';
+
+const paragraphStyle = {
+  padding: '1em 2em',
+  width: '100%',
+};
 
 export const AboutScreen: React.FC = observer((props) => {
   const { t } = useTranslation();
@@ -26,10 +31,11 @@ export const AboutScreen: React.FC = observer((props) => {
               <Trans
                 i18nKey="about.introText"
                 components={{
-                  Highlight: <Tooltip text={t('about.digitalNomad')} />,
+                  Highlight: (
+                    <Tooltip text={t('about.digitalNomad')} position={'top'} />
+                  ),
                 }}
               ></Trans>
-              <ReactTooltip />
             </Paragraph>
             <Paragraph
               style={{
@@ -42,33 +48,41 @@ export const AboutScreen: React.FC = observer((props) => {
             </Paragraph>
           </HeadingText>
         </HeadingContainer>
-        <Paragraph
-          style={{
-            margin: '1em 2em',
-          }}
-        >
+        <Paragraph style={paragraphStyle}>
           {t('about.thirdParagraph')}
         </Paragraph>
 
-        <Paragraph
-          style={{
-            margin: '1em 2em',
-          }}
-        >
+        <Paragraph style={paragraphStyle}>
           {t('about.fourthParagraph')}
         </Paragraph>
 
-        <Paragraph
-          style={{
-            margin: '1em 2em',
-          }}
-        >
+        <Paragraph style={paragraphStyle}>
           {t('about.fifthParagraph')}
         </Paragraph>
 
         <HeadingTitle>
           {t('about.TWDProject') + t('common.websiteName')}
         </HeadingTitle>
+
+        <Paragraph style={paragraphStyle}>
+          {t('about.TWDdescription')}
+        </Paragraph>
+
+        <BottomContainer>
+          <BottomImage src={beerImage} />
+          <Paragraph
+            style={{
+              display: 'flex',
+              alignItems: 'center',
+              marginTop: '2em',
+              padding: '0 2em',
+            }}
+          >
+            {t('about.secondParagraph')}
+          </Paragraph>
+        </BottomContainer>
+
+        <Paragraph style={paragraphStyle}>{t('about.conclusion')}</Paragraph>
       </Main>
     </ScreenContainer>
   );
@@ -101,4 +115,14 @@ const HeadingText = styled.div`
 const RightImage = styled.img`
   width: 50%;
   background-size: contain;
+`;
+
+const BottomImage = styled.img`
+  width: 45%;
+  background-size: contain;
+`;
+
+const BottomContainer = styled.div`
+  display: flex;
+  flex-direction: row-reverse;
 `;

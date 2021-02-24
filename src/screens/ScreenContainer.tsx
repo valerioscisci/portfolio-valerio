@@ -5,6 +5,7 @@ import { Footer } from '../components/navigation/Footer';
 import { Header } from '../components/navigation/Header';
 import { GitHubCorner } from '../components/common/GitHubCorner';
 import { useWindowSize } from '../hooks/useWindowSize';
+import { GoTop } from '../components/common/GoTop';
 
 type ScreenContainerProps = {
   mainSlider?: boolean;
@@ -19,6 +20,7 @@ export const ScreenContainer: React.FC<ScreenContainerProps> = observer(
         {props.children}
         <Footer />
         {width > 768 && <GitHubCorner />}
+        <GoTop />
       </Container>
     );
   },
