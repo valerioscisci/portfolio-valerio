@@ -119,6 +119,10 @@ const it = {
     policy: 'Policy',
     privacyPolicy: 'Privacy Policy',
     cookiePolicy: 'Cookie Policy',
+    cookieConsent: 'Accetto',
+    cookieConsentText:
+      "Questo sito web utilizza i cookie per migliorare l'esperienza utente.",
+    cookieConsentDecline: 'Rifiuto',
   },
   githubCorner: 'Questo sito è open source',
   about: {

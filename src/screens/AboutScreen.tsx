@@ -11,6 +11,7 @@ import { Paragraph } from '../components/common/Paragraph';
 import { Tooltip } from '../components/common/Tooltip';
 import { StyledLink } from '../components/common/StyledLink';
 import { FaNewspaper } from 'react-icons/fa';
+import { valerioTheme } from '../theme';
 
 const paragraphStyle = {
   padding: '1em 2em',
@@ -33,7 +34,7 @@ const linkStyle: React.CSSProperties = {
   margin: '1em 2em',
   borderRadius: '0.2em',
   padding: '1em',
-  backgroundColor: 'rgba(34, 40, 49, 1)',
+  backgroundColor: valerioTheme.colors.backgroundDark,
   textAlign: 'center',
 };
 

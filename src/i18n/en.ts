@@ -117,6 +117,10 @@ const en: typeof it = {
     policy: 'Policy',
     privacyPolicy: 'Privacy Policy',
     cookiePolicy: 'Cookie Policy',
+    cookieConsent: 'I consent',
+    cookieConsentText:
+      'This website uses cookies to enhance the user experience.',
+    cookieConsentDecline: 'I decline',
   },
   githubCorner: 'Check this website on GitHub',
   about: {
