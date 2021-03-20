@@ -138,9 +138,12 @@ const it = {
       "Da poco meno di un anno collaboro con un'innovativa azienda chiamata Mostaza, dove principalmente mi occupo di sviluppo di applicazioni web e di realizzazione di applicazioni.",
     TWDProject: 'Il progetto ',
     TWDdescription:
-      'Inizialmente volevo progettare il classico sito-portfolio dove mostravo i miei lavori passati per poi potermi mettere in contatto con altri sviluppatori e nuovi clienti. Subito mi sono reso conto di voler fare di più: questo progetto nasce dalla voglia che ho di inspirare altri a seguire questo stile di vita e dal desiderio che ho di condividere ciò che imparo ed ho imparato nel mio persorso di sviluppatore web on the road.',
+      'Qunado ho iniziato a progettare questo sito, volevo semplicemente realizzare il classico sito-portfolio dove mostravo i miei lavori passati così da potermi mettere in contatto con altri sviluppatori e nuovi clienti. Subito mi sono reso conto di voler fare di più: questo progetto nasce dalla voglia che ho di inspirare altri a seguire questo stile di vita e dal desiderio che ho di condividere ciò che imparo ed ho imparato nel mio persorso di sviluppatore web on the road.',
     sixthParagraph:
-      'Pur essendo convinto che ci saranno sicuramente persone non interessate agli argomenti che tratterò, se anche una sola persona mostrerà interesse allora procederò in questa piccola impresa che mi sono posto di realizzare.\n Se vuoi subito avere delle informazioni secondo me necessarie prima anche solo di pensare ad intraprendere questa strada, ti rimando a questo articolo che ho scritto qualche tempo fa: ',
+      'Quando ho iniziato io in questa "avventura" avrei voluto avere un punto di riferimento a cui inspirarmi.\n\nSe siete interessati ad avere delle informazioni secondo me necessarie prima anche solo di pensare ad intraprendere la strada da nomade digitale, vi consiglio la lettura di questo articolo che ho scritto qualche tempo fa: ',
+    linkedInArticle: '5 cose da sapere prima di diventare nomade digitale',
+    seventhParagraph:
+      'Ad ora non so esattamente dove mi condurrà questo progetto, ma sono molto felice di poter avuto la possibilità di creare qualcosa di mio in cui credo fermamente.',
     conclusion:
       'Seguimi sui miei canali social o iscriviti alla newsletter per rimanere aggiornato. \n\nA presto.\nValerio',
   },

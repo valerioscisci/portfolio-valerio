@@ -3,7 +3,11 @@ import styled from 'styled-components';
 import logoPlane from '../../assets/images/common/logoPlane.svg';
 
 export const GoTop: React.FC = () => {
-  return <Container href={'#'}></Container>;
+  const onClick = () => {
+    window.scrollTo(0, 0);
+  };
+
+  return <Container onClick={onClick}></Container>;
 };
 
 const Container = styled.a`

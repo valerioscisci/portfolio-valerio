@@ -10,6 +10,7 @@ import beerImage from '../assets/images/about/beer.png';
 import { Paragraph } from '../components/common/Paragraph';
 import { Tooltip } from '../components/common/Tooltip';
 import { StyledLink } from '../components/common/StyledLink';
+import { FaNewspaper } from 'react-icons/fa';
 
 const paragraphStyle = {
   padding: '1em 2em',
@@ -29,10 +30,18 @@ const underlinedParagraphStyle: React.CSSProperties = {
 };
 
 const linkStyle: React.CSSProperties = {
-  display: 'block',
+  margin: '1em 2em',
+  borderRadius: '0.2em',
+  padding: '1em',
+  backgroundColor: 'rgba(34, 40, 49, 1)',
+  textAlign: 'center',
 };
 
-export const AboutScreen: React.FC = observer((props) => {
+const newsIconStyle: React.CSSProperties = {
+  verticalAlign: 'middle',
+};
+
+export const AboutScreen: React.FC = observer(() => {
   const { t } = useTranslation();
 
   useEffect(() => {
@@ -98,15 +107,17 @@ export const AboutScreen: React.FC = observer((props) => {
             </Paragraph>
             <StyledLink
               color={'secondary'}
-              href={'#'}
+              href={
+                'https://www.linkedin.com/pulse/top-5-cose-da-sapere-prima-di-diventare-un-nomade-digitale-scisci/'
+              }
               target={'_blank'}
               hoverSpacing={false}
               style={linkStyle}
             >
-              link
+              <FaNewspaper size={30} style={newsIconStyle} />
+              <span>{' ' + t('about.linkedInArticle')}</span>
             </StyledLink>
-
-            <Paragraph style={underlinedParagraphStyle}>
+            <Paragraph style={paragraphStyle}>
               {t('about.seventhParagraph')}
             </Paragraph>
           </BottomTextContainer>
