@@ -11,6 +11,12 @@ export const Paragraph: React.FC<ParagraphProps> = ({
   style,
   ...props
 }) => {
+  let flatStyle: any = style;
+  if (Array.isArray(style)) {
+    for (let i = 0; i < style.length; i++) {
+      flatStyle = flatStyle + style[i];
+    }
+  }
   return (
     <Container color={color} style={style}>
       {props.children}

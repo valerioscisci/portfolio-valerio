@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { observer } from 'mobx-react';
 import { useTranslation } from 'react-i18next';
 import styled from 'styled-components';
@@ -25,6 +25,10 @@ export const HomeScreen: React.FC = observer((props) => {
   const { t } = useTranslation();
   const [width] = useWindowSize();
   const scrollY = useScrollPosition(144);
+
+  useEffect(() => {
+    document.title = t('common.websiteName') + ' - ' + t('navbar.home');
+  });
 
   return (
     <ScreenContainer>

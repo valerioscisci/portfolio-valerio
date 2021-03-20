@@ -14,7 +14,7 @@ import { observer } from 'mobx-react';
 import { AboutScreen } from './screens/AboutScreen';
 
 export const App: React.FC = observer(() => {
-  const { i18n } = useTranslation();
+  const { t, i18n } = useTranslation();
   const [stores] = useState<Stores>(() => {
     const root: Stores = {} as Stores;
     root.home = new ValerioStore();
@@ -24,7 +24,7 @@ export const App: React.FC = observer(() => {
   useEffect(() => {
     stores.home.setLanguage(i18n.language as I18NLang);
     stores.home.fetchImages();
-    stores.home.fetchInstagramPics('valerioscisci');
+    stores.home.fetchInstagramPics();
   }, [stores.home, i18n]);
 
   return (
@@ -41,7 +41,7 @@ export const App: React.FC = observer(() => {
                 render={() => (
                   <HomeScreen>
                     <InstagramFeed
-                      account={'valerioscisci'}
+                      account={'the_wanderer_developer'}
                       numberOfMediaElements={12}
                       media={stores.home.instagramImages}
                       status={stores.home.instagramFetchingStatus}

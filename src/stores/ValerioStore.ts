@@ -161,8 +161,9 @@ export default class HomeStore {
   };
 
   @action
-  fetchInstagramPics = async (account: string) => {
+  fetchInstagramPics = async () => {
     this.instagramFetchingStatus = 'loading';
+
     try {
       const cachedInstagramPics = localStorage.getItem('instagramPics');
       if (cachedInstagramPics) {
@@ -170,7 +171,7 @@ export default class HomeStore {
           cachedInstagramPics,
         ) as InstagramPic[];
       } else {
-        this.instagramImages = await instagram.getFeed(account);
+        this.instagramImages = await instagram.getFeed();
         localStorage.setItem(
           'instagramPics',
           JSON.stringify(this.instagramImages),

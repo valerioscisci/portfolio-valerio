@@ -19,7 +19,7 @@ const socialData = [
   },
   {
     name: 'Instagram',
-    url: 'https://www.instagram.com/valerioscisci/',
+    url: 'https://www.instagram.com/the_wanderer_developer/',
   },
   {
     name: 'GitHub',

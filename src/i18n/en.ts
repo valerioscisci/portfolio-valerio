@@ -126,6 +126,7 @@ const en: typeof it = {
     thirdParagraph: '',
     fourthParagraph: '',
     fifthParagraph: '',
+    sixthParagraph: '',
     TWDProject: '',
     TWDdescription: '',
     conclusion: '',

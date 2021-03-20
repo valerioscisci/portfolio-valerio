@@ -32,10 +32,14 @@ export const StyledLink: React.FC<StyledLinkProps> = ({
 };
 
 const Container = styled.a<{ color?: string; hoverSpacing?: boolean }>`
-  color: ${(props) =>
-    props.color === 'white'
-      ? props.theme.colors.textColorWhite
-      : props.theme.colors.textColorBlack};
+  color: ${(props) => {
+    switch (true) {
+      case props.color === 'white':
+        return props.theme.colors.textColorWhite;
+      case props.color === 'secondary':
+        return props.theme.colors.secondary;
+    }
+  }};
   font-family: Corben;
   font-size: 1em;
   word-spacing: 0.15em;

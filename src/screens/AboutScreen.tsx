@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { observer } from 'mobx-react';
 import { Trans, useTranslation } from 'react-i18next';
 import styled from 'styled-components';
@@ -9,14 +9,35 @@ import degreeImage from '../assets/images/about/laurea.png';
 import beerImage from '../assets/images/about/beer.png';
 import { Paragraph } from '../components/common/Paragraph';
 import { Tooltip } from '../components/common/Tooltip';
+import { StyledLink } from '../components/common/StyledLink';
 
 const paragraphStyle = {
   padding: '1em 2em',
   width: '100%',
 };
 
+const underlinedParagraphStyle: React.CSSProperties = {
+  display: 'flex',
+  alignItems: 'center',
+  marginTop: '2em',
+  textDecoration: 'underline',
+  fontFamily: 'Manrope',
+  fontSize: '1.32em',
+  textUnderlineOffset: 4,
+  textDecorationThickness: 2,
+  textAlign: 'center',
+};
+
+const linkStyle: React.CSSProperties = {
+  display: 'block',
+};
+
 export const AboutScreen: React.FC = observer((props) => {
   const { t } = useTranslation();
+
+  useEffect(() => {
+    document.title = t('common.websiteName') + ' - ' + t('navbar.about');
+  });
 
   return (
     <ScreenContainer mainSlider={false}>
@@ -37,13 +58,7 @@ export const AboutScreen: React.FC = observer((props) => {
                 }}
               ></Trans>
             </Paragraph>
-            <Paragraph
-              style={{
-                display: 'flex',
-                alignItems: 'center',
-                marginTop: '2em',
-              }}
-            >
+            <Paragraph style={underlinedParagraphStyle}>
               {t('about.secondParagraph')} <RightImage src={degreeImage} />
             </Paragraph>
           </HeadingText>
@@ -70,16 +85,31 @@ export const AboutScreen: React.FC = observer((props) => {
 
         <BottomContainer>
           <BottomImage src={beerImage} />
-          <Paragraph
-            style={{
-              display: 'flex',
-              alignItems: 'center',
-              marginTop: '2em',
-              padding: '0 2em',
-            }}
-          >
-            {t('about.secondParagraph')}
-          </Paragraph>
+          <BottomTextContainer>
+            <Paragraph
+              style={{
+                display: 'flex',
+                alignItems: 'center',
+                marginTop: '2em',
+                padding: '0 2em',
+              }}
+            >
+              {t('about.sixthParagraph')}
+            </Paragraph>
+            <StyledLink
+              color={'secondary'}
+              href={'#'}
+              target={'_blank'}
+              hoverSpacing={false}
+              style={linkStyle}
+            >
+              link
+            </StyledLink>
+
+            <Paragraph style={underlinedParagraphStyle}>
+              {t('about.seventhParagraph')}
+            </Paragraph>
+          </BottomTextContainer>
         </BottomContainer>
 
         <Paragraph style={paragraphStyle}>{t('about.conclusion')}</Paragraph>
@@ -125,4 +155,10 @@ const BottomImage = styled.img`
 const BottomContainer = styled.div`
   display: flex;
   flex-direction: row-reverse;
+`;
+
+const BottomTextContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  width: 100%;
 `;

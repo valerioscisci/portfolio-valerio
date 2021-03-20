@@ -1,5 +1,5 @@
 class Instagram {
-  static async getFeed(username) {
+  static async getFeed() {
     const INSTAGRAM_ID = '4096919577';
     const PHOTO_COUNT = 12;
 
