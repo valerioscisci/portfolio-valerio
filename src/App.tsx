@@ -14,7 +14,7 @@ import { observer } from 'mobx-react';
 import { AboutScreen } from './screens/AboutScreen';
 
 export const App: React.FC = observer(() => {
-  const { t, i18n } = useTranslation();
+  const { i18n } = useTranslation();
   const [stores] = useState<Stores>(() => {
     const root: Stores = {} as Stores;
     root.home = new ValerioStore();

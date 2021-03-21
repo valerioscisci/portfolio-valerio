@@ -27,6 +27,7 @@ export const ScreenContainer: React.FC<ScreenContainerProps> = observer(
         {width > 768 && <GitHubCorner />}
         <GoTop />
         <CookieConsent
+          debug={true}
           enableDeclineButton
           location={'bottom'}
           buttonText={t('footer.cookieConsent')}

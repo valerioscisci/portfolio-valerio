@@ -16,18 +16,7 @@ import { valerioTheme } from '../theme';
 const paragraphStyle = {
   padding: '1em 2em',
   width: '100%',
-};
-
-const underlinedParagraphStyle: React.CSSProperties = {
-  display: 'flex',
-  alignItems: 'center',
-  marginTop: '2em',
-  textDecoration: 'underline',
-  fontFamily: 'Manrope',
-  fontSize: '1.32em',
-  textUnderlineOffset: 4,
-  textDecorationThickness: 2,
-  textAlign: 'center',
+  zIndex: 1,
 };
 
 const linkStyle: React.CSSProperties = {
@@ -58,7 +47,7 @@ export const AboutScreen: React.FC = observer(() => {
             <HeadingTitle style={{ textAlign: 'center' }}>
               {t(`navbar.about`)}
             </HeadingTitle>
-            <Paragraph>
+            <Paragraph className={'topText'}>
               <Trans
                 i18nKey="about.introText"
                 components={{
@@ -68,24 +57,26 @@ export const AboutScreen: React.FC = observer(() => {
                 }}
               ></Trans>
             </Paragraph>
-            <Paragraph style={underlinedParagraphStyle}>
-              {t('about.secondParagraph')} <RightImage src={degreeImage} />
-            </Paragraph>
+            <UnderlinedParagraphCotainer>
+              <Paragraph>
+                {t('about.secondParagraph')} <RightImage src={degreeImage} />
+              </Paragraph>
+            </UnderlinedParagraphCotainer>
           </HeadingText>
         </HeadingContainer>
-        <Paragraph style={paragraphStyle}>
-          {t('about.thirdParagraph')}
-        </Paragraph>
+        <SecondPartContainer>
+          <Paragraph>{t('about.thirdParagraph')}</Paragraph>
 
-        <Paragraph style={paragraphStyle}>
-          {t('about.fourthParagraph')}
-        </Paragraph>
+          <Paragraph>{t('about.fourthParagraph')}</Paragraph>
+
+          <RightImagetwo src={degreeImage} />
+        </SecondPartContainer>
 
         <Paragraph style={paragraphStyle}>
           {t('about.fifthParagraph')}
         </Paragraph>
 
-        <HeadingTitle>
+        <HeadingTitle style={{ padding: '0 2em' }}>
           {t('about.TWDProject') + t('common.websiteName')}
         </HeadingTitle>
 
@@ -140,33 +131,130 @@ const Main = styled.main`
 
 const HeadingContainer = styled.div`
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
+  position: relative;
+  z-index: 1;
+  @media (min-width: 992px) {
+    flex-direction: row;
+  }
 `;
 
 const TopImage = styled.img`
-  width: 45%;
+  width: 70%;
   background-size: contain;
+  position: absolute;
+  z-index: 0;
+  opacity: 0.4;
+  top: 35%;
+  left: 0%;
+  transform: translateY(-50%);
+
+  @media (min-width: 992px) {
+    width: 45%;
+    position: relative;
+    z-index: 1;
+    opacity: 1;
+    top: initial;
+    left: initial;
+    transform: translateY(0%);
+  }
 `;
 
 const HeadingText = styled.div`
   width: 100%;
-
+  z-index: 1;
   padding: 0 2em;
+
+  & p.topText {
+    margin-left: 25%;
+    text-align: right;
+
+    @media (min-width: 992px) {
+      margin-left: initial;
+      text-align: initial;
+    }
+  }
 `;
 
 const RightImage = styled.img`
-  width: 50%;
+  display: none;
   background-size: contain;
+  width: 50%;
+  @media (min-width: 992px) {
+    display: initial;
+  }
+`;
+
+const RightImagetwo = styled.img`
+  background-size: contain;
+  width: 50%;
+  position: absolute;
+  z-index: 0;
+  opacity: 0.4;
+  top: 35%;
+  right: 0%;
+  transform: translateY(-50%);
+
+  @media (min-width: 992px) {
+    display: none;
+  }
+`;
+
+const UnderlinedParagraphCotainer = styled.div`
+  & p {
+    display: flex;
+    align-items: center;
+    margin: 3.5em;
+    text-decoration: underline;
+    font-family: Manrope;
+    font-size: 1.32em;
+    text-underline-offset: 4;
+    text-decoration-thickness: 2;
+    text-align: center;
+
+    @media (min-width: 992px) {
+      margin: 2em 0;
+    }
+  }
+`;
+
+const SecondPartContainer = styled.div`
+  position: relative;
+
+  & p {
+    padding: 1em 2em;
+    width: 80%;
+    z-index: 1;
+
+    @media (min-width: 992px) {
+      width: 100%;
+    }
+  }
 `;
 
 const BottomImage = styled.img`
   width: 45%;
   background-size: contain;
+  align-self: center;
+  margin-top: -5em;
+  opacity: 0.3;
+  margin-bottom: -5em;
+
+  @media (min-width: 992px) {
+    align-self: initial;
+    margin-top: 0;
+    opacity: 1;
+    margin-bottom: 0;
+  }
 `;
 
 const BottomContainer = styled.div`
   display: flex;
-  flex-direction: row-reverse;
+  flex-direction: column;
+
+  @media (min-width: 992px) {
+    flex-direction: row-reverse;
+  }
 `;
 
 const BottomTextContainer = styled.div`

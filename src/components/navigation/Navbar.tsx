@@ -31,7 +31,7 @@ export const Navbar: React.FC<NavbarProps> = ({ navLinks, width }) => {
 
   return (
     <HashRouter>
-      <NavbarContainer>
+      <NavbarContainer menuOpen={menuOpen}>
         {!menuOpen && (
           <Link to={navLinks[0].route}>
             <Logo src={LogoImage} />
@@ -81,8 +81,8 @@ export const Navbar: React.FC<NavbarProps> = ({ navLinks, width }) => {
   );
 };
 
-const NavbarContainer = styled.nav`
-  height: 4.5em;
+const NavbarContainer = styled.nav<{ menuOpen: boolean }>`
+  height: ${(props) => (props.menuOpen ? '100vh' : '4.5em')};
   width: 100%;
   font-family: Manrope;
   letter-spacing: 0.08rem;
