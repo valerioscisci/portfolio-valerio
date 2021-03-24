@@ -19,6 +19,34 @@ export const ScreenContainer: React.FC<ScreenContainerProps> = observer(
     const { t } = useTranslation();
     const [width] = useWindowSize();
 
+    const cookieBarStyle = {
+      background: valerioTheme.colors.backgroundDark,
+      width: '80%',
+      marginLeft: '2%',
+      borderTopRightRadius: '1em',
+      borderTopLeftRadius: '1em',
+      fontFamily: 'Corben',
+    };
+
+    const buttonAcceptStyle = {
+      color: valerioTheme.colors.textColorBlack,
+      background: valerioTheme.colors.secondary,
+      borderRadius: '0.2em',
+      fontFamily: 'Corben',
+      paddingTop: 0,
+    };
+
+    const declineButtonStyle = {
+      color: valerioTheme.colors.textColorWhite,
+      background: valerioTheme.colors.backgroundDark,
+      borderColor: valerioTheme.colors.textColorWhite,
+      borderStyle: 'solid',
+      borderWidth: '1px',
+      borderRadius: '0.2em',
+      fontFamily: 'Corben',
+      paddingTop: 0,
+    };
+
     return (
       <Container>
         <Header width={width} mainSlider={mainSlider} />
@@ -27,17 +55,14 @@ export const ScreenContainer: React.FC<ScreenContainerProps> = observer(
         {width > 768 && <GitHubCorner />}
         <GoTop />
         <CookieConsent
-          debug={true}
           enableDeclineButton
           location={'bottom'}
           buttonText={t('footer.cookieConsent')}
           declineButtonText={t('footer.cookieConsentDecline')}
           cookieName={'googleAnalytics'}
-          style={{ background: valerioTheme.colors.backgroundDark }}
-          buttonStyle={{
-            color: valerioTheme.colors.textColorBlack,
-            fontSize: '13px',
-          }}
+          style={cookieBarStyle}
+          buttonStyle={buttonAcceptStyle}
+          declineButtonStyle={declineButtonStyle}
           expires={150}
           onAccept={() => {
             alert('google start');
