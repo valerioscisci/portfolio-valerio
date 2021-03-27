@@ -65,7 +65,7 @@ export const ScreenContainer: React.FC<ScreenContainerProps> = observer(
           declineButtonStyle={declineButtonStyle}
           expires={150}
           onAccept={() => {
-            alert('google start');
+            //google start
           }}
         >
           {t('footer.cookieConsentText')}
