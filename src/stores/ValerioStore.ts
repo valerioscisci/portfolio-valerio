@@ -21,6 +21,8 @@ export default class HomeStore {
   @observable instagramImages: Array<InstagramPic> = [];
   @observable companiesLogos: Array<ImageSource> = [];
 
+  @observable accountName: string = 'the_wanderer_developer';
+
   @computed
   get isAppLoading() {
     return this.isFetchingImages || this.instagramFetchingStatus === 'loading';
@@ -171,7 +173,7 @@ export default class HomeStore {
           cachedInstagramPics,
         ) as InstagramPic[];
       } else {
-        this.instagramImages = await instagram.getFeed();
+        this.instagramImages = await instagram.getFeed(this.accountName);
         localStorage.setItem(
           'instagramPics',
           JSON.stringify(this.instagramImages),

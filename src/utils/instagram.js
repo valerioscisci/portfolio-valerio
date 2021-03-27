@@ -1,5 +1,5 @@
 class Instagram {
-  static async getFeed() {
+  static async getFeed(account) {
     const INSTAGRAM_ID = '4096919577';
     const PHOTO_COUNT = 12;
 
@@ -42,7 +42,9 @@ class Instagram {
           }
         };
 
-        const edges = json.data.user.edge_owner_to_timeline_media.edges;
+        const edges =
+          json.entry_data.ProfilePage[0].graphql.user
+            .edge_owner_to_timeline_media.edges;
 
         return edges.map((edge) => {
           return {
@@ -62,11 +64,40 @@ class Instagram {
       }
     };
 
-    const url = `https://www.instagram.com/graphql/query?query_id=17888483320059182&variables={"id":"${INSTAGRAM_ID}","first":${PHOTO_COUNT},"after":null}`;
+    const getJSON = (body) => {
+      try {
+        const data = body
+          .split('window._sharedData = ')[1]
+          .split('</script>')[0];
+        return JSON.parse(data.substr(0, data.length - 1));
+      } catch (err) {
+        throw Error('cannot parse response body');
+      }
+    };
 
-    return fetch(url)
-      .then((resp) => resp.json())
-      .then((json) => mapMedia(json));
+    //const url = `https://www.instagram.com/graphql/query?query_id=17888483320059182&variables={"id":"${INSTAGRAM_ID}","first":${PHOTO_COUNT},"after":null}`;
+
+    const url = () => {
+      return (
+        'https://images' +
+        ~~(Math.random() * 3333) +
+        '-focus-opensocial.googleusercontent.com/gadgets/proxy?container=none&url=https://www.instagram.com/' +
+        account +
+        '/'
+      );
+    };
+
+    const fetchWithRetry = (n, err) => {
+      if (n <= 1) throw err;
+
+      return fetch(url())
+        .then((resp) => resp.text())
+        .then((body) => getJSON(body))
+        .then((json) => mapMedia(json))
+        .catch((err) => fetchWithRetry(n - 1, err));
+    };
+
+    return fetchWithRetry(5);
   }
 }
 
