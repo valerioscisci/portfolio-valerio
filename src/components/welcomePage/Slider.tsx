@@ -19,17 +19,18 @@ export const MainSlider: React.FC<SliderProps> = ({ imagesArray }) => {
     t(`slider.heading2`),
     t(`slider.heading3`),
     t(`slider.heading4`),
+    t(`slider.heading5`),
   ];
 
   return (
     <CarouselContainer>
       <CarouselProvider
-        interval={3000}
+        interval={3500}
         isPlaying={true}
         naturalSlideWidth={1920}
         hasMasterSpinner={true}
         naturalSlideHeight={1080}
-        totalSlides={4}
+        totalSlides={5}
         dragEnabled={false}
         touchEnabled={false}
         infinite={true}
@@ -76,7 +77,7 @@ const CarouselContainer = styled.div`
   & .carousel {
     & .carousel__slider {
       & .carousel__slider-tray-wrapper {
-        max-height: 80vh;
+        max-height: 100vh;
         clip-path: polygon(100% 0, 100% 85%, 50% 100%, 0 85%, 0 0);
         & .carousel__slider-tray {
           display: flex;
@@ -118,9 +119,32 @@ const OverlayShadow = styled.div`
 
 const Header = styled.h1`
   color: ${(props) => props.theme.colors.textColorWhite};
-  letter-spacing: 0.1em;
+  letter-spacing: 0.2em;
   font-family: Corben;
-  margin-top: 10%;
+  margin-top: 15%;
   font-size: 2em;
   max-width: 75%;
+  font-style: italic;
+  position: relative;
+
+  &:before {
+    content: '';
+    position: absolute;
+    right: 25%;
+    top: -5%;
+    left: 25%;
+    height: 10px;
+    background: linear-gradient(
+          ${(props) => props.theme.colors.secondary},
+          ${(props) => props.theme.colors.secondary}
+        )
+        bottom,
+      linear-gradient(
+          ${(props) => props.theme.colors.secondary},
+          ${(props) => props.theme.colors.secondary}
+        )
+        top;
+    background-size: 100% 2px, 100% 6px;
+    background-repeat: no-repeat;
+  }
 `;
