@@ -31,4 +31,5 @@ const Corner = styled.a`
   transform: rotate(-45deg);
   font-size: 0.7em;
   text-decoration: none;
+  z-index: 99;
 `;

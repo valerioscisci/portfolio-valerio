@@ -66,8 +66,8 @@ export const NewsletterForm: React.FC = observer(() => {
   const submit = async () => {
     setStatus('loading');
     const params = toQueryString({
-      email: email,
-      name: name,
+      EMAIL: email,
+      NAME: name,
     });
     const urlRequest =
       (await getAjaxUrl(process.env.REACT_APP_MAILCHIMP_URL)) + '&' + params;
@@ -162,7 +162,7 @@ export const NewsletterForm: React.FC = observer(() => {
 const Section = styled.section`
   width: 100%;
   height: 60em;
-  margin: 10em 0 5em 0;
+  margin: 10em 0 0 0;
   display: flex;
   align-items: center;
   justify-content: center;

@@ -4,15 +4,23 @@ import styled, { css } from 'styled-components';
 export interface ParagraphProps {
   color?: string;
   style?: React.CSSProperties;
+  className?: string;
 }
 
 export const Paragraph: React.FC<ParagraphProps> = ({
   color,
   style,
+  className,
   ...props
 }) => {
+  let flatStyle: any = style;
+  if (Array.isArray(style)) {
+    for (let i = 0; i < style.length; i++) {
+      flatStyle = flatStyle + style[i];
+    }
+  }
   return (
-    <Container color={color} style={style}>
+    <Container color={color} style={style} className={className} {...props}>
       {props.children}
     </Container>
   );
@@ -44,4 +52,5 @@ const Container = styled.p<{ color?: string }>`
   word-spacing: 0.15em;
   letter-spacing: 0.02em;
   margin: 0;
+  white-space: pre-wrap;
 `;

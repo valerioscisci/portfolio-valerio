@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { observer } from 'mobx-react';
 import { useTranslation } from 'react-i18next';
 import styled from 'styled-components';
@@ -26,6 +26,10 @@ export const HomeScreen: React.FC = observer((props) => {
   const [width] = useWindowSize();
   const scrollY = useScrollPosition(144);
 
+  useEffect(() => {
+    document.title = t('common.websiteName') + ' - ' + t('navbar.home');
+  });
+
   return (
     <ScreenContainer>
       <Main>
@@ -38,7 +42,7 @@ export const HomeScreen: React.FC = observer((props) => {
             margin: 0,
           }}
         >
-          {t(`welcome.heading`)}
+          {t(`common.websiteName`)}
         </HeadingTitle>
         <SubHeading style={{ marginBottom: '4em' }}>
           {t('welcome.subHeading')}

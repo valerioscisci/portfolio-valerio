@@ -1,5 +1,6 @@
 const it = {
   common: {
+    websiteName: 'The Wanderer Developer',
     contactMe: 'Contattami',
     blog: 'Blog',
   },
@@ -10,13 +11,12 @@ const it = {
     contact: 'Contattami',
   },
   slider: {
-    heading1: 'testtesttesttesttest\ntesttesttesttesttest',
+    heading1: 'testtesttesttesttest testtesttesttesttest',
     heading2: '',
     heading3: '',
     heading4: '',
   },
   welcome: {
-    heading: 'The wanderer developer',
     subHeading:
       'Realizzo siti web e applicazioni mobile, viaggiando e documentando il tutto',
     introParagraph:
@@ -49,7 +49,7 @@ const it = {
   blogSection: {
     title: 'Blog su viaggi e tecnologia',
     description:
-      'A breve verrà aggiunta una sezione dove parlerò di come sia possibile lavorare viaggiando e pubblicherò articoli sulle mie conoscenze riguardanti principalmente lo sviluppo web. \n\n...STAY TUNED...',
+      'A breve verrà aggiunta una sezione dove parlerò di come sia possibile lavorare viaggiando e pubblicherò articoli sulle mie conoscenze riguardanti principalmente lo sviluppo web.  ...STAY TUNED...',
     comingSoon: 'Coming Soon',
     subscribe: 'Iscriviti alla newsletter',
   },
@@ -114,14 +114,43 @@ const it = {
     error: "Errore durante l'invio, per favore prova di nuovo.",
   },
   footer: {
-    copyright: 'The Wanderer Developer',
     contactInformation: 'Informazioni di contatto',
     usefulLinks: 'Link utili',
     policy: 'Policy',
     privacyPolicy: 'Privacy Policy',
     cookiePolicy: 'Cookie Policy',
+    cookieConsent: 'Accetto',
+    cookieConsentText:
+      "Questo sito web utilizza i cookie per migliorare l'esperienza utente.",
+    cookieConsentDecline: 'Rifiuto',
   },
   githubCorner: 'Questo sito è open source',
+  about: {
+    introText:
+      'Ciao, sono Valerio e mi piace definirmi un <Highlight>Nomade Digitale</Highlight>. Il mio lavoro, per sua natura, può essere svolto senza la' +
+      " necessità di essere in uno specifico luogo; mi basta avere una buona connessione ad internet e ogni tanto un po' di tranquillità" +
+      ' per essere produttivo e portare a termine i progetti su cui sto lavorando.',
+    digitalNomad:
+      'Sono definite tali quelle persone che sfruttano la diffusione della banda\nlarga intutto il mondo per poter lavorare da posti diversi in base alle\nloro esigenze, conducendo una vita poco sedentaria e "nomadica".',
+    secondParagraph:
+      'Ma non è sempre stato così...cinque anni fa sono venuto a conoscenza del mondo del lavoro da remoto e da allora per me è cambiato tutto. Ho deciso di concentrare gli ultimi anni di università sullo studio delle tecnologie web.',
+    thirdParagraph:
+      "Tre mesi dopo aver scoperto questa modalità di lavoro, ho trovato il mio primo lavoro da sviluppatore web, 1 anno dopo ho fatto la mia prima esperienza all'estero e al rientro in Italia mi sono iscritto alla magistrale per terminare gli studi.\nIn questo periodo ho lavorato per un'azienda chiamata t33 e ho progettato i miei primi siti web in autonomia, partecipando anche ad un Hackaton organizzato dall'università.",
+    fourthParagraph:
+      "Nel frattempo ho continuato a viaggiare e a studiare quanto più possibile, riuscendo alla fine a conseguire uno dei più grandi traguardi della mia vita (fin'ora): il titolo di dottore magistrale in ingegneria informatica e dell'automazione con votazione 110L su 110.",
+    fifthParagraph:
+      "Da poco meno di un anno collaboro con un'innovativa azienda chiamata Mostaza, dove principalmente mi occupo di sviluppo di applicazioni web e di realizzazione di applicazioni.",
+    TWDProject: 'Il progetto ',
+    TWDdescription:
+      'Qunado ho iniziato a progettare questo sito, volevo semplicemente realizzare il classico sito-portfolio dove mostravo i miei lavori passati così da potermi mettere in contatto con altri sviluppatori e nuovi clienti. Subito mi sono reso conto di voler fare di più: questo progetto nasce dalla voglia che ho di inspirare altri a seguire questo stile di vita e dal desiderio che ho di condividere ciò che imparo ed ho imparato nel mio persorso di sviluppatore web on the road.',
+    sixthParagraph:
+      'Quando ho iniziato io in questa "avventura" avrei voluto avere un punto di riferimento a cui inspirarmi.\n\nSe siete interessati ad avere delle informazioni secondo me necessarie prima anche solo di pensare ad intraprendere la strada da nomade digitale, vi consiglio la lettura di questo articolo che ho scritto qualche tempo fa: ',
+    linkedInArticle: '5 cose da sapere prima di diventare nomade digitale',
+    seventhParagraph:
+      'Ad ora non so esattamente dove mi condurrà questo progetto, ma sono molto felice di poter avuto la possibilità di creare qualcosa di mio in cui credo fermamente.',
+    conclusion:
+      'Seguimi sui miei canali social o iscriviti alla newsletter per rimanere aggiornato. \n\nA presto.\nValerio',
+  },
 };
 
 export type I18NStrings = typeof it;

@@ -19,7 +19,7 @@ const socialData = [
   },
   {
     name: 'Instagram',
-    url: 'https://www.instagram.com/valerioscisci/',
+    url: 'https://www.instagram.com/the_wanderer_developer/',
   },
   {
     name: 'GitHub',
@@ -74,7 +74,7 @@ export const Footer: React.FC = () => {
             <Logo src={LogoImage} />
           </StyledLink>
           <Paragraph color={'white'}>
-            © {currentYear} {t('footer.copyright')}
+            © {currentYear} {t('common.websiteName')}
           </Paragraph>
         </LogoContainer>
       </FooterColumn>
