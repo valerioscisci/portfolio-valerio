@@ -17,6 +17,7 @@ const en: typeof it = {
     heading2: '',
     heading3: '',
     heading4: '',
+    heading5: '',
   },
   welcome: {
     subHeading:

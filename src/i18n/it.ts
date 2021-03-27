@@ -11,10 +11,11 @@ const it = {
     contact: 'Contattami',
   },
   slider: {
-    heading1: 'testtesttesttesttest testtesttesttesttest',
-    heading2: '',
-    heading3: '',
-    heading4: '',
+    heading1: 'Torna ad essere padrone del tuo tempo',
+    heading2: 'Così da poterti finalmente dedicare',
+    heading3: 'A fare ciò che ami di più',
+    heading4: 'E avere modo di esplorare ',
+    heading5: 'Il fantastico mondo che ci circonda',
   },
   welcome: {
     subHeading:
