@@ -21,14 +21,13 @@ const it = {
     subHeading:
       'Realizzo siti web e applicazioni mobile, viaggiando e documentando il tutto',
     introParagraph:
-      'Il mio nome è Valerio e sono un ingegnere informatico specializzato in sviluppo web oltre ad essere un appassionato di tutto ciò che riguarda il mondo dei viaggi. ' +
-      'Da qualche anno a questa parte ho preso la decisione di non voler passare la maggior parte della vita chiuso tra le quattro mura di un ufficio. ' +
-      'Pertanto, ho voluto sfruttare la tecnologia e le mie conoscenze per organizzare la mia vita lavorativa svincolandomi dal dover vivere in un solo luogo: sono a tutti gli effetti un nomade digitale. ',
+      'Mi chiamo Valerio e sono un ingegnere informatico specializzato in sviluppo web e crezione di applicazioni per smartphone. La mia principale passione è viaggiare. ' +
+      'Quache anno fa ho preso la decisione di non voler passare la maggior parte della vita chiuso tra le quattro mura di un ufficio. ' +
+      'Ho pertanto voluto sfruttare la tecnologia e le mie conoscenze per organizzare la mia vita lavorativa svincolandomi dal dover vivere in un solo luogo: sono a tutti gli effetti un nomade digitale. ',
     introButton: 'scopri altro su di me',
+    secondParagraphTitle: 'Lavoriamo insieme!',
     secondParagraph:
-      "Se hai un progetto in mente che preveda la realizzazione di un sito web o di un'applicazione mobile, contattami! Allo stesso modo, se sei un developer e vuoi fare due chiacchiere sul lavoro da remoto, sulle scelte che ho preso o riguardo qualcosa di più specifico, sono a disposizione.",
-    citParagraph:
-      'Freedom is living life as you want to live it. You can have that freedom now. Cit. ',
+      "Se hai un progetto in mente che preveda la realizzazione di un sito web o di un'applicazione mobile non esitare a contattarmi! \nAllo stesso modo, se sei un developer e vuoi fare due chiacchiere sul lavoro da remoto, sulle scelte che ho preso o riguardo qualcosa di più specifico, sono a disposizione. Ultimo ma assolutamente non per importanza, se pensi di amare il mondo dei viaggi quanto me, mi piacerebbe tantissimo avere uno scambio di idee!",
   },
   parallax: {
     heading: 'Spezzare la routine è la miglior abitudine che TU possa avere',
@@ -40,7 +39,7 @@ const it = {
     learnMore: 'Altre informazioni',
     github: 'Codice open source',
     noProjectsDescription:
-      'Non ho ancora realizzato alcun progetto utilizzando questa tecnologia quindi il TUO potrebbe essere il primo! Per questo, avrai anche diritto ad uno sconto se decidi di collaborare con me per la prima volta.',
+      'Non ho ancora realizzato alcun progetto in autonomia utilizzando questa tecnologia quindi il TUO potrebbe essere il primo!',
   },
   instagram: {
     visitProfile: 'Visita il mio profilo Instagram',
@@ -50,14 +49,14 @@ const it = {
   blogSection: {
     title: 'Blog su viaggi e tecnologia',
     description:
-      'A breve verrà aggiunta una sezione dove parlerò di come sia possibile lavorare viaggiando e pubblicherò articoli sulle mie conoscenze riguardanti principalmente lo sviluppo web.  ...STAY TUNED...',
+      'A breve verrà aggiunta una sezione del sito dove parlerò di come sia possibile lavorare viaggiando, pubblicherò articoli sulle mie conoscenze riguardanti principalmente lo sviluppo web e cercherò di creare contenuti per nomadi digitali come me!\n  ...STAY TUNED...',
     comingSoon: 'Coming Soon',
     subscribe: 'Iscriviti alla newsletter',
   },
   newsletter: {
     subscribe: 'Iscriviti alla newsletter',
     infoText:
-      "Iscrivendoti riceverai delle email contenenti aggiornamenti sui miei viaggi e argomenti d'interesse per sviluppatori web.",
+      "Iscrivendoti riceverai delle email contenenti aggiornamenti sui miei viaggi, sul mondo del lavoro da remoto e su argomenti d'interesse per sviluppatori web.",
     subscribeButton: 'Iscriviti',
     success: 'Iscritto con successo!',
     failure: "Errore durante l'isrcrizione, riprova per favore.",
@@ -88,7 +87,7 @@ const it = {
       codeReview: {
         name: 'Revisione di codice',
         description:
-          "Se hai del codice che vuoi migliorare, possiamo senz'altro farlo insieme.",
+          "Se hai del codice che vuoi migliorare, possiamo senz'altro provare a farlo insieme.",
       },
     },
   },

@@ -129,7 +129,11 @@ export const NewsletterForm: React.FC = observer(() => {
                 {t('footer.privacyPolicy')}
               </StyledLink>
             </Paragraph>
-            <CheckboxPrivacy type={'checkbox'} checked={checkboxChoice} />
+            <CheckboxPrivacy
+              type={'checkbox'}
+              checked={checkboxChoice}
+              readOnly
+            />
             <span
               onClick={() => {
                 setCheckboxChoice(!checkboxChoice);

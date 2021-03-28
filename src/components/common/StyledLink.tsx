@@ -1,5 +1,7 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import styled, { css } from 'styled-components';
+import { ConditionalWrapper } from './ConditionalWrapper';
 
 export interface StyledLinkProps {
   color?: string;
@@ -7,6 +9,7 @@ export interface StyledLinkProps {
   target?: string;
   hoverSpacing?: boolean;
   style?: React.CSSProperties;
+  routerLink?: boolean;
 }
 
 export const StyledLink: React.FC<StyledLinkProps> = ({
@@ -15,19 +18,29 @@ export const StyledLink: React.FC<StyledLinkProps> = ({
   target,
   hoverSpacing = true,
   style,
+  routerLink = false,
   ...props
 }) => {
   return (
-    <Container
-      href={href}
-      color={color}
-      rel={'noreferrer'}
-      target={target}
-      hoverSpacing={hoverSpacing}
-      style={style}
+    <ConditionalWrapper
+      condition={routerLink}
+      wrapper={(children) => (
+        <Link to={href} style={{ textDecoration: 'none' }}>
+          {children}
+        </Link>
+      )}
     >
-      {props.children}
-    </Container>
+      <Container
+        href={routerLink ? '' : href}
+        color={color}
+        rel={'noreferrer'}
+        target={target}
+        hoverSpacing={hoverSpacing}
+        style={style}
+      >
+        {props.children}
+      </Container>
+    </ConditionalWrapper>
   );
 };
 

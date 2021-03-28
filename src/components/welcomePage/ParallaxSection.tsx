@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React, { useCallback, useRef } from 'react';
 import { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import VisibilitySensor from 'react-visibility-sensor';
@@ -51,7 +51,7 @@ export const ParallaxSection: React.FC<ParallaxSectionProps> = ({
     setPlanesStartingInfo(newPlanesArray);
   };
 
-  const showPlanes = () => {
+  const showPlanes = useCallback(() => {
     return (
       <Overlap>
         {planesStartingInfo.map((planeInfo, index) => {
@@ -60,6 +60,7 @@ export const ParallaxSection: React.FC<ParallaxSectionProps> = ({
             (scrollY / planeInfo.width) * 15
           }px) translateY(0) translateZ(0)`;
 
+          console.log(startingPlanePosition);
           return (
             <Plane
               key={index}
@@ -76,7 +77,8 @@ export const ParallaxSection: React.FC<ParallaxSectionProps> = ({
         <PlaneText>{t('parallax.heading')}</PlaneText>
       </Overlap>
     );
-  };
+  }, [planesStartingInfo, scrollY, t]);
+
   return (
     <VisibilitySensor
       partialVisibility

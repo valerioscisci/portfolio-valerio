@@ -17,8 +17,8 @@
       "projectData": {
         "titleIT": "Applicazione web per la gestione delle proposte di progetti al MEAE",
         "titleEN": "Web application for the management of the project proposals to MEAE",
-        "descriptionIT": "Sviluppo completo dell'applicazione web utilizzata dal Ministero per gli Affari Europei di Malta per consentire alle autorità maltesi, in particolare i diversi ministeri, di scambiare informazioni sulle proposte di progetti che saranno finanziate con fondi UE come l’ESIF. \n Realizzato in collaborazione dell'azienda T33 s.r.l.",
-        "descriptionEN": "Full development of the web application used by the Ministry for European Affairs and Equality of Malta to allow the Maltese Authorities, including the MEAE and the different Line Ministries, to exchange information about projects proposals that will be funded with EU funds such as ESIF. \n Made in collaboration with the company T33 s.r.l.",
+        "descriptionIT": "Sviluppo completo dell'applicazione web utilizzata dal Ministero per gli Affari Europei di Malta per consentire alle autorità maltesi, in particolare i diversi ministeri, di scambiare informazioni sulle proposte di progetti che saranno finanziate con fondi UE come l’ESIF. \nRealizzato in collaborazione dell'azienda T33 s.r.l.",
+        "descriptionEN": "Full development of the web application used by the Ministry for European Affairs and Equality of Malta to allow the Maltese Authorities, including the MEAE and the different Line Ministries, to exchange information about projects proposals that will be funded with EU funds such as ESIF. \nMade in collaboration with the company T33 s.r.l.",
         "projectUrl": "http://linux01.ricpic.com/",
         "portfolioUrl": "",
         "githubUrl": ""

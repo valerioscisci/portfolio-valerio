@@ -72,14 +72,22 @@ export const HomeScreen: React.FC = observer((props) => {
               iconRight={<FaArrowRight size={'1.2em'} />}
               arrowAnimation={true}
               style={{ margin: '2em auto' }}
+              onClickUrl={'#/about'}
             ></Button>
           </div>
         </FirstSection>
         <SecondSection>
           <HeadingTitle style={{ marginTop: '4em' }} color={'white'}>
-            SEZIONE DUE
+            {t(`welcome.secondParagraphTitle`)}
           </HeadingTitle>
-          <Paragraph color={'white'}>{t(`welcome.secondParagraph`)}</Paragraph>
+          <Paragraph
+            color={'white'}
+            style={{
+              textAlign: 'justify',
+            }}
+          >
+            {t(`welcome.secondParagraph`)}
+          </Paragraph>
           <Button
             buttonText={t(`common.contactMe`)}
             style={{ margin: '2em auto' }}

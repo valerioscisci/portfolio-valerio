@@ -6,7 +6,7 @@ import { Header } from '../components/navigation/Header';
 import { GitHubCorner } from '../components/common/GitHubCorner';
 import { useWindowSize } from '../hooks/useWindowSize';
 import { GoTop } from '../components/common/GoTop';
-import CookieConsent, { Cookies } from 'react-cookie-consent';
+import CookieConsent from 'react-cookie-consent';
 import { valerioTheme } from '../theme';
 import { useTranslation } from 'react-i18next';
 import { StyledLink } from '../components/common/StyledLink';

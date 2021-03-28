@@ -24,9 +24,8 @@ const en: typeof it = {
       'I create websites and mobile applications while traveling around the world',
     introParagraph: '',
     introButton: 'scopri altro su di me',
+    secondParagraphTitle: '',
     secondParagraph: '',
-    citParagraph:
-      'Freedom is living life as you want to live it. You can have that freedom now. Cit. ',
   },
   parallax: {
     heading: 'Breaking out of monotony is the best habit YOU can have',
