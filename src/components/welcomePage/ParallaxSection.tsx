@@ -31,12 +31,12 @@ export const ParallaxSection: React.FC<ParallaxSectionProps> = ({
     }
   }, [isVisible, setOffsetTop, scrollY]);
 
-  const generatePlanes = async () => {
-    const numberOfPlanes = Math.floor(Math.random() * (12 - 8 + 1) + 8);
+  const generatePlanes = useCallback(async () => {
+    const numberOfPlanes = Math.floor(Math.random() * (10 - 8 + 1) + 8);
     const width = 22;
     const newPlanesArray = [];
     // For each plane generate the starting point and the direction
-    for (var i = 0; i < numberOfPlanes; i++) {
+    for (var i = 1; i <= numberOfPlanes; i++) {
       const startingHeight = Math.floor(
         Math.random() * (sectionRef.current.offsetHeight + 1),
       );
@@ -49,35 +49,35 @@ export const ParallaxSection: React.FC<ParallaxSectionProps> = ({
       });
     }
     setPlanesStartingInfo(newPlanesArray);
-  };
+  }, []);
 
   const showPlanes = useCallback(() => {
     return (
       <Overlap>
-        {planesStartingInfo.map((planeInfo, index) => {
-          const startingPlanePosition = -window.innerWidth / planeInfo.width;
-          const commonPlaneTransform = `translateX(${
-            (scrollY / planeInfo.width) * 15
-          }px) translateY(0) translateZ(0)`;
+        {isVisible &&
+          planesStartingInfo.map((planeInfo, index) => {
+            const startingPlanePosition = -window.innerWidth / planeInfo.width;
+            const commonPlaneTransform = `translateX(${
+              (scrollY / planeInfo.width) * 15
+            }px) translateY(0) translateZ(0)`;
 
-          console.log(startingPlanePosition);
-          return (
-            <Plane
-              key={index}
-              src={require('../../assets/images/homepage/plane.svg').default}
-              alt={'freedom'}
-              startingPlanePosition={startingPlanePosition}
-              startingPlaneHeight={planeInfo.startingHeight}
-              commonPlaneTransform={commonPlaneTransform}
-              planeWidth={planeInfo.width}
-              planeDirection={planeInfo.direction}
-            />
-          );
-        })}
+            return (
+              <Plane
+                key={index}
+                src={require('../../assets/images/homepage/plane.svg').default}
+                alt={'freedom'}
+                startingPlanePosition={startingPlanePosition}
+                startingPlaneHeight={planeInfo.startingHeight}
+                commonPlaneTransform={commonPlaneTransform}
+                planeWidth={planeInfo.width}
+                planeDirection={planeInfo.direction}
+              />
+            );
+          })}
         <PlaneText>{t('parallax.heading')}</PlaneText>
       </Overlap>
     );
-  }, [planesStartingInfo, scrollY, t]);
+  }, [isVisible, planesStartingInfo, scrollY, t]);
 
   return (
     <VisibilitySensor
