@@ -81,17 +81,17 @@ export const Footer: React.FC = () => {
       <FooterColumn>
         <FooterTitle>{t('footer.usefulLinks')}</FooterTitle>
         <LinkContainer>
-          <StyledLink href={'#BlogSection'} color={'white'}>
+          <StyledLink href={'#BlogSection'} color={'white'} routerLink={true}>
             {t('common.blog')}
           </StyledLink>
         </LinkContainer>
         <LinkContainer>
-          <StyledLink href={'#'} color={'white'}>
+          <StyledLink href={'/about'} color={'white'} routerLink={true}>
             {t('navbar.about')}
           </StyledLink>
         </LinkContainer>
         <LinkContainer>
-          <StyledLink href={'#ContactForm'} color={'white'}>
+          <StyledLink href={'/#ContactForm'} color={'white'} routerLink={true}>
             {t('common.contactMe')}
           </StyledLink>
         </LinkContainer>

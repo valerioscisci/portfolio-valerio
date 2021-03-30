@@ -34,6 +34,7 @@ export const KnownTechSection: React.FC<KnownTechSectionProps> = ({
 
   return (
     <section
+      id={'Portfolio'}
       style={{
         padding: '4em 0 2em 0',
         display: 'flex',

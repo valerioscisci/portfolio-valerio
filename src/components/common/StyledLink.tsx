@@ -1,7 +1,6 @@
-import React from 'react';
+import React, { useCallback, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import styled, { css } from 'styled-components';
-import { ConditionalWrapper } from './ConditionalWrapper';
 
 export interface StyledLinkProps {
   color?: string;
@@ -21,30 +20,32 @@ export const StyledLink: React.FC<StyledLinkProps> = ({
   routerLink = false,
   ...props
 }) => {
-  return (
-    <ConditionalWrapper
-      condition={routerLink}
-      wrapper={(children) => (
-        <Link to={href} style={{ textDecoration: 'none' }}>
-          {children}
-        </Link>
-      )}
-    >
-      <Container
-        href={routerLink ? '' : href}
-        color={color}
-        rel={'noreferrer'}
-        target={target}
-        hoverSpacing={hoverSpacing}
-        style={style}
-      >
+  const goTop = useCallback(() => {
+    window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
+  }, []);
+
+  useEffect(() => {
+    if (routerLink) {
+      goTop();
+    }
+  }, [goTop, routerLink]);
+
+  return routerLink ? (
+    <Link to={href} style={style}>
+      <LinkContainer hoverSpacing={hoverSpacing} color={color}>
         {props.children}
-      </Container>
-    </ConditionalWrapper>
+      </LinkContainer>
+    </Link>
+  ) : (
+    <a href={href} rel={'noreferrer'} target={target} style={style}>
+      <LinkContainer hoverSpacing={hoverSpacing} color={color}>
+        {props.children}
+      </LinkContainer>
+    </a>
   );
 };
 
-const Container = styled.a<{ color?: string; hoverSpacing?: boolean }>`
+const LinkContainer = styled.span<{ color?: string; hoverSpacing?: boolean }>`
   color: ${(props) => {
     switch (true) {
       case props.color === 'white':

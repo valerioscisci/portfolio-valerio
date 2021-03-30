@@ -1,11 +1,11 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import styled from 'styled-components';
 import logoPlane from '../../assets/images/common/logoPlane.svg';
 
 export const GoTop: React.FC = () => {
-  const onClick = () => {
-    window.scrollTo(0, 0);
-  };
+  const onClick = useCallback(() => {
+    window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
+  }, []);
 
   return <Container onClick={onClick}></Container>;
 };

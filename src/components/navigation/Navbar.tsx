@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import styled, { css } from 'styled-components';
 import LogoImage from '../../assets/images/common/LogoWhite.png';
 import { HashRouter } from 'react-router-dom';
@@ -25,9 +25,9 @@ export const Navbar: React.FC<NavbarProps> = ({ navLinks, width }) => {
     }
   }, [menuOpen]);
 
-  const changeLanguage = (lng: string) => {
+  const changeLanguage = useCallback((lng: string) => {
     i18n.changeLanguage(lng);
-  };
+  }, []);
 
   return (
     <HashRouter>

@@ -141,6 +141,7 @@ export const NewsletterForm: React.FC = observer(() => {
             ></span>
           </CheckboxContainer>
           {status === 'loading' ? (
+            // eslint-disable-next-line react/style-prop-object
             <Spinner size={10} style={'margin: 0 0 1em 0;'} />
           ) : status === 'failed' ? (
             <Paragraph color={'red'}>{t('newsletter.failure')}</Paragraph>

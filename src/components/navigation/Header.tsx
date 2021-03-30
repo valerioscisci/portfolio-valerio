@@ -16,7 +16,7 @@ export const Header: React.FC<Props> = ({ width, mainSlider = true }) => {
   const navLinks = [
     { name: t('navbar.home'), route: '/' },
     { name: t('navbar.about'), route: '/about' },
-    { name: t('navbar.portfolio'), route: '/portfolio' },
+    { name: t('navbar.portfolio'), route: '/#Portfolio' },
     { name: t('navbar.contact'), route: '/#ContactForm' },
     { name: t('newsletter.subscribeButton'), route: '/#Newsletter' },
   ];

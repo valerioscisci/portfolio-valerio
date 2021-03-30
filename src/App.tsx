@@ -12,7 +12,6 @@ import { Spinner } from './components/common/Spinner';
 import { InstagramFeed } from './components/welcomePage/InstagramFeed';
 import { observer } from 'mobx-react';
 import { AboutScreen } from './screens/AboutScreen';
-import ScrollToTop from './components/common/ScrollToTop';
 
 export const App: React.FC = observer(() => {
   const { i18n } = useTranslation();
@@ -35,26 +34,24 @@ export const App: React.FC = observer(() => {
           <Spinner />
         ) : (
           <HashRouter basename="/">
-            <ScrollToTop>
-              <Switch>
-                <Route
-                  exact
-                  path={'/'}
-                  render={() => (
-                    <HomeScreen>
-                      <InstagramFeed
-                        account={'the_wanderer_developer'}
-                        numberOfMediaElements={12}
-                        media={stores.home.instagramImages}
-                        status={stores.home.instagramFetchingStatus}
-                      />
-                    </HomeScreen>
-                  )}
-                />
-                <Route path={'/about'} render={() => <AboutScreen />} />
-                <Redirect to={'/'} />
-              </Switch>
-            </ScrollToTop>
+            <Switch>
+              <Route
+                exact
+                path={'/'}
+                render={() => (
+                  <HomeScreen>
+                    <InstagramFeed
+                      account={'the_wanderer_developer'}
+                      numberOfMediaElements={12}
+                      media={stores.home.instagramImages}
+                      status={stores.home.instagramFetchingStatus}
+                    />
+                  </HomeScreen>
+                )}
+              />
+              <Route path={'/about'} render={() => <AboutScreen />} />
+              <Redirect to={'/'} />
+            </Switch>
           </HashRouter>
         )}
       </StoresContext.Provider>
