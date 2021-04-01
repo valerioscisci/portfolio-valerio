@@ -1,5 +1,5 @@
-import React, { useCallback, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import React, { useCallback } from 'react';
+import { HashRouter, Link } from 'react-router-dom';
 import styled, { css } from 'styled-components';
 
 export interface StyledLinkProps {
@@ -9,6 +9,7 @@ export interface StyledLinkProps {
   hoverSpacing?: boolean;
   style?: React.CSSProperties;
   routerLink?: boolean;
+  scrollTo?: string;
 }
 
 export const StyledLink: React.FC<StyledLinkProps> = ({
@@ -18,26 +19,38 @@ export const StyledLink: React.FC<StyledLinkProps> = ({
   hoverSpacing = true,
   style,
   routerLink = false,
+  scrollTo,
   ...props
 }) => {
   const goTop = useCallback(() => {
     window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
   }, []);
 
-  useEffect(() => {
-    if (routerLink) {
-      goTop();
+  const scrollToId = useCallback(() => {
+    if (scrollTo) {
+      const id = document.getElementById(scrollTo);
+      if (id) {
+        id.scrollIntoView({ behavior: 'smooth' });
+      }
     }
-  }, [goTop, routerLink]);
+  }, [scrollTo]);
 
   return routerLink ? (
-    <Link to={href} style={style}>
-      <LinkContainer hoverSpacing={hoverSpacing} color={color}>
-        {props.children}
-      </LinkContainer>
-    </Link>
+    <HashRouter>
+      <Link to={href} style={style} onClick={goTop}>
+        <LinkContainer hoverSpacing={hoverSpacing} color={color}>
+          {props.children}
+        </LinkContainer>
+      </Link>
+    </HashRouter>
   ) : (
-    <a href={href} rel={'noreferrer'} target={target} style={style}>
+    <a
+      href={href}
+      rel={'noreferrer'}
+      target={target}
+      style={style}
+      onClick={scrollToId}
+    >
       <LinkContainer hoverSpacing={hoverSpacing} color={color}>
         {props.children}
       </LinkContainer>

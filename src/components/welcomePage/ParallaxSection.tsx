@@ -4,14 +4,9 @@ import styled from 'styled-components';
 import VisibilitySensor from 'react-visibility-sensor';
 import { useTranslation } from 'react-i18next';
 import { useThrottle } from '@react-hook/throttle';
+import useScrollPosition from '@react-hook/window-scroll';
 
-export interface ParallaxSectionProps {
-  scrollY: number;
-}
-
-export const ParallaxSection: React.FC<ParallaxSectionProps> = ({
-  scrollY,
-}) => {
+export const ParallaxSection: React.FC = () => {
   const { t } = useTranslation();
   const [isVisible, setIsVisible] = useState<boolean>(true);
   const [offsetTop, setOffsetTop] = useThrottle<number>(0, 144);
@@ -22,6 +17,7 @@ export const ParallaxSection: React.FC<ParallaxSectionProps> = ({
       width: number;
     }>
   >([]);
+  const scrollY = useScrollPosition(144);
 
   const sectionRef = useRef<any>();
 
