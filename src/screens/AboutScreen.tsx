@@ -4,14 +4,15 @@ import { Trans, useTranslation } from 'react-i18next';
 import styled from 'styled-components';
 import { HeadingTitle } from '../components/common/HeadingTitle';
 import { ScreenContainer } from './ScreenContainer';
-import laptopImage from '../assets/images/about/laptop.jpg';
-import degreeImage from '../assets/images/about/laurea.jpg';
-import beerImage from '../assets/images/about/beer.jpg';
+import laptopImage from '../assets/images/about/laptop.png';
+import degreeImage from '../assets/images/about/laurea.png';
+import beerImage from '../assets/images/about/beer.png';
 import { Paragraph } from '../components/common/Paragraph';
 import { Tooltip } from '../components/common/Tooltip';
 import { StyledLink } from '../components/common/StyledLink';
 import { FaNewspaper } from 'react-icons/fa';
 import { valerioTheme } from '../theme';
+import { useStores } from '../hooks/useStores';
 
 const paragraphStyle = {
   padding: '1em 2em',
@@ -32,6 +33,7 @@ const newsIconStyle: React.CSSProperties = {
 };
 
 export const AboutScreen: React.FC = observer(() => {
+  const { home } = useStores();
   const { t } = useTranslation();
 
   useEffect(() => {
@@ -55,7 +57,7 @@ export const AboutScreen: React.FC = observer(() => {
                     <Tooltip text={t('about.digitalNomad')} position={'top'} />
                   ),
                 }}
-              ></Trans>
+              />
             </Paragraph>
             <SecondParagraphCotainer>
               <Paragraph>
@@ -81,7 +83,9 @@ export const AboutScreen: React.FC = observer(() => {
         </Paragraph>
 
         <HeadingTitle style={{ padding: '0 2em' }}>
-          {t('about.TWDProject') + t('common.websiteName')}
+          {home.language === 'it' && t('about.TWDProject')}{' '}
+          {t('common.websiteName')}{' '}
+          {home.language === 'en' && t('about.TWDProject')}
         </HeadingTitle>
 
         <Paragraph style={paragraphStyle}>
@@ -181,12 +185,8 @@ const HeadingText = styled.div`
       }};
       padding: 1.5em;
       border-radius: 0.8em;
-      filter: drop-shadow(
-        16px 16px 20px
-          ${(props) => {
-            return props.theme.colors.backgroundDark;
-          }}
-      );
+      -webkit-box-shadow: 16px 16px 50px 20px rgba(34, 40, 49, 0.5);
+      box-shadow: 16px 16px 50px 20px rgba(34, 40, 49, 0.5);
     }
 
     @media (min-width: 992px) {

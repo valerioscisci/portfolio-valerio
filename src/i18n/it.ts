@@ -22,7 +22,7 @@ const it = {
       'Realizzo siti web e applicazioni mobile, viaggiando e documentando il tutto',
     introParagraph:
       'Mi chiamo Valerio e sono un ingegnere informatico specializzato in sviluppo web e crezione di applicazioni per smartphone. La mia principale passione è viaggiare. ' +
-      'Quache anno fa ho preso la decisione di non voler passare la maggior parte della vita chiuso tra le quattro mura di un ufficio. ' +
+      'Qualche anno fa ho preso la decisione di non voler passare la maggior parte della vita chiuso tra le quattro mura di un ufficio. ' +
       'Ho pertanto voluto sfruttare la tecnologia e le mie conoscenze per organizzare la mia vita lavorativa svincolandomi dal dover vivere in un solo luogo: sono a tutti gli effetti un nomade digitale. ',
     introButton: 'scopri altro su di me',
     secondParagraphTitle: 'Lavoriamo insieme!',
@@ -139,7 +139,7 @@ const it = {
     fourthParagraph:
       "Nel frattempo ho continuato a viaggiare e a studiare quanto più possibile, riuscendo alla fine a conseguire uno dei più grandi traguardi della mia vita (fin'ora): il titolo di dottore magistrale in ingegneria informatica e dell'automazione con votazione 110L su 110!",
     fifthParagraph:
-      "Da poco meno di un anno collaboro con un'innovativa azienda chiamata Mostaza, dove principalmente mi occupo di sviluppo di applicazioni web e di realizzazione di applicazioni.",
+      "Da poco meno di un anno collaboro con un'innovativa azienda chiamata Mostaza, dove principalmente mi occupo di sviluppo di applicazioni web e di realizzazione di applicazioni mobile.",
     TWDProject: 'Il progetto ',
     TWDdescription:
       'Qunado ho iniziato la realizzazione di questo sito, avevo in mente il classico sito-portfolio dove mostrare i miei lavori passati ed eventualmente potermi mettere in contatto con altri sviluppatori e nuovi clienti. Subito mi sono reso conto di voler fare di più: questo progetto nasce dalla voglia che ho di inspirare altri a seguire questo stile di vita e dal desiderio che ho di condividere ciò che imparo ed ho imparato nel mio persorso di sviluppatore web on the road.',
