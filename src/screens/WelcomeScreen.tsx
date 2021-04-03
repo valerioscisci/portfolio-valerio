@@ -8,7 +8,6 @@ import { FaArrowRight } from 'react-icons/fa';
 import { ImageAnimation } from '../components/common/ImageAnimation';
 import { ParallaxSection } from '../components/welcomePage/ParallaxSection';
 import { KnownTechSection } from '../components/welcomePage/KnownTechSection';
-import useScrollPosition from '@react-hook/window-scroll';
 import { useWindowSize } from '../hooks/useWindowSize';
 import { BlogSection } from '../components/welcomePage/BlogSection';
 import { Paragraph } from '../components/common/Paragraph';
@@ -24,7 +23,6 @@ import { ScreenContainer } from './ScreenContainer';
 export const HomeScreen: React.FC = observer((props) => {
   const { t } = useTranslation();
   const [width] = useWindowSize();
-  const scrollY = useScrollPosition(144);
 
   useEffect(() => {
     document.title = t('common.websiteName') + ' - ' + t('navbar.home');
@@ -72,14 +70,22 @@ export const HomeScreen: React.FC = observer((props) => {
               iconRight={<FaArrowRight size={'1.2em'} />}
               arrowAnimation={true}
               style={{ margin: '2em auto' }}
+              onClickUrl={'#/about'}
             ></Button>
           </div>
         </FirstSection>
         <SecondSection>
           <HeadingTitle style={{ marginTop: '4em' }} color={'white'}>
-            SEZIONE DUE
+            {t(`welcome.secondParagraphTitle`)}
           </HeadingTitle>
-          <Paragraph color={'white'}>{t(`welcome.secondParagraph`)}</Paragraph>
+          <Paragraph
+            color={'white'}
+            style={{
+              textAlign: 'justify',
+            }}
+          >
+            {t(`welcome.secondParagraph`)}
+          </Paragraph>
           <Button
             buttonText={t(`common.contactMe`)}
             style={{ margin: '2em auto' }}
@@ -104,7 +110,7 @@ export const HomeScreen: React.FC = observer((props) => {
           />
         </SecondSection>
         <KnownTechSection width={width} />
-        <ParallaxSection scrollY={scrollY} />
+        <ParallaxSection />
         <BlogSection />
         <ServicesSection />
         {props.children}

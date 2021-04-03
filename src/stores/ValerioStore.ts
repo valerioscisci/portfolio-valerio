@@ -38,8 +38,9 @@ export default class HomeStore {
   fetchImages = async () => {
     this.isFetchingImages = true;
     this.sliderImages = [
-      { alt: 'skydive', img: require('../assets/images/slider/0.jpg') },
-      { alt: 'work anywhere', img: require('../assets/images/slider/1.jpg') },
+      { alt: 'jetsky', img: require('../assets/images/slider/0.jpg') },
+      { alt: 'skydive', img: require('../assets/images/slider/1.jpg') },
+      { alt: 'work anywhere', img: require('../assets/images/slider/2.jpg') },
       { alt: 'wilderness', img: require('../assets/images/slider/3.jpg') },
       { alt: 'travel freely', img: require('../assets/images/slider/4.jpg') },
     ];

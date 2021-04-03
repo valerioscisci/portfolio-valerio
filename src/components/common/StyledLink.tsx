@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useCallback } from 'react';
+import { HashRouter, Link } from 'react-router-dom';
 import styled, { css } from 'styled-components';
 
 export interface StyledLinkProps {
@@ -7,6 +8,8 @@ export interface StyledLinkProps {
   target?: string;
   hoverSpacing?: boolean;
   style?: React.CSSProperties;
+  routerLink?: boolean;
+  scrollTo?: string;
 }
 
 export const StyledLink: React.FC<StyledLinkProps> = ({
@@ -15,23 +18,50 @@ export const StyledLink: React.FC<StyledLinkProps> = ({
   target,
   hoverSpacing = true,
   style,
+  routerLink = false,
+  scrollTo,
   ...props
 }) => {
-  return (
-    <Container
+  const goTop = useCallback(() => {
+    window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
+  }, []);
+
+  const scrollToId = useCallback(() => {
+    if (scrollTo) {
+      const id = document.getElementById(scrollTo);
+      if (id) {
+        id.scrollIntoView({ behavior: 'smooth' });
+      }
+    }
+  }, [scrollTo]);
+
+  const linkCommonStyle = {
+    textDecoration: 'none',
+  };
+  return routerLink ? (
+    <HashRouter>
+      <Link to={href} style={{ ...style, ...linkCommonStyle }} onClick={goTop}>
+        <LinkContainer hoverSpacing={hoverSpacing} color={color}>
+          {props.children}
+        </LinkContainer>
+      </Link>
+    </HashRouter>
+  ) : (
+    <a
       href={href}
-      color={color}
       rel={'noreferrer'}
       target={target}
-      hoverSpacing={hoverSpacing}
-      style={style}
+      style={{ ...style, ...linkCommonStyle }}
+      onClick={scrollToId}
     >
-      {props.children}
-    </Container>
+      <LinkContainer hoverSpacing={hoverSpacing} color={color}>
+        {props.children}
+      </LinkContainer>
+    </a>
   );
 };
 
-const Container = styled.a<{ color?: string; hoverSpacing?: boolean }>`
+const LinkContainer = styled.span<{ color?: string; hoverSpacing?: boolean }>`
   color: ${(props) => {
     switch (true) {
       case props.color === 'white':

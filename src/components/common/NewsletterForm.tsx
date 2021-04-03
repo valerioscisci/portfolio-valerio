@@ -123,20 +123,19 @@ export const NewsletterForm: React.FC = observer(() => {
             />
           </FieldsContainer>
           <CheckboxContainer>
-            <Paragraph color={'white'}>
-              Accetta{' '}
-              <StyledLink href={'#'} color={'white'} hoverSpacing={false}>
-                {t('footer.privacyPolicy')}
-              </StyledLink>
-            </Paragraph>
-            <CheckboxPrivacy type={'checkbox'} checked={checkboxChoice} />
-            <span
+            <Paragraph color={'white'}>Accetta</Paragraph>
+            <CheckboxPrivacy
+              type={'checkbox'}
+              checked={checkboxChoice}
+              readOnly
               onClick={() => {
                 setCheckboxChoice(!checkboxChoice);
               }}
-            ></span>
+            />
+            <span></span>
           </CheckboxContainer>
           {status === 'loading' ? (
+            // eslint-disable-next-line react/style-prop-object
             <Spinner size={10} style={'margin: 0 0 1em 0;'} />
           ) : status === 'failed' ? (
             <Paragraph color={'red'}>{t('newsletter.failure')}</Paragraph>
@@ -153,6 +152,14 @@ export const NewsletterForm: React.FC = observer(() => {
           >
             {t('newsletter.subscribeButton')}
           </ButtonSubscribe>
+          <StyledLink
+            href={'#'}
+            color={'white'}
+            hoverSpacing={false}
+            routerLink={false}
+          >
+            {t('footer.privacyPolicy')}
+          </StyledLink>
         </FormContainer>
       </Container>
     </Section>

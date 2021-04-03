@@ -15,6 +15,7 @@ declare module 'styled-components' {
       textColorBlack: string;
       textColorGrey: string;
       error: string;
+      opacityBackgroundLight: string;
     };
   }
 }

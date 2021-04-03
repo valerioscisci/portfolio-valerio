@@ -5,7 +5,7 @@ import { useTranslation } from 'react-i18next';
 import { useWindowSize } from '../../hooks/useWindowSize';
 import igSectionBackground from '../../assets/images/homepage/ig_section_background.svg';
 import igProfilePic from '../../assets/images/homepage/ig_profile_pic.jpg';
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import { FaHeart, FaInstagram } from 'react-icons/fa';
 import { InstagramPic } from '../../types';
 
@@ -63,7 +63,13 @@ const InstagramMedia: React.FC<InstagramMediaProps> = ({
   account,
   width,
 }) => {
-  return (
+  const [imageError, setImageError] = useState<boolean>(false);
+
+  const handleImageError = useCallback(() => {
+    setImageError(!imageError);
+  }, [imageError]);
+
+  return !imageError ? (
     <ImageContainer>
       <ImageFront className={'image-front'}>
         <a
@@ -74,12 +80,21 @@ const InstagramMedia: React.FC<InstagramMediaProps> = ({
           rel={'noreferrer'}
         >
           <Image
-            src={instagramPic.displayImage}
+            src={
+              !imageError
+                ? instagramPic.displayImage
+                : 'https://upload.wikimedia.org/wikipedia/commons/e/e7/Instagram_logo_2016.svg'
+            }
+            onError={handleImageError}
             alt={instagramPic.accessibilityCaption || 'Instagram picture'}
           />
           {width < 576 && (
             <>
-              <Caption>{instagramPic.caption}</Caption>
+              <Caption>
+                {instagramPic.caption && instagramPic.caption.length > 300
+                  ? instagramPic.caption.substring(0, 300) + '...'
+                  : instagramPic.caption}
+              </Caption>
               <Likes>
                 <FaHeart size={'2em'} color={'white'} />
                 <LikesNumber>{instagramPic.likes}</LikesNumber>
@@ -97,12 +112,16 @@ const InstagramMedia: React.FC<InstagramMediaProps> = ({
           rel={'noreferrer'}
         >
           <Image
-            src={instagramPic.displayImage}
+            src={
+              !imageError
+                ? instagramPic.displayImage
+                : 'https://upload.wikimedia.org/wikipedia/commons/e/e7/Instagram_logo_2016.svg'
+            }
             alt={instagramPic.accessibilityCaption || 'Instagram picture'}
           />
           <Caption>
             {instagramPic.caption && instagramPic.caption.length > 100
-              ? instagramPic.caption?.substring(0, 100) + '...'
+              ? instagramPic.caption.substring(0, 100) + '...'
               : instagramPic.caption}
           </Caption>
           <Likes>
@@ -112,6 +131,8 @@ const InstagramMedia: React.FC<InstagramMediaProps> = ({
         </a>
       </ImageBack>
     </ImageContainer>
+  ) : (
+    <></>
   );
 };
 
@@ -442,6 +463,7 @@ const NoPhotosDescription = styled.p`
 `;
 
 const VisitInstagramTitle = styled.h2`
+  padding: 0 1em;
   font-size: 2em;
   font-family: Corben;
   display: flex;

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useCallback, useState } from 'react';
 import styled, { css } from 'styled-components';
 import { observer } from 'mobx-react';
 import contactFormBackground from '../../assets/images/homepage/contact_form.jpg';
@@ -25,40 +25,43 @@ export const ContactForm: React.FC<ContactFormProps> = observer(({ width }) => {
   const [email, setEmail] = useState<string>('');
   const [message, setMessage] = useState<string>('');
 
-  const resetForm = () => {
+  const resetForm = useCallback(() => {
     setName('');
     setEmail('');
     setMessage('');
-  };
+  }, []);
 
-  const encode = (data: any) => {
+  const encode = useCallback((data: any) => {
     return Object.keys(data)
       .map(
         (key) => encodeURIComponent(key) + '=' + encodeURIComponent(data[key]),
       )
       .join('&');
-  };
+  }, []);
 
-  const handleSubmit = (event: any) => {
-    setSuccess(undefined);
-    fetch('/', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-      body: encode({
-        'form-name': event.target.getAttribute('name'),
-        ...{ name: name, email: email, message: message },
-      }),
-    })
-      .then(() => {
-        setSuccess(true);
-        resetForm();
+  const handleSubmit = useCallback(
+    (event: any) => {
+      setSuccess(undefined);
+      fetch('/', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: encode({
+          'form-name': event.target.getAttribute('name'),
+          ...{ name: name, email: email, message: message },
+        }),
       })
-      .catch((error) => {
-        setSuccess(false);
-      });
+        .then(() => {
+          setSuccess(true);
+          resetForm();
+        })
+        .catch((error) => {
+          setSuccess(false);
+        });
 
-    event.preventDefault();
-  };
+      event.preventDefault();
+    },
+    [email, encode, message, name, resetForm],
+  );
 
   return (
     <Section id={'ContactForm'}>

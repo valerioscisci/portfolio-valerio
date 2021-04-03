@@ -11,23 +11,23 @@ const it = {
     contact: 'Contattami',
   },
   slider: {
-    heading1: 'testtesttesttesttest testtesttesttesttest',
-    heading2: '',
-    heading3: '',
-    heading4: '',
+    heading1: 'Torna ad essere padrone del tuo tempo',
+    heading2: 'Così da poterti finalmente dedicare',
+    heading3: 'A fare ciò che ami di più',
+    heading4: 'E avere modo di esplorare ',
+    heading5: 'Il fantastico mondo che ci circonda',
   },
   welcome: {
     subHeading:
       'Realizzo siti web e applicazioni mobile, viaggiando e documentando il tutto',
     introParagraph:
-      'Il mio nome è Valerio e sono un ingegnere informatico specializzato in sviluppo web oltre ad essere un appassionato di tutto ciò che riguarda il mondo dei viaggi. ' +
-      'Da qualche anno a questa parte ho preso la decisione di non voler passare la maggior parte della vita chiuso tra le quattro mura di un ufficio. ' +
-      'Pertanto, ho voluto sfruttare la tecnologia e le mie conoscenze per organizzare la mia vita lavorativa svincolandomi dal dover vivere in un solo luogo: sono a tutti gli effetti un nomade digitale. ',
+      'Mi chiamo Valerio e sono un ingegnere informatico specializzato in sviluppo web e crezione di applicazioni per smartphone. La mia principale passione è viaggiare. ' +
+      'Qualche anno fa ho preso la decisione di non voler passare la maggior parte della vita chiuso tra le quattro mura di un ufficio. ' +
+      'Ho pertanto voluto sfruttare la tecnologia e le mie conoscenze per organizzare la mia vita lavorativa svincolandomi dal dover vivere in un solo luogo: sono a tutti gli effetti un nomade digitale. ',
     introButton: 'scopri altro su di me',
+    secondParagraphTitle: 'Lavoriamo insieme!',
     secondParagraph:
-      "Se hai un progetto in mente che preveda la realizzazione di un sito web o di un'applicazione mobile, contattami! Allo stesso modo, se sei un developer e vuoi fare due chiacchiere sul lavoro da remoto, sulle scelte che ho preso o riguardo qualcosa di più specifico, sono a disposizione.",
-    citParagraph:
-      'Freedom is living life as you want to live it. You can have that freedom now. Cit. ',
+      "Se hai un progetto in mente che preveda la realizzazione di un sito web o di un'applicazione mobile non esitare a contattarmi! \nAllo stesso modo, se sei un developer e vuoi fare due chiacchiere sul lavoro da remoto, sulle scelte che ho preso o riguardo qualcosa di più specifico, sono a disposizione. Ultimo ma assolutamente non per importanza, se pensi di amare il mondo dei viaggi quanto me, mi piacerebbe tantissimo avere uno scambio di idee!",
   },
   parallax: {
     heading: 'Spezzare la routine è la miglior abitudine che TU possa avere',
@@ -39,7 +39,7 @@ const it = {
     learnMore: 'Altre informazioni',
     github: 'Codice open source',
     noProjectsDescription:
-      'Non ho ancora realizzato alcun progetto utilizzando questa tecnologia quindi il TUO potrebbe essere il primo! Per questo, avrai anche diritto ad uno sconto se decidi di collaborare con me per la prima volta.',
+      'Non ho ancora realizzato alcun progetto in autonomia utilizzando questa tecnologia quindi il TUO potrebbe essere il primo!',
   },
   instagram: {
     visitProfile: 'Visita il mio profilo Instagram',
@@ -49,14 +49,14 @@ const it = {
   blogSection: {
     title: 'Blog su viaggi e tecnologia',
     description:
-      'A breve verrà aggiunta una sezione dove parlerò di come sia possibile lavorare viaggiando e pubblicherò articoli sulle mie conoscenze riguardanti principalmente lo sviluppo web.  ...STAY TUNED...',
+      'A breve verrà aggiunta una sezione del sito dove parlerò di come sia possibile lavorare viaggiando, pubblicherò articoli sulle mie conoscenze riguardanti principalmente lo sviluppo web e cercherò di creare contenuti per nomadi digitali come me!\n  ...STAY TUNED...',
     comingSoon: 'Coming Soon',
     subscribe: 'Iscriviti alla newsletter',
   },
   newsletter: {
     subscribe: 'Iscriviti alla newsletter',
     infoText:
-      "Iscrivendoti riceverai delle email contenenti aggiornamenti sui miei viaggi e argomenti d'interesse per sviluppatori web.",
+      "Iscrivendoti riceverai delle email contenenti aggiornamenti sui miei viaggi, sul mondo del lavoro da remoto e su argomenti d'interesse per sviluppatori web.",
     subscribeButton: 'Iscriviti',
     success: 'Iscritto con successo!',
     failure: "Errore durante l'isrcrizione, riprova per favore.",
@@ -87,7 +87,7 @@ const it = {
       codeReview: {
         name: 'Revisione di codice',
         description:
-          "Se hai del codice che vuoi migliorare, possiamo senz'altro farlo insieme.",
+          "Se hai del codice che vuoi migliorare, possiamo senz'altro provare a farlo insieme.",
       },
     },
   },
@@ -135,21 +135,21 @@ const it = {
     secondParagraph:
       'Ma non è sempre stato così...cinque anni fa sono venuto a conoscenza del mondo del lavoro da remoto e da allora per me è cambiato tutto. Ho deciso di concentrare gli ultimi anni di università sullo studio delle tecnologie web.',
     thirdParagraph:
-      "Tre mesi dopo aver scoperto questa modalità di lavoro, ho trovato il mio primo lavoro da sviluppatore web, 1 anno dopo ho fatto la mia prima esperienza all'estero e al rientro in Italia mi sono iscritto alla magistrale per terminare gli studi.\nIn questo periodo ho lavorato per un'azienda chiamata t33 e ho progettato i miei primi siti web in autonomia, partecipando anche ad un Hackaton organizzato dall'università.",
+      "Tre mesi dopo aver scoperto questa modalità di lavoro, ho trovato il mio primo lavoro da sviluppatore web, 1 anno dopo ho fatto la mia prima esperienza all'estero e al rientro in Italia mi sono iscritto alla magistrale per terminare gli studi.\nIn questo periodo ho lavorato per un'azienda chiamata t33 e ho progettato i miei primi siti web in autonomia, partecipando anche ad eventi come Hackaton organizzati dall'università.",
     fourthParagraph:
-      "Nel frattempo ho continuato a viaggiare e a studiare quanto più possibile, riuscendo alla fine a conseguire uno dei più grandi traguardi della mia vita (fin'ora): il titolo di dottore magistrale in ingegneria informatica e dell'automazione con votazione 110L su 110.",
+      "Nel frattempo ho continuato a viaggiare e a studiare quanto più possibile, riuscendo alla fine a conseguire uno dei più grandi traguardi della mia vita (fin'ora): il titolo di dottore magistrale in ingegneria informatica e dell'automazione con votazione 110L su 110!",
     fifthParagraph:
-      "Da poco meno di un anno collaboro con un'innovativa azienda chiamata Mostaza, dove principalmente mi occupo di sviluppo di applicazioni web e di realizzazione di applicazioni.",
+      "Da poco meno di un anno collaboro con un'innovativa azienda chiamata Mostaza, dove principalmente mi occupo di sviluppo di applicazioni web e di realizzazione di applicazioni mobile.",
     TWDProject: 'Il progetto ',
     TWDdescription:
-      'Qunado ho iniziato a progettare questo sito, volevo semplicemente realizzare il classico sito-portfolio dove mostravo i miei lavori passati così da potermi mettere in contatto con altri sviluppatori e nuovi clienti. Subito mi sono reso conto di voler fare di più: questo progetto nasce dalla voglia che ho di inspirare altri a seguire questo stile di vita e dal desiderio che ho di condividere ciò che imparo ed ho imparato nel mio persorso di sviluppatore web on the road.',
+      'Qunado ho iniziato la realizzazione di questo sito, avevo in mente il classico sito-portfolio dove mostrare i miei lavori passati ed eventualmente potermi mettere in contatto con altri sviluppatori e nuovi clienti. Subito mi sono reso conto di voler fare di più: questo progetto nasce dalla voglia che ho di inspirare altri a seguire questo stile di vita e dal desiderio che ho di condividere ciò che imparo ed ho imparato nel mio persorso di sviluppatore web on the road.',
     sixthParagraph:
-      'Quando ho iniziato io in questa "avventura" avrei voluto avere un punto di riferimento a cui inspirarmi.\n\nSe siete interessati ad avere delle informazioni secondo me necessarie prima anche solo di pensare ad intraprendere la strada da nomade digitale, vi consiglio la lettura di questo articolo che ho scritto qualche tempo fa: ',
+      'Quando ho iniziato questa "avventura" avrei proprio voluto avere un punto di riferimento a cui inspirarmi ma sul web erano presenti solo una categoria specifica di nomadi digitali che esasperavano all\'inverosimile i vantaggi di questo stile di vita senza mostrarne anche i lati negativi.\nIl mio obiettivo è proprio quello di andare a colmare questo gap e cercare di mostrarvi la nuda e cruda realtà del lavoro on the road, senza fronzoli e omissioni, solo la realtà dei fatti. Ma non preoccupatevi, ci sarà da divertirsi :) \n\nSe siete interessati ad avere delle informazioni necessarie prima anche solo di pensare di intraprendere la strada da nomade digitale, vi consiglio la lettura di questo articolo che ho scritto qualche tempo fa: ',
     linkedInArticle: '5 cose da sapere prima di diventare nomade digitale',
     seventhParagraph:
-      'Ad ora non so esattamente dove mi condurrà questo progetto, ma sono molto felice di poter avuto la possibilità di creare qualcosa di mio in cui credo fermamente.',
+      'Ad ora non so esattamente dove mi condurrà questo progetto, ma sono molto felice di averlo avviato e di poterlo portare avanti con costanza.',
     conclusion:
-      'Seguimi sui miei canali social o iscriviti alla newsletter per rimanere aggiornato. \n\nA presto.\nValerio',
+      'Seguitemi sui miei canali social o iscrivetevi alla newsletter per rimanere aggiornati. \n\nA presto.\nValerio',
   },
 };
 

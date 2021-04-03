@@ -55,7 +55,7 @@ export const BlogSection: React.FC = () => {
             iconLeft={<FaArrowDown size={'1.2em'} />}
             iconRight={<FaArrowDown size={'1.2em'} />}
             buttonText={t(`blogSection.subscribe`)}
-            onClickUrl={'#'}
+            onClickUrl={'#Newsletter'}
             onClickUrlNewPage={false}
             gradientBackground={true}
             arrowAnimation={true}

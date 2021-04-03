@@ -1,19 +1,22 @@
-import React, { useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import styled, { css } from 'styled-components';
 import LogoImage from '../../assets/images/common/LogoWhite.png';
 import { HashRouter } from 'react-router-dom';
 import { MenuIcon } from './MenuIcon';
 import { HashLink as Link } from 'react-router-hash-link';
-import { i18n } from '../../i18n';
+import { i18n, I18NLang } from '../../i18n';
 import itaFlag from '../../assets/images/common/ita_flag.png';
 import engFlag from '../../assets/images/common/eng_flag.png';
+import { observer } from 'mobx-react';
+import { useStores } from '../../hooks/useStores';
 
 export interface NavbarProps {
   navLinks: any;
   width: number;
 }
 
-export const Navbar: React.FC<NavbarProps> = ({ navLinks, width }) => {
+export const Navbar: React.FC<NavbarProps> = observer(({ navLinks, width }) => {
+  const { home } = useStores();
   const [menuOpen, setMenuOpen] = useState(false);
   const menuIconRef = React.createRef<HTMLDivElement>();
 
@@ -25,9 +28,13 @@ export const Navbar: React.FC<NavbarProps> = ({ navLinks, width }) => {
     }
   }, [menuOpen]);
 
-  const changeLanguage = (lng: string) => {
-    i18n.changeLanguage(lng);
-  };
+  const changeLanguage = useCallback(
+    (lng: I18NLang) => {
+      i18n.changeLanguage(lng);
+      home.setLanguage(lng);
+    },
+    [home],
+  );
 
   return (
     <HashRouter>
@@ -79,7 +86,7 @@ export const Navbar: React.FC<NavbarProps> = ({ navLinks, width }) => {
       </NavbarContainer>
     </HashRouter>
   );
-};
+});
 
 const NavbarContainer = styled.nav<{ menuOpen: boolean }>`
   height: ${(props) => (props.menuOpen ? '100vh' : '4.5em')};

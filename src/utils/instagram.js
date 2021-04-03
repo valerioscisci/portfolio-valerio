@@ -1,7 +1,7 @@
 class Instagram {
   static async getFeed(account) {
-    const INSTAGRAM_ID = '4096919577';
-    const PHOTO_COUNT = 12;
+    //const INSTAGRAM_ID = '4096919577';
+    //const PHOTO_COUNT = 12;
 
     const mapMedia = (json) => {
       try {

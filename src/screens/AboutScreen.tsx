@@ -12,6 +12,7 @@ import { Tooltip } from '../components/common/Tooltip';
 import { StyledLink } from '../components/common/StyledLink';
 import { FaNewspaper } from 'react-icons/fa';
 import { valerioTheme } from '../theme';
+import { useStores } from '../hooks/useStores';
 
 const paragraphStyle = {
   padding: '1em 2em',
@@ -32,6 +33,7 @@ const newsIconStyle: React.CSSProperties = {
 };
 
 export const AboutScreen: React.FC = observer(() => {
+  const { home } = useStores();
   const { t } = useTranslation();
 
   useEffect(() => {
@@ -55,19 +57,23 @@ export const AboutScreen: React.FC = observer(() => {
                     <Tooltip text={t('about.digitalNomad')} position={'top'} />
                   ),
                 }}
-              ></Trans>
+              />
             </Paragraph>
-            <UnderlinedParagraphCotainer>
+            <SecondParagraphCotainer>
               <Paragraph>
                 {t('about.secondParagraph')} <RightImage src={degreeImage} />
               </Paragraph>
-            </UnderlinedParagraphCotainer>
+            </SecondParagraphCotainer>
           </HeadingText>
         </HeadingContainer>
         <SecondPartContainer>
-          <Paragraph>{t('about.thirdParagraph')}</Paragraph>
+          <Paragraph style={{ position: 'relative' }}>
+            {t('about.thirdParagraph')}
+          </Paragraph>
 
-          <Paragraph>{t('about.fourthParagraph')}</Paragraph>
+          <Paragraph style={{ position: 'relative' }}>
+            {t('about.fourthParagraph')}
+          </Paragraph>
 
           <RightImagetwo src={degreeImage} />
         </SecondPartContainer>
@@ -77,7 +83,9 @@ export const AboutScreen: React.FC = observer(() => {
         </Paragraph>
 
         <HeadingTitle style={{ padding: '0 2em' }}>
-          {t('about.TWDProject') + t('common.websiteName')}
+          {home.language === 'it' && t('about.TWDProject')}{' '}
+          {t('common.websiteName')}{' '}
+          {home.language === 'en' && t('about.TWDProject')}
         </HeadingTitle>
 
         <Paragraph style={paragraphStyle}>
@@ -131,6 +139,7 @@ const Main = styled.main`
 
 const HeadingContainer = styled.div`
   display: flex;
+  align-items: center;
   flex-direction: column;
   position: relative;
   z-index: 1;
@@ -151,6 +160,7 @@ const TopImage = styled.img`
 
   @media (min-width: 992px) {
     width: 45%;
+    height: 60%;
     position: relative;
     z-index: 1;
     opacity: 1;
@@ -168,6 +178,16 @@ const HeadingText = styled.div`
   & p.topText {
     margin-left: 25%;
     text-align: right;
+
+    @media (min-width: 576px) {
+      background-color: ${(props) => {
+        return props.theme.colors.opacityBackgroundLight;
+      }};
+      padding: 1.5em;
+      border-radius: 0.8em;
+      -webkit-box-shadow: 16px 16px 50px 20px rgba(34, 40, 49, 0.5);
+      box-shadow: 16px 16px 50px 20px rgba(34, 40, 49, 0.5);
+    }
 
     @media (min-width: 992px) {
       margin-left: initial;
@@ -200,17 +220,15 @@ const RightImagetwo = styled.img`
   }
 `;
 
-const UnderlinedParagraphCotainer = styled.div`
+const SecondParagraphCotainer = styled.div`
   & p {
     display: flex;
     align-items: center;
     margin: 3.5em;
-    text-decoration: underline;
     font-family: Manrope;
     font-size: 1.32em;
-    text-underline-offset: 4;
-    text-decoration-thickness: 2;
     text-align: center;
+    line-height: 1.7em;
 
     @media (min-width: 992px) {
       margin: 2em 0;
