@@ -48,7 +48,7 @@ export const AboutScreen: React.FC = observer(() => {
             <HeadingTitle style={{ textAlign: 'center' }}>
               {t(`navbar.about`)}
             </HeadingTitle>
-            <Paragraph className={'topText'}>
+            <ParagraphDiv className={'topText'}>
               <Trans
                 i18nKey="about.introText"
                 components={{
@@ -57,7 +57,7 @@ export const AboutScreen: React.FC = observer(() => {
                   ),
                 }}
               />
-            </Paragraph>
+            </ParagraphDiv>
             <SecondParagraphCotainer>
               <Paragraph>
                 {t('about.secondParagraph')} <RightImage src={degreeImage} />
@@ -174,7 +174,7 @@ const HeadingText = styled.div`
   z-index: 1;
   padding: 0 2em;
 
-  & p.topText {
+  & div.topText {
     margin-left: 25%;
     text-align: right;
 
@@ -278,4 +278,13 @@ const BottomTextContainer = styled.div`
   display: flex;
   flex-direction: column;
   width: 100%;
+`;
+
+const ParagraphDiv = styled.div`
+  font-family: Corben;
+  font-size: 1em;
+  word-spacing: 0.15em;
+  letter-spacing: 0.02em;
+  margin: 0;
+  white-space: pre-wrap;
 `;
