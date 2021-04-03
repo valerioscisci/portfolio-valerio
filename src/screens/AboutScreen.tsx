@@ -12,7 +12,7 @@ import { Tooltip } from '../components/common/Tooltip';
 import { StyledLink } from '../components/common/StyledLink';
 import { FaNewspaper } from 'react-icons/fa';
 import { valerioTheme } from '../theme';
-import { useStores } from '../hooks/useStores';
+import i18next from 'i18next';
 
 const paragraphStyle = {
   padding: '1em 2em',
@@ -33,7 +33,6 @@ const newsIconStyle: React.CSSProperties = {
 };
 
 export const AboutScreen: React.FC = observer(() => {
-  const { home } = useStores();
   const { t } = useTranslation();
 
   useEffect(() => {
@@ -83,9 +82,9 @@ export const AboutScreen: React.FC = observer(() => {
         </Paragraph>
 
         <HeadingTitle style={{ padding: '0 2em' }}>
-          {home.language === 'it' && t('about.TWDProject')}{' '}
+          {i18next.language === 'it' && t('about.TWDProject')}{' '}
           {t('common.websiteName')}{' '}
-          {home.language === 'en' && t('about.TWDProject')}
+          {i18next.language === 'en' && t('about.TWDProject')}
         </HeadingTitle>
 
         <Paragraph style={paragraphStyle}>
