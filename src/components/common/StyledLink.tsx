@@ -35,9 +35,12 @@ export const StyledLink: React.FC<StyledLinkProps> = ({
     }
   }, [scrollTo]);
 
+  const linkCommonStyle = {
+    textDecoration: 'none',
+  };
   return routerLink ? (
     <HashRouter>
-      <Link to={href} style={style} onClick={goTop}>
+      <Link to={href} style={{ ...style, ...linkCommonStyle }} onClick={goTop}>
         <LinkContainer hoverSpacing={hoverSpacing} color={color}>
           {props.children}
         </LinkContainer>
@@ -48,7 +51,7 @@ export const StyledLink: React.FC<StyledLinkProps> = ({
       href={href}
       rel={'noreferrer'}
       target={target}
-      style={style}
+      style={{ ...style, ...linkCommonStyle }}
       onClick={scrollToId}
     >
       <LinkContainer hoverSpacing={hoverSpacing} color={color}>

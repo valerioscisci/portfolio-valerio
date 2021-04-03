@@ -57,17 +57,21 @@ export const AboutScreen: React.FC = observer(() => {
                 }}
               ></Trans>
             </Paragraph>
-            <UnderlinedParagraphCotainer>
+            <SecondParagraphCotainer>
               <Paragraph>
                 {t('about.secondParagraph')} <RightImage src={degreeImage} />
               </Paragraph>
-            </UnderlinedParagraphCotainer>
+            </SecondParagraphCotainer>
           </HeadingText>
         </HeadingContainer>
         <SecondPartContainer>
-          <Paragraph>{t('about.thirdParagraph')}</Paragraph>
+          <Paragraph style={{ position: 'relative' }}>
+            {t('about.thirdParagraph')}
+          </Paragraph>
 
-          <Paragraph>{t('about.fourthParagraph')}</Paragraph>
+          <Paragraph style={{ position: 'relative' }}>
+            {t('about.fourthParagraph')}
+          </Paragraph>
 
           <RightImagetwo src={degreeImage} />
         </SecondPartContainer>
@@ -131,6 +135,7 @@ const Main = styled.main`
 
 const HeadingContainer = styled.div`
   display: flex;
+  align-items: center;
   flex-direction: column;
   position: relative;
   z-index: 1;
@@ -151,6 +156,7 @@ const TopImage = styled.img`
 
   @media (min-width: 992px) {
     width: 45%;
+    height: 60%;
     position: relative;
     z-index: 1;
     opacity: 1;
@@ -168,6 +174,20 @@ const HeadingText = styled.div`
   & p.topText {
     margin-left: 25%;
     text-align: right;
+
+    @media (min-width: 576px) {
+      background-color: ${(props) => {
+        return props.theme.colors.opacityBackgroundLight;
+      }};
+      padding: 1.5em;
+      border-radius: 0.8em;
+      filter: drop-shadow(
+        16px 16px 20px
+          ${(props) => {
+            return props.theme.colors.backgroundDark;
+          }}
+      );
+    }
 
     @media (min-width: 992px) {
       margin-left: initial;
@@ -200,17 +220,15 @@ const RightImagetwo = styled.img`
   }
 `;
 
-const UnderlinedParagraphCotainer = styled.div`
+const SecondParagraphCotainer = styled.div`
   & p {
     display: flex;
     align-items: center;
     margin: 3.5em;
-    text-decoration: underline;
     font-family: Manrope;
     font-size: 1.32em;
-    text-underline-offset: 4;
-    text-decoration-thickness: 2;
     text-align: center;
+    line-height: 1.7em;
 
     @media (min-width: 992px) {
       margin: 2em 0;
