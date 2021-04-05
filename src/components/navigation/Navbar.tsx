@@ -1,7 +1,6 @@
 import React, { useCallback, useEffect, useState } from 'react';
 import styled, { css } from 'styled-components';
 import LogoImage from '../../assets/images/common/LogoWhite.png';
-import { HashRouter } from 'react-router-dom';
 import { MenuIcon } from './MenuIcon';
 import { HashLink as Link } from 'react-router-hash-link';
 import { i18n, I18NLang } from '../../i18n';
@@ -37,54 +36,46 @@ export const Navbar: React.FC<NavbarProps> = observer(({ navLinks, width }) => {
   );
 
   return (
-    <HashRouter>
-      <NavbarContainer menuOpen={menuOpen}>
-        {!menuOpen && (
-          <Link to={navLinks[0].route}>
-            <Logo src={LogoImage} />
-          </Link>
-        )}
-        <MenuIcon
-          ref={menuIconRef}
-          width={width}
-          updateMenuState={(menuOpen) => setMenuOpen(menuOpen)}
-        />
-        <NavbarRight menuOpen={menuOpen}>
-          {navLinks.map((link: any, i: number) => {
-            return (
-              <NavbarItem key={i} menuOpen={menuOpen} route={link.route}>
-                <Link
-                  to={link.route}
-                  onClick={() => {
-                    if (menuIconRef.current) {
-                      if (width < 768) {
-                        menuIconRef.current?.click();
-                      }
+    <NavbarContainer menuOpen={menuOpen}>
+      {!menuOpen && (
+        <Link to={navLinks[0].route}>
+          <Logo src={LogoImage} />
+        </Link>
+      )}
+      <MenuIcon
+        ref={menuIconRef}
+        width={width}
+        updateMenuState={(menuOpen) => setMenuOpen(menuOpen)}
+      />
+      <NavbarRight menuOpen={menuOpen}>
+        {navLinks.map((link: any, i: number) => {
+          return (
+            <NavbarItem key={i} menuOpen={menuOpen} route={link.route}>
+              <Link
+                to={link.route}
+                onClick={() => {
+                  if (menuIconRef.current) {
+                    if (width < 768) {
+                      menuIconRef.current?.click();
                     }
-                  }}
-                >
-                  {link.name}
-                </Link>
-              </NavbarItem>
-            );
-          })}
-        </NavbarRight>
-        <LanguageSelector>
-          <ChangeLanguageButton
-            flag={'it'}
-            onClick={() => changeLanguage('it')}
-          >
-            it
-          </ChangeLanguageButton>
-          <ChangeLanguageButton
-            flag={'en'}
-            onClick={() => changeLanguage('en')}
-          >
-            en
-          </ChangeLanguageButton>
-        </LanguageSelector>
-      </NavbarContainer>
-    </HashRouter>
+                  }
+                }}
+              >
+                {link.name}
+              </Link>
+            </NavbarItem>
+          );
+        })}
+      </NavbarRight>
+      <LanguageSelector>
+        <ChangeLanguageButton flag={'it'} onClick={() => changeLanguage('it')}>
+          it
+        </ChangeLanguageButton>
+        <ChangeLanguageButton flag={'en'} onClick={() => changeLanguage('en')}>
+          en
+        </ChangeLanguageButton>
+      </LanguageSelector>
+    </NavbarContainer>
   );
 });
 
