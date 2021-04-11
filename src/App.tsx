@@ -17,6 +17,7 @@ import { Spinner } from './components/common/Spinner';
 import { InstagramFeed } from './components/welcomePage/InstagramFeed';
 import { observer } from 'mobx-react';
 import { AboutScreen } from './screens/AboutScreen';
+import { seo } from './components/navigation/seo';
 
 export const App: React.FC = observer(() => {
   const { i18n } = useTranslation();
@@ -58,6 +59,7 @@ export const App: React.FC = observer(() => {
   return (
     <ThemeProvider theme={valerioTheme}>
       <StoresContext.Provider value={stores}>
+        {seo()}
         {stores.home.isAppLoading ? <Spinner /> : <Routes />}
       </StoresContext.Provider>
     </ThemeProvider>
