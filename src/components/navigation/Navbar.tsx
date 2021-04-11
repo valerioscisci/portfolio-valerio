@@ -88,14 +88,16 @@ const NavbarContainer = styled.nav<{ menuOpen: boolean }>`
   padding: 0.2em;
   text-transform: uppercase;
   justify-content: space-between;
+  align-items: center;
   background: ${(props) => props.theme.colors.backgroundDark};
   z-index: 2;
   position: relative;
 `;
 
 const Logo = styled.img`
-  width: 13em;
-  height: 4em;
+  width: auto;
+  height: 3.5em;
+  margin-left: 0.5em;
 `;
 
 const NavbarRight = styled.ul<{ menuOpen: boolean }>`
@@ -269,7 +271,7 @@ const NavbarItem = styled.li<{ menuOpen: boolean; route: string }>`
 
 const LanguageSelector = styled.div`
   position: absolute;
-  left: 1em;
+  left: 0.5em;
   bottom: -3em;
 `;
 
