@@ -1,7 +1,6 @@
 import React, { useCallback, useEffect, useState } from 'react';
 import styled, { css } from 'styled-components';
 import LogoImage from '../../assets/images/common/LogoWhite.png';
-import { HashRouter } from 'react-router-dom';
 import { MenuIcon } from './MenuIcon';
 import { HashLink as Link } from 'react-router-hash-link';
 import { i18n, I18NLang } from '../../i18n';
@@ -37,54 +36,46 @@ export const Navbar: React.FC<NavbarProps> = observer(({ navLinks, width }) => {
   );
 
   return (
-    <HashRouter>
-      <NavbarContainer menuOpen={menuOpen}>
-        {!menuOpen && (
-          <Link to={navLinks[0].route}>
-            <Logo src={LogoImage} />
-          </Link>
-        )}
-        <MenuIcon
-          ref={menuIconRef}
-          width={width}
-          updateMenuState={(menuOpen) => setMenuOpen(menuOpen)}
-        />
-        <NavbarRight menuOpen={menuOpen}>
-          {navLinks.map((link: any, i: number) => {
-            return (
-              <NavbarItem key={i} menuOpen={menuOpen} route={link.route}>
-                <Link
-                  to={link.route}
-                  onClick={() => {
-                    if (menuIconRef.current) {
-                      if (width < 768) {
-                        menuIconRef.current?.click();
-                      }
+    <NavbarContainer menuOpen={menuOpen}>
+      {!menuOpen && (
+        <Link to={navLinks[0].route}>
+          <Logo src={LogoImage} />
+        </Link>
+      )}
+      <MenuIcon
+        ref={menuIconRef}
+        width={width}
+        updateMenuState={(menuOpen) => setMenuOpen(menuOpen)}
+      />
+      <NavbarRight menuOpen={menuOpen}>
+        {navLinks.map((link: any, i: number) => {
+          return (
+            <NavbarItem key={i} menuOpen={menuOpen} route={link.route}>
+              <Link
+                to={link.route}
+                onClick={() => {
+                  if (menuIconRef.current) {
+                    if (width < 768) {
+                      menuIconRef.current?.click();
                     }
-                  }}
-                >
-                  {link.name}
-                </Link>
-              </NavbarItem>
-            );
-          })}
-        </NavbarRight>
-        <LanguageSelector>
-          <ChangeLanguageButton
-            flag={'it'}
-            onClick={() => changeLanguage('it')}
-          >
-            it
-          </ChangeLanguageButton>
-          <ChangeLanguageButton
-            flag={'en'}
-            onClick={() => changeLanguage('en')}
-          >
-            en
-          </ChangeLanguageButton>
-        </LanguageSelector>
-      </NavbarContainer>
-    </HashRouter>
+                  }
+                }}
+              >
+                {link.name}
+              </Link>
+            </NavbarItem>
+          );
+        })}
+      </NavbarRight>
+      <LanguageSelector>
+        <ChangeLanguageButton flag={'it'} onClick={() => changeLanguage('it')}>
+          it
+        </ChangeLanguageButton>
+        <ChangeLanguageButton flag={'en'} onClick={() => changeLanguage('en')}>
+          en
+        </ChangeLanguageButton>
+      </LanguageSelector>
+    </NavbarContainer>
   );
 });
 
@@ -97,14 +88,16 @@ const NavbarContainer = styled.nav<{ menuOpen: boolean }>`
   padding: 0.2em;
   text-transform: uppercase;
   justify-content: space-between;
+  align-items: center;
   background: ${(props) => props.theme.colors.backgroundDark};
   z-index: 2;
   position: relative;
 `;
 
 const Logo = styled.img`
-  width: 13em;
-  height: 4em;
+  width: auto;
+  height: 3.5em;
+  margin-left: 0.5em;
 `;
 
 const NavbarRight = styled.ul<{ menuOpen: boolean }>`
@@ -278,7 +271,7 @@ const NavbarItem = styled.li<{ menuOpen: boolean; route: string }>`
 
 const LanguageSelector = styled.div`
   position: absolute;
-  left: 1em;
+  left: 0.5em;
   bottom: -3em;
 `;
 

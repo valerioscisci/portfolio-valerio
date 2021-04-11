@@ -12,7 +12,7 @@ import { Tooltip } from '../components/common/Tooltip';
 import { StyledLink } from '../components/common/StyledLink';
 import { FaNewspaper } from 'react-icons/fa';
 import { valerioTheme } from '../theme';
-import { useStores } from '../hooks/useStores';
+import i18next from 'i18next';
 
 const paragraphStyle = {
   padding: '1em 2em',
@@ -33,7 +33,6 @@ const newsIconStyle: React.CSSProperties = {
 };
 
 export const AboutScreen: React.FC = observer(() => {
-  const { home } = useStores();
   const { t } = useTranslation();
 
   useEffect(() => {
@@ -49,7 +48,7 @@ export const AboutScreen: React.FC = observer(() => {
             <HeadingTitle style={{ textAlign: 'center' }}>
               {t(`navbar.about`)}
             </HeadingTitle>
-            <Paragraph className={'topText'}>
+            <ParagraphDiv className={'topText'}>
               <Trans
                 i18nKey="about.introText"
                 components={{
@@ -58,7 +57,7 @@ export const AboutScreen: React.FC = observer(() => {
                   ),
                 }}
               />
-            </Paragraph>
+            </ParagraphDiv>
             <SecondParagraphCotainer>
               <Paragraph>
                 {t('about.secondParagraph')} <RightImage src={degreeImage} />
@@ -83,9 +82,9 @@ export const AboutScreen: React.FC = observer(() => {
         </Paragraph>
 
         <HeadingTitle style={{ padding: '0 2em' }}>
-          {home.language === 'it' && t('about.TWDProject')}{' '}
+          {i18next.language === 'it' && t('about.TWDProject')}{' '}
           {t('common.websiteName')}{' '}
-          {home.language === 'en' && t('about.TWDProject')}
+          {i18next.language === 'en' && t('about.TWDProject')}
         </HeadingTitle>
 
         <Paragraph style={paragraphStyle}>
@@ -175,7 +174,7 @@ const HeadingText = styled.div`
   z-index: 1;
   padding: 0 2em;
 
-  & p.topText {
+  & div.topText {
     margin-left: 25%;
     text-align: right;
 
@@ -279,4 +278,13 @@ const BottomTextContainer = styled.div`
   display: flex;
   flex-direction: column;
   width: 100%;
+`;
+
+const ParagraphDiv = styled.div`
+  font-family: Corben;
+  font-size: 1em;
+  word-spacing: 0.15em;
+  letter-spacing: 0.02em;
+  margin: 0;
+  white-space: pre-wrap;
 `;

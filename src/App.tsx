@@ -2,7 +2,12 @@ import React, { useEffect, useState } from 'react';
 import { Stores } from './types';
 import ValerioStore from './stores/ValerioStore';
 import { ThemeProvider } from 'styled-components';
-import { Redirect, Route, HashRouter, Switch } from 'react-router-dom';
+import {
+  BrowserRouter as Router,
+  Redirect,
+  Switch,
+  Route,
+} from 'react-router-dom';
 import { valerioTheme } from './theme';
 import { StoresContext } from './contexts';
 import { HomeScreen } from './screens/WelcomeScreen';
@@ -12,6 +17,7 @@ import { Spinner } from './components/common/Spinner';
 import { InstagramFeed } from './components/welcomePage/InstagramFeed';
 import { observer } from 'mobx-react';
 import { AboutScreen } from './screens/AboutScreen';
+import { seo } from './components/navigation/seo';
 
 export const App: React.FC = observer(() => {
   const { i18n } = useTranslation();
@@ -27,33 +33,34 @@ export const App: React.FC = observer(() => {
     stores.home.fetchInstagramPics();
   }, [stores.home, i18n]);
 
+  const Routes = (props: any) => (
+    <Router {...props}>
+      <Switch>
+        <Route
+          exact
+          path={'/'}
+          render={() => (
+            <HomeScreen>
+              <InstagramFeed
+                account={'the_wanderer_developer'}
+                numberOfMediaElements={12}
+                media={stores.home.instagramImages}
+                status={stores.home.instagramFetchingStatus}
+              />
+            </HomeScreen>
+          )}
+        />
+        <Route path={'/about'} render={() => <AboutScreen />} />
+        <Redirect to={'/'} />
+      </Switch>
+    </Router>
+  );
+
   return (
     <ThemeProvider theme={valerioTheme}>
       <StoresContext.Provider value={stores}>
-        {stores.home.isAppLoading ? (
-          <Spinner />
-        ) : (
-          <HashRouter basename="/">
-            <Switch>
-              <Route
-                exact
-                path={'/'}
-                render={() => (
-                  <HomeScreen>
-                    <InstagramFeed
-                      account={'the_wanderer_developer'}
-                      numberOfMediaElements={12}
-                      media={stores.home.instagramImages}
-                      status={stores.home.instagramFetchingStatus}
-                    />
-                  </HomeScreen>
-                )}
-              />
-              <Route path={'/about'} render={() => <AboutScreen />} />
-              <Redirect to={'/'} />
-            </Switch>
-          </HashRouter>
-        )}
+        {seo()}
+        {stores.home.isAppLoading ? <Spinner /> : <Routes />}
       </StoresContext.Provider>
     </ThemeProvider>
   );

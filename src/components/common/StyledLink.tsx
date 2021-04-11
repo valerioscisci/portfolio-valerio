@@ -1,6 +1,7 @@
 import React, { useCallback } from 'react';
-import { HashRouter, Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import styled, { css } from 'styled-components';
+import { HashLink } from 'react-router-hash-link';
 
 export interface StyledLinkProps {
   color?: string;
@@ -38,26 +39,24 @@ export const StyledLink: React.FC<StyledLinkProps> = ({
   const linkCommonStyle = {
     textDecoration: 'none',
   };
+
   return routerLink ? (
-    <HashRouter>
-      <Link to={href} style={{ ...style, ...linkCommonStyle }} onClick={goTop}>
-        <LinkContainer hoverSpacing={hoverSpacing} color={color}>
-          {props.children}
-        </LinkContainer>
-      </Link>
-    </HashRouter>
+    <Link to={href} style={{ ...style, ...linkCommonStyle }} onClick={goTop}>
+      <LinkContainer hoverSpacing={hoverSpacing} color={color}>
+        {props.children}
+      </LinkContainer>
+    </Link>
   ) : (
-    <a
-      href={href}
-      rel={'noreferrer'}
-      target={target}
+    <HashLink
+      smooth
+      to={href}
       style={{ ...style, ...linkCommonStyle }}
       onClick={scrollToId}
     >
       <LinkContainer hoverSpacing={hoverSpacing} color={color}>
         {props.children}
       </LinkContainer>
-    </a>
+    </HashLink>
   );
 };
 

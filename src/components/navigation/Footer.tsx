@@ -11,7 +11,7 @@ import styled from 'styled-components';
 import LogoImage from '../../assets/images/common/LogoWhite.png';
 import { Paragraph } from '../common/Paragraph';
 import { StyledLink } from '../common/StyledLink';
-import { HashRouter, useLocation } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 
 const socialData = [
   {
@@ -82,38 +82,36 @@ export const Footer: React.FC = () => {
         </LogoContainer>
       </FooterColumn>
       <FooterColumn>
-        <HashRouter>
-          <FooterTitle>{t('footer.usefulLinks')}</FooterTitle>
-          <LinkContainer>
-            <StyledLink
-              href={'/#BlogSection'}
-              color={'white'}
-              routerLink={location.pathname !== '/'}
-              scrollTo={'BlogSection'}
-            >
-              {t('common.blog')}
-            </StyledLink>
-          </LinkContainer>
-          <LinkContainer>
-            <StyledLink
-              href={'/about'}
-              color={'white'}
-              routerLink={location.pathname !== '/about'}
-            >
-              {t('navbar.about')}
-            </StyledLink>
-          </LinkContainer>
-          <LinkContainer>
-            <StyledLink
-              href={'/#ContactForm'}
-              color={'white'}
-              routerLink={location.pathname !== '/'}
-              scrollTo={'ContactForm'}
-            >
-              {t('common.contactMe')}
-            </StyledLink>
-          </LinkContainer>
-        </HashRouter>
+        <FooterTitle>{t('footer.usefulLinks')}</FooterTitle>
+        <LinkContainer>
+          <StyledLink
+            href={'/#BlogSection'}
+            color={'white'}
+            routerLink={location.pathname !== '/'}
+            scrollTo={'BlogSection'}
+          >
+            {t('common.blog')}
+          </StyledLink>
+        </LinkContainer>
+        <LinkContainer>
+          <StyledLink
+            href={'/about'}
+            color={'white'}
+            routerLink={location.pathname !== '/about'}
+          >
+            {t('navbar.about')}
+          </StyledLink>
+        </LinkContainer>
+        <LinkContainer>
+          <StyledLink
+            href={'/#ContactForm'}
+            color={'white'}
+            routerLink={location.pathname !== '/'}
+            scrollTo={'ContactForm'}
+          >
+            {t('common.contactMe')}
+          </StyledLink>
+        </LinkContainer>
       </FooterColumn>
       <FooterColumn>
         <FooterTitle>{t('footer.policy')}</FooterTitle>

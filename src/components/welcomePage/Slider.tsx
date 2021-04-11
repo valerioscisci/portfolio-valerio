@@ -76,6 +76,7 @@ const CarouselContainer = styled.div`
 
   & .carousel {
     & .carousel__slider {
+      outline: none;
       & .carousel__slider-tray-wrapper {
         max-height: 100vh;
         clip-path: polygon(100% 0, 100% 85%, 50% 100%, 0 85%, 0 0);

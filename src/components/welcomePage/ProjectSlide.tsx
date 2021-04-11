@@ -10,6 +10,7 @@ import { FaArrowRight, FaExternalLinkAlt, FaGithub } from 'react-icons/fa';
 import { Button } from '../common/Button';
 import jsonDB from '../../db/data.json';
 import { valerioTheme } from '../../theme';
+import { observer } from 'mobx-react';
 
 export interface ProjectSlideProps {
   width: number;
@@ -18,124 +19,121 @@ export interface ProjectSlideProps {
   activeProject: boolean;
 }
 
-export const ProjectSlide: React.FC<ProjectSlideProps> = ({
-  width,
-  project,
-  noProjects,
-  activeProject,
-}) => {
-  const { t } = useTranslation();
-  const projectData: ProjectData | undefined = jsonDB.portfolioData.find(
-    (projectData) => {
-      return projectData.projectName === project.alt;
-    },
-  );
+export const ProjectSlide: React.FC<ProjectSlideProps> = observer(
+  ({ width, project, noProjects, activeProject }) => {
+    const { t } = useTranslation();
+    const projectData: ProjectData | undefined = jsonDB.portfolioData.find(
+      (projectData) => {
+        return projectData.projectName === project.alt;
+      },
+    );
 
-  return (
-    <ProjectContainer activeProject={activeProject}>
-      <ProjectImageContainer>
-        <ConditionalWrapper
-          condition={!!projectData?.projectData.projectUrl}
-          wrapper={(children) => (
-            <a
-              href={projectData?.projectData.projectUrl}
-              rel={'noreferrer'}
-              target={'_blank'}
-            >
-              {children}
-              <ProjectImageOverlay>
-                <FaExternalLinkAlt size={'2.5em'} />
-                <VisitSite>{t('knownTechs.visitProject')}</VisitSite>
-              </ProjectImageOverlay>
-            </a>
-          )}
-        >
-          <ImageAnimation
-            image={project.img}
-            imageAlt={project.alt}
-            imageStyle={{
-              width: '100%',
-              height: noProjects ? '15em' : 'auto',
-              opacity: 0,
-              display: 'block',
+    return (
+      <ProjectContainer activeProject={activeProject} key={i18next.language}>
+        <ProjectImageContainer>
+          <ConditionalWrapper
+            condition={!!projectData?.projectData.projectUrl}
+            wrapper={(children) => (
+              <a
+                href={projectData?.projectData.projectUrl}
+                rel={'noreferrer'}
+                target={'_blank'}
+              >
+                {children}
+                <ProjectImageOverlay>
+                  <FaExternalLinkAlt size={'2.5em'} />
+                  <VisitSite>{t('knownTechs.visitProject')}</VisitSite>
+                </ProjectImageOverlay>
+              </a>
+            )}
+          >
+            <ImageAnimation
+              image={project.img}
+              imageAlt={project.alt}
+              imageStyle={{
+                width: '100%',
+                height: noProjects ? '15em' : 'auto',
+                opacity: 0,
+                display: 'block',
+              }}
+              animationDirection={'FadeIn'}
+              animationDuration={1.5}
+              showOnPhone={true}
+            />
+          </ConditionalWrapper>
+        </ProjectImageContainer>
+        <ProjectDescription activeProject={activeProject}>
+          <AutowriteText
+            text={
+              noProjects
+                ? t('knownTechs.noProjectsTitle')
+                : i18next.language === 'it'
+                ? projectData?.projectData.titleIT
+                : projectData?.projectData.titleEN
+            }
+            letterGenerationTiming={
+              t('knownTechs.noProjectsDescription').length / 10
+            }
+            textStyle={{
+              fontSize: '1.5em',
+              fontFamily: 'Corben',
+              fontWeight: 'bold',
+              textAlign: 'center',
+              minHeight: '4em',
+              marginBottom: '1em',
+              color: valerioTheme.colors.textColorBlack,
             }}
-            animationDirection={'FadeIn'}
-            animationDuration={1.5}
-            showOnPhone={true}
+            canStart={activeProject}
           />
-        </ConditionalWrapper>
-      </ProjectImageContainer>
-      <ProjectDescription activeProject={activeProject}>
-        <AutowriteText
-          text={
-            noProjects
-              ? t('knownTechs.noProjectsTitle')
-              : i18next.language === 'it'
-              ? projectData?.projectData.titleIT
-              : projectData?.projectData.titleEN
-          }
-          letterGenerationTiming={
-            t('knownTechs.noProjectsDescription').length / 10
-          }
-          textStyle={{
-            fontSize: '1.5em',
-            fontFamily: 'Corben',
-            fontWeight: 'bold',
-            textAlign: 'center',
-            minHeight: '4em',
-            marginBottom: '1em',
-            color: valerioTheme.colors.textColorBlack,
-          }}
-          canStart={activeProject}
-        />
-        <AutowriteText
-          text={
-            noProjects
-              ? t('knownTechs.noProjectsDescription')
-              : i18next.language === 'it'
-              ? projectData?.projectData.descriptionIT
-              : projectData?.projectData.descriptionEN
-          }
-          letterGenerationTiming={
-            t('knownTechs.noProjectsDescription').length / 50
-          }
-          textStyle={{
-            fontFamily: 'Corben',
-            minHeight: width < 576 ? undefined : '10em',
-            flex: 1,
-            color: valerioTheme.colors.textColorBlack,
-          }}
-          canStart={activeProject}
-        />
-        <LinksContainer>
-          {projectData?.projectData.portfolioUrl && (
-            <Button
-              buttonText={t(`knownTechs.learnMore`)}
-              iconRight={<FaArrowRight size={'1.2em'} />}
-              arrowAnimation={true}
-              style={{
-                fontSize: width < 768 ? '1em' : '0.7em',
-                margin: width < 768 ? '2em auto 1em auto' : '1em 1em 0 0',
-              }}
-              onClickUrl={projectData?.projectData.portfolioUrl}
-            />
-          )}
-          {projectData?.projectData.githubUrl && (
-            <Button
-              buttonText={t(`knownTechs.github`)}
-              iconLeft={<FaGithub size={'1.2em'} />}
-              style={{
-                fontSize: width < 768 ? '1em' : '0.7em',
-                margin: width < 768 ? '1em auto' : '1em 0 0 0',
-              }}
-              onClickUrl={projectData?.projectData.githubUrl}
-            />
-          )}
-        </LinksContainer>
-      </ProjectDescription>
-    </ProjectContainer>
-  );
-};
+          <AutowriteText
+            text={
+              noProjects
+                ? t('knownTechs.noProjectsDescription')
+                : i18next.language === 'it'
+                ? projectData?.projectData.descriptionIT
+                : projectData?.projectData.descriptionEN
+            }
+            letterGenerationTiming={
+              t('knownTechs.noProjectsDescription').length / 50
+            }
+            textStyle={{
+              fontFamily: 'Corben',
+              minHeight: width < 576 ? undefined : '10em',
+              flex: 1,
+              color: valerioTheme.colors.textColorBlack,
+            }}
+            canStart={activeProject}
+          />
+          <LinksContainer>
+            {projectData?.projectData.portfolioUrl && (
+              <Button
+                buttonText={t(`knownTechs.learnMore`)}
+                iconRight={<FaArrowRight size={'1.2em'} />}
+                arrowAnimation={true}
+                style={{
+                  fontSize: width < 768 ? '1em' : '0.7em',
+                  margin: width < 768 ? '2em auto 1em auto' : '1em 1em 0 0',
+                }}
+                onClickUrl={projectData?.projectData.portfolioUrl}
+              />
+            )}
+            {projectData?.projectData.githubUrl && (
+              <Button
+                buttonText={t(`knownTechs.github`)}
+                iconLeft={<FaGithub size={'1.2em'} />}
+                style={{
+                  fontSize: width < 768 ? '1em' : '0.7em',
+                  margin: width < 768 ? '1em auto' : '1em 0 0 0',
+                }}
+                onClickUrl={projectData?.projectData.githubUrl}
+              />
+            )}
+          </LinksContainer>
+        </ProjectDescription>
+      </ProjectContainer>
+    );
+  },
+);
 
 const ProjectContainer = styled.div<{ activeProject: boolean }>`
   display: flex;
