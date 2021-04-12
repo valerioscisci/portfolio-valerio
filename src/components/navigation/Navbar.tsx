@@ -90,7 +90,7 @@ const NavbarContainer = styled.nav<{ menuOpen: boolean }>`
   justify-content: space-between;
   align-items: center;
   background: ${(props) => props.theme.colors.backgroundDark};
-  z-index: 2;
+  z-index: 100;
   position: relative;
 `;
 

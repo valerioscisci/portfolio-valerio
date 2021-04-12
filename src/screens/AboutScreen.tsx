@@ -13,6 +13,10 @@ import { StyledLink } from '../components/common/StyledLink';
 import { FaNewspaper } from 'react-icons/fa';
 import { valerioTheme } from '../theme';
 import i18next from 'i18next';
+import { Helmet } from 'react-helmet';
+import jsonDB from '../db/data.json';
+
+const metaData: any = jsonDB.metaData;
 
 const paragraphStyle = {
   padding: '1em 2em',
@@ -42,6 +46,14 @@ export const AboutScreen: React.FC = observer(() => {
   return (
     <ScreenContainer mainSlider={false}>
       <Main>
+        <Helmet>
+          <title>{metaData[i18next.language].about.title}</title>
+          <meta
+            name={'description'}
+            content={metaData[i18next.language].about.description}
+            data-react-helmet="true"
+          />
+        </Helmet>
         <HeadingContainer>
           <TopImage src={laptopImage} />
           <HeadingText>

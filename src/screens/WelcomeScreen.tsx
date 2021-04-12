@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { observer } from 'mobx-react';
 import { useTranslation } from 'react-i18next';
 import styled from 'styled-components';
@@ -19,17 +19,26 @@ import { SubHeading } from '../components/common/SubHeading';
 import { ServicesSection } from '../components/welcomePage/ServicesSection';
 import { NewsletterForm } from '../components/common/NewsletterForm';
 import { ScreenContainer } from './ScreenContainer';
+import { Helmet } from 'react-helmet';
+import jsonDB from '../db/data.json';
+import i18next from 'i18next';
+
+const metaData: any = jsonDB.metaData;
 
 export const HomeScreen: React.FC = observer((props) => {
   const { t } = useTranslation();
   const [width] = useWindowSize();
 
-  useEffect(() => {
-    document.title = t('common.websiteName') + ' - ' + t('navbar.home');
-  });
-
   return (
     <ScreenContainer>
+      <Helmet>
+        <title>{metaData[i18next.language].home.title}</title>
+        <meta
+          name={'description'}
+          content={metaData[i18next.language].home.description}
+          data-react-helmet="true"
+        />
+      </Helmet>
       <Main>
         <HeadingTitle
           style={{

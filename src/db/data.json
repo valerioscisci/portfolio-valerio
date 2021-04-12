@@ -80,5 +80,27 @@
       "reviewEN": "Valerio was suggested to me by a friend for the restructuring of the website of the Association of Economists of the New Latin Language (AENL). Best tip I couldn't get. Valerio is serious, punctual, creative, he perfectly understands the client's needs and is always available when he is needed. A guarantee of a well done job .",
       "company": "Segretario AENL"
     }
-  ]
+  ],
+  "metaData": {
+    "it": {
+      "home": {
+        "title": "The Wanderer Developer - Home",
+        "description": "Mi chiamo Valerio Scisci e sono uno sviluppatore web che scrive codice mentre è in viaggio. In questo blog potrai seguire i miei viaggi e imparare qualcosa sulla programmazione."
+      },
+      "about": {
+        "title": "The Wanderer Developer - Chi sono",
+        "description": "Scopri di più su chi sono, come è nata la mia passione per i viaggi e come è nato il progetto The Wanderer Developer."
+      }
+    },
+    "en": {
+      "home": {
+        "title": "The Wanderer Developer - Home",
+        "description": "My name is Valerio Scisci and I am a web developer who writes code while traveling. In this blog you can follow my travels and learn something about programming."
+      },
+      "about": {
+        "title": "The Wanderer Developer - About",
+        "description": "Find out more about who I am, how my passion for travel was born and how The Wanderer Developer project was born."
+      }
+    }
+  }
 }
