@@ -25,7 +25,7 @@ export default class HomeStore {
 
   @computed
   get isAppLoading() {
-    return this.isFetchingImages || this.instagramFetchingStatus === 'loading';
+    return this.isFetchingImages;
   }
 
   @action
@@ -44,6 +44,7 @@ export default class HomeStore {
       { alt: 'wilderness', img: require('../assets/images/slider/3.jpg') },
       { alt: 'travel freely', img: require('../assets/images/slider/4.jpg') },
     ];
+    this.isFetchingImages = false;
     this.techMenuImages = [
       {
         alt: 'React',
@@ -160,7 +161,6 @@ export default class HomeStore {
         img: require('../assets/images/companies/logo_aenl.png'),
       },
     ];
-    this.isFetchingImages = false;
   };
 
   @action
