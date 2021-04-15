@@ -121,7 +121,7 @@ export const ContactForm: React.FC<ContactFormProps> = observer(({ width }) => {
             isValid={!!message}
           />
           <ReCAPTCHA
-            sitekey={'6LdPmj0aAAAAAJWj0RWQGmt4jXZDpTFuTj5UzoB2'}
+            sitekey={process.env.REACT_APP_CONTACT_FORM}
             onChange={() => {
               setNotRobot(true);
             }}
