@@ -1,4 +1,5 @@
 import { action, computed, observable } from 'mobx';
+import { getCookieConsentValue } from 'react-cookie-consent';
 import { i18n, I18NLang } from '../i18n';
 import {
   ImageSource,
@@ -22,6 +23,9 @@ export default class HomeStore {
   @observable companiesLogos: Array<ImageSource> = [];
 
   @observable accountName: string = 'the_wanderer_developer';
+
+  @observable cookieConsent: boolean =
+    getCookieConsentValue('googleAnalytics') === 'true';
 
   @computed
   get isAppLoading() {

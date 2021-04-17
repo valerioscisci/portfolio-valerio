@@ -18,6 +18,7 @@ import { InstagramFeed } from './components/welcomePage/InstagramFeed';
 import { observer } from 'mobx-react';
 import { AboutScreen } from './screens/AboutScreen';
 import { Seo } from './components/navigation/Seo';
+import ReactGA from 'react-ga';
 
 export const App: React.FC = observer(() => {
   const { i18n } = useTranslation();
@@ -31,6 +32,11 @@ export const App: React.FC = observer(() => {
     stores.home.setLanguage(i18n.language as I18NLang);
     stores.home.fetchImages();
     stores.home.fetchInstagramPics();
+    if (process.env.REACT_APP_GOOGLE_ANALYTICS) {
+      ReactGA.initialize(process.env.REACT_APP_GOOGLE_ANALYTICS, {
+        debug: true,
+      });
+    }
   }, [stores.home, i18n]);
 
   const Routes = (props: any) => (

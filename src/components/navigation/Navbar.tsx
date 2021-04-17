@@ -8,6 +8,7 @@ import itaFlag from '../../assets/images/common/ita_flag.png';
 import engFlag from '../../assets/images/common/eng_flag.png';
 import { observer } from 'mobx-react';
 import { useStores } from '../../hooks/useStores';
+import ReactGA from 'react-ga';
 
 export interface NavbarProps {
   navLinks: any;
@@ -49,6 +50,15 @@ export const Navbar: React.FC<NavbarProps> = observer(({ navLinks, width }) => {
       />
       <NavbarRight menuOpen={menuOpen}>
         {navLinks.map((link: any, i: number) => {
+          if (
+            link.route.trim().toLocaleLowerCase().includes('newsletter') &&
+            home.cookieConsent
+          ) {
+            ReactGA.event({
+              category: 'User',
+              action: 'Navigate to Newsletter Form',
+            });
+          }
           return (
             <NavbarItem key={i} menuOpen={menuOpen} route={link.route}>
               <Link
