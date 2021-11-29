@@ -61,6 +61,16 @@ export default class HomeStore {
         techName: 'React Native',
       },
       {
+        alt: 'Wordpress',
+        img: require('../assets/images/techMenu/wordpress.svg'),
+        techName: 'Wordpress',
+      },
+      {
+        alt: 'NextJs',
+        img: require('../assets/images/techMenu/nextjs.svg'),
+        techName: 'NextJS',
+      },
+      {
         alt: 'Django',
         img: require('../assets/images/techMenu/django.svg'),
         techName: 'Django',
@@ -116,6 +126,16 @@ export default class HomeStore {
         alt: 'Aenl',
         img: require('../assets/images/portfolio/aenl.jpg'),
         madeWith: ['Bootstrap', 'Html5', 'Css3'],
+      },
+      {
+        alt: 'Randy.gg',
+        img: require('../assets/images/portfolio/randy.jpg'),
+        madeWith: ['React', 'Html5', 'Css3', 'MongoDB', 'NextJS'],
+      },
+      {
+        alt: 'Casa di Nicole',
+        img: require('../assets/images/portfolio/casa_nicole.jpg'),
+        madeWith: ['Wordpress', 'Html5', 'Css3', 'MySQL'],
       },
       {
         alt: 'Malta',

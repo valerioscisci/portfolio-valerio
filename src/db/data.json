@@ -71,6 +71,30 @@
         "portfolioUrl": "",
         "githubUrl": "https://github.com/valerioscisci/SmartContract"
       }
+    },
+    {
+      "projectName": "Casa di Nicole",
+      "projectData": {
+        "titleIT": "Sito web per il B&B 'La casa di Nicole'",
+        "titleEN": "Website for the B&N 'La casa di Nicole'",
+        "descriptionIT": "Il sito è stato realizzato interamente su Wordpress ed aveva l'obiettivo di migliorare la presenza online del B&B in questione. Oltre a una descrizione generale della stanza e dei servizi offerti, nella sezione galleria è possibile fare un tour virtuale della struttura.",
+        "descriptionEN": "The website was created entirely on Wordpress and had the aim of improving the online presence of the B&B itself. In addition to a general description of the room and the services offered, in the gallery section it is possible to take a virtual tour of the structure.",
+        "projectUrl": "https://www.lacasadinicole.com/",
+        "portfolioUrl": "",
+        "githubUrl": "https://github.com/valerioscisci/la-casa-di-nicole"
+      }
+    },
+    {
+      "projectName": "Randy.gg",
+      "projectData": {
+        "titleIT": "Applicazione web per lo youtuber australiano Randy",
+        "titleEN": "Web application for the australian youtuber Randy",
+        "descriptionIT": "Un sito web creato per consentire a Randy di ricevere donazioni dai suoi follower tramite stripe e paypal. Inoltre sono stati costruiti un blog, il collegamento con software quali Discord, GitLab e Notion e un’area personale per gli utenti.",
+        "descriptionEN": "A website created to allow Randy to receive donations from his followers via paypal or stripe. Inoltre è stato costruito un blog, il collegamento con software quali Discord, GitLab e Notion e un’area personale per gli utenti.",
+        "projectUrl": "https://randy.gg/",
+        "portfolioUrl": "",
+        "githubUrl": ""
+      }
     }
   ],
   "reviews": [
