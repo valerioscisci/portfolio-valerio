@@ -1,4 +1,5 @@
 import { action, computed, observable } from 'mobx';
+import { getCookieConsentValue } from 'react-cookie-consent';
 import { i18n, I18NLang } from '../i18n';
 import {
   ImageSource,
@@ -23,9 +24,12 @@ export default class HomeStore {
 
   @observable accountName: string = 'the_wanderer_developer';
 
+  @observable cookieConsent: boolean =
+    getCookieConsentValue('googleAnalytics') === 'true';
+
   @computed
   get isAppLoading() {
-    return this.isFetchingImages || this.instagramFetchingStatus === 'loading';
+    return this.isFetchingImages;
   }
 
   @action
@@ -44,6 +48,7 @@ export default class HomeStore {
       { alt: 'wilderness', img: require('../assets/images/slider/3.jpg') },
       { alt: 'travel freely', img: require('../assets/images/slider/4.jpg') },
     ];
+    this.isFetchingImages = false;
     this.techMenuImages = [
       {
         alt: 'React',
@@ -54,6 +59,16 @@ export default class HomeStore {
         alt: 'React Native',
         img: require('../assets/images/techMenu/react_native.svg'),
         techName: 'React Native',
+      },
+      {
+        alt: 'Wordpress',
+        img: require('../assets/images/techMenu/wordpress.svg'),
+        techName: 'Wordpress',
+      },
+      {
+        alt: 'NextJs',
+        img: require('../assets/images/techMenu/nextjs.svg'),
+        techName: 'NextJS',
       },
       {
         alt: 'Django',
@@ -113,6 +128,16 @@ export default class HomeStore {
         madeWith: ['Bootstrap', 'Html5', 'Css3'],
       },
       {
+        alt: 'Randy.gg',
+        img: require('../assets/images/portfolio/randy.jpg'),
+        madeWith: ['React', 'Html5', 'Css3', 'MongoDB', 'NextJS'],
+      },
+      {
+        alt: 'Casa di Nicole',
+        img: require('../assets/images/portfolio/casa_nicole.jpg'),
+        madeWith: ['Wordpress', 'Html5', 'Css3', 'MySQL'],
+      },
+      {
         alt: 'Malta',
         img: require('../assets/images/portfolio/malta.jpg'),
         madeWith: ['Django', 'Html5', 'Css3', 'MySQL'],
@@ -144,6 +169,18 @@ export default class HomeStore {
         img: require('../assets/images/companies/logo_regione_marche.png'),
       },
       {
+        alt: 'aenl',
+        img: require('../assets/images/companies/logo_aenl.png'),
+      },
+      {
+        alt: 'La Casa di Nicole',
+        img: require('../assets/images/companies/logo_casa_nicole.png'),
+      },
+      {
+        alt: 'Randy.gg',
+        img: require('../assets/images/companies/logo_randy.png'),
+      },
+      {
         alt: 'ETT',
         img: require('../assets/images/companies/logo_ett.png'),
       },
@@ -155,12 +192,7 @@ export default class HomeStore {
         alt: 'Mostaza',
         img: require('../assets/images/companies/logo_mostaza.png'),
       },
-      {
-        alt: 'aenl',
-        img: require('../assets/images/companies/logo_aenl.png'),
-      },
     ];
-    this.isFetchingImages = false;
   };
 
   @action

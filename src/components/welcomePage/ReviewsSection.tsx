@@ -51,7 +51,7 @@ export const ReviewsSection: React.FC = observer(() => {
             />
           );
         })}
-        {!reviews.length && (
+        {reviews.length && (
           <DotGroup
             slidesNumber={reviews.length}
             activeIndex={currentShownReview}

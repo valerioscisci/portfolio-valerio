@@ -2,9 +2,11 @@ import React from 'react';
 import Helmet from 'react-helmet';
 import { valerioTheme } from '../../theme';
 
-export const seo = () => {
+export const Seo: React.FC = () => {
   return (
     <Helmet>
+      <meta name="author" content="Valerio Scisci" />
+      <meta name="robots" content="index, follow, max-image-preview:large" />
       <link
         rel="apple-touch-icon"
         sizes="180x180"
@@ -32,7 +34,11 @@ export const seo = () => {
         name="msapplication-TileColor"
         content={valerioTheme.colors.primary}
       />
-      <meta name="theme-color" content="#ffffff" />
+      <meta
+        name="theme-color"
+        content={valerioTheme.colors.primary}
+        data-react-helmet="true"
+      />
     </Helmet>
   );
 };

@@ -17,7 +17,8 @@ import { Spinner } from './components/common/Spinner';
 import { InstagramFeed } from './components/welcomePage/InstagramFeed';
 import { observer } from 'mobx-react';
 import { AboutScreen } from './screens/AboutScreen';
-import { seo } from './components/navigation/seo';
+import { Seo } from './components/navigation/Seo';
+import ReactGA from 'react-ga';
 
 export const App: React.FC = observer(() => {
   const { i18n } = useTranslation();
@@ -31,6 +32,11 @@ export const App: React.FC = observer(() => {
     stores.home.setLanguage(i18n.language as I18NLang);
     stores.home.fetchImages();
     stores.home.fetchInstagramPics();
+    if (process.env.REACT_APP_GOOGLE_ANALYTICS) {
+      ReactGA.initialize(process.env.REACT_APP_GOOGLE_ANALYTICS, {
+        debug: true,
+      });
+    }
   }, [stores.home, i18n]);
 
   const Routes = (props: any) => (
@@ -53,13 +59,13 @@ export const App: React.FC = observer(() => {
         <Route path={'/about'} render={() => <AboutScreen />} />
         <Redirect to={'/'} />
       </Switch>
+      <Seo />
     </Router>
   );
 
   return (
     <ThemeProvider theme={valerioTheme}>
       <StoresContext.Provider value={stores}>
-        {seo()}
         {stores.home.isAppLoading ? <Spinner /> : <Routes />}
       </StoresContext.Provider>
     </ThemeProvider>

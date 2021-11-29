@@ -71,14 +71,66 @@
         "portfolioUrl": "",
         "githubUrl": "https://github.com/valerioscisci/SmartContract"
       }
+    },
+    {
+      "projectName": "Casa di Nicole",
+      "projectData": {
+        "titleIT": "Sito web per il B&B 'La casa di Nicole'",
+        "titleEN": "Website for the B&N 'La casa di Nicole'",
+        "descriptionIT": "Il sito è stato realizzato interamente su Wordpress ed aveva l'obiettivo di migliorare la presenza online del B&B in questione. Oltre a una descrizione generale della stanza e dei servizi offerti, nella sezione galleria è possibile fare un tour virtuale della struttura.",
+        "descriptionEN": "The website was created entirely on Wordpress and had the aim of improving the online presence of the B&B itself. In addition to a general description of the room and the services offered, in the gallery section it is possible to take a virtual tour of the structure.",
+        "projectUrl": "https://www.lacasadinicole.com/",
+        "portfolioUrl": "",
+        "githubUrl": "https://github.com/valerioscisci/la-casa-di-nicole"
+      }
+    },
+    {
+      "projectName": "Randy.gg",
+      "projectData": {
+        "titleIT": "Applicazione web per lo youtuber australiano Randy",
+        "titleEN": "Web application for the australian youtuber Randy",
+        "descriptionIT": "Un sito web creato per consentire a Randy di ricevere donazioni dai suoi follower tramite stripe e paypal. Inoltre sono stati costruiti un blog, il collegamento con software quali Discord, GitLab e Notion e un’area personale per gli utenti.",
+        "descriptionEN": "A website created to allow Randy to receive donations from his followers via paypal or stripe. Inoltre è stato costruito un blog, il collegamento con software quali Discord, GitLab e Notion e un’area personale per gli utenti.",
+        "projectUrl": "https://randy.gg/",
+        "portfolioUrl": "",
+        "githubUrl": ""
+      }
     }
   ],
   "reviews": [
     {
       "writerName": "Prof. Giuseppe Canullo",
       "reviewIT": "Valerio mi è stato indicato da un amico per la ristrutturazione del sito WEB dell’Associazione degli Economisti di Lingua Neolatina (AENL). Miglior suggerimento non potevo ricevere. Valerio è serio, puntuale, creativo, comprende perfettamente le esigenze del committente e sempre disponibile quando c’è bisogno di lui. Una garanzia di lavoro ben fatto.",
-      "reviewEN": "Valerio was suggested to me by a friend for the restructuring of the website of the Association of Economists of the New Latin Language (AENL). Best tip I couldn't get. Valerio is serious, punctual, creative, he perfectly understands the client's needs and is always available when he is needed. A guarantee of a well done job .",
+      "reviewEN": "Valerio was suggested to me by a friend for the restructuring of the website of the Association of Economists of the New Latin Language (AENL). Best tip I couldn't get. Valerio is serious, punctual, creative, he perfectly understands the client's needs and is always available when he is needed. A guarantee of a well done job.",
       "company": "Segretario AENL"
+    },
+    {
+      "writerName": "Tommaso e Mariella",
+      "reviewIT": "Ho commissionato a Valerio la realizzazione del sito web per la mia attività, il B&b 'La casa di Nicole' e devo dire che sono rimasto sorpreso e soddisfatto per il lavoro eseguito. La professionalità di Valerio ha superato ogni aspettativa, è venuto incontro ad ogni mia richiesta e mi ha reso partecipe, fornendomi aggiornamenti periodici, dell'avanzamento del lavoro. La consegna del lavoro è avvenuta nei tempi prestabiliti e ha superato ogni mia aspettativa, sia per la grafica sia per la chiarezza e semplicità dell'utilizzo. Lavoro eccellente. Se dovessi aver bisogno nuovamente delle sue competenze non esiterò a contattarlo! \n Consigliatissimo!",
+      "reviewEN": "I commissioned Valerio to create the website for my business, the B&B 'La casa di Nicole' and I must say that I was surprised and satisfied with the work done. Valerio's professionalism exceeded all expectations, met all my requests and made me participate, providing me with periodic updates of the progress done. The delivery of the work took place on schedule and exceeded all my expectations, both for the graphics and for the clarity and simplicity of use. Excellent work. If I need his skills again, I won't hesitate to contact him! \n Highly recommended!",
+      "company": "B&B La casa di Nicole"
     }
-  ]
+  ],
+  "metaData": {
+    "it": {
+      "home": {
+        "title": "The Wanderer Developer - Home",
+        "description": "Questa è la homepage di The Wanderer Developer! Mi chiamo Valerio Scisci e sono uno sviluppatore web che scrive codice mentre è in viaggio. In questo blog potrai seguire i miei viaggi e imparare qualcosa sulla programmazione."
+      },
+      "about": {
+        "title": "The Wanderer Developer - Chi sono",
+        "description": "Scopri di più su chi sono, come è nata la mia passione per i viaggi e come è nato il progetto The Wanderer Developer."
+      }
+    },
+    "en": {
+      "home": {
+        "title": "The Wanderer Developer - Home",
+        "description": "This is The Wanderer Developer homepage! My name is Valerio Scisci and I am a web developer who writes code while traveling. In this blog you can follow my travels and learn something about programming."
+      },
+      "about": {
+        "title": "The Wanderer Developer - About",
+        "description": "Find out more about who I am, how my passion for travel was born and how The Wanderer Developer project was born."
+      }
+    }
+  }
 }

@@ -10,12 +10,14 @@ import CookieConsent from 'react-cookie-consent';
 import { valerioTheme } from '../theme';
 import { useTranslation } from 'react-i18next';
 import { StyledLink } from '../components/common/StyledLink';
+import { useStores } from '../hooks/useStores';
 
 type ScreenContainerProps = {
   mainSlider?: boolean;
 };
 export const ScreenContainer: React.FC<ScreenContainerProps> = observer(
   ({ mainSlider, ...props }) => {
+    const { home } = useStores();
     const { t } = useTranslation();
     const [width] = useWindowSize();
 
@@ -26,6 +28,7 @@ export const ScreenContainer: React.FC<ScreenContainerProps> = observer(
       borderTopRightRadius: '1em',
       borderTopLeftRadius: '1em',
       fontFamily: 'Corben',
+      fontSize: '0.8em',
     };
 
     const buttonAcceptStyle = {
@@ -65,7 +68,10 @@ export const ScreenContainer: React.FC<ScreenContainerProps> = observer(
           declineButtonStyle={declineButtonStyle}
           expires={150}
           onAccept={() => {
-            //google start
+            home.cookieConsent = true;
+          }}
+          onDecline={() => {
+            home.cookieConsent = false;
           }}
         >
           {t('footer.cookieConsentText')}
