@@ -149,6 +149,18 @@ export default class HomeStore {
         img: require('../assets/images/companies/logo_regione_marche.png'),
       },
       {
+        alt: 'aenl',
+        img: require('../assets/images/companies/logo_aenl.png'),
+      },
+      {
+        alt: 'La Casa di Nicole',
+        img: require('../assets/images/companies/logo_casa_nicole.png'),
+      },
+      {
+        alt: 'Randy.gg',
+        img: require('../assets/images/companies/logo_randy.png'),
+      },
+      {
         alt: 'ETT',
         img: require('../assets/images/companies/logo_ett.png'),
       },
@@ -159,10 +171,6 @@ export default class HomeStore {
       {
         alt: 'Mostaza',
         img: require('../assets/images/companies/logo_mostaza.png'),
-      },
-      {
-        alt: 'aenl',
-        img: require('../assets/images/companies/logo_aenl.png'),
       },
     ];
   };
