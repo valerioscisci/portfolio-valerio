@@ -17,7 +17,7 @@ import { Spinner } from './components/common/Spinner';
 import { InstagramFeed } from './components/welcomePage/InstagramFeed';
 import { observer } from 'mobx-react';
 import { AboutScreen } from './screens/AboutScreen';
-import { Seo } from './components/navigation/Seo';
+// import { Seo } from './components/navigation/Seo';
 import ReactGA from 'react-ga';
 
 export const App: React.FC = observer(() => {
@@ -59,7 +59,7 @@ export const App: React.FC = observer(() => {
         <Route path={'/about'} render={() => <AboutScreen />} />
         <Redirect to={'/'} />
       </Switch>
-      <Seo />
+      {/* <Seo /> */}
     </Router>
   );
 
