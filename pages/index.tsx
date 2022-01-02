@@ -20,7 +20,7 @@ import styled from 'styled-components';
 import i18next from 'i18next';
 import { Layout } from '../components/ui/Layout/Layout';
 import { useWindowSize } from '../hooks/useWindowSize';
-import Head from 'next/head';
+import Seo from '../components/common/Seo/Seo';
 
 // const metaData: any = jsonDB.metaData;
 
@@ -30,14 +30,13 @@ export default function HomeScreen(props) {
 
   return (
     <Layout>
-      <Head>
-        {/* <title>{metaData[i18next.language].home.title}</title>
+      <Seo pageTitle={'test'} description={'test'} />
+      {/* <title>{metaData[i18next.language].home.title}</title>
         <meta
           name={'description'}
           content={metaData[i18next.language].home.description}
           data-react-helmet="true"
         ></meta> */}
-      </Head>
       <Main>
         {/* <HeadingTitle
           style={{
