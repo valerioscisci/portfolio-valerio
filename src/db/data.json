@@ -110,27 +110,5 @@
       "reviewEN": "I commissioned Valerio to create the website for my business, the B&B 'La casa di Nicole' and I must say that I was surprised and satisfied with the work done. Valerio's professionalism exceeded all expectations, met all my requests and made me participate, providing me with periodic updates of the progress done. The delivery of the work took place on schedule and exceeded all my expectations, both for the graphics and for the clarity and simplicity of use. Excellent work. If I need his skills again, I won't hesitate to contact him! \n Highly recommended!",
       "company": "B&B La casa di Nicole"
     }
-  ],
-  "metaData": {
-    "it": {
-      "home": {
-        "title": "The Wanderer Developer - Home",
-        "description": "Questa è la homepage di The Wanderer Developer! Mi chiamo Valerio Scisci e sono uno sviluppatore web che scrive codice mentre è in viaggio. In questo blog potrai seguire i miei viaggi e imparare qualcosa sulla programmazione."
-      },
-      "about": {
-        "title": "The Wanderer Developer - Chi sono",
-        "description": "Scopri di più su chi sono, come è nata la mia passione per i viaggi e come è nato il progetto The Wanderer Developer."
-      }
-    },
-    "en": {
-      "home": {
-        "title": "The Wanderer Developer - Home",
-        "description": "This is The Wanderer Developer homepage! My name is Valerio Scisci and I am a web developer who writes code while traveling. In this blog you can follow my travels and learn something about programming."
-      },
-      "about": {
-        "title": "The Wanderer Developer - About",
-        "description": "Find out more about who I am, how my passion for travel was born and how The Wanderer Developer project was born."
-      }
-    }
-  }
+  ]
 }

@@ -1,5 +1,4 @@
 import React from 'react';
-import { useTranslation } from 'react-i18next';
 import styled from 'styled-components';
 // import brush from '../assets/images/homepage/brush.png';
 // import { Button } from '../components/common/Button';
@@ -16,21 +15,24 @@ import styled from 'styled-components';
 // import { SubHeading } from '../components/common/SubHeading';
 // import { ServicesSection } from '../components/welcomePage/ServicesSection';
 // import { NewsletterForm } from '../components/common/NewsletterForm';
-// import jsonDB from '../db/data.json';
-import i18next from 'i18next';
 import { Layout } from '../components/ui/Layout/Layout';
 import { useWindowSize } from '../hooks/useWindowSize';
 import Seo from '../components/common/Seo/Seo';
-
-// const metaData: any = jsonDB.metaData;
+import { GetStaticProps } from 'next/types';
+import { useTranslation } from 'next-i18next';
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 
 export default function HomeScreen(props) {
-  const { t } = useTranslation();
+  const { t } = useTranslation(['homepage']);
+
   const [width] = useWindowSize();
 
   return (
     <Layout>
-      <Seo pageTitle={'test'} description={'test'} />
+      <Seo
+        pageTitle={t('homepage:metadata.title')}
+        description={t('homepage:metadata.description')}
+      />
       {/* <title>{metaData[i18next.language].home.title}</title>
         <meta
           name={'description'}
@@ -128,6 +130,14 @@ export default function HomeScreen(props) {
     </Layout>
   );
 }
+
+export const getStaticProps: GetStaticProps = async (context) => {
+  return {
+    props: {
+      ...(await serverSideTranslations(context.locale, ['homepage'])),
+    },
+  };
+};
 
 const Main = styled.main`
   background-color: ${(props) => props.theme.colors.background};

@@ -21,14 +21,14 @@ const Seo: React.FC<SeoProps> = ({
   return (
     <Head>
       <meta charSet="utf-8" />
-      <title>{pagetitle}</title>
+      <title>{`${pagetitle} | The Wanderer Developer`}</title>
       <meta
         name="viewport"
         content="width=device-width,minimum-scale=1,initial-scale=1,maximum-scale=1"
       />
       <meta name="title" content={pagetitle} />
       <meta name="description" content={pagedescription} />
-      <base>{url}</base>
+      <base href={url} target="_blank" />
 
       {/* OpenGraph tags */}
       <meta name="og:url" content={url} />
