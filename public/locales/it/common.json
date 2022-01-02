@@ -1,0 +1,11 @@
+{
+  "navbar": {
+    "home": "Home",
+    "about": "Chi Sono",
+    "portfolio": "Portfolio",
+    "contact": "Contattami"
+  },
+  "websiteName": "The Wanderer Developer",
+  "contactMe": "Contact me",
+  "blog": "Blog"
+}

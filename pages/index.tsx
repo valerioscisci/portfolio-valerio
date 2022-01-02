@@ -1,14 +1,10 @@
 import React from 'react';
 import styled from 'styled-components';
-// import brush from '../assets/images/homepage/brush.png';
-// import { Button } from '../components/common/Button';
-// import { FaArrowRight } from 'react-icons/fa';
-// import { ImageAnimation } from '../components/common/ImageAnimation';
+import brush from '/public/images/homepage/brush.png';
 // import { ParallaxSection } from '../components/welcomePage/ParallaxSection';
 // import { KnownTechSection } from '../components/welcomePage/KnownTechSection';
 // import { BlogSection } from '../components/welcomePage/BlogSection';
 // import { Paragraph } from '../components/common/Paragraph';
-// import { HeadingTitle } from '../components/common/HeadingTitle';
 // import { valerioTheme } from '../theme';
 // import { ReviewsSection } from '../components/welcomePage/ReviewsSection';
 // import { ContactForm } from '../components/welcomePage/ContactForm';
@@ -21,26 +17,28 @@ import Seo from '../components/common/Seo/Seo';
 import { GetStaticProps } from 'next/types';
 import { useTranslation } from 'next-i18next';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
+import { valerioTheme } from './_app';
+import { HeadingTitle } from '../components/ui/HeadingTitle/HeadingTitle';
+import { SubHeading } from '../components/homepage/SubHeading/SubHeading';
+import { ImageAnimation } from '../components/common/ImageAnimation/ImageAnimation';
+import { Paragraph } from '../components/ui/Paragraph/Paragraph';
+import { Button } from '../components/ui/Button/Button';
+import { FaArrowRight } from 'react-icons/fa';
+import { url } from '../config/config';
 
 export default function HomeScreen(props) {
-  const { t } = useTranslation(['homepage']);
+  const { t } = useTranslation(['homepage', 'common']);
 
   const [width] = useWindowSize();
 
   return (
-    <Layout>
+    <Layout t={t}>
       <Seo
         pageTitle={t('homepage:metadata.title')}
         description={t('homepage:metadata.description')}
       />
-      {/* <title>{metaData[i18next.language].home.title}</title>
-        <meta
-          name={'description'}
-          content={metaData[i18next.language].home.description}
-          data-react-helmet="true"
-        ></meta> */}
       <Main>
-        {/* <HeadingTitle
+        <HeadingTitle
           style={{
             backgroundColor: valerioTheme.colors.background,
             background: ' url(' + brush + ')',
@@ -49,15 +47,15 @@ export default function HomeScreen(props) {
             margin: 0,
           }}
         >
-          {t(`common.websiteName`)}
+          {t(`common:websiteName`)}
         </HeadingTitle>
         <SubHeading style={{ marginBottom: '4em' }}>
-          {t('welcome.subHeading')}
+          {t('homepage:subHeading')}
         </SubHeading>
         <FirstSection>
           <CVImage>
             <ImageAnimation
-              image={require('../assets/images/homepage/valerio_scisci.jpg')}
+              image={`${url}/images/homepage/valerio_scisci.jpg`}
               imageAlt={'Valerio Scisci'}
               animationDirection={'BottomToTop'}
               animationX={'9.5em'}
@@ -72,18 +70,18 @@ export default function HomeScreen(props) {
             }}
           >
             <Paragraph style={{ marginBottom: '0' }}>
-              {t(`welcome.introParagraph`)}
+              {t(`homepage:introParagraph`)}
             </Paragraph>
             <Button
-              buttonText={t(`welcome.introButton`)}
+              buttonText={t(`homepage:introButton`)}
               iconRight={<FaArrowRight size={'1.2em'} />}
               arrowAnimation={true}
               style={{ margin: '2em auto' }}
-              onClickUrl={'#/about'}
+              onClickUrl={'/about'}
             ></Button>
           </div>
         </FirstSection>
-        <SecondSection>
+        {/* <SecondSection>
           <HeadingTitle style={{ marginTop: '4em' }} color={'white'}>
             {t(`welcome.secondParagraphTitle`)}
           </HeadingTitle>
@@ -134,7 +132,7 @@ export default function HomeScreen(props) {
 export const getStaticProps: GetStaticProps = async (context) => {
   return {
     props: {
-      ...(await serverSideTranslations(context.locale, ['homepage'])),
+      ...(await serverSideTranslations(context.locale, ['homepage', 'common'])),
     },
   };
 };

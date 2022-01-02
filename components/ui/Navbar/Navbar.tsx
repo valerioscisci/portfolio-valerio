@@ -1,22 +1,17 @@
 import React, { useCallback, useEffect, useState } from 'react';
 import styled, { css } from 'styled-components';
-import LogoImage from '../../assets/images/common/LogoWhite.png';
-import { MenuIcon } from './MenuIcon';
-import { HashLink as Link } from 'react-router-hash-link';
-import { i18n, I18NLang } from '../../i18n';
-import itaFlag from '../../assets/images/common/ita_flag.png';
-import engFlag from '../../assets/images/common/eng_flag.png';
-import { observer } from 'mobx-react';
-import { useStores } from '../../hooks/useStores';
+import { MenuIcon } from '../../../src/components/navigation/MenuIcon';
 import ReactGA from 'react-ga';
+import { url } from '../../../config/config';
+import { useRouter } from 'next/router';
 
 export interface NavbarProps {
   navLinks: any;
   width: number;
 }
 
-export const Navbar: React.FC<NavbarProps> = observer(({ navLinks, width }) => {
-  const { home } = useStores();
+export const Navbar: React.FC<NavbarProps> = ({ navLinks, width }) => {
+  const router = useRouter();
   const [menuOpen, setMenuOpen] = useState(false);
   const menuIconRef = React.createRef<HTMLDivElement>();
 
@@ -28,20 +23,16 @@ export const Navbar: React.FC<NavbarProps> = observer(({ navLinks, width }) => {
     }
   }, [menuOpen]);
 
-  const changeLanguage = useCallback(
-    (lng: I18NLang) => {
-      i18n.changeLanguage(lng);
-      home.setLanguage(lng);
-    },
-    [home],
-  );
+  const changeLanguage = useCallback((lng) => {
+    router.push(`/${lng}/`);
+  }, []);
 
   return (
     <NavbarContainer menuOpen={menuOpen}>
       {!menuOpen && (
-        <Link to={navLinks[0].route}>
-          <Logo src={LogoImage} />
-        </Link>
+        <a href={navLinks[0].route}>
+          <Logo src={`${url}images/common/LogoWhite.png`} />
+        </a>
       )}
       <MenuIcon
         ref={menuIconRef}
@@ -52,7 +43,7 @@ export const Navbar: React.FC<NavbarProps> = observer(({ navLinks, width }) => {
         {navLinks.map((link: any, i: number) => {
           if (
             link.route.trim().toLocaleLowerCase().includes('newsletter') &&
-            home.cookieConsent
+            true
           ) {
             ReactGA.event({
               category: 'User',
@@ -61,8 +52,8 @@ export const Navbar: React.FC<NavbarProps> = observer(({ navLinks, width }) => {
           }
           return (
             <NavbarItem key={i} menuOpen={menuOpen} route={link.route}>
-              <Link
-                to={link.route}
+              <a
+                href={link.route}
                 onClick={() => {
                   if (menuIconRef.current) {
                     if (width < 768) {
@@ -72,7 +63,7 @@ export const Navbar: React.FC<NavbarProps> = observer(({ navLinks, width }) => {
                 }}
               >
                 {link.name}
-              </Link>
+              </a>
             </NavbarItem>
           );
         })}
@@ -87,7 +78,7 @@ export const Navbar: React.FC<NavbarProps> = observer(({ navLinks, width }) => {
       </LanguageSelector>
     </NavbarContainer>
   );
-});
+};
 
 const NavbarContainer = styled.nav<{ menuOpen: boolean }>`
   height: ${(props) => (props.menuOpen ? '100vh' : '4.5em')};
@@ -314,11 +305,11 @@ const ChangeLanguageButton = styled.button<{ flag?: string }>`
     switch (true) {
       case props.flag === 'it':
         return css`
-          background-image: url(${itaFlag});
+          background-image: url(${url}images/common/ita_flag.png);
         `;
       case props.flag === 'en':
         return css`
-          background-image: url(${engFlag});
+          background-image: url(${url}images/common/eng_flag.png);
           background-position: 0% 50%;
         `;
     }

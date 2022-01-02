@@ -1,21 +1,22 @@
 import React from 'react';
 import styled from 'styled-components';
 // import { Footer } from '../../../src/components/navigation/Footer';
-// import { Header } from '../../../src/components/navigation/Header';
 // import { GitHubCorner } from '../../../src/components/common/GitHubCorner';
 import { useWindowSize } from '../../../hooks/useWindowSize';
 // import { GoTop } from '../../../src/components/common/GoTop';
 // import CookieConsent from 'react-cookie-consent';
 import { useTranslation } from 'react-i18next';
 import { valerioTheme } from '../../../pages/_app';
+import { Header } from '../Header/Header';
+import { TFunction } from 'next-i18next';
 // import { StyledLink } from '../../../src/components/common/StyledLink';
 
 interface LayoutProps {
   mainSlider?: boolean;
+  t: TFunction;
 }
 
-export const Layout: React.FC<LayoutProps> = ({ mainSlider, ...props }) => {
-  const { t } = useTranslation();
+export const Layout: React.FC<LayoutProps> = ({ mainSlider, t, ...props }) => {
   const [width] = useWindowSize();
 
   const cookieBarStyle = {
@@ -49,7 +50,7 @@ export const Layout: React.FC<LayoutProps> = ({ mainSlider, ...props }) => {
 
   return (
     <Container>
-      {/* <Header width={width} mainSlider={mainSlider} /> */}
+      <Header width={width} mainSlider={mainSlider} t={t} />
       {props.children}
       {/* <Footer />
       {width > 768 && <GitHubCorner />}

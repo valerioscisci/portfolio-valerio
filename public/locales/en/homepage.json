@@ -2,5 +2,17 @@
   "metadata": {
     "title": " Home",
     "description": "This is The Wanderer Developer homepage! My name is Valerio Scisci and I am a web developer who writes code while traveling. In this blog you can follow my travels and learn something about programming."
-  }
+  },
+  "subHeading": "I create websites and mobile applications while traveling around the world",
+  "introParagraph": "My name is Valerio and I am an IT engineer specialized in web and mobile application development. The thing I'm passionate about the most is traveling. \n A few years ago I decided that working most of my life locked in the four walls of an office was not going to work for me. \n I therefore wanted to take advantage of technology and my own knowledge to organize my working life, freeing myself from having to live in one place: I became a digital nomad.",
+  "introButton": "find out more about me",
+  "slider": {
+    "heading1": "Get in control of your time",
+    "heading2": "So that you can finally dedicate yourself",
+    "heading3": "To do what you really love",
+    "heading4": "And have the opportunity to explore",
+    "heading5": "The fantastic world that we live in"
+  },
+  "secondParagraphTitle": "Let's work together",
+  "secondParagraph": "If you have a project in mind that involves the creation of a website or a mobile application, do not hesitate to contact me!\nIn the same way, if you are a developer and want to chat about remote work, about the choices I have made or about something more specific, I'm always available. Last but definitely not least, if you think you love the world of travel as much as I do, I'd love to have an exchange of ideas!"
 }

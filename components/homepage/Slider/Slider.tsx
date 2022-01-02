@@ -3,23 +3,31 @@ import styled from 'styled-components';
 import { CarouselProvider, Slide, Slider, Image } from 'pure-react-carousel';
 
 import 'pure-react-carousel/dist/react-carousel.es.css';
-import { useTranslation } from 'react-i18next';
-import { Spinner } from '../common/Spinner';
+import { Spinner } from '../../../src/components/common/Spinner';
+import { TFunction } from 'next-i18next';
+import { url } from '../../../config/config';
 
-export interface SliderProps {
-  imagesArray: { alt: string; img: { default: string } }[];
-}
+const imagesArray = [
+  { alt: 'jetsky', img: `${url}images/slider/0.jpg` },
+  { alt: 'skydive', img: `${url}images/slider/1.jpg` },
+  { alt: 'work anywhere', img: `${url}images/slider/2.jpg` },
+  { alt: 'wilderness', img: `${url}images/slider/3.jpg` },
+  { alt: 'travel freely', img: `${url}images/slider/4.jpg` },
+];
 
 // Component used https://www.npmjs.com/package/pure-react-carousel
-export const MainSlider: React.FC<SliderProps> = ({ imagesArray }) => {
-  const { t } = useTranslation();
 
+interface MainSliderProps {
+  t: TFunction;
+}
+
+export const MainSlider: React.FC<MainSliderProps> = ({ t }) => {
   const imagesOverlayTexts: Array<string> = [
-    t(`slider.heading1`),
-    t(`slider.heading2`),
-    t(`slider.heading3`),
-    t(`slider.heading4`),
-    t(`slider.heading5`),
+    t(`homepage:slider.heading1`),
+    t(`homepage:slider.heading2`),
+    t(`homepage:slider.heading3`),
+    t(`homepage:slider.heading4`),
+    t(`homepage:slider.heading5`),
   ];
 
   return (
@@ -59,7 +67,7 @@ export const MainSlider: React.FC<SliderProps> = ({ imagesArray }) => {
                   isBgImage={false}
                   hasMasterSpinner={true}
                   alt={image.alt}
-                  src={image.img.default}
+                  src={image.img}
                 />
               </Slide>
             );

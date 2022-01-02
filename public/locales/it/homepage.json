@@ -2,5 +2,17 @@
   "metadata": {
     "title": "Home",
     "description": "Questa è la homepage di The Wanderer Developer! Mi chiamo Valerio Scisci e sono uno sviluppatore web che scrive codice mentre è in viaggio. In questo blog potrai seguire i miei viaggi e imparare qualcosa sulla programmazione."
-  }
+  },
+  "subHeading": "Realizzo siti web e applicazioni mobile, viaggiando e documentando il tutto",
+  "introParagraph": "Mi chiamo Valerio e sono un ingegnere informatico specializzato in sviluppo web e crezione di applicazioni per smartphone. La mia principale passione è viaggiare. \n Qualche anno fa ho preso la decisione di non voler passare la maggior parte della vita chiuso tra le quattro mura di un ufficio. \n Ho pertanto voluto sfruttare la tecnologia e le mie conoscenze per organizzare la mia vita lavorativa svincolandomi dal dover vivere in un solo luogo: sono a tutti gli effetti un nomade digitale. ",
+  "introButton": "scopri altro su di me",
+  "slider": {
+    "heading1": "Torna ad essere padrone del tuo tempo",
+    "heading2": "Così da poterti finalmente dedicare",
+    "heading3": "A fare ciò che ami di più",
+    "heading4": "E avere modo di esplorare ",
+    "heading5": "Il fantastico mondo che ci circonda"
+  },
+  "secondParagraphTitle": "Lavoriamo insieme!",
+  "secondParagraph": "Se hai un progetto in mente che preveda la realizzazione di un sito web o di un'applicazione mobile non esitare a contattarmi! \nAllo stesso modo, se sei un developer e vuoi fare due chiacchiere sul lavoro da remoto, sulle scelte che ho preso o riguardo qualcosa di più specifico, sono a disposizione. Ultimo ma assolutamente non per importanza, se pensi di amare il mondo dei viaggi quanto me, mi piacerebbe tantissimo avere uno scambio di idee!"
 }

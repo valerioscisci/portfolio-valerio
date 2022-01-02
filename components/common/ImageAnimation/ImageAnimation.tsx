@@ -3,7 +3,7 @@ import styled, { css } from 'styled-components';
 import VisibilitySensor from 'react-visibility-sensor';
 
 export interface ImageAnimationProps {
-  image: { default: string };
+  image: string;
   imageAlt: string;
   imageStyle?: React.CSSProperties | undefined;
   animationDirection:
@@ -41,7 +41,7 @@ export const ImageAnimation: React.FC<ImageAnimationProps> = ({
       }}
     >
       <Image
-        src={image.default}
+        src={image}
         alt={imageAlt}
         isVisible={isVisible}
         animationDirection={animationDirection}
