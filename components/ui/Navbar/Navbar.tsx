@@ -1,17 +1,18 @@
 import React, { useCallback, useEffect, useState } from 'react';
 import styled, { css } from 'styled-components';
-import { MenuIcon } from '../../../src/components/navigation/MenuIcon';
 import ReactGA from 'react-ga';
 import { url } from '../../../config/config';
-import { useRouter } from 'next/router';
+import { NextRouter } from 'next/router';
+import Link from 'next/link';
+import { MenuIcon } from '../MenuIcon/MenuIcon';
 
 export interface NavbarProps {
   navLinks: any;
   width: number;
+  router: NextRouter;
 }
 
-export const Navbar: React.FC<NavbarProps> = ({ navLinks, width }) => {
-  const router = useRouter();
+export const Navbar: React.FC<NavbarProps> = ({ navLinks, width, router }) => {
   const [menuOpen, setMenuOpen] = useState(false);
   const menuIconRef = React.createRef<HTMLDivElement>();
 
@@ -24,7 +25,7 @@ export const Navbar: React.FC<NavbarProps> = ({ navLinks, width }) => {
   }, [menuOpen]);
 
   const changeLanguage = useCallback((lng) => {
-    router.push(`/${lng}/`);
+    router.push(`/${lng}`);
   }, []);
 
   return (
@@ -43,7 +44,8 @@ export const Navbar: React.FC<NavbarProps> = ({ navLinks, width }) => {
         {navLinks.map((link: any, i: number) => {
           if (
             link.route.trim().toLocaleLowerCase().includes('newsletter') &&
-            true
+            // TODO:  check if the user setted cookie consent
+            false
           ) {
             ReactGA.event({
               category: 'User',
@@ -52,18 +54,20 @@ export const Navbar: React.FC<NavbarProps> = ({ navLinks, width }) => {
           }
           return (
             <NavbarItem key={i} menuOpen={menuOpen} route={link.route}>
-              <a
-                href={link.route}
-                onClick={() => {
-                  if (menuIconRef.current) {
-                    if (width < 768) {
-                      menuIconRef.current?.click();
+              <Link href={link.route}>
+                <a
+                  onClick={() => {
+                    if (menuIconRef.current) {
+                      if (width < 768) {
+                        menuIconRef.current?.click();
+                      }
                     }
-                  }
-                }}
-              >
-                {link.name}
-              </a>
+                  }}
+                  target={''}
+                >
+                  {link.name}
+                </a>
+              </Link>
             </NavbarItem>
           );
         })}

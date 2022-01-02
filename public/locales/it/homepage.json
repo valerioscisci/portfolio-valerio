@@ -14,5 +14,12 @@
     "heading5": "Il fantastico mondo che ci circonda"
   },
   "secondParagraphTitle": "Lavoriamo insieme!",
-  "secondParagraph": "Se hai un progetto in mente che preveda la realizzazione di un sito web o di un'applicazione mobile non esitare a contattarmi! \nAllo stesso modo, se sei un developer e vuoi fare due chiacchiere sul lavoro da remoto, sulle scelte che ho preso o riguardo qualcosa di più specifico, sono a disposizione. Ultimo ma assolutamente non per importanza, se pensi di amare il mondo dei viaggi quanto me, mi piacerebbe tantissimo avere uno scambio di idee!"
+  "secondParagraph": "Se hai un progetto in mente che preveda la realizzazione di un sito web o di un'applicazione mobile non esitare a contattarmi! \nAllo stesso modo, se sei un developer e vuoi fare due chiacchiere sul lavoro da remoto, sulle scelte che ho preso o riguardo qualcosa di più specifico, sono a disposizione. Ultimo ma assolutamente non per importanza, se pensi di amare il mondo dei viaggi quanto me, mi piacerebbe tantissimo avere uno scambio di idee!",
+  "newsletter": {
+    "subscribe": "Iscriviti alla newsletter",
+    "infoText": "Iscrivendoti riceverai delle email contenenti aggiornamenti sui miei viaggi, sul mondo del lavoro da remoto e su argomenti d'interesse per sviluppatori web.",
+    "subscribeButton": "Iscriviti",
+    "success": "Iscritto con successo!",
+    "failure": "Errore durante l'isrcrizione, riprova per favore."
+  }
 }

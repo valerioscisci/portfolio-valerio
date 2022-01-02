@@ -14,5 +14,12 @@
     "heading5": "The fantastic world that we live in"
   },
   "secondParagraphTitle": "Let's work together",
-  "secondParagraph": "If you have a project in mind that involves the creation of a website or a mobile application, do not hesitate to contact me!\nIn the same way, if you are a developer and want to chat about remote work, about the choices I have made or about something more specific, I'm always available. Last but definitely not least, if you think you love the world of travel as much as I do, I'd love to have an exchange of ideas!"
+  "secondParagraph": "If you have a project in mind that involves the creation of a website or a mobile application, do not hesitate to contact me!\nIn the same way, if you are a developer and want to chat about remote work, about the choices I have made or about something more specific, I'm always available. Last but definitely not least, if you think you love the world of travel as much as I do, I'd love to have an exchange of ideas!",
+  "newsletter": {
+    "subscribe": "Subscribe to the newslette",
+    "infoText": "If you subscribe you will receive emails containing updates on my travels, on the world of remote work and oninteresting topics for web developers.",
+    "subscribeButton": "Subscribe",
+    "success": "Successfully subscribed!",
+    "failure": "An error occured while subscribing, please retry."
+  }
 }
