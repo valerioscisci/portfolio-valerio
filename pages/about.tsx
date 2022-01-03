@@ -1,22 +1,19 @@
-import React, { useEffect } from 'react';
-import { observer } from 'mobx-react';
-import { Trans, useTranslation } from 'react-i18next';
+import React from 'react';
 import styled from 'styled-components';
-import { HeadingTitle } from '../components/common/HeadingTitle';
-import { ScreenContainer } from './ScreenContainer';
-import laptopImage from '../assets/images/about/laptop.png';
-import degreeImage from '../assets/images/about/laurea.png';
-import beerImage from '../assets/images/about/beer.png';
-import { Paragraph } from '../components/common/Paragraph';
-import { Tooltip } from '../../components/common/Tooltip/Tooltip';
-import { StyledLink } from '../components/common/StyledLink';
 import { FaNewspaper } from 'react-icons/fa';
-import { valerioTheme } from '../theme';
-import i18next from 'i18next';
-import { Helmet } from 'react-helmet';
-import jsonDB from '../db/data.json';
-
-const metaData: any = jsonDB.metaData;
+import { valerioTheme } from './_app';
+import { Layout } from '../components/ui/Layout/Layout';
+import { useRouter } from 'next/router';
+import { useWindowSize } from '../hooks/useWindowSize';
+import Seo from '../components/common/Seo/Seo';
+import { GetStaticProps } from 'next';
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
+import { Paragraph } from '../components/ui/Paragraph/Paragraph';
+import { StyledLink } from '../components/common/StyledLink/StyledLink';
+import { HeadingTitle } from '../components/ui/HeadingTitle/HeadingTitle';
+import { Tooltip } from '../components/common/Tooltip/Tooltip';
+import { url } from '../config/config';
+import { Trans, useTranslation } from 'next-i18next';
 
 const paragraphStyle = {
   padding: '1em 2em',
@@ -36,75 +33,71 @@ const newsIconStyle: React.CSSProperties = {
   verticalAlign: 'middle',
 };
 
-export const AboutScreen: React.FC = observer(() => {
-  const { t } = useTranslation();
+const AboutScreen: React.FC = () => {
+  const { t } = useTranslation(['about', 'common']);
+  const router = useRouter();
 
-  useEffect(() => {
-    document.title = t('common.websiteName') + ' - ' + t('navbar.about');
-  });
+  const [width] = typeof window !== 'undefined' ? useWindowSize() : [0];
 
   return (
-    <ScreenContainer mainSlider={false}>
+    <Layout mainSlider={false} t={t} width={width} router={router}>
       <Main>
-        <Helmet>
-          <title>{metaData[i18next.language].about.title}</title>
-          <meta
-            name={'description'}
-            content={metaData[i18next.language].about.description}
-            data-react-helmet="true"
-          />
-        </Helmet>
+        <Seo
+          pageTitle={t('about:metadata.title')}
+          description={t('about:metadata.description')}
+        />
         <HeadingContainer>
-          <TopImage src={laptopImage} />
+          <TopImage src={`${url}images/about/laptop.png`} />
           <HeadingText>
             <HeadingTitle style={{ textAlign: 'center' }}>
-              {t(`navbar.about`)}
+              {t(`common:navbar.about`)}
             </HeadingTitle>
             <ParagraphDiv className={'topText'}>
               <Trans
-                i18nKey="about.introText"
+                i18nKey="about:introText"
                 components={{
                   Highlight: (
-                    <Tooltip text={t('about.digitalNomad')} position={'top'} />
+                    <Tooltip text={t('about:digitalNomad')} position={'top'} />
                   ),
                 }}
               />
             </ParagraphDiv>
             <SecondParagraphCotainer>
               <Paragraph>
-                {t('about.secondParagraph')} <RightImage src={degreeImage} />
+                {t('about:secondParagraph')}{' '}
+                <RightImage src={`${url}images/about/laurea.png`} />
               </Paragraph>
             </SecondParagraphCotainer>
           </HeadingText>
         </HeadingContainer>
         <SecondPartContainer>
           <Paragraph style={{ position: 'relative' }}>
-            {t('about.thirdParagraph')}
+            {t('about:thirdParagraph')}
           </Paragraph>
 
           <Paragraph style={{ position: 'relative' }}>
-            {t('about.fourthParagraph')}
+            {t('about:fourthParagraph')}
           </Paragraph>
 
-          <RightImagetwo src={degreeImage} />
+          <RightImagetwo src={`${url}images/about/laurea.png`} />
         </SecondPartContainer>
 
         <Paragraph style={paragraphStyle}>
-          {t('about.fifthParagraph')}
+          {t('about:fifthParagraph')}
         </Paragraph>
 
         <HeadingTitle style={{ padding: '0 2em' }}>
-          {i18next.language === 'it' && t('about.TWDProject')}{' '}
-          {t('common.websiteName')}{' '}
-          {i18next.language === 'en' && t('about.TWDProject')}
+          {router.locale === 'it' && t('about:TWDProject')}{' '}
+          {t('common:websiteName')}{' '}
+          {router.locale === 'en' && t('about:TWDProject')}
         </HeadingTitle>
 
         <Paragraph style={paragraphStyle}>
-          {t('about.TWDdescription')}
+          {t('about:TWDdescription')}
         </Paragraph>
 
         <BottomContainer>
-          <BottomImage src={beerImage} />
+          <BottomImage src={`${url}images/about/beer.png`} />
           <BottomTextContainer>
             <Paragraph
               style={{
@@ -114,7 +107,7 @@ export const AboutScreen: React.FC = observer(() => {
                 padding: '0 2em',
               }}
             >
-              {t('about.sixthParagraph')}
+              {t('about:sixthParagraph')}
             </Paragraph>
             <StyledLink
               color={'secondary'}
@@ -126,20 +119,29 @@ export const AboutScreen: React.FC = observer(() => {
               style={linkStyle}
             >
               <FaNewspaper size={30} style={newsIconStyle} />
-              <span>{' ' + t('about.linkedInArticle')}</span>
+              <span>{' ' + t('about:linkedInArticle')}</span>
             </StyledLink>
             <Paragraph style={paragraphStyle}>
-              {t('about.seventhParagraph')}
+              {t('about:seventhParagraph')}
             </Paragraph>
           </BottomTextContainer>
         </BottomContainer>
 
-        <Paragraph style={paragraphStyle}>{t('about.conclusion')}</Paragraph>
+        <Paragraph style={paragraphStyle}>{t('about:conclusion')}</Paragraph>
       </Main>
-    </ScreenContainer>
+    </Layout>
   );
-});
+};
 
+export default AboutScreen;
+
+export const getStaticProps: GetStaticProps = async (context) => {
+  return {
+    props: {
+      ...(await serverSideTranslations(context.locale, ['about', 'common'])),
+    },
+  };
+};
 const Main = styled.main`
   background-color: ${(props) => props.theme.colors.background};
   display: flex;

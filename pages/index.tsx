@@ -24,9 +24,7 @@ import { NewsletterForm } from '../components/homepage/NewsletterForm/Newsletter
 import { ReviewsSection } from '../components/homepage/ReviewsSection/ReviewsSection';
 import { ContactForm } from '../components/homepage/ContactForm/ContactForm';
 
-interface HomepageProps {}
-
-const Homepage: React.FC<HomepageProps> = () => {
+const Homepage: React.FC = () => {
   const { t } = useTranslation(['homepage', 'common']);
   const router = useRouter();
 
@@ -119,7 +117,6 @@ const Homepage: React.FC<HomepageProps> = () => {
         </SecondSection>
         <KnownTechSection width={width} t={t} router={router} />
         <ParallaxSection t={t} />
-        {/* <BlogSection /> */}
         <ServicesSection t={t} />
         <InstagramFeed account={'the_wanderer_developer'} width={width} t={t} />
         <NewsletterForm t={t} />
