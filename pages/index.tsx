@@ -23,8 +23,11 @@ import { KnownTechSection } from '../components/homepage/KnownTechSection/KnownT
 import { useRouter } from 'next/router';
 import { ParallaxSection } from '../components/homepage/ParallaxSection/ParallaxSection';
 import { ServicesSection } from '../components/homepage/ServicesSection/ServicesSection';
+import { InstagramFeed } from '../components/common/InstagramFeed/InstagramFeed';
 
-export default function HomeScreen() {
+interface HomepageProps {}
+
+const Homepage: React.FC<HomepageProps> = () => {
   const { t } = useTranslation(['homepage', 'common']);
   const router = useRouter();
 
@@ -119,19 +122,16 @@ export default function HomeScreen() {
         <ParallaxSection t={t} />
         {/* <BlogSection /> */}
         <ServicesSection t={t} />
-        {/*<InstagramFeed
-                account={'the_wanderer_developer'}
-                numberOfMediaElements={12}
-                media={stores.home.instagramImages}
-                status={stores.home.instagramFetchingStatus}
-              />
-        <NewsletterForm />
+        <InstagramFeed account={'the_wanderer_developer'} width={width} t={t} />
+        {/* <NewsletterForm />
         <ReviewsSection />
         <ContactForm width={width} /> */}
       </Main>
     </Layout>
   );
-}
+};
+
+export default Homepage;
 
 export const getStaticProps: GetStaticProps = async (context) => {
   return {
