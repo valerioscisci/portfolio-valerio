@@ -1,5 +1,4 @@
 import React, { useRef } from 'react';
-import { useTranslation } from 'react-i18next';
 import {
   FaEnvelope,
   FaFacebook,
@@ -8,10 +7,10 @@ import {
   FaLinkedin,
 } from 'react-icons/fa';
 import styled from 'styled-components';
-import LogoImage from '../../assets/images/common/LogoWhite.png';
-import { Paragraph } from '../common/Paragraph';
-import { StyledLink } from '../common/StyledLink';
-import { useLocation } from 'react-router-dom';
+import { TFunction } from 'next-i18next';
+import { Paragraph } from '../Paragraph/Paragraph';
+import { url } from '../../../config/config';
+import { StyledLink } from '../../common/StyledLink/StyledLink';
 
 const socialData = [
   {
@@ -36,11 +35,12 @@ const socialData = [
   },
 ];
 
-export const Footer: React.FC = () => {
-  const { t } = useTranslation();
-  const contactColumnRef = useRef<HTMLDivElement>(null);
+interface FooterProps {
+  t: TFunction;
+}
 
-  const location = useLocation();
+export const Footer: React.FC<FooterProps> = ({ t }) => {
+  const contactColumnRef = useRef<HTMLDivElement>(null);
 
   let socialDataIcons: Array<{ [key: string]: React.ReactNode }> = [];
 
@@ -73,61 +73,55 @@ export const Footer: React.FC = () => {
     <Container>
       <FooterColumn>
         <LogoContainer>
-          <StyledLink href={'/'} routerLink={true}>
-            <Logo src={LogoImage} />
+          <StyledLink href={'/'}>
+            <Logo src={`${url}images/common/LogoWhite.png`} />
           </StyledLink>
           <Paragraph color={'white'}>
-            © {currentYear} {t('common.websiteName')}
+            © {currentYear} {t('common:websiteName')}
           </Paragraph>
         </LogoContainer>
       </FooterColumn>
       <FooterColumn>
-        <FooterTitle>{t('footer.usefulLinks')}</FooterTitle>
+        <FooterTitle>{t('common:footer.usefulLinks')}</FooterTitle>
         <LinkContainer>
           <StyledLink
             href={'/#BlogSection'}
             color={'white'}
-            routerLink={location.pathname !== '/'}
             scrollTo={'BlogSection'}
           >
-            {t('common.blog')}
+            {t('common:blog')}
           </StyledLink>
         </LinkContainer>
         <LinkContainer>
-          <StyledLink
-            href={'/about'}
-            color={'white'}
-            routerLink={location.pathname !== '/about'}
-          >
-            {t('navbar.about')}
+          <StyledLink href={'/about'} color={'white'}>
+            {t('common:navbar.about')}
           </StyledLink>
         </LinkContainer>
         <LinkContainer>
           <StyledLink
             href={'/#ContactForm'}
             color={'white'}
-            routerLink={location.pathname !== '/'}
             scrollTo={'ContactForm'}
           >
-            {t('common.contactMe')}
+            {t('common:contactMe')}
           </StyledLink>
         </LinkContainer>
       </FooterColumn>
       <FooterColumn>
-        <FooterTitle>{t('footer.policy')}</FooterTitle>
+        <FooterTitle>{t('common:footer.policy')}</FooterTitle>
         <LinkContainer>
           <StyledLink href={'#'} color={'white'}>
-            {t('footer.privacyPolicy')}
+            {t('common:footer.privacyPolicy')}
           </StyledLink>
         </LinkContainer>
         <LinkContainer>
           <StyledLink href={'#'} color={'white'}>
-            {t('footer.cookiePolicy')}
+            {t('common:footer.cookiePolicy')}
           </StyledLink>
         </LinkContainer>
       </FooterColumn>
       <FooterColumn ref={contactColumnRef}>
-        <FooterTitle>{t('footer.contactInformation')}</FooterTitle>
+        <FooterTitle>{t('common:footer.contactInformation')}</FooterTitle>
         <SocialContainer>
           {!!socialDataIcons.length &&
             socialData.map((social: { name: string; url: string }, i) => {

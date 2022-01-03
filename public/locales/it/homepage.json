@@ -18,7 +18,6 @@
   "newsletter": {
     "subscribe": "Iscriviti alla newsletter",
     "infoText": "Iscrivendoti riceverai delle email contenenti aggiornamenti sui miei viaggi, sul mondo del lavoro da remoto e su argomenti d'interesse per sviluppatori web.",
-    "subscribeButton": "Iscriviti",
     "success": "Iscritto con successo!",
     "failure": "Errore durante l'isrcrizione, riprova per favore."
   }

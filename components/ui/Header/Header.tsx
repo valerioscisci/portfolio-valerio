@@ -25,7 +25,7 @@ export const Header: React.FC<Props> = ({ width, mainSlider = true, t }) => {
       route: `/${router.locale}/#ContactForm`,
     },
     {
-      name: t('newsletter.subscribeButton'),
+      name: t('common:subscribe'),
       route: `/${router.locale}/#Newsletter`,
     },
   ];

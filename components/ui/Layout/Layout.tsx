@@ -1,6 +1,5 @@
 import React from 'react';
 import styled from 'styled-components';
-// import { Footer } from '../../../src/components/navigation/Footer';
 // import { GitHubCorner } from '../../../src/components/common/GitHubCorner';
 import { useWindowSize } from '../../../hooks/useWindowSize';
 // import { GoTop } from '../../../src/components/common/GoTop';
@@ -9,6 +8,7 @@ import { useTranslation } from 'react-i18next';
 import { valerioTheme } from '../../../pages/_app';
 import { Header } from '../Header/Header';
 import { TFunction } from 'next-i18next';
+import { Footer } from '../Footer/Footer';
 // import { StyledLink } from '../../../src/components/common/StyledLink';
 
 interface LayoutProps {
@@ -52,8 +52,8 @@ export const Layout: React.FC<LayoutProps> = ({ mainSlider, t, ...props }) => {
     <Container>
       <Header width={width} mainSlider={mainSlider} t={t} />
       {props.children}
-      {/* <Footer />
-      {width > 768 && <GitHubCorner />}
+      <Footer t={t} />
+      {/* {width > 768 && <GitHubCorner />}
       <GoTop />
       <CookieConsent
         enableDeclineButton

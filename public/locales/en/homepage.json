@@ -18,7 +18,6 @@
   "newsletter": {
     "subscribe": "Subscribe to the newslette",
     "infoText": "If you subscribe you will receive emails containing updates on my travels, on the world of remote work and oninteresting topics for web developers.",
-    "subscribeButton": "Subscribe",
     "success": "Successfully subscribed!",
     "failure": "An error occured while subscribing, please retry."
   }

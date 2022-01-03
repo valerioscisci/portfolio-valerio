@@ -5,7 +5,18 @@
     "portfolio": "Portfolio",
     "contact": "Contattami"
   },
+  "footer": {
+    "contactInformation": "Informazioni di contatto",
+    "usefulLinks": "Link utili",
+    "policy": "Policy",
+    "privacyPolicy": "Privacy Policy",
+    "cookiePolicy": "Cookie Policy",
+    "cookieConsent": "Accetto",
+    "cookieConsentText": "Questo sito web utilizza i cookie per migliorare l'esperienza utente.",
+    "cookieConsentDecline": "Rifiuto"
+  },
   "websiteName": "The Wanderer Developer",
   "contactMe": "Contact me",
-  "blog": "Blog"
+  "blog": "Blog",
+  "subscribe": "Subscribe"
 }
