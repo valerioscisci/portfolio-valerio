@@ -9,17 +9,20 @@ import { Footer } from '../Footer/Footer';
 import { GitHubCorner } from '../../common/GitHubCorner/GitHubCorner';
 import { GoTop } from '../../common/GoTop/GoTop';
 import { StyledLink } from '../../common/StyledLink/StyledLink';
+import { NextRouter } from 'next/router';
 
 interface LayoutProps {
   width: number;
   mainSlider?: boolean;
+  router: NextRouter;
   t: TFunction;
 }
 
 export const Layout: React.FC<LayoutProps> = ({
   mainSlider,
-  t,
+  router,
   width,
+  t,
   ...props
 }) => {
   const cookieBarStyle = {
@@ -53,7 +56,7 @@ export const Layout: React.FC<LayoutProps> = ({
 
   return (
     <Container>
-      <Header width={width} mainSlider={mainSlider} t={t} />
+      <Header width={width} mainSlider={mainSlider} t={t} router={router} />
       {props.children}
       <Footer t={t} />
       {width > 768 && <GitHubCorner t={t} />}

@@ -19,5 +19,7 @@
   "contactMe": "Contact me",
   "blog": "Blog",
   "subscribe": "Subscribe",
-  "githubCorner": "Questo sito è open source"
+  "githubCorner": "Questo sito è open source",
+  "reload": "Ricarica",
+  "error": "Errore"
 }

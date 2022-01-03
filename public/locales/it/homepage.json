@@ -20,5 +20,14 @@
     "infoText": "Iscrivendoti riceverai delle email contenenti aggiornamenti sui miei viaggi, sul mondo del lavoro da remoto e su argomenti d'interesse per sviluppatori web.",
     "success": "Iscritto con successo!",
     "failure": "Errore durante l'isrcrizione, riprova per favore."
+  },
+  "knownTechs": {
+    "heading": "Progetti realizzati con ",
+    "noProjectsTitle": "Nessun progetto trovato...",
+    "visitProject": "Visita il sito",
+    "learnMore": "Altre informazioni",
+    "github": "Codice open source",
+    "noProjectsDescription": "Non ho ancora realizzato alcun progetto in autonomia utilizzando questa tecnologia quindi il TUO potrebbe essere il primo!",
+    "projectsFetchingError": "Errore durante il recupero dei progetti, riprova per favore."
   }
 }

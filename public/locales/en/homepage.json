@@ -20,5 +20,14 @@
     "infoText": "If you subscribe you will receive emails containing updates on my travels, on the world of remote work and oninteresting topics for web developers.",
     "success": "Successfully subscribed!",
     "failure": "An error occured while subscribing, please retry."
+  },
+  "knownTechs": {
+    "heading": "Projects created with ",
+    "noProjectsTitle": "No projects found...",
+    "visitProject": "Visit the website",
+    "learnMore": "More info",
+    "github": "Open source code",
+    "noProjectsDescription": "I haven't done any projects myself using this technology yet so YOURS could be the first!",
+    "projectsFetchingError": "An error occured while fetching projects, please retry."
   }
 }

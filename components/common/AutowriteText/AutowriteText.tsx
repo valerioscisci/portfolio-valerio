@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { Paragraph } from './Paragraph';
+import { Paragraph } from '../../ui/Paragraph/Paragraph';
 
 export interface AutowriteTextProps {
   text?: string;

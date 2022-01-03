@@ -25,14 +25,17 @@ import { Paragraph } from '../components/ui/Paragraph/Paragraph';
 import { Button } from '../components/ui/Button/Button';
 import { FaArrowRight } from 'react-icons/fa';
 import { url } from '../config/config';
+import { KnownTechSection } from '../components/homepage/KnownTechSection/KnownTechSection';
+import { useRouter } from 'next/router';
 
-export default function HomeScreen(props) {
+export default function HomeScreen() {
   const { t } = useTranslation(['homepage', 'common']);
+  const router = useRouter();
 
   const [width] = useWindowSize();
 
   return (
-    <Layout t={t} width={width}>
+    <Layout t={t} width={width} router={router}>
       <Seo
         pageTitle={t('homepage:metadata.title')}
         description={t('homepage:metadata.description')}
@@ -78,12 +81,12 @@ export default function HomeScreen(props) {
               arrowAnimation={true}
               style={{ margin: '2em auto' }}
               onClickUrl={'/about'}
-            ></Button>
+            />
           </div>
         </FirstSection>
-        {/* <SecondSection>
+        <SecondSection>
           <HeadingTitle style={{ marginTop: '4em' }} color={'white'}>
-            {t(`welcome.secondParagraphTitle`)}
+            {t(`homepage:secondParagraphTitle`)}
           </HeadingTitle>
           <Paragraph
             color={'white'}
@@ -91,15 +94,15 @@ export default function HomeScreen(props) {
               textAlign: 'justify',
             }}
           >
-            {t(`welcome.secondParagraph`)}
+            {t(`homepage:secondParagraph`)}
           </Paragraph>
           <Button
-            buttonText={t(`common.contactMe`)}
+            buttonText={t(`common:contactMe`)}
             style={{ margin: '2em auto' }}
             onClickUrl={'#ContactForm'}
           ></Button>
           <ImageAnimation
-            image={require('../assets/images/homepage/pc.jpg')}
+            image={`${url}images/homepage/pc.jpg`}
             imageAlt={'Smart'}
             imageStyle={{
               bottom: '-2.5em',
@@ -116,8 +119,8 @@ export default function HomeScreen(props) {
             boxShadow={true}
           />
         </SecondSection>
-        <KnownTechSection width={width} />
-        <ParallaxSection />
+        <KnownTechSection width={width} t={t} router={router} />
+        {/*<ParallaxSection />
         <BlogSection />
         <ServicesSection />
         {props.children}

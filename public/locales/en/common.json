@@ -16,8 +16,10 @@
     "cookieConsentDecline": "I decline"
   },
   "websiteName": "The Wanderer Developer",
-  "contactMe": "Contattami",
+  "contactMe": "Contact me",
   "blog": "Blog",
-  "subscribe": "Iscriviti",
-  "githubCorner": "Check this website on GitHub"
+  "subscribe": "Subscribe",
+  "githubCorner": "Check this website on GitHub",
+  "reload": "Reload",
+  "error": "Error"
 }

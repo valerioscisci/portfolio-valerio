@@ -1,18 +1,22 @@
 import { TFunction } from 'next-i18next';
+import { NextRouter } from 'next/router';
 import React from 'react';
 import { MainSlider } from '../../homepage/Slider/Slider';
 import { Navbar } from '../Navbar/Navbar';
-import { useRouter } from 'next/router';
 
 interface Props {
   width: number;
   mainSlider?: boolean;
+  router: NextRouter;
   t: TFunction;
 }
 
-export const Header: React.FC<Props> = ({ width, mainSlider = true, t }) => {
-  const router = useRouter();
-
+export const Header: React.FC<Props> = ({
+  width,
+  mainSlider = true,
+  router,
+  t,
+}) => {
   const navLinks = [
     { name: t('common:navbar.home'), route: `/${router.locale}` },
     { name: t('common:navbar.about'), route: `/${router.locale}/about` },

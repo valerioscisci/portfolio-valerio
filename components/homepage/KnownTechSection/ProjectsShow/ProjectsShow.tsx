@@ -1,19 +1,27 @@
+import { TFunction } from 'next-i18next';
+import { NextRouter } from 'next/router';
 import React, { useState } from 'react';
 import styled from 'styled-components';
-import { PortfolioProject } from '../../types';
-import { DotGroup } from '../common/DotGroup';
-import { ProjectSlide } from './ProjectSlide';
+import { PortfolioProject, ProjectData } from '../../../../types';
+import { DotGroup } from '../../../common/DotGroup/DotGroup';
+import { ProjectSlide } from './ProjetSlide/ProjectSlide';
 
 export interface ProjectsShowProps {
   width: number;
   projects: Array<PortfolioProject>;
   noProjects?: boolean;
+  router: NextRouter;
+  portfolioData: Array<ProjectData>;
+  t: TFunction;
 }
 
 export const ProjectsShow: React.FC<ProjectsShowProps> = ({
   width,
   projects,
   noProjects = false,
+  router,
+  portfolioData,
+  t,
 }) => {
   const [currentShownProject, setCurrentShownProject] = useState<number>(0);
 
@@ -27,6 +35,9 @@ export const ProjectsShow: React.FC<ProjectsShowProps> = ({
             project={projectDoneWithTechX}
             noProjects={noProjects}
             activeProject={currentShownProject === i}
+            router={router}
+            portfolioData={portfolioData}
+            t={t}
           />
         );
       })}
@@ -43,14 +54,10 @@ export const ProjectsShow: React.FC<ProjectsShowProps> = ({
 
 const Container = styled.div`
   display: flex;
-  flex-direction: column-reverse;
+  flex-direction: column;
   justify-content: flex-end;
   flex: 1;
   position: relative;
-
-  @media (min-width: 768px) {
-    flex-direction: column;
-  }
 `;
 
 const DotGroupContainer = styled.div`

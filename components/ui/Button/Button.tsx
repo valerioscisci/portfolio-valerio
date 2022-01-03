@@ -1,3 +1,4 @@
+import { TFunction } from 'next-i18next';
 import React from 'react';
 import styled, { css } from 'styled-components';
 
@@ -192,4 +193,60 @@ const IconSpan = styled.span<{ margin: 'right' | 'left' }>`
   }}
   transition: all 0.3s ease-out;
   height: 1em;
+`;
+
+export interface SubmitButtonProps {
+  disabled?: boolean;
+  type?: 'submit' | 'button';
+  onClick: () => void;
+}
+
+export const SubmitButton: React.FC<SubmitButtonProps> = ({
+  disabled = false,
+  type = 'button',
+  children,
+  onClick,
+}) => {
+  return (
+    <SubmitButtonContainer disabled={disabled} type={type} onClick={onClick}>
+      {children}
+    </SubmitButtonContainer>
+  );
+};
+
+const SubmitButtonContainer = styled.button<{ disabled?: boolean }>`
+  display: inline-flex;
+  flex-direction: row;
+  align-items: center;
+  cursor: ${(props) => (props.disabled ? 'initial' : 'pointer')};
+  padding: 0.4em 1.4em;
+  margin: auto;
+  border-radius: 0.3em;
+  font-family: Manrope;
+  font-size: 1em;
+  text-decoration: none;
+  text-transform: uppercase;
+  color: ${(props) =>
+    props.disabled
+      ? props.theme.colors.textColorGrey
+      : props.theme.colors.backgroundDark};
+  background: ${(props) => props.theme.colors.background};
+  position: relative;
+  border: 1px solid ${(props) => props.theme.colors.backgroundDark};
+  font-weight: bold;
+  transition: all 0.3s ease;
+
+  &:focus {
+    outline: none;
+  }
+
+  &:hover,
+  &:focus,
+  &:active {
+    ${(props) =>
+      !props.disabled &&
+      css`
+        background: ${(props) => props.theme.colors.backgroundDark};
+        color: ${(props) => props.theme.colors.primary};
+      `}
 `;
