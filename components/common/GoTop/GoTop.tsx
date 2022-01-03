@@ -1,6 +1,6 @@
 import React, { useCallback } from 'react';
 import styled from 'styled-components';
-import logoPlane from '../../assets/images/common/logoPlane.svg';
+import { url } from '../../../config/config';
 
 export const GoTop: React.FC = () => {
   const onClick = useCallback(() => {
@@ -15,7 +15,7 @@ const Container = styled.a`
   cursor: pointer;
   width: 2em;
   height: 2em;
-  background-image: url(${logoPlane});
+  background-image: url(${url}images/common/logoPlane.svg);
   background-size: 70% 70%;
   background-repeat: no-repeat;
   background-position: 50% 50%;

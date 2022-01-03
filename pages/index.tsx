@@ -32,7 +32,7 @@ export default function HomeScreen(props) {
   const [width] = useWindowSize();
 
   return (
-    <Layout t={t}>
+    <Layout t={t} width={width}>
       <Seo
         pageTitle={t('homepage:metadata.title')}
         description={t('homepage:metadata.description')}

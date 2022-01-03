@@ -1,18 +1,20 @@
+import { TFunction } from 'next-i18next';
 import React from 'react';
 import { FaGithub } from 'react-icons/fa';
-import { useTranslation } from 'react-i18next';
 import styled from 'styled-components';
 
-export const GitHubCorner: React.FC = () => {
-  const { t } = useTranslation();
+interface GitHubCornerProps {
+  t: TFunction;
+}
 
+export const GitHubCorner: React.FC<GitHubCornerProps> = ({ t }) => {
   return (
     <Corner
       href={'https://github.com/valerioscisci/portfolio-valerio'}
       rel={'noreferrer'}
       target={'_blank'}
     >
-      {t('githubCorner')}
+      {t('common:githubCorner')}
       <FaGithub size={'1.1em'} style={{ marginLeft: '0.3em' }} />
     </Corner>
   );

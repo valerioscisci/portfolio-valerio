@@ -1,24 +1,27 @@
 import React from 'react';
 import styled from 'styled-components';
-// import { GitHubCorner } from '../../../src/components/common/GitHubCorner';
 import { useWindowSize } from '../../../hooks/useWindowSize';
-// import { GoTop } from '../../../src/components/common/GoTop';
-// import CookieConsent from 'react-cookie-consent';
-import { useTranslation } from 'react-i18next';
+import CookieConsent from 'react-cookie-consent';
 import { valerioTheme } from '../../../pages/_app';
 import { Header } from '../Header/Header';
 import { TFunction } from 'next-i18next';
 import { Footer } from '../Footer/Footer';
-// import { StyledLink } from '../../../src/components/common/StyledLink';
+import { GitHubCorner } from '../../common/GitHubCorner/GitHubCorner';
+import { GoTop } from '../../common/GoTop/GoTop';
+import { StyledLink } from '../../common/StyledLink/StyledLink';
 
 interface LayoutProps {
+  width: number;
   mainSlider?: boolean;
   t: TFunction;
 }
 
-export const Layout: React.FC<LayoutProps> = ({ mainSlider, t, ...props }) => {
-  const [width] = useWindowSize();
-
+export const Layout: React.FC<LayoutProps> = ({
+  mainSlider,
+  t,
+  width,
+  ...props
+}) => {
   const cookieBarStyle = {
     background: valerioTheme.colors.backgroundDark,
     width: '80%',
@@ -53,34 +56,34 @@ export const Layout: React.FC<LayoutProps> = ({ mainSlider, t, ...props }) => {
       <Header width={width} mainSlider={mainSlider} t={t} />
       {props.children}
       <Footer t={t} />
-      {/* {width > 768 && <GitHubCorner />}
+      {width > 768 && <GitHubCorner t={t} />}
       <GoTop />
       <CookieConsent
         enableDeclineButton
         location={'bottom'}
-        buttonText={t('footer.cookieConsent')}
-        declineButtonText={t('footer.cookieConsentDecline')}
+        buttonText={t('common:footer.cookieConsent')}
+        declineButtonText={t('common:footer.cookieConsentDecline')}
         cookieName={'googleAnalytics'}
         style={cookieBarStyle}
         buttonStyle={buttonAcceptStyle}
         declineButtonStyle={declineButtonStyle}
         expires={150}
         onAccept={() => {
-          // set cookie
+          // TODO: set cookie
           // home.cookieConsent = true;
         }}
         onDecline={() => {
-          // set cookie
+          // TODO: set cookie
           // home.cookieConsent = false;
         }}
       >
-        {t('footer.cookieConsentText')}
+        {t('common:footer.cookieConsentText')}
         <span style={{ fontSize: '10px' }}>
           <StyledLink href={'#'} color={'white'} hoverSpacing={false}>
-            {' ' + t('footer.cookiePolicy')}
+            {' ' + t('common:footer.cookiePolicy')}
           </StyledLink>
         </span>
-      </CookieConsent> */}
+      </CookieConsent>
     </Container>
   );
 };
