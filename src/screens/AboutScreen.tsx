@@ -8,7 +8,7 @@ import laptopImage from '../assets/images/about/laptop.png';
 import degreeImage from '../assets/images/about/laurea.png';
 import beerImage from '../assets/images/about/beer.png';
 import { Paragraph } from '../components/common/Paragraph';
-import { Tooltip } from '../components/common/Tooltip';
+import { Tooltip } from '../../components/common/Tooltip/Tooltip';
 import { StyledLink } from '../components/common/StyledLink';
 import { FaNewspaper } from 'react-icons/fa';
 import { valerioTheme } from '../theme';

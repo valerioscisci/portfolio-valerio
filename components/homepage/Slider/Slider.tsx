@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { CarouselProvider, Slide, Slider, Image } from 'pure-react-carousel';
 
 import 'pure-react-carousel/dist/react-carousel.es.css';
-import { Spinner } from '../../../src/components/common/Spinner';
+import { Spinner } from '../../common/Spinner/Spinner';
 import { TFunction } from 'next-i18next';
 import { url } from '../../../config/config';
 

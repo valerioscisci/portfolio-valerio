@@ -22,6 +22,7 @@ import { ServicesSection } from '../components/homepage/ServicesSection/Services
 import { InstagramFeed } from '../components/common/InstagramFeed/InstagramFeed';
 import { NewsletterForm } from '../components/homepage/NewsletterForm/NewsletterForm';
 import { ReviewsSection } from '../components/homepage/ReviewsSection/ReviewsSection';
+import { ContactForm } from '../components/homepage/ContactForm/ContactForm';
 
 interface HomepageProps {}
 
@@ -123,7 +124,7 @@ const Homepage: React.FC<HomepageProps> = () => {
         <InstagramFeed account={'the_wanderer_developer'} width={width} t={t} />
         <NewsletterForm t={t} />
         <ReviewsSection router={router} t={t} />
-        {/* <ContactForm width={width} /> */}
+        <ContactForm width={width} t={t} router={router} />
       </Main>
     </Layout>
   );

@@ -10,7 +10,7 @@ import { ImageAnimation } from '../../common/ImageAnimation/ImageAnimation';
 import { url } from '../../../config/config';
 import getReviewsHelper from '../../../helpers/homepage/getReviewsHelper';
 import { ErrorHandler } from '../../common/ErrorHandler/ErrorHandler';
-import { Spinner } from '../../../src/components/common/Spinner';
+import { Spinner } from '../../common/Spinner/Spinner';
 
 const companiesLogos = [
   {

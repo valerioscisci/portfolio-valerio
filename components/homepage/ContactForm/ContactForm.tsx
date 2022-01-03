@@ -1,24 +1,27 @@
 import React, { useCallback, useState } from 'react';
 import styled, { css } from 'styled-components';
-import { observer } from 'mobx-react';
-import contactFormBackground from '../../assets/images/homepage/contact_form.jpg';
-import { HeadingTitle } from '../common/HeadingTitle';
-import { ConditionalWrapper } from '../common/ConditionalWrapper';
-import { useTranslation } from 'react-i18next';
-import { TextInput } from '../common/TextInput';
+import { TextInput } from '../../common/TextInput/TextInput';
 import ReCAPTCHA from 'react-google-recaptcha';
-import { validateEmail } from '../../utils/validation';
-import { useStores } from '../../hooks/useStores';
 import { FaEnvelope } from 'react-icons/fa';
-import { Paragraph } from '../common/Paragraph';
+import { TFunction } from 'next-i18next';
+import { HeadingTitle } from '../../ui/HeadingTitle/HeadingTitle';
+import { ConditionalWrapper } from '../../common/ConditionalWrapper/ConditionalWrapper';
+import { validateEmail } from '../../../utils/validation';
+import { NextRouter } from 'next/router';
+import { Paragraph } from '../../ui/Paragraph/Paragraph';
+import { url } from '../../../config/config';
 
 export interface ContactFormProps {
   width: number;
+  router: NextRouter;
+  t: TFunction;
 }
 
-export const ContactForm: React.FC<ContactFormProps> = observer(({ width }) => {
-  const { home } = useStores();
-  const { t } = useTranslation();
+export const ContactForm: React.FC<ContactFormProps> = ({
+  width,
+  router,
+  t,
+}) => {
   const [success, setSuccess] = useState<boolean | undefined>(undefined);
   const [notRobot, setNotRobot] = useState<boolean>(false);
   const [name, setName] = useState<string>('');
@@ -67,7 +70,7 @@ export const ContactForm: React.FC<ContactFormProps> = observer(({ width }) => {
     <Section id={'ContactForm'}>
       <HeadingTitle
         color={width < 992 ? 'black' : 'white'}
-        style={width > 992 ? { marginBottom: '5em' } : {}}
+        style={width > 992 ? { marginBottom: '3em' } : {}}
       >
         {t('contactForm.title')}
       </HeadingTitle>
@@ -128,7 +131,7 @@ export const ContactForm: React.FC<ContactFormProps> = observer(({ width }) => {
             onExpired={() => {
               setNotRobot(false);
             }}
-            hl={home.language}
+            hl={router.locale}
           />
           <ButtonContainer>
             <Paragraph
@@ -167,7 +170,7 @@ export const ContactForm: React.FC<ContactFormProps> = observer(({ width }) => {
       </ConditionalWrapper>
     </Section>
   );
-});
+};
 
 const Section = styled.section`
   width: 100%;
@@ -189,7 +192,7 @@ const Section = styled.section`
       rgba(255, 255, 255, 0.1) 52%,
       rgba(255, 255, 255, 0) 75%
     ),
-    url(${contactFormBackground});
+    url(${url}images/homepage/contact_form.jpg);
   background-size: cover;
   background-position: 35% 0%;
 

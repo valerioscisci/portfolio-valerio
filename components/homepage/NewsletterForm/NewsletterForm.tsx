@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
 import styled, { css } from 'styled-components';
-import { TextInput } from '../../../src/components/common/TextInput';
+import { TextInput } from '../../common/TextInput/TextInput';
 import jsonp from 'jsonp';
 import toQueryString from 'to-querystring';
 import { TFunction } from 'next-i18next';
 import { Paragraph } from '../../ui/Paragraph/Paragraph';
 import { HeadingTitle } from '../../ui/HeadingTitle/HeadingTitle';
-import { Spinner } from '../../../src/components/common/Spinner';
+import { Spinner } from '../../common/Spinner/Spinner';
 import { StyledLink } from '../../common/StyledLink/StyledLink';
 import { url } from '../../../config/config';
 import { validateEmail } from '../../../utils/validation';

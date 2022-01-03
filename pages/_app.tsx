@@ -1,8 +1,9 @@
 import '../styles/global.css';
 import { AppProps } from 'next/app';
-import React from 'react';
+import React, { useEffect } from 'react';
 import { appWithTranslation } from 'next-i18next';
 import { ThemeProvider } from 'styled-components';
+import ReactGA from 'react-ga';
 
 export const valerioTheme = {
   name: 'default',
@@ -21,6 +22,14 @@ export const valerioTheme = {
 };
 
 function App({ Component, pageProps }: AppProps) {
+  useEffect(() => {
+    if (process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS) {
+      ReactGA.initialize(process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS, {
+        debug: true,
+      });
+    }
+  }, []);
+
   return (
     <ThemeProvider theme={valerioTheme}>
       <Component {...pageProps} />

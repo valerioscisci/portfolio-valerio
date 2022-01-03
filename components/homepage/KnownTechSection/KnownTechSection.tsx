@@ -9,7 +9,7 @@ import { TechList } from './TechList/TechList';
 import { ProjectsShow } from './ProjectsShow/ProjectsShow';
 import { NextRouter } from 'next/router';
 import getPortfolioDataHelper from '../../../helpers/homepage/getPortfolioDataHelper';
-import { Spinner } from '../../../src/components/common/Spinner';
+import { Spinner } from '../../common/Spinner/Spinner';
 import { ErrorHandler } from '../../common/ErrorHandler/ErrorHandler';
 
 const portfolioImages = [
