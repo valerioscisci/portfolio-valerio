@@ -1,0 +1,83 @@
+{
+  "metadata": {
+    "title": " Home",
+    "description": "This is The Wanderer Developer homepage! My name is Valerio Scisci and I am a web developer who writes code while traveling. In this blog you can follow my travels and learn something about programming."
+  },
+  "subHeading": "I create websites and mobile applications while traveling around the world",
+  "introParagraph": "My name is Valerio and I am an IT engineer specialized in web and mobile application development. The thing I'm passionate about the most is traveling. \n A few years ago I decided that working most of my life locked in the four walls of an office was not going to work for me. \n I therefore wanted to take advantage of technology and my own knowledge to organize my working life, freeing myself from having to live in one place: I became a digital nomad.",
+  "introButton": "find out more about me",
+  "slider": {
+    "heading1": "Get in control of your time",
+    "heading2": "So that you can finally dedicate yourself",
+    "heading3": "To do what you really love",
+    "heading4": "And have the opportunity to explore",
+    "heading5": "The fantastic world that we live in"
+  },
+  "secondParagraphTitle": "Let's work together",
+  "secondParagraph": "If you have a project in mind that involves the creation of a website or a mobile application, do not hesitate to contact me!\nIn the same way, if you are a developer and want to chat about remote work, about the choices I have made or about something more specific, I'm always available. Last but definitely not least, if you think you love the world of travel as much as I do, I'd love to have an exchange of ideas!",
+  "newsletter": {
+    "subscribe": "Subscribe to the newslette",
+    "infoText": "If you subscribe you will receive emails containing updates on my travels, on the world of remote work and oninteresting topics for web developers.",
+    "success": "Successfully subscribed!",
+    "failure": "An error occured while subscribing, please retry."
+  },
+  "knownTechs": {
+    "heading": "Projects created with ",
+    "noProjectsTitle": "No projects found...",
+    "visitProject": "Visit the website",
+    "learnMore": "More info",
+    "github": "Open source code",
+    "noProjectsDescription": "I haven't done any projects myself using this technology yet so YOURS could be the first!",
+    "projectsFetchingError": "An error occured while fetching projects, please retry."
+  },
+  "parallax": {
+    "heading": "Breaking out of monotony is the best habit YOU can have"
+  },
+  "servicesSection": {
+    "title": "Services I offer",
+    "services": {
+      "newWebsite": {
+        "name": "Website creation",
+        "description": "I can help you in the process of designing, creating and hosting your website."
+      },
+      "newMobileApp": {
+        "name": "I create mobile applications",
+        "description": "I can develop your mobile app compatible with Android and Apple devices."
+      },
+      "helpYourTeam": {
+        "name": "Development team support",
+        "description": "If your team is in trouble due to high workload, I am available to carry out some tasks to help you complete on time the development of your project."
+      },
+      "one2one": {
+        "name": "1-to-1 talks",
+        "description": "If you are a developer who is perhaps just starting out and you want to have a chat, I am always available :)"
+      },
+      "codeReview": {
+        "name": "Code review",
+        "description": "If you have some code you want to improve and review, we can do it together."
+      }
+    }
+  },
+  "contactForm": {
+    "title": "Let's build your project together!",
+    "formLabels": {
+      "name": "Name",
+      "email": "Email",
+      "message": "Message",
+      "send": "Submit"
+    },
+    "warning": "Please read this before submitting your message:",
+    "warnings": {
+      "one": "I am not interested in a 9-5 job",
+      "two": "Do not contact me with the intention of spamming",
+      "three": "I am not the person for you if you are not willing to collaborate 100% remotely"
+    },
+    "thanks": "Thanks for your message!",
+    "error": "Error while sending the message, please try again."
+  },
+  "reviewsSection": {
+    "title": "Companies and clients I have worked with",
+    "talkAboutMe": "Testimonials",
+    "reviewsFetchingError": "An error occured while fetching reviews, please retry."
+  }
+}
