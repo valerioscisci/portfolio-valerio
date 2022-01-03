@@ -1,16 +1,15 @@
 import React, { useState } from 'react';
 import styled, { css } from 'styled-components';
-import { observer } from 'mobx-react';
-import { useTranslation } from 'react-i18next';
-import { TextInput } from '../common/TextInput';
-import { validateEmail } from '../../utils/validation';
-import { HeadingTitle } from './HeadingTitle';
-import subscbribeButton from '../../assets/images/homepage/subscribeButton.svg';
-import { Paragraph } from './Paragraph';
-import { StyledLink } from './StyledLink';
-import { Spinner } from './Spinner';
+import { TextInput } from '../../../src/components/common/TextInput';
 import jsonp from 'jsonp';
 import toQueryString from 'to-querystring';
+import { TFunction } from 'next-i18next';
+import { Paragraph } from '../../ui/Paragraph/Paragraph';
+import { HeadingTitle } from '../../ui/HeadingTitle/HeadingTitle';
+import { Spinner } from '../../../src/components/common/Spinner';
+import { StyledLink } from '../../common/StyledLink/StyledLink';
+import { url } from '../../../config/config';
+import { validateEmail } from '../../../utils/validation';
 
 const textBoxStyle = {
   width: '100%',
@@ -22,8 +21,11 @@ const textInputStyle = {
   width: '100%',
 };
 
-export const NewsletterForm: React.FC = observer(() => {
-  const { t } = useTranslation();
+interface NewsletterFormProps {
+  t: TFunction;
+}
+
+export const NewsletterForm: React.FC<NewsletterFormProps> = ({ t }) => {
   const [status, setStatus] = useState<
     'onHold' | 'loading' | 'success' | 'failed'
   >('onHold');
@@ -70,7 +72,7 @@ export const NewsletterForm: React.FC = observer(() => {
       NAME: name,
     });
     const urlRequest =
-      (await getAjaxUrl(process.env.REACT_APP_MAILCHIMP_URL)) + '&' + params;
+      (await getAjaxUrl(process.env.NEXT_PUBLIC_MAILCHIMP_URL)) + '&' + params;
 
     await subscribe(urlRequest);
   };
@@ -80,7 +82,7 @@ export const NewsletterForm: React.FC = observer(() => {
       <Container>
         <div>
           <HeadingTitle color={'white'}>
-            {t('newsletter.subscribe')}
+            {t('homepage:newsletter.subscribe')}
           </HeadingTitle>
           <InfoText>
             <Paragraph
@@ -91,7 +93,7 @@ export const NewsletterForm: React.FC = observer(() => {
                 letterSpacing: '0.06em',
               }}
             >
-              {t('newsletter.infoText')}
+              {t('homepage:newsletter.infoText')}
             </Paragraph>
           </InfoText>
         </div>
@@ -99,7 +101,7 @@ export const NewsletterForm: React.FC = observer(() => {
           <FieldsContainer>
             <TextInput
               name={'newsletter_name'}
-              label={t('contactForm.formLabels.name')}
+              label={t('homepage:contactForm.formLabels.name')}
               type={'text'}
               onChange={(newName: string) => {
                 setName(newName);
@@ -111,7 +113,7 @@ export const NewsletterForm: React.FC = observer(() => {
             />
             <TextInput
               name={'newsletter_name_email'}
-              label={t('contactForm.formLabels.email')}
+              label={t('homepage:contactForm.formLabels.email')}
               type={'email'}
               onChange={(newEmail: string) => {
                 setEmail(newEmail);
@@ -135,13 +137,16 @@ export const NewsletterForm: React.FC = observer(() => {
             <span></span>
           </CheckboxContainer>
           {status === 'loading' ? (
-            // eslint-disable-next-line react/style-prop-object
             <Spinner size={10} style={'margin: 0 0 1em 0;'} />
           ) : status === 'failed' ? (
-            <Paragraph color={'red'}>{t('newsletter.failure')}</Paragraph>
+            <Paragraph color={'red'}>
+              {t('homepage:newsletter.failure')}
+            </Paragraph>
           ) : (
             status === 'success' && (
-              <Paragraph color={'white'}>{t('newsletter.success')}</Paragraph>
+              <Paragraph color={'white'}>
+                {t('homepage:newsletter.success')}
+              </Paragraph>
             )
           )}
           <ButtonSubscribe
@@ -150,21 +155,17 @@ export const NewsletterForm: React.FC = observer(() => {
             }}
             disabled={!validateEmail(email) || !checkboxChoice}
           >
-            {t('newsletter.subscribeButton')}
+            {t('common:subscribe')}
           </ButtonSubscribe>
-          <StyledLink
-            href={'#'}
-            color={'white'}
-            hoverSpacing={false}
-            routerLink={false}
-          >
-            {t('footer.privacyPolicy')}
+          {/* TODO: add privacy policy */}
+          <StyledLink href={'/'} color={'white'} hoverSpacing={false}>
+            {t('common:footer.privacyPolicy')}
           </StyledLink>
         </FormContainer>
       </Container>
     </Section>
   );
-});
+};
 
 const Section = styled.section`
   width: 100%;
@@ -348,7 +349,7 @@ const ButtonSubscribe = styled.button<{ disabled?: boolean }>`
             &:before {
               filter: blur(2px);
               animation-play-state: running;
-              background-image: url('${subscbribeButton}');
+              background-image: url('${url}images/homepage/subscribeButton.svg');
               background-size: cover;
               position: absolute;
               display: inline-block;
@@ -362,7 +363,7 @@ const ButtonSubscribe = styled.button<{ disabled?: boolean }>`
             &:after {
               filter: blur(2px);
               animation-play-state: running;
-              background-image: url('${subscbribeButton}');
+              background-image: url('${url}images/homepage/subscribeButton.svg');
               background-size: cover;
               transform: scaleX(-1);
               position: absolute;

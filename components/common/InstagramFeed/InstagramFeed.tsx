@@ -310,7 +310,7 @@ const Container = styled.div`
       transparent 85%,
       ${(props) => props.theme.colors.background} 100%
     ),
-    url(${url}images/homepage/ig_section_background.svg);
+    url(${url}images/homepage/ig_section_background.jpg);
   background-size: contain;
   width: 100%;
   min-height: 55em;
@@ -393,7 +393,7 @@ const ImageContainer = styled.div`
     margin: 0.5em;
 
     transform-style: preserve-3d;
-    perspective: 40em;
+    perspective: 100em;
     transition: 0.5s;
 
     &:hover .image-front {

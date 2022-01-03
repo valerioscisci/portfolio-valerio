@@ -32,8 +32,8 @@ export const App: React.FC = observer(() => {
     stores.home.setLanguage(i18n.language as I18NLang);
     stores.home.fetchImages();
     stores.home.fetchInstagramPics();
-    if (process.env.REACT_APP_GOOGLE_ANALYTICS) {
-      ReactGA.initialize(process.env.REACT_APP_GOOGLE_ANALYTICS, {
+    if (process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS) {
+      ReactGA.initialize(process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS, {
         debug: true,
       });
     }

@@ -1,27 +1,62 @@
-import React, { useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import styled, { css } from 'styled-components';
-import { useTranslation } from 'react-i18next';
-import { HeadingTitle } from '../common/HeadingTitle';
-import i18next from 'i18next';
 import ScrollContainer from 'react-indiana-drag-scroll';
+import { Review } from '../../../types';
+import { NextRouter } from 'next/router';
+import { TFunction } from 'next-i18next';
+import { HeadingTitle } from '../../ui/HeadingTitle/HeadingTitle';
+import { DotGroup } from '../../common/DotGroup/DotGroup';
+import { ImageAnimation } from '../../common/ImageAnimation/ImageAnimation';
+import { url } from '../../../config/config';
+import getReviewsHelper from '../../../helpers/homepage/getReviewsHelper';
+import { ErrorHandler } from '../../common/ErrorHandler/ErrorHandler';
+import { Spinner } from '../../../src/components/common/Spinner';
 
-import jsonDB from '../../db/data.json';
-import { observer } from 'mobx-react';
-import { useStores } from '../../hooks/useStores';
-import { ImageAnimation } from '../common/ImageAnimation';
-import { DotGroup } from '../common/DotGroup';
-import { Review } from '../../types';
-
+const companiesLogos = [
+  {
+    alt: 'Regione Marche',
+    img: `${url}images/companies/logo_regione_marche.png`,
+  },
+  {
+    alt: 'aenl',
+    img: `${url}images/companies/logo_aenl.png`,
+  },
+  {
+    alt: 'La Casa di Nicole',
+    img: `${url}images/companies/logo_casa_nicole.png`,
+  },
+  {
+    alt: 'Randy.gg',
+    img: `${url}images/companies/logo_randy.png`,
+  },
+  {
+    alt: 'ETT',
+    img: `${url}images/companies/logo_ett.png`,
+  },
+  {
+    alt: 'T33',
+    img: `${url}images/companies/logo_t33.png`,
+  },
+  {
+    alt: 'Mostaza',
+    img: `${url}images/companies/logo_mostaza.png`,
+  },
+];
 export interface ReviewProps {
   review: Review;
   activeReview: boolean;
+  router: NextRouter;
 }
 
-const ReviewSlide: React.FC<ReviewProps> = ({ review, activeReview }) => {
+const ReviewSlide: React.FC<ReviewProps> = ({
+  review,
+  activeReview,
+  router,
+}) => {
   return (
     <ReviewContainer activeReview={activeReview}>
       <ReviewText>
-        {i18next.language === 'it' ? review.reviewIT : review.reviewEN}
+        {router.locale === 'it' ? review.reviewIT : review.reviewEN}
       </ReviewText>
       <ReviewAuthor>
         {review.writerName}
@@ -31,38 +66,75 @@ const ReviewSlide: React.FC<ReviewProps> = ({ review, activeReview }) => {
   );
 };
 
-export const ReviewsSection: React.FC = observer(() => {
-  const { home } = useStores();
-  const { t } = useTranslation();
+interface ReviewsSectionProps {
+  t: TFunction;
+  router: NextRouter;
+}
+
+export const ReviewsSection: React.FC<ReviewsSectionProps> = ({
+  t,
+  router,
+}) => {
+  const [loading, setLoading] = useState(false);
+  const [reviews, setReviews] = useState<Array<Review>>([]);
+  const [reviewsError, setReviewsError] = useState(false);
   const [currentShownReview, setCurrentShownReview] = useState(0);
 
-  const reviews = jsonDB.reviews;
+  const getReviews = useCallback(async () => {
+    setReviewsError(false);
+    setLoading(true);
+    const reviews = await getReviewsHelper();
+    if (reviews.message === 'success') {
+      setReviews(reviews.reviews);
+    } else {
+      setReviewsError(true);
+    }
+    setLoading(false);
+  }, []);
+
+  useEffect(() => {
+    getReviews();
+  }, []);
 
   return (
     <Section>
-      <HeadingTitle>{t('reviewsSection.talkAboutMe')}</HeadingTitle>
-      <ReviewsContainer>
-        {reviews.map((review, i) => {
-          return (
-            <ReviewSlide
-              key={i}
-              review={review}
-              activeReview={i === currentShownReview}
+      <HeadingTitle>{t('homepage:reviewsSection.talkAboutMe')}</HeadingTitle>
+      {loading ? (
+        <Spinner />
+      ) : reviewsError ? (
+        <ErrorHandler
+          heading={'Error'}
+          t={t}
+          reloadButton={true}
+          reloadFunction={getReviews}
+        >
+          {t('homepage:reviewsSection.reviewsFetchingError')}
+        </ErrorHandler>
+      ) : (
+        <ReviewsContainer>
+          {reviews.map((review, i) => {
+            return (
+              <ReviewSlide
+                key={i}
+                review={review}
+                activeReview={i === currentShownReview}
+                router={router}
+              />
+            );
+          })}
+          {reviews.length && (
+            <DotGroup
+              slidesNumber={reviews.length}
+              activeIndex={currentShownReview}
+              onDotClick={setCurrentShownReview}
             />
-          );
-        })}
-        {reviews.length && (
-          <DotGroup
-            slidesNumber={reviews.length}
-            activeIndex={currentShownReview}
-            onDotClick={setCurrentShownReview}
-          />
-        )}
-      </ReviewsContainer>
-      <HeadingTitle>{t('reviewsSection.title')}</HeadingTitle>
+          )}
+        </ReviewsContainer>
+      )}
+      <HeadingTitle>{t('homepage:reviewsSection.title')}</HeadingTitle>
       <ScrollContainer vertical={false} className={'companies-scroll'}>
         <CompaniesContainer>
-          {home.companiesLogos.map((company, i) => {
+          {companiesLogos.map((company, i) => {
             return (
               <ImageAnimation
                 key={i}
@@ -83,7 +155,7 @@ export const ReviewsSection: React.FC = observer(() => {
       </ScrollContainer>
     </Section>
   );
-});
+};
 
 const Section = styled.section`
   width: 100%;

@@ -57,5 +57,27 @@
         "description": "If you have some code you want to improve and review, we can do it together."
       }
     }
+  },
+  "contactForm": {
+    "title": "Let's build your project together!",
+    "formLabels": {
+      "name": "Name",
+      "email": "Email",
+      "message": "Message",
+      "send": "Submit"
+    },
+    "warning": "Please read this before submitting your message:",
+    "warnings": {
+      "one": "I am not interested in a 9-5 job",
+      "two": "Do not contact me with the intention of spamming",
+      "three": "I am not the person for you if you are not willing to collaborate 100% remotely"
+    },
+    "thanks": "Thanks for your message!",
+    "error": "Error while sending the message, please try again."
+  },
+  "reviewsSection": {
+    "title": "Companies and clients I have worked with",
+    "talkAboutMe": "Testimonials",
+    "reviewsFetchingError": "An error occured while fetching reviews, please retry."
   }
 }

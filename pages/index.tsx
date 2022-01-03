@@ -1,10 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
 import brush from '/public/images/homepage/brush.png';
-// import { BlogSection } from '../components/welcomePage/BlogSection';
-// import { ContactForm } from '../components/welcomePage/ContactForm';
-// import { ServicesSection } from '../components/welcomePage/ServicesSection';
-// import { NewsletterForm } from '../components/common/NewsletterForm';
 import { Layout } from '../components/ui/Layout/Layout';
 import { useWindowSize } from '../hooks/useWindowSize';
 import Seo from '../components/common/Seo/Seo';
@@ -24,6 +20,8 @@ import { useRouter } from 'next/router';
 import { ParallaxSection } from '../components/homepage/ParallaxSection/ParallaxSection';
 import { ServicesSection } from '../components/homepage/ServicesSection/ServicesSection';
 import { InstagramFeed } from '../components/common/InstagramFeed/InstagramFeed';
+import { NewsletterForm } from '../components/homepage/NewsletterForm/NewsletterForm';
+import { ReviewsSection } from '../components/homepage/ReviewsSection/ReviewsSection';
 
 interface HomepageProps {}
 
@@ -123,9 +121,9 @@ const Homepage: React.FC<HomepageProps> = () => {
         {/* <BlogSection /> */}
         <ServicesSection t={t} />
         <InstagramFeed account={'the_wanderer_developer'} width={width} t={t} />
-        {/* <NewsletterForm />
-        <ReviewsSection />
-        <ContactForm width={width} /> */}
+        <NewsletterForm t={t} />
+        <ReviewsSection router={router} t={t} />
+        {/* <ContactForm width={width} /> */}
       </Main>
     </Layout>
   );

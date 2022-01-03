@@ -123,6 +123,7 @@ const ServicesList = styled.ul`
   list-style: none;
   padding: 0;
   margin: 0 0 2em 0;
+  max-width: 1200px;
 `;
 
 const Sevice = styled.li`
