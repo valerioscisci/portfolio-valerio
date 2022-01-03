@@ -2,12 +2,16 @@ import React, { useCallback, useRef } from 'react';
 import { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import VisibilitySensor from 'react-visibility-sensor';
-import { useTranslation } from 'react-i18next';
 import { useThrottle } from '@react-hook/throttle';
 import useScrollPosition from '@react-hook/window-scroll';
+import { TFunction } from 'next-i18next';
+import { url } from '../../../config/config';
 
-export const ParallaxSection: React.FC = () => {
-  const { t } = useTranslation();
+interface ParallaxSectionProps {
+  t: TFunction;
+}
+
+export const ParallaxSection: React.FC<ParallaxSectionProps> = ({ t }) => {
   const [isVisible, setIsVisible] = useState<boolean>(true);
   const [offsetTop, setOffsetTop] = useThrottle<number>(0, 144);
   const [planesStartingInfo, setPlanesStartingInfo] = useState<
@@ -60,7 +64,7 @@ export const ParallaxSection: React.FC = () => {
             return (
               <Plane
                 key={index}
-                src={require('../../assets/images/homepage/plane.svg').default}
+                src={`${url}images/homepage/plane.svg`}
                 alt={'freedom'}
                 startingPlanePosition={startingPlanePosition}
                 startingPlaneHeight={planeInfo.startingHeight}
@@ -70,10 +74,10 @@ export const ParallaxSection: React.FC = () => {
               />
             );
           })}
-        <PlaneText>{t('parallax.heading')}</PlaneText>
+        <PlaneText>{t('homepage:parallax.heading')}</PlaneText>
       </Overlap>
     );
-  }, [isVisible, planesStartingInfo, scrollY, t]);
+  }, [isVisible, planesStartingInfo, scrollY]);
 
   return (
     <VisibilitySensor
@@ -87,7 +91,7 @@ export const ParallaxSection: React.FC = () => {
     >
       <Section ref={sectionRef}>
         <BackgroundImage
-          src={require('../../assets/images/homepage/cappadocia.jpg').default}
+          src={`${url}images/homepage/cappadocia.jpg`}
           alt={'parallax'}
           style={{
             transform: `translateY(${

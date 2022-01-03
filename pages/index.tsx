@@ -1,14 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
 import brush from '/public/images/homepage/brush.png';
-// import { ParallaxSection } from '../components/welcomePage/ParallaxSection';
-// import { KnownTechSection } from '../components/welcomePage/KnownTechSection';
 // import { BlogSection } from '../components/welcomePage/BlogSection';
-// import { Paragraph } from '../components/common/Paragraph';
-// import { valerioTheme } from '../theme';
-// import { ReviewsSection } from '../components/welcomePage/ReviewsSection';
 // import { ContactForm } from '../components/welcomePage/ContactForm';
-// import { SubHeading } from '../components/common/SubHeading';
 // import { ServicesSection } from '../components/welcomePage/ServicesSection';
 // import { NewsletterForm } from '../components/common/NewsletterForm';
 import { Layout } from '../components/ui/Layout/Layout';
@@ -27,12 +21,14 @@ import { FaArrowRight } from 'react-icons/fa';
 import { url } from '../config/config';
 import { KnownTechSection } from '../components/homepage/KnownTechSection/KnownTechSection';
 import { useRouter } from 'next/router';
+import { ParallaxSection } from '../components/homepage/ParallaxSection/ParallaxSection';
+import { ServicesSection } from '../components/homepage/ServicesSection/ServicesSection';
 
 export default function HomeScreen() {
   const { t } = useTranslation(['homepage', 'common']);
   const router = useRouter();
 
-  const [width] = useWindowSize();
+  const [width] = typeof window !== 'undefined' ? useWindowSize() : [0];
 
   return (
     <Layout t={t} width={width} router={router}>
@@ -120,10 +116,15 @@ export default function HomeScreen() {
           />
         </SecondSection>
         <KnownTechSection width={width} t={t} router={router} />
-        {/*<ParallaxSection />
-        <BlogSection />
-        <ServicesSection />
-        {props.children}
+        <ParallaxSection t={t} />
+        {/* <BlogSection /> */}
+        <ServicesSection t={t} />
+        {/*<InstagramFeed
+                account={'the_wanderer_developer'}
+                numberOfMediaElements={12}
+                media={stores.home.instagramImages}
+                status={stores.home.instagramFetchingStatus}
+              />
         <NewsletterForm />
         <ReviewsSection />
         <ContactForm width={width} /> */}

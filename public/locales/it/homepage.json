@@ -29,5 +29,33 @@
     "github": "Codice open source",
     "noProjectsDescription": "Non ho ancora realizzato alcun progetto in autonomia utilizzando questa tecnologia quindi il TUO potrebbe essere il primo!",
     "projectsFetchingError": "Errore durante il recupero dei progetti, riprova per favore."
+  },
+  "parallax": {
+    "heading": "Spezzare la routine è la miglior abitudine che TU possa avere"
+  },
+  "servicesSection": {
+    "title": "Cosa posso fare per te",
+    "services": {
+      "newWebsite": {
+        "name": "Creazione di siti web",
+        "description": "Posso aiutarti nel processo di progettazione, creazione e hosting del tuo sito web."
+      },
+      "newMobileApp": {
+        "name": "Creazione di applicazioni mobile",
+        "description": "Posso sviluppare la tua app mobile compatibile con dispositivi Android e Apple."
+      },
+      "helpYourTeam": {
+        "name": "Supporto team di sviluppo",
+        "description": "Se il tuo team è in difficoltà per il troppo carico di lavoro, sono disponibile a svolgere alcuni task per portare a termine lo sviluppo del tuo progetto per tempo."
+      },
+      "one2one": {
+        "name": "1-to-1 talks",
+        "description": "Se sei uno sviluppatore che magari si sta affacciando al mondo del lavoro e vuoi fare una chiacchierata sono a disposizione :)"
+      },
+      "codeReview": {
+        "name": "Revisione di codice",
+        "description": "Se hai del codice che vuoi migliorare, possiamo senz'altro provare a farlo insieme."
+      }
+    }
   }
 }

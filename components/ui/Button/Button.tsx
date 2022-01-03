@@ -1,4 +1,3 @@
-import { TFunction } from 'next-i18next';
 import React from 'react';
 import styled, { css } from 'styled-components';
 

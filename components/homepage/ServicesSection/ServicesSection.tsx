@@ -1,8 +1,5 @@
 import React from 'react';
-import { useTranslation } from 'react-i18next';
 import styled from 'styled-components';
-import { HeadingTitle } from '../common/HeadingTitle';
-import servicesSectionBackground from '../../assets/images/homepage/services.svg';
 import {
   FaBug,
   FaHandsHelping,
@@ -10,36 +7,48 @@ import {
   FaLaptopCode,
   FaMobileAlt,
 } from 'react-icons/fa';
-import { Paragraph } from '../common/Paragraph';
-import { ImageAnimation } from '../common/ImageAnimation';
+import { HeadingTitle } from '../../ui/HeadingTitle/HeadingTitle';
+import { Paragraph } from '../../ui/Paragraph/Paragraph';
+import { ImageAnimation } from '../../common/ImageAnimation/ImageAnimation';
+import { url } from '../../../config/config';
+import { TFunction } from 'next-i18next';
 
-export const ServicesSection: React.FC = () => {
-  const { t } = useTranslation();
-
+interface ServicesSectionProps {
+  t: TFunction;
+}
+export const ServicesSection: React.FC<ServicesSectionProps> = ({ t }) => {
   const services = [
     {
-      name: t('servicesSection.services.newWebsite.name'),
-      description: t('servicesSection.services.newWebsite.description'),
+      name: t('homepage:servicesSection.services.newWebsite.name'),
+      description: t(
+        'homepage:servicesSection.services.newWebsite.description',
+      ),
       icon: <FaLaptopCode size={'5em'} />,
     },
     {
-      name: t('servicesSection.services.newMobileApp.name'),
-      description: t('servicesSection.services.newMobileApp.description'),
+      name: t('homepage:servicesSection.services.newMobileApp.name'),
+      description: t(
+        'homepage:servicesSection.services.newMobileApp.description',
+      ),
       icon: <FaMobileAlt size={'5em'} />,
     },
     {
-      name: t('servicesSection.services.helpYourTeam.name'),
-      description: t('servicesSection.services.helpYourTeam.description'),
+      name: t('homepage:servicesSection.services.helpYourTeam.name'),
+      description: t(
+        'homepage:servicesSection.services.helpYourTeam.description',
+      ),
       icon: <FaHandsHelping size={'5em'} />,
     },
     {
-      name: t('servicesSection.services.one2one.name'),
-      description: t('servicesSection.services.one2one.description'),
+      name: t('homepage:servicesSection.services.one2one.name'),
+      description: t('homepage:servicesSection.services.one2one.description'),
       icon: <FaHeadset size={'5em'} />,
     },
     {
-      name: t('servicesSection.services.codeReview.name'),
-      description: t('servicesSection.services.codeReview.description'),
+      name: t('homepage:servicesSection.services.codeReview.name'),
+      description: t(
+        'homepage:servicesSection.services.codeReview.description',
+      ),
       icon: <FaBug size={'4em'} />,
     },
   ];
@@ -57,7 +66,7 @@ export const ServicesSection: React.FC = () => {
           margin: '2em 0 0 0',
         }}
       >
-        {t('servicesSection.title')}
+        {t('homepage:servicesSection.title')}
       </HeadingTitle>
       <ServicesList>
         {services.map((service) => {
@@ -73,7 +82,7 @@ export const ServicesSection: React.FC = () => {
         })}
       </ServicesList>
       <ImageAnimation
-        image={require('../../assets/images/homepage/world.jpg')}
+        image={`${url}images/homepage/world.jpg`}
         imageAlt={'The world'}
         imageStyle={{
           bottom: '-2.5em',
@@ -101,7 +110,7 @@ const Container = styled.section`
   justify-content: center;
   background-color: ${(props) => props.theme.colors.backgroundDark};
   /* background by SVGBackgrounds.com */
-  background-image: url(${servicesSectionBackground});
+  background-image: url(${url}/images/homepage/services.svg);
   background-attachment: fixed;
   background-size: cover;
   position: relative;

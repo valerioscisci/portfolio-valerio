@@ -1,6 +1,5 @@
 import React from 'react';
 import styled from 'styled-components';
-import { useWindowSize } from '../../../hooks/useWindowSize';
 import CookieConsent from 'react-cookie-consent';
 import { valerioTheme } from '../../../pages/_app';
 import { Header } from '../Header/Header';
