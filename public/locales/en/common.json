@@ -1,0 +1,29 @@
+{
+  "navbar": {
+    "home": "Home",
+    "about": "About",
+    "portfolio": "Portfolio",
+    "contact": "Contact Me"
+  },
+  "footer": {
+    "contactInformation": "Contact information",
+    "usefulLinks": "Useful links",
+    "policy": "Policy",
+    "privacyPolicy": "Privacy Policy",
+    "cookiePolicy": "Cookie Policy",
+    "cookieConsent": "I consent",
+    "cookieConsentText": "This website uses cookies to enhance the user experience.",
+    "cookieConsentDecline": "I decline"
+  },
+  "websiteName": "The Wanderer Developer",
+  "contactMe": "Contact me",
+  "blog": "Blog",
+  "subscribe": "Subscribe",
+  "githubCorner": "Check this website on GitHub",
+  "reload": "Reload",
+  "error": "Error",
+  "instagram": {
+    "visitProfile": "Check my Instagram profile",
+    "noPhotosDescription": "It wasn't possible to get photos from my Instagram profile ... Visit it directly from the app or the website clicking on this box!"
+  }
+}

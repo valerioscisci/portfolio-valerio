@@ -1,0 +1,29 @@
+{
+  "navbar": {
+    "home": "Home",
+    "about": "Chi Sono",
+    "portfolio": "Portfolio",
+    "contact": "Contattami"
+  },
+  "footer": {
+    "contactInformation": "Informazioni di contatto",
+    "usefulLinks": "Link utili",
+    "policy": "Policy",
+    "privacyPolicy": "Privacy Policy",
+    "cookiePolicy": "Cookie Policy",
+    "cookieConsent": "Accetto",
+    "cookieConsentText": "Questo sito web utilizza i cookie per migliorare l'esperienza utente.",
+    "cookieConsentDecline": "Rifiuto"
+  },
+  "websiteName": "The Wanderer Developer",
+  "contactMe": "Contact me",
+  "blog": "Blog",
+  "subscribe": "Subscribe",
+  "githubCorner": "Questo sito è open source",
+  "reload": "Ricarica",
+  "error": "Errore",
+  "instagram": {
+    "visitProfile": "Visita il mio profilo Instagram",
+    "noPhotosDescription": "Non è stato possibile caricare le foto dal mio profilo Instagram...Visitalo direttamente dall'app o dal sito cliccando su questo riquadro!"
+  }
+}
