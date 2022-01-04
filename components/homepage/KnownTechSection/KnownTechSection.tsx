@@ -110,7 +110,6 @@ export const KnownTechSection: React.FC<KnownTechSectionProps> = ({
         backgroundColor: valerioTheme.colors.background,
         overflow: 'hidden',
         width: '100%',
-        height: '100vh',
       }}
     >
       {loading ? (
