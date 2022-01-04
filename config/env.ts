@@ -1,5 +1,4 @@
 const env = {
-  NODE_ENV: String(process.env.NEXT_PUBLIC_ENV) || 'development',
   API_BASE_URL:
     process.env.NEXT_PUBLIC_ENV === 'development'
       ? 'http://localhost:3000/api/'

@@ -1,5 +1,5 @@
-const url = process.env.APP_URL
-  ? String(process.env.APP_URL)
-  : 'http://localhost:3000/';
+const url = process.env.NEXT_PUBLIC_ENV === 'development'
+  ?'http://localhost:3000/'
+  : 'https://www.thewandererdeveloper.com/';
 
 export { url };
