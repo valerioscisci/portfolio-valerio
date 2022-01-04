@@ -1,6 +1,6 @@
 import { NextApiRequest, NextApiResponse } from 'next';
 import { apiHandler } from '../../../helpers/apiHandlerHelper';
-import { promises } from 'fs';
+import data from "../data.json"
 
 export default apiHandler({
   get: getPortfolioData,
@@ -8,8 +8,6 @@ export default apiHandler({
 
 async function getPortfolioData(req: NextApiRequest, res: NextApiResponse) {
   try {
-    const data = JSON.parse(await promises.readFile('db/data.json', 'utf8'));
-
     res.status(200).json({
       message: 'success',
       portfolioData: data.portfolioData,
