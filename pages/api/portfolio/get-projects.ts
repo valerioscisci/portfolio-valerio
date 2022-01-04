@@ -8,7 +8,7 @@ export default apiHandler({
 
 async function getPortfolioData(req: NextApiRequest, res: NextApiResponse) {
   try {
-    const data = JSON.parse(await promises.readFile('./db/data.json', 'utf8'));
+    const data = JSON.parse(await promises.readFile('db/data.json', 'utf8'));
 
     res.status(200).json({
       message: 'success',
