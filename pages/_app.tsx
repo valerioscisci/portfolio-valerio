@@ -25,7 +25,7 @@ function App({ Component, pageProps }: AppProps) {
   useEffect(() => {
     if (process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS) {
       ReactGA.initialize(process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS, {
-        debug: true,
+        debug: process.env.NEXT_PUBLIC_ENV ==="development"?true : false,
       });
     }
   }, []);
