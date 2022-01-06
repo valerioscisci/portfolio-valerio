@@ -45,3 +45,14 @@ export interface Review {
   reviewEN: string;
   company: string;
 }
+
+export type BlogPost = {
+  slug: string;
+  frontmatter: {
+    title: string;
+    date: string;
+    cover_image: string;
+    description: string;
+    category: Array<string>;
+  };
+};

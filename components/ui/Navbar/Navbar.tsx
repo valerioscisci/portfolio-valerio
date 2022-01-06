@@ -1,18 +1,18 @@
-import React, { useCallback, useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import styled, { css } from 'styled-components';
 import ReactGA from 'react-ga';
 import { url } from '../../../config/config';
-import { NextRouter } from 'next/router';
+import { useRouter } from 'next/router';
 import Link from 'next/link';
 import { MenuIcon } from '../MenuIcon/MenuIcon';
 
 export interface NavbarProps {
   navLinks: any;
   width: number;
-  router: NextRouter;
 }
 
-export const Navbar: React.FC<NavbarProps> = ({ navLinks, width, router }) => {
+export const Navbar: React.FC<NavbarProps> = ({ navLinks, width }) => {
+  const { pathname, query } = useRouter();
   const [menuOpen, setMenuOpen] = useState(false);
   const menuIconRef = React.createRef<HTMLDivElement>();
 
@@ -23,10 +23,6 @@ export const Navbar: React.FC<NavbarProps> = ({ navLinks, width, router }) => {
       document.body.style.overflow = 'initial';
     }
   }, [menuOpen]);
-
-  const changeLanguage = useCallback((lng) => {
-    router.push(`/${lng}`);
-  }, []);
 
   return (
     <NavbarContainer menuOpen={menuOpen}>
@@ -73,12 +69,18 @@ export const Navbar: React.FC<NavbarProps> = ({ navLinks, width, router }) => {
         })}
       </NavbarRight>
       <LanguageSelector>
-        <ChangeLanguageButton flag={'it'} onClick={() => changeLanguage('it')}>
-          it
-        </ChangeLanguageButton>
-        <ChangeLanguageButton flag={'en'} onClick={() => changeLanguage('en')}>
-          en
-        </ChangeLanguageButton>
+        {['it', 'en'].map((value) => (
+          <Link
+            key={value}
+            href={{
+              pathname,
+              query,
+            }}
+            locale={value}
+          >
+            <ChangeLanguageButton flag={value}>{value}</ChangeLanguageButton>
+          </Link>
+        ))}
       </LanguageSelector>
     </NavbarContainer>
   );
@@ -278,11 +280,16 @@ const LanguageSelector = styled.div`
   position: absolute;
   left: 0.5em;
   bottom: -3em;
+  display: flex;
+  margin: 0 1em;
 `;
 
-const ChangeLanguageButton = styled.button<{ flag?: string }>`
-  width: 2.2em;
-  height: 2.2em;
+const ChangeLanguageButton = styled.div<{ flag?: string }>`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.5em;
+  height: 2.5em;
   outline: none;
   font-size: 1em;
   font-family: Manrope;

@@ -120,7 +120,7 @@ const Homepage: React.FC = () => {
         <ServicesSection t={t} />
         <InstagramFeed account={'the_wanderer_developer'} width={width} t={t} />
         <NewsletterForm t={t} />
-        <ReviewsSection router={router} t={t} />
+        <ReviewsSection router={router} t={t} width={width} />
         <ContactForm width={width} t={t} router={router} />
       </Main>
     </Layout>
