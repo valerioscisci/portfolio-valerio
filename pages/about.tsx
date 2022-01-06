@@ -142,6 +142,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
     },
   };
 };
+
 const Main = styled.main`
   background-color: ${(props) => props.theme.colors.background};
   display: flex;

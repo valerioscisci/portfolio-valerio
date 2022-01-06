@@ -27,9 +27,9 @@ const Corner = styled.a`
   display: flex;
   justify-content: center;
   align-items: center;
-  bottom: 4.5em;
+  bottom: 6em;
   right: -5.5em;
-  padding: 0.5em 5em;
+  padding: 0.5em 6em;
   transform: rotate(-45deg);
   font-size: 0.7em;
   text-decoration: none;
