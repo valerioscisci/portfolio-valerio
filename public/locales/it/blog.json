@@ -4,5 +4,7 @@
     "description": "Un blog che parla di sviluppo web, programmazione, lavoro da remoto, viaggi e molto altro."
   },
   "blogPostsFetchingError": "Si è verificato un errore durante il recupero dei post. Ricarica la pagina.",
-  "readMore": "Continua a leggere"
+  "readMore": "Continua a leggere",
+  "postedOn": "Pubblicato il",
+  "goBack": "Torna indietro"
 }

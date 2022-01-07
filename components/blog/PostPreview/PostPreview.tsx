@@ -39,7 +39,7 @@ export const PostPreview: React.FC<PostPreviewProps> = ({
       <Content>
         <CategoriesContainer>
           {post.frontmatter.category.map((category) => (
-            <CategoryPill>{category}</CategoryPill>
+            <CategoryPill key={category}>{category}</CategoryPill>
           ))}
         </CategoriesContainer>
         <Paragraph>{post.frontmatter.date}</Paragraph>
@@ -95,7 +95,7 @@ const CategoriesContainer = styled.div`
   right: 5px;
 `;
 
-const CategoryPill = styled.span`
+export const CategoryPill = styled.span`
   background-color: ${(props) => props.theme.colors.secondary};
   border-radius: 0.3em;
   padding: 0.4em 0.7em;

@@ -56,4 +56,5 @@ export type BlogPost = {
     category: Array<string>;
     locale: string;
   };
+  content?: any;
 };

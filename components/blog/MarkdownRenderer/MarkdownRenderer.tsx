@@ -3,6 +3,7 @@ import { Heading } from '../../ui/Heading/Heading';
 import { StyledLink } from '../../common/StyledLink/StyledLink';
 import { Button } from '../../ui/Button/Button';
 import { BlogImage } from '../BlogImage/BlogImage';
+import { Paragraph } from '../../ui/Paragraph/Paragraph';
 
 export const MarkdownRenderer = ({ content }) => {
   return (
@@ -54,6 +55,9 @@ export const MarkdownRenderer = ({ content }) => {
           },
           Button: {
             component: Button,
+          },
+          p: {
+            component: Paragraph,
           },
         },
       }}

@@ -4,5 +4,7 @@
     "description": "A blog about web development, programming, remote working, traveling and more."
   },
   "blogPostsFetchingError": "An error occurred while fetching blog posts. Please refresh the page.",
-  "readMore": "Read more"
+  "readMore": "Read more",
+  "postedOn": "Posted on",
+  "goBack": "Go back"
 }

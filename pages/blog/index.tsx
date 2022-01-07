@@ -38,7 +38,7 @@ const BlogScreen: React.FC<BlogScreenProps> = ({ posts }) => {
             posts.map((post, index) => {
               return (
                 <PostPreview
-                  key={index}
+                  key={post.frontmatter.title + index}
                   post={post}
                   router={router}
                   width={width}
@@ -61,14 +61,14 @@ export default BlogScreen;
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
   const files = fs
-    .readdirSync(`${process.cwd()}/posts`)
+    .readdirSync(`${process.cwd()}/posts/${context.locale}`)
     .filter((file) => file.endsWith('.md'));
 
   const posts = files.map((filename) => {
     const slug = filename.replace('.md', '');
 
     const markdownWithMeta = fs.readFileSync(
-      `${process.cwd()}/posts/${filename}`,
+      `${process.cwd()}/posts/${context.locale}/${filename}`,
       'utf-8'
     );
 

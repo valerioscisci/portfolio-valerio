@@ -27,7 +27,7 @@ export const Navbar: React.FC<NavbarProps> = ({ navLinks, width }) => {
   return (
     <NavbarContainer menuOpen={menuOpen}>
       {!menuOpen && (
-        <a href={navLinks[0].route}>
+        <a href={navLinks[0].route} target={'_self'}>
           <Logo src={`${url}images/common/LogoWhite.png`} />
         </a>
       )}
