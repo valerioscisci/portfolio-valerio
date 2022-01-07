@@ -54,5 +54,6 @@ export type BlogPost = {
     cover_image: string;
     description: string;
     category: Array<string>;
+    locale: string;
   };
 };

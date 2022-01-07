@@ -15,16 +15,15 @@ import { PostPreview } from '../../components/blog/PostPreview/PostPreview';
 import { HeadingTitle } from '../../components/ui/HeadingTitle/HeadingTitle';
 import { SubHeading } from '../../components/homepage/SubHeading/SubHeading';
 import { sortByDate } from '../../utils/utils';
+import { useGetInitialPageState } from '../../hooks/useGetInitialPageState';
 
 interface BlogScreenProps {
   posts: Array<BlogPost>;
 }
 
 const BlogScreen: React.FC<BlogScreenProps> = ({ posts }) => {
-  const { t } = useTranslation(['blog', 'common']);
-  const router = useRouter();
+  const { t, router, width } = useGetInitialPageState(['blog', 'common']);
 
-  const [width] = typeof window !== 'undefined' ? useWindowSize() : [0];
   return (
     <Layout mainSlider={false} t={t} width={width} router={router}>
       <Main>
@@ -37,7 +36,15 @@ const BlogScreen: React.FC<BlogScreenProps> = ({ posts }) => {
         <PostsContainer>
           {posts.length > 0 ? (
             posts.map((post, index) => {
-              return <PostPreview key={index} post={post} />;
+              return (
+                <PostPreview
+                  key={index}
+                  post={post}
+                  router={router}
+                  width={width}
+                  t={t}
+                />
+              );
             })
           ) : (
             <ErrorHandler t={t} reloadButton={true}>

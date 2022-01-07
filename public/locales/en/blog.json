@@ -3,5 +3,6 @@
     "title": "The Wanderer Developer blog",
     "description": "A blog about web development, programming, remote working, traveling and more."
   },
-  "blogPostsFetchingError": "An error occurred while fetching blog posts. Please refresh the page."
+  "blogPostsFetchingError": "An error occurred while fetching blog posts. Please refresh the page.",
+  "readMore": "Read more"
 }

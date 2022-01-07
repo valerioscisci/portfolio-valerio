@@ -2,10 +2,8 @@ import React from 'react';
 import styled from 'styled-components';
 import brush from '/public/images/homepage/brush.png';
 import { Layout } from '../components/ui/Layout/Layout';
-import { useWindowSize } from '../hooks/useWindowSize';
 import Seo from '../components/common/Seo/Seo';
 import { GetStaticProps } from 'next/types';
-import { useTranslation } from 'next-i18next';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import { valerioTheme } from './_app';
 import { HeadingTitle } from '../components/ui/HeadingTitle/HeadingTitle';
@@ -16,19 +14,16 @@ import { Button } from '../components/ui/Button/Button';
 import { FaArrowRight } from 'react-icons/fa';
 import { url } from '../config/config';
 import { KnownTechSection } from '../components/homepage/KnownTechSection/KnownTechSection';
-import { useRouter } from 'next/router';
 import { ParallaxSection } from '../components/homepage/ParallaxSection/ParallaxSection';
 import { ServicesSection } from '../components/homepage/ServicesSection/ServicesSection';
 import { InstagramFeed } from '../components/common/InstagramFeed/InstagramFeed';
 import { NewsletterForm } from '../components/homepage/NewsletterForm/NewsletterForm';
 import { ReviewsSection } from '../components/homepage/ReviewsSection/ReviewsSection';
 import { ContactForm } from '../components/homepage/ContactForm/ContactForm';
+import { useGetInitialPageState } from '../hooks/useGetInitialPageState';
 
 const Homepage: React.FC = () => {
-  const { t } = useTranslation(['homepage', 'common']);
-  const router = useRouter();
-
-  const [width] = typeof window !== 'undefined' ? useWindowSize() : [0];
+  const { t, router, width } = useGetInitialPageState(['homepage', 'common']);
 
   return (
     <Layout t={t} width={width} router={router}>

@@ -1,13 +1,10 @@
-import Button from '../Button';
 import Markdown from 'markdown-to-jsx';
-import Hyperlink from '../../components/Common/Hyperlink';
-import Heading from '../../components/Common/Heading';
-import StyledImage from '../../components/Common/StyledImage';
+import { Heading } from '../../ui/Heading/Heading';
+import { StyledLink } from '../../common/StyledLink/StyledLink';
+import { Button } from '../../ui/Button/Button';
+import { BlogImage } from '../BlogImage/BlogImage';
 
-const PREFIX_CHAR = '#';
-const HEADING_COLOR = 'var(--text-light-grey)';
-
-const MarkdownRenderer = ({ content }) => {
+export const MarkdownRenderer = ({ content }) => {
   return (
     <Markdown
       children={content}
@@ -17,55 +14,43 @@ const MarkdownRenderer = ({ content }) => {
             component: Heading,
             props: {
               variant: 1,
-              prefixChar: PREFIX_CHAR,
-              color: HEADING_COLOR,
             },
           },
           h2: {
             component: Heading,
             props: {
               variant: 2,
-              prefixChar: PREFIX_CHAR,
-              color: HEADING_COLOR,
             },
           },
           h3: {
             component: Heading,
             props: {
               variant: 3,
-              prefixChar: PREFIX_CHAR,
-              color: HEADING_COLOR,
             },
           },
           h4: {
             component: Heading,
             props: {
               variant: 4,
-              prefixChar: PREFIX_CHAR,
-              color: HEADING_COLOR,
             },
           },
           h5: {
             component: Heading,
             props: {
               variant: 5,
-              prefixChar: PREFIX_CHAR,
-              color: HEADING_COLOR,
             },
           },
           h6: {
             component: Heading,
             props: {
               variant: 6,
-              prefixChar: PREFIX_CHAR,
-              color: HEADING_COLOR,
             },
           },
           img: {
-            component: StyledImage,
+            component: BlogImage,
           },
           Link: {
-            component: Hyperlink,
+            component: StyledLink,
           },
           Button: {
             component: Button,
@@ -75,5 +60,3 @@ const MarkdownRenderer = ({ content }) => {
     />
   );
 };
-
-export default MarkdownRenderer;

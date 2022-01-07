@@ -3,8 +3,6 @@ import styled from 'styled-components';
 import { FaNewspaper } from 'react-icons/fa';
 import { valerioTheme } from './_app';
 import { Layout } from '../components/ui/Layout/Layout';
-import { useRouter } from 'next/router';
-import { useWindowSize } from '../hooks/useWindowSize';
 import Seo from '../components/common/Seo/Seo';
 import { GetStaticProps } from 'next';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
@@ -13,7 +11,8 @@ import { StyledLink } from '../components/common/StyledLink/StyledLink';
 import { HeadingTitle } from '../components/ui/HeadingTitle/HeadingTitle';
 import { Tooltip } from '../components/common/Tooltip/Tooltip';
 import { url } from '../config/config';
-import { Trans, useTranslation } from 'next-i18next';
+import { Trans } from 'next-i18next';
+import { useGetInitialPageState } from '../hooks/useGetInitialPageState';
 
 const paragraphStyle = {
   padding: '1em 2em',
@@ -34,10 +33,7 @@ const newsIconStyle: React.CSSProperties = {
 };
 
 const AboutScreen: React.FC = () => {
-  const { t } = useTranslation(['about', 'common']);
-  const router = useRouter();
-
-  const [width] = typeof window !== 'undefined' ? useWindowSize() : [0];
+  const { t, router, width } = useGetInitialPageState(['about', 'common']);
 
   return (
     <Layout mainSlider={false} t={t} width={width} router={router}>

@@ -1,12 +1,11 @@
 import fs from 'fs';
 import matter from 'gray-matter';
 import Link from 'next/link';
-import { TFunction } from 'next-i18next';
-import { NextRouter } from 'next/router';
 import { Layout } from '../../components/ui/Layout/Layout';
 import Seo from '../../components/common/Seo/Seo';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import styled from 'styled-components';
+import { useGetInitialPageState } from '../../hooks/useGetInitialPageState';
 
 // Markdown parser: https://www.npmjs.com/package/markdown-to-jsx
 
@@ -14,19 +13,15 @@ interface SlugPostProps {
   frontmatter: any;
   slug: any;
   content: any;
-  t: TFunction;
-  width: number;
-  router: NextRouter;
 }
 
 const SlugPost: React.FC<SlugPostProps> = ({
   frontmatter: { title, date },
   slug,
   content,
-  width,
-  router,
-  t,
 }) => {
+  const { t, router, width } = useGetInitialPageState(['blog', 'common']);
+
   return (
     <Layout mainSlider={false} t={t} width={width} router={router}>
       <Main>
@@ -62,8 +57,6 @@ const SlugPost: React.FC<SlugPostProps> = ({
 export default SlugPost;
 
 export async function getServerSideProps(context) {
-  const isAuth = await authCheckerHelper(context.req.cookies);
-
   const splitPath = context.req.url.split('/');
   const slug = splitPath[splitPath.length - 1];
 
@@ -76,7 +69,6 @@ export async function getServerSideProps(context) {
       frontmatter,
       slug,
       content,
-      authenticated: isAuth.authenticated,
     },
   };
 }
