@@ -12,7 +12,6 @@ import { Heading } from '../../components/ui/Heading/Heading';
 import { MarkdownRenderer } from '../../components/blog/MarkdownRenderer/MarkdownRenderer';
 import { Paragraph } from '../../components/ui/Paragraph/Paragraph';
 import { CategoryPill } from '../../components/blog/PostPreview/PostPreview';
-import Link from 'next/link';
 import { Button } from '../../components/ui/Button/Button';
 
 // Markdown parser: https://www.npmjs.com/package/markdown-to-jsx
@@ -76,7 +75,7 @@ export async function getServerSideProps(context) {
 
   return {
     props: {
-      ...(await serverSideTranslations(context.locale, ['about', 'common'])),
+      ...(await serverSideTranslations(context.locale, ['blog', 'common'])),
       post: {
         frontmatter,
         content,
@@ -102,14 +101,14 @@ const commonCss = css`
 `;
 
 const TitleContainer = styled.div`
-  padding: 3em 1.5em 1em 1.5em;
   ${commonCss}
+  padding: 3em 1.5em 1em 1.5em;
 `;
 
 const Content = styled.div`
-  max-width: 900px;
-  padding: 2em 1.5em;
   ${commonCss}
+  max-width: 80ch;
+  padding: 2em 1.5em;
 `;
 
 const ImageContainer = styled.div`
