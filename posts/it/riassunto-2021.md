@@ -1,6 +1,6 @@
 ---
 title: Il mio 2021 in breve
-date: '07/01/2022'
+date: '08/01/2022'
 cover_image: images/blog/2022/il-mio-2021.jpg
 description: Tra viaggi, nuove esperienze e progetti entusiasmanti
 category: ['viaggi ✈️', 'lavoro 💻', 'smartworking 👨‍💻', 'investimenti 📈']
