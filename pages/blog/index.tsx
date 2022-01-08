@@ -61,13 +61,13 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
   let posts = [];
   try {
     const postsDirectory = join(process.cwd(), 'posts');
-    const files = fs.readdirSync(`${postsDirectory}/${context.locale}`);
+    const files = fs.readdirSync(join(postsDirectory, context.locale));
 
     posts = files.map((filename) => {
       const slug = filename.replace('.md', '');
 
       const markdownWithMeta = fs.readFileSync(
-        path.resolve(`${postsDirectory}/${context.locale}/${filename}`),
+        path.resolve(join(postsDirectory, `${context.locale}/${filename}`)),
         'utf-8'
       );
 
