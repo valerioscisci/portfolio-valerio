@@ -63,7 +63,7 @@ export const Footer: React.FC<FooterProps> = ({ t }) => {
         {
           Email: <FaEnvelope size={SOCIAL_ICON_WIDTH} />,
         },
-      ],
+      ]
     );
   }
 
@@ -84,11 +84,7 @@ export const Footer: React.FC<FooterProps> = ({ t }) => {
       <FooterColumn>
         <FooterTitle>{t('common:footer.usefulLinks')}</FooterTitle>
         <LinkContainer>
-          <StyledLink
-            href={'/#BlogSection'}
-            color={'white'}
-            scrollTo={'BlogSection'}
-          >
+          <StyledLink href={'/blog'} color={'white'}>
             {t('common:blog')}
           </StyledLink>
         </LinkContainer>

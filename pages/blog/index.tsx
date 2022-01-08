@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { Layout } from '../../components/ui/Layout/Layout';
 import Seo from '../../components/common/Seo/Seo';
-import { GetServerSideProps } from 'next';
+import { GetStaticProps } from 'next';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import fs from 'fs';
 import matter from 'gray-matter';
@@ -57,7 +57,7 @@ const BlogScreen: React.FC<BlogScreenProps> = ({ posts }) => {
 
 export default BlogScreen;
 
-export const getServerSideProps: GetServerSideProps = async (context) => {
+export const getStaticProps: GetStaticProps = async (context) => {
   let posts = [];
   try {
     const postsDirectory = join(process.cwd(), 'posts');

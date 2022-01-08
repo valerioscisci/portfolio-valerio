@@ -14,6 +14,7 @@ import { Paragraph } from '../../components/ui/Paragraph/Paragraph';
 import { CategoryPill } from '../../components/blog/PostPreview/PostPreview';
 import { Button } from '../../components/ui/Button/Button';
 import { join } from 'path';
+import { GetStaticPaths, GetStaticProps } from 'next';
 
 // Markdown parser: https://www.npmjs.com/package/markdown-to-jsx
 
@@ -65,19 +66,22 @@ const SlugPost: React.FC<SlugPostProps> = ({ post }) => {
 
 export default SlugPost;
 
-export async function getServerSideProps(context) {
-  const splitPath = context.req.url.split('/');
-  const slug = splitPath[splitPath.length - 1];
+export const getStaticProps: GetStaticProps = async (context) => {
+  const slug = context.params['slug'];
+  console.log(context.locale);
   const postsDirectory = join(process.cwd(), 'posts');
 
   const markdownWithMeta = fs.readFileSync(
-    `${postsDirectory}/${context.locale}/${slug}.md`
+    `${postsDirectory}/${context.locale || 'en'}/${slug}.md`
   );
   const { data: frontmatter, content } = matter(markdownWithMeta);
 
   return {
     props: {
-      ...(await serverSideTranslations(context.locale, ['blog', 'common'])),
+      ...(await serverSideTranslations(context.locale || 'en', [
+        'blog',
+        'common',
+      ])),
       post: {
         frontmatter,
         content,
@@ -85,7 +89,28 @@ export async function getServerSideProps(context) {
       },
     },
   };
-}
+};
+
+export const getStaticPaths: GetStaticPaths = async () => {
+  const blogSlugs = ((context) => {
+    const values = context.keys();
+
+    const data = values.map((key, index) => {
+      let slug = key.replace(/^.*[\\\/]/, '').slice(0, -3);
+
+      return slug;
+    });
+    return data;
+    //@ts-ignore
+  })(require.context('../../posts', true, /\.md$/));
+
+  const paths = blogSlugs.map((slug) => `/blog/${slug}`);
+
+  return {
+    paths,
+    fallback: false,
+  };
+};
 
 const Main = styled.main`
   background-color: ${(props) => props.theme.colors.background};
