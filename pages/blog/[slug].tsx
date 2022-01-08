@@ -13,6 +13,7 @@ import { MarkdownRenderer } from '../../components/blog/MarkdownRenderer/Markdow
 import { Paragraph } from '../../components/ui/Paragraph/Paragraph';
 import { CategoryPill } from '../../components/blog/PostPreview/PostPreview';
 import { Button } from '../../components/ui/Button/Button';
+import { join } from 'path';
 
 // Markdown parser: https://www.npmjs.com/package/markdown-to-jsx
 
@@ -67,9 +68,10 @@ export default SlugPost;
 export async function getServerSideProps(context) {
   const splitPath = context.req.url.split('/');
   const slug = splitPath[splitPath.length - 1];
+  const postsDirectory = join(process.cwd(), 'posts');
 
   const markdownWithMeta = fs.readFileSync(
-    `${process.cwd()}/posts/${context.locale}/${slug}.md`
+    `${postsDirectory}/${context.locale}/${slug}.md`
   );
   const { data: frontmatter, content } = matter(markdownWithMeta);
 

@@ -13,7 +13,7 @@ import { HeadingTitle } from '../../components/ui/HeadingTitle/HeadingTitle';
 import { SubHeading } from '../../components/homepage/SubHeading/SubHeading';
 import { sortByDate } from '../../utils/utils';
 import { useGetInitialPageState } from '../../hooks/useGetInitialPageState';
-import path from 'path';
+import path, { join } from 'path';
 
 interface BlogScreenProps {
   posts: Array<BlogPost>;
@@ -58,25 +58,29 @@ const BlogScreen: React.FC<BlogScreenProps> = ({ posts }) => {
 export default BlogScreen;
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
-  const files = fs
-    .readdirSync(path.resolve(`./posts/${context.locale}`))
-    .filter((file) => file.endsWith('.md'));
+  let posts = [];
+  try {
+    const postsDirectory = join(process.cwd(), 'posts');
+    const files = fs.readdirSync(`${postsDirectory}/${context.locale}`);
 
-  const posts = files.map((filename) => {
-    const slug = filename.replace('.md', '');
+    posts = files.map((filename) => {
+      const slug = filename.replace('.md', '');
 
-    const markdownWithMeta = fs.readFileSync(
-      path.resolve(`./posts/${context.locale}/${filename}`),
-      'utf-8'
-    );
+      const markdownWithMeta = fs.readFileSync(
+        path.resolve(`${postsDirectory}/${context.locale}/${filename}`),
+        'utf-8'
+      );
 
-    const { data: frontmatter } = matter(markdownWithMeta);
+      const { data: frontmatter } = matter(markdownWithMeta);
 
-    return {
-      slug,
-      frontmatter,
-    };
-  });
+      return {
+        slug,
+        frontmatter,
+      };
+    });
+  } catch (error) {
+    console.log(error);
+  }
 
   return {
     props: {
