@@ -92,7 +92,7 @@ export const getStaticPaths: GetStaticPaths = async ({ locales }) => {
   const blogSlugs = ((context) => {
     const values = context.keys();
 
-    const data = values.map((key) => {
+    const data = values.map((key, index) => {
       let slug = key.replace(/^.*[\\\/]/, '').slice(0, -3);
 
       return slug;
@@ -101,9 +101,17 @@ export const getStaticPaths: GetStaticPaths = async ({ locales }) => {
     //@ts-ignore
   })(require.context('../../posts', true, /\.md$/));
 
-  let paths = [];
+  const paths = blogSlugs.map((slug) => `/blog/${slug}`);
+
   for (const locale of locales) {
-    paths.push(...blogSlugs.map((slug) => `/${locale}/blog/${slug}`));
+    paths.push(
+      ...blogSlugs.map((slug) => ({
+        params: {
+          slug: `/${locale}/blog/${slug}`,
+        },
+        locale,
+      }))
+    );
   }
   return {
     paths,
