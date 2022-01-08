@@ -75,13 +75,13 @@ export const KnownTechSection: React.FC<KnownTechSectionProps> = ({
     (newTech: string) => {
       setSelectedTech(newTech);
     },
-    [setSelectedTech],
+    [setSelectedTech]
   );
 
   const projectsDoneWithTechX: Array<PortfolioProject> = portfolioImages.filter(
     (portfolioImage) => {
       return portfolioImage.madeWith.includes(selectedTech);
-    },
+    }
   );
 
   const getPortfolioData = useCallback(async () => {
@@ -116,7 +116,6 @@ export const KnownTechSection: React.FC<KnownTechSectionProps> = ({
         <Spinner />
       ) : portfolioDataError ? (
         <ErrorHandler
-          heading={'Error'}
           t={t}
           reloadButton={true}
           reloadFunction={getPortfolioData}
