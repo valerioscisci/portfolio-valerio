@@ -4,6 +4,7 @@ import styled, { css } from 'styled-components';
 
 export interface StyledLinkProps {
   color?: string;
+  hoverColor?: string;
   href: string;
   target?: string;
   hoverSpacing?: boolean;
@@ -13,8 +14,9 @@ export interface StyledLinkProps {
 
 export const StyledLink: React.FC<StyledLinkProps> = ({
   color,
+  hoverColor,
   href,
-  target,
+  target = '_self',
   hoverSpacing = true,
   style,
   scrollTo,
@@ -30,8 +32,16 @@ export const StyledLink: React.FC<StyledLinkProps> = ({
 
   return (
     <Link href={href}>
-      <a style={{ ...style, ...linkCommonStyle }} onClick={goTop} target="">
-        <LinkContainer hoverSpacing={hoverSpacing} color={color}>
+      <a
+        style={{ ...style, ...linkCommonStyle }}
+        onClick={goTop}
+        target={target}
+      >
+        <LinkContainer
+          hoverSpacing={hoverSpacing}
+          color={color}
+          hoverColor={hoverColor}
+        >
           {props.children}
         </LinkContainer>
       </a>
@@ -39,7 +49,11 @@ export const StyledLink: React.FC<StyledLinkProps> = ({
   );
 };
 
-const LinkContainer = styled.span<{ color?: string; hoverSpacing?: boolean }>`
+const LinkContainer = styled.span<{
+  color?: string;
+  hoverSpacing?: boolean;
+  hoverColor?: string;
+}>`
   color: ${(props) => {
     switch (true) {
       case props.color === 'white':
@@ -54,17 +68,21 @@ const LinkContainer = styled.span<{ color?: string; hoverSpacing?: boolean }>`
   letter-spacing: 0.02em;
   margin: 0;
   text-decoration: none;
-  transition: letter-spacing 0.1s ease-out;
+  transition: all 0.1s ease-out;
   &:hover,
   &:focus,
   &:active {
     @media (min-width: 576px) {
-      color: ${(props) => props.theme.colors.primary};
+      color: ${(props) =>
+        props.hoverColor
+          ? props.theme.colors[props.hoverColor]
+          : props.theme.colors.primary};
       ${(props) =>
         props.hoverSpacing &&
         css`
           letter-spacing: 0.15em;
         `}
+      font-weight: bold;
     }
   }
 `;

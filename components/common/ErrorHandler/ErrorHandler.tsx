@@ -5,7 +5,6 @@ import { SubmitButton } from '../../ui/Button/Button';
 import { HeadingTitle } from '../../ui/HeadingTitle/HeadingTitle';
 
 interface ErrorHandlerProps {
-  heading: string;
   reloadButton?: boolean;
   reloadFunction?: () => void;
   t?: TFunction;
@@ -13,7 +12,6 @@ interface ErrorHandlerProps {
 
 export const ErrorHandler: React.FC<ErrorHandlerProps> = ({
   children,
-  heading,
   reloadButton = true,
   reloadFunction,
   t,
