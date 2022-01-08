@@ -13,7 +13,7 @@ import { HeadingTitle } from '../../components/ui/HeadingTitle/HeadingTitle';
 import { SubHeading } from '../../components/homepage/SubHeading/SubHeading';
 import { sortByDate } from '../../utils/utils';
 import { useGetInitialPageState } from '../../hooks/useGetInitialPageState';
-import path, { join } from 'path';
+import { join } from 'path';
 
 interface BlogScreenProps {
   posts: Array<BlogPost>;
@@ -67,7 +67,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
       const slug = filename.replace('.md', '');
 
       const markdownWithMeta = fs.readFileSync(
-        path.resolve(join(postsDirectory, `${context.locale}/${filename}`)),
+        join(postsDirectory, `${context.locale}/${filename}`),
         'utf-8'
       );
 
