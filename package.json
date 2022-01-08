@@ -30,7 +30,8 @@
     "build": "next build",
     "start": "next start",
     "prettier": "prettier --write ./src",
-    "lint": "next lint"
+    "lint": "next lint",
+    "export": "next build && next export -o ./dist"
   },
   "eslintConfig": {
     "extends": [
