@@ -20,6 +20,7 @@ export const Header: React.FC<Props> = ({
   const navLinks = [
     { name: t('common:navbar.home'), route: `/${router.locale}` },
     { name: t('common:navbar.about'), route: `/${router.locale}/about` },
+    { name: t('common:navbar.blog'), route: `/${router.locale}/blog` },
     {
       name: t('common:navbar.portfolio'),
       route: `/${router.locale}/#Portfolio`,
@@ -36,7 +37,7 @@ export const Header: React.FC<Props> = ({
 
   return (
     <header>
-      <Navbar width={width} navLinks={navLinks} router={router} />
+      <Navbar width={width} navLinks={navLinks} />
       {mainSlider && <MainSlider t={t} />}
     </header>
   );

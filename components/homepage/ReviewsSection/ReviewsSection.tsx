@@ -67,13 +67,15 @@ const ReviewSlide: React.FC<ReviewProps> = ({
 };
 
 interface ReviewsSectionProps {
-  t: TFunction;
+  width: number;
   router: NextRouter;
+  t: TFunction;
 }
 
 export const ReviewsSection: React.FC<ReviewsSectionProps> = ({
-  t,
+  width,
   router,
+  t,
 }) => {
   const [loading, setLoading] = useState(false);
   const [reviews, setReviews] = useState<Array<Review>>([]);
@@ -102,12 +104,7 @@ export const ReviewsSection: React.FC<ReviewsSectionProps> = ({
       {loading ? (
         <Spinner />
       ) : reviewsError ? (
-        <ErrorHandler
-          heading={'Error'}
-          t={t}
-          reloadButton={true}
-          reloadFunction={getReviews}
-        >
+        <ErrorHandler t={t} reloadButton={true} reloadFunction={getReviews}>
           {t('homepage:reviewsSection.reviewsFetchingError')}
         </ErrorHandler>
       ) : (
@@ -145,7 +142,7 @@ export const ReviewsSection: React.FC<ReviewsSectionProps> = ({
                 }}
                 animationDirection={'RightToLeft'}
                 animationX={'5em'}
-                animationDuration={1 + i * 0.2}
+                animationDuration={width > 768 ? 1 + i * 0.2 : 1}
                 animationRotation={'0deg'}
                 showOnPhone={true}
               />
