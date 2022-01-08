@@ -33,6 +33,8 @@ const SlugPost: React.FC<SlugPostProps> = ({ post }) => {
           pageTitle={post.frontmatter.title}
           description={post.frontmatter.description}
           ogImage={postImage}
+          article={true}
+          publishDate={post.frontmatter.date}
         />
         <TitleContainer>
           <Heading>{post.frontmatter.title}</Heading>

@@ -7,6 +7,8 @@ interface SeoProps {
   description?: string;
   ogImage?: string;
   noIndex?: boolean;
+  article?: boolean;
+  publishDate?: string;
 }
 
 const Seo: React.FC<SeoProps> = ({
@@ -14,10 +16,13 @@ const Seo: React.FC<SeoProps> = ({
   description,
   ogImage,
   noIndex = false,
+  article = false,
+  publishDate,
 }) => {
-  const pagetitle = pageTitle ? pageTitle : 'Randy.gg';
-  const pagedescription = description ? description : 'Randy website';
+  const pagetitle = pageTitle ? pageTitle : 'The Wanderer Developer';
+  const pagedescription = description ? description : 'The Wanderer Developer';
   const image = ogImage ? ogImage : `${url}images/common/og_background.jpeg`;
+  const date = publishDate ? publishDate : new Date().toISOString();
 
   return (
     <Head>
@@ -39,7 +44,10 @@ const Seo: React.FC<SeoProps> = ({
       <meta property="og:image:height" content="630" />
       <meta property="og:image:url" content={image} />
       <meta name="og:image" content={image} />
-      <meta name="og:type" content="website" />
+      <meta name="og:type" content={article ? 'article' : 'website'} />
+      <meta property="article:author" content="Valerio Scisci" />
+      <meta property="article:published_time" content={date} />
+      <meta property="article:modified_time" content={date} />
       <meta name="fb:app_id" content={process.env.NEXT_PUBLIC_FACEBOOK_ID} />
 
       {/* Remove page from crawlers indexing */}
