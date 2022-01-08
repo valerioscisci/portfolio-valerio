@@ -1,12 +1,9 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Layout } from '../../components/ui/Layout/Layout';
-import { useRouter } from 'next/router';
-import { useWindowSize } from '../../hooks/useWindowSize';
 import Seo from '../../components/common/Seo/Seo';
 import { GetServerSideProps } from 'next';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
-import { useTranslation } from 'next-i18next';
 import fs from 'fs';
 import matter from 'gray-matter';
 import { BlogPost } from '../../types';
