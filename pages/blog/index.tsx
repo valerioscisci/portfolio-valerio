@@ -14,6 +14,7 @@ import { SubHeading } from '../../components/homepage/SubHeading/SubHeading';
 import { sortByDate } from '../../utils/utils';
 import { useGetInitialPageState } from '../../hooks/useGetInitialPageState';
 import { join } from 'path';
+import readingTime from 'reading-time';
 
 interface BlogScreenProps {
   posts: Array<BlogPost>;
@@ -71,11 +72,14 @@ export const getStaticProps: GetStaticProps = async (context) => {
         'utf-8'
       );
 
-      const { data: frontmatter } = matter(markdownWithMeta);
+      const { data: frontmatter, content } = matter(markdownWithMeta);
+      const stats = readingTime(content);
+      const readingMinute = Math.ceil(stats.minutes);
 
       return {
         slug,
         frontmatter,
+        readingTime: readingMinute,
       };
     });
   } catch (error) {

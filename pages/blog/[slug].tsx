@@ -15,6 +15,8 @@ import { CategoryPill } from '../../components/blog/PostPreview/PostPreview';
 import { Button } from '../../components/ui/Button/Button';
 import { join } from 'path';
 import { GetStaticPaths, GetStaticProps } from 'next';
+import readingTime from 'reading-time';
+import { FaClock } from 'react-icons/fa';
 
 // Markdown parser: https://www.npmjs.com/package/markdown-to-jsx
 
@@ -50,9 +52,19 @@ const SlugPost: React.FC<SlugPostProps> = ({ post }) => {
           <Image src={postImage} width={width} height={width / 1.9} />
         </ImageContainer>
         <Content>
-          <Paragraph>{`${t('blog:postedOn')} ${
-            post.frontmatter.date
-          }`}</Paragraph>
+          <HeadingInfoContainer>
+            <Column>
+              <Paragraph>{`${t('blog:postedOn')} ${
+                post.frontmatter.date
+              }`}</Paragraph>
+            </Column>
+            <Column>
+              <FaClock />
+              <Paragraph>
+                {post.readingTime} {t('blog:readingTime')}
+              </Paragraph>
+            </Column>
+          </HeadingInfoContainer>
           <MarkdownRenderer content={post.content} />
           <ButtonContainer>
             <Button
@@ -77,6 +89,8 @@ export const getStaticProps: GetStaticProps = async (context) => {
     `${postsDirectory}/${context.locale}/${slug}.md`
   );
   const { data: frontmatter, content } = matter(markdownWithMeta);
+  const stats = readingTime(content);
+  const readingMinute = Math.ceil(stats.minutes);
 
   return {
     props: {
@@ -85,6 +99,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
         frontmatter,
         content,
         slug,
+        readingTime: readingMinute,
       },
     },
   };
@@ -158,4 +173,17 @@ const CategoryContainer = styled.div`
 const ButtonContainer = styled.div`
   text-align: center;
   margin: 2em 0;
+`;
+
+const HeadingInfoContainer = styled.div`
+  display: flex;
+  flex-direction: row;
+`;
+
+const Column = styled.div`
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 0.5em;
 `;

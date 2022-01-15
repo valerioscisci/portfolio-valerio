@@ -6,5 +6,6 @@
   "blogPostsFetchingError": "Si è verificato un errore durante il recupero dei post. Ricarica la pagina.",
   "readMore": "Continua a leggere",
   "postedOn": "Pubblicato il",
-  "goBack": "Torna indietro"
+  "goBack": "Torna indietro",
+  "readingTime": "minuti di lettura"
 }
