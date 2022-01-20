@@ -18,6 +18,8 @@ import { GetStaticPaths, GetStaticProps } from 'next';
 import readingTime from 'reading-time';
 import { FaClock } from 'react-icons/fa';
 import { ShareBox } from '../../components/blog/ShareBox/ShareBox';
+import React from 'react';
+import { ProgressBar } from '../../components/blog/ProgressBar/ProgressBar';
 
 // Markdown parser: https://www.npmjs.com/package/markdown-to-jsx
 
@@ -28,6 +30,7 @@ interface SlugPostProps {
 const SlugPost: React.FC<SlugPostProps> = ({ post }) => {
   const { t, router, width } = useGetInitialPageState(['blog', 'common']);
   const postImage = `${url}${post.frontmatter.cover_image}`;
+  const blogPostRef = React.createRef<any>();
 
   const shareBox = () => {
     return (
@@ -41,7 +44,8 @@ const SlugPost: React.FC<SlugPostProps> = ({ post }) => {
   };
   return (
     <Layout mainSlider={false} t={t} width={width} router={router}>
-      <Main>
+      <Main ref={blogPostRef}>
+        <ProgressBar target={blogPostRef} />
         <Seo
           pageTitle={post.frontmatter.title}
           description={post.frontmatter.description}
