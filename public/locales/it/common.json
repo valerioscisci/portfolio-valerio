@@ -26,5 +26,6 @@
   "instagram": {
     "visitProfile": "Visita il mio profilo Instagram",
     "noPhotosDescription": "Non è stato possibile caricare le foto dal mio profilo Instagram...Visitalo direttamente dall'app o dal sito cliccando su questo riquadro!"
-  }
+  },
+  "shortDevDescription": "Sviluppatore specializzato in React e Nextjs che crea applicazioni e prodotti digitali con ♥"
 }
