@@ -17,6 +17,7 @@ import { join } from 'path';
 import { GetStaticPaths, GetStaticProps } from 'next';
 import readingTime from 'reading-time';
 import { FaClock } from 'react-icons/fa';
+import { ShareBox } from '../../components/blog/ShareBox/ShareBox';
 
 // Markdown parser: https://www.npmjs.com/package/markdown-to-jsx
 
@@ -28,6 +29,16 @@ const SlugPost: React.FC<SlugPostProps> = ({ post }) => {
   const { t, router, width } = useGetInitialPageState(['blog', 'common']);
   const postImage = `${url}${post.frontmatter.cover_image}`;
 
+  const shareBox = () => {
+    return (
+      <ShareBox
+        url={`${url}${router.locale}${router.asPath}`}
+        title={post.frontmatter.title}
+        description={post.frontmatter.description}
+        t={t}
+      />
+    );
+  };
   return (
     <Layout mainSlider={false} t={t} width={width} router={router}>
       <Main>
@@ -52,6 +63,7 @@ const SlugPost: React.FC<SlugPostProps> = ({ post }) => {
           <Image src={postImage} width={width} height={width / 1.9} />
         </ImageContainer>
         <Content>
+          {shareBox()}
           <HeadingInfoContainer>
             <Column>
               <Paragraph>{`${t('blog:postedOn')} ${
@@ -72,6 +84,7 @@ const SlugPost: React.FC<SlugPostProps> = ({ post }) => {
               onClickUrl={`${router.locale}/blog`}
             />
           </ButtonContainer>
+          {shareBox()}
         </Content>
       </Main>
     </Layout>
