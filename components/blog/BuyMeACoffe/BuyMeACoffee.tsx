@@ -11,11 +11,7 @@ const ButMeACoffee: React.FC<ButMeACoffeProps> = ({ containerStyle, t }) => {
   return (
     <Container style={containerStyle}>
       <strong style={{ marginBottom: '10px' }}>{t('blog:supportMe')}:</strong>
-      <a
-        href="https://www.buymeacoffee.com/valerioscisci"
-        target="_blank"
-        ref={'noreferrer'}
-      >
+      <a href="https://www.buymeacoffee.com/valerioscisci" target="_blank">
         <img
           src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png"
           alt="Buy Me A Coffee"

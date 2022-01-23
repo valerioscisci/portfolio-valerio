@@ -43,6 +43,7 @@ const SlugPost: React.FC<SlugPostProps> = ({ post }) => {
       />
     );
   };
+
   return (
     <Layout mainSlider={false} t={t} width={width} router={router}>
       <Main ref={blogPostRef}>
@@ -68,13 +69,7 @@ const SlugPost: React.FC<SlugPostProps> = ({ post }) => {
           <Image src={postImage} width={width} height={width / 1.9} />
         </ImageContainer>
         <Content>
-          <div
-            style={{
-              display: 'flex',
-              flexDirection: 'row',
-              alignItems: 'center',
-            }}
-          >
+          <DonationContainer>
             <div style={{ width: '50%' }}>{shareBox()}</div>
             <BuyMeACoffee
               t={t}
@@ -83,7 +78,7 @@ const SlugPost: React.FC<SlugPostProps> = ({ post }) => {
                 alignItems: 'flex-end',
               }}
             />
-          </div>
+          </DonationContainer>
           <HeadingInfoContainer>
             <Column>
               <Paragraph>{`${t('blog:postedOn')} ${
@@ -212,6 +207,12 @@ const CategoryContainer = styled.div`
 const ButtonContainer = styled.div`
   text-align: center;
   margin: 2em 0;
+`;
+
+const DonationContainer = styled.div`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
 `;
 
 const HeadingInfoContainer = styled.div`

@@ -3,7 +3,7 @@ title: The summary of my 2021
 date: '08/01/2022'
 cover_image: images/blog/2022/il-mio-2021.jpg
 description: Juggling between travels, new experiences and exciting projects
-category: ['travels ✈️', 'work 💻', 'remote working 👨‍💻', 'investments 📈']
+category: ['travels ✈️', 'work 🤵‍♂️', 'remote working 👨‍💻', 'investments 📈']
 locale: en
 ---
 
