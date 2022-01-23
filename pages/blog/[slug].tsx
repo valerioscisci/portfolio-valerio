@@ -20,6 +20,7 @@ import { FaClock } from 'react-icons/fa';
 import { ShareBox } from '../../components/blog/ShareBox/ShareBox';
 import React from 'react';
 import { ProgressBar } from '../../components/blog/ProgressBar/ProgressBar';
+import BuyMeACoffee from '../../components/blog/BuyMeACoffe/BuyMeACoffee';
 
 // Markdown parser: https://www.npmjs.com/package/markdown-to-jsx
 
@@ -67,18 +68,39 @@ const SlugPost: React.FC<SlugPostProps> = ({ post }) => {
           <Image src={postImage} width={width} height={width / 1.9} />
         </ImageContainer>
         <Content>
-          {shareBox()}
+          <div
+            style={{
+              display: 'flex',
+              flexDirection: 'row',
+              alignItems: 'center',
+            }}
+          >
+            <div style={{ width: '50%' }}>{shareBox()}</div>
+            <BuyMeACoffee
+              t={t}
+              containerStyle={{
+                width: '50%',
+                alignItems: 'flex-end',
+              }}
+            />
+          </div>
           <HeadingInfoContainer>
             <Column>
               <Paragraph>{`${t('blog:postedOn')} ${
                 post.frontmatter.date
               }`}</Paragraph>
-            </Column>
-            <Column>
-              <FaClock />
-              <Paragraph>
-                {post.readingTime} {t('blog:readingTime')}
-              </Paragraph>
+              <Column>
+                <Paragraph
+                  style={{
+                    display: 'flex',
+                    gap: '0.5em',
+                    alignItems: 'center',
+                  }}
+                >
+                  <FaClock />
+                  {post.readingTime} {t('blog:readingTime')}
+                </Paragraph>
+              </Column>
             </Column>
           </HeadingInfoContainer>
           <MarkdownRenderer content={post.content} />
@@ -198,9 +220,10 @@ const HeadingInfoContainer = styled.div`
 `;
 
 const Column = styled.div`
-  width: 100%;
   display: flex;
   flex-direction: row;
   align-items: center;
-  gap: 0.5em;
+  gap: 3em;
+
+  width: fit-content;
 `;
