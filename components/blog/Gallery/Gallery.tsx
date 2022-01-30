@@ -6,6 +6,7 @@ import 'react-awesome-slider/dist/custom-animations/fold-out-animation.css';
 interface GalleryProps {
   images: string;
 }
+
 export const Gallery: React.FC<GalleryProps> = ({ images }) => {
   return (
     <AwesomeSlider animation="foldOutAnimation">
