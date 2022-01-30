@@ -15,6 +15,12 @@ import { CategoryPill } from '../../components/blog/PostPreview/PostPreview';
 import { Button } from '../../components/ui/Button/Button';
 import { join } from 'path';
 import { GetStaticPaths, GetStaticProps } from 'next';
+import readingTime from 'reading-time';
+import { FaClock } from 'react-icons/fa';
+import { ShareBox } from '../../components/blog/ShareBox/ShareBox';
+import React from 'react';
+import { ProgressBar } from '../../components/blog/ProgressBar/ProgressBar';
+import BuyMeACoffee from '../../components/blog/BuyMeACoffe/BuyMeACoffee';
 
 // Markdown parser: https://www.npmjs.com/package/markdown-to-jsx
 
@@ -25,10 +31,23 @@ interface SlugPostProps {
 const SlugPost: React.FC<SlugPostProps> = ({ post }) => {
   const { t, router, width } = useGetInitialPageState(['blog', 'common']);
   const postImage = `${url}${post.frontmatter.cover_image}`;
+  const blogPostRef = React.createRef<any>();
+
+  const shareBox = () => {
+    return (
+      <ShareBox
+        url={`${url}${router.locale}${router.asPath}`}
+        title={post.frontmatter.title}
+        description={post.frontmatter.description}
+        t={t}
+      />
+    );
+  };
 
   return (
     <Layout mainSlider={false} t={t} width={width} router={router}>
-      <Main>
+      <Main ref={blogPostRef}>
+        <ProgressBar target={blogPostRef} />
         <Seo
           pageTitle={post.frontmatter.title}
           description={post.frontmatter.description}
@@ -50,9 +69,35 @@ const SlugPost: React.FC<SlugPostProps> = ({ post }) => {
           <Image src={postImage} width={width} height={width / 1.9} />
         </ImageContainer>
         <Content>
-          <Paragraph>{`${t('blog:postedOn')} ${
-            post.frontmatter.date
-          }`}</Paragraph>
+          <DonationContainer>
+            <div style={{ width: '50%' }}>{shareBox()}</div>
+            <BuyMeACoffee
+              t={t}
+              containerStyle={{
+                width: '50%',
+                alignItems: 'flex-end',
+              }}
+            />
+          </DonationContainer>
+          <HeadingInfoContainer>
+            <Column>
+              <Paragraph>{`${t('blog:postedOn')} ${
+                post.frontmatter.date
+              }`}</Paragraph>
+              <Column>
+                <Paragraph
+                  style={{
+                    display: 'flex',
+                    gap: '0.5em',
+                    alignItems: 'center',
+                  }}
+                >
+                  <FaClock />
+                  {post.readingTime} {t('blog:readingTime')}
+                </Paragraph>
+              </Column>
+            </Column>
+          </HeadingInfoContainer>
           <MarkdownRenderer content={post.content} />
           <ButtonContainer>
             <Button
@@ -60,6 +105,7 @@ const SlugPost: React.FC<SlugPostProps> = ({ post }) => {
               onClickUrl={`${router.locale}/blog`}
             />
           </ButtonContainer>
+          {shareBox()}
         </Content>
       </Main>
     </Layout>
@@ -77,6 +123,8 @@ export const getStaticProps: GetStaticProps = async (context) => {
     `${postsDirectory}/${context.locale}/${slug}.md`
   );
   const { data: frontmatter, content } = matter(markdownWithMeta);
+  const stats = readingTime(content);
+  const readingMinute = Math.ceil(stats.minutes);
 
   return {
     props: {
@@ -85,6 +133,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
         frontmatter,
         content,
         slug,
+        readingTime: readingMinute,
       },
     },
   };
@@ -158,4 +207,24 @@ const CategoryContainer = styled.div`
 const ButtonContainer = styled.div`
   text-align: center;
   margin: 2em 0;
+`;
+
+const DonationContainer = styled.div`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+`;
+
+const HeadingInfoContainer = styled.div`
+  display: flex;
+  flex-direction: row;
+`;
+
+const Column = styled.div`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 3em;
+
+  width: fit-content;
 `;

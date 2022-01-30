@@ -6,5 +6,8 @@
   "blogPostsFetchingError": "An error occurred while fetching blog posts. Please refresh the page.",
   "readMore": "Read more",
   "postedOn": "Posted on",
-  "goBack": "Go back"
+  "goBack": "Go back",
+  "readingTime": "minutes read",
+  "shareOn": "Share on",
+  "supportMe": "Support my work"
 }

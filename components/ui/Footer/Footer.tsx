@@ -76,8 +76,14 @@ export const Footer: React.FC<FooterProps> = ({ t }) => {
           <StyledLink href={'/'}>
             <Logo src={`${url}images/common/LogoWhite.png`} />
           </StyledLink>
-          <Paragraph color={'white'}>
+          <Paragraph color={'white'} style={{ fontSize: '0.8em' }}>
             © {currentYear} {t('common:websiteName')}
+          </Paragraph>
+          <Paragraph
+            color={'white'}
+            style={{ fontSize: '0.8em', textAlign: 'center', marginTop: '1em' }}
+          >
+            {t('common:shortDevDescription')}
           </Paragraph>
         </LogoContainer>
       </FooterColumn>
@@ -143,6 +149,7 @@ const Container = styled.footer`
   display: flex;
   flex-direction: column-reverse;
   justify-content: space-between;
+  padding-bottom: 4em;
 
   @media (min-width: 768px) {
     flex-direction: row;
@@ -175,7 +182,7 @@ const LogoContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: 4em;
+  margin-top: 1em;
 `;
 
 const Logo = styled.img`

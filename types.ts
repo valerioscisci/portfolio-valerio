@@ -57,4 +57,5 @@ export type BlogPost = {
     locale: string;
   };
   content?: any;
+  readingTime: number;
 };

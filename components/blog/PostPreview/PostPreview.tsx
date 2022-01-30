@@ -2,7 +2,7 @@ import { TFunction } from 'next-i18next';
 import Image from 'next/image';
 import { NextRouter } from 'next/router';
 import React from 'react';
-import { FaArrowRight } from 'react-icons/fa';
+import { FaArrowRight, FaClock } from 'react-icons/fa';
 import styled from 'styled-components';
 import { url } from '../../../config/config';
 import { BlogPost } from '../../../types';
@@ -42,11 +42,21 @@ export const PostPreview: React.FC<PostPreviewProps> = ({
             <CategoryPill key={category}>{category}</CategoryPill>
           ))}
         </CategoriesContainer>
-        <Paragraph>{post.frontmatter.date}</Paragraph>
+        <HeadingInfoContainer>
+          <Column>
+            <Paragraph>{post.frontmatter.date}</Paragraph>
+          </Column>
+          <Column>
+            <FaClock />
+            <Paragraph>
+              {post.readingTime} {t('blog:readingTime')}
+            </Paragraph>
+          </Column>
+        </HeadingInfoContainer>
         <Heading variant={2}>{post.frontmatter.title}</Heading>
         <Paragraph>
-          {post.frontmatter.description.length > 50
-            ? `${post.frontmatter.description.substring(0, 45)}...`
+          {post.frontmatter.description.length > 150
+            ? `${post.frontmatter.description.substring(0, 125)}...`
             : post.frontmatter.description}
         </Paragraph>
         <ReadMoreContainer>
@@ -125,4 +135,17 @@ const ReadMoreContainer = styled.div`
       margin-right: -0.5em;
     }
   }
+`;
+
+const HeadingInfoContainer = styled.div`
+  display: flex;
+  flex-direction: row;
+`;
+
+const Column = styled.div`
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 0.5em;
 `;
