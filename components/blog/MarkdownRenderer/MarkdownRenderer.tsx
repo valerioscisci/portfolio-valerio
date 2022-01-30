@@ -6,6 +6,7 @@ import { BlogImage } from '../BlogImage/BlogImage';
 import { Paragraph } from '../../ui/Paragraph/Paragraph';
 import { OrderedList } from '../../ui/OrderedList/OrderedList';
 import { UnorderedList } from '../../ui/UnorderedList/UnorderedList';
+import { Gallery } from '../Gallery/Gallery';
 
 const HEADING_STYLE = { marginTop: '1em' };
 
@@ -65,7 +66,7 @@ export const MarkdownRenderer = ({ content }) => {
                 {...props}
                 hoverSpacing={false}
                 color={'red'}
-                target={'_blank'}
+                target={props.target ? props.target : '_blank'}
                 hoverColor={'secondary'}
               />
             ),
@@ -84,6 +85,16 @@ export const MarkdownRenderer = ({ content }) => {
           },
           hr: {
             component: () => <hr style={{ margin: '1em' }} />,
+          },
+          divider: {
+            component: ({ variant = 10 }) => (
+              <div style={{ height: `${variant * 10}px` }}></div>
+            ),
+          },
+          gallery: {
+            component: (props) => {
+              return <Gallery images={props.images} />;
+            },
           },
         },
       }}

@@ -55,8 +55,8 @@ export const PostPreview: React.FC<PostPreviewProps> = ({
         </HeadingInfoContainer>
         <Heading variant={2}>{post.frontmatter.title}</Heading>
         <Paragraph>
-          {post.frontmatter.description.length > 50
-            ? `${post.frontmatter.description.substring(0, 45)}...`
+          {post.frontmatter.description.length > 150
+            ? `${post.frontmatter.description.substring(0, 125)}...`
             : post.frontmatter.description}
         </Paragraph>
         <ReadMoreContainer>
