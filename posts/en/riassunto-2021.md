@@ -2,8 +2,8 @@
 title: The summary of my 2021
 date: '08/01/2022'
 cover_image: images/blog/2022/il-mio-2021.jpg
-description: Juggling between travels, new experiences and exciting projects
-category: ['travels ✈️', 'work 🤵‍♂️', 'remote working 👨‍💻', 'investments 📈']
+description: The year that has just ended is rightfully at the top of the ranking of the best years I have lived on this little blue planet we call Earth. Started in the worst way having been stuck...
+category: ['travels ✈️', 'work 🤵‍♂️', 'smartworking 👨‍💻', 'investments 📈']
 locale: en
 ---
 
@@ -53,7 +53,7 @@ I will be brief on this part as I am more than satisfied with the results achiev
 - I've climbed a **volcano**, more than one actually!
 - I went **Kayaking** for the first time.
 
-Clearly this list includes only the most interesting "activities" that have given me a hard time learing and a greatu fun doing but I have also done many other things not inlcuded in this list.
+Clearly this list includes only the most interesting "activities" that have given me a hard time learing and a great fun doing but I have also done many other things not inlcuded in this list.
 
 ## Grow within the company I work for
 

@@ -2,7 +2,7 @@
 title: Il mio 2021 in breve
 date: '08/01/2022'
 cover_image: images/blog/2022/il-mio-2021.jpg
-description: Tra viaggi, nuove esperienze e progetti entusiasmanti
+description: L'anno appena trascorso rientra di diritto in cima alla classifica dei migliori anni che ho vissuto su questo piccolo pianeta blu. artito nel peggiore dei modi...
 category: ['viaggi ✈️', 'lavoro 🤵‍♂️', 'smartworking 👨‍💻', 'investimenti 📈']
 locale: it
 ---
