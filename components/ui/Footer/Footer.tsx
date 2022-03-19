@@ -79,6 +79,15 @@ export const Footer: React.FC<FooterProps> = ({ t }) => {
           <Paragraph color={'white'}>
             © {currentYear} {t('common:websiteName')}
           </Paragraph>
+          <Paragraph color={'white'} style={{ fontSize: '0.8em' }}>
+            P.IVA: 08680010728
+          </Paragraph>
+          <Paragraph
+            color={'white'}
+            style={{ fontSize: '0.8em', textAlign: 'center', marginTop: '1em' }}
+          >
+            {t('common:shortDevDescription')}
+          </Paragraph>
         </LogoContainer>
       </FooterColumn>
       <FooterColumn>
