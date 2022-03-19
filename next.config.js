@@ -2,7 +2,7 @@ const { i18n } = require('./next-i18next.config');
 
 module.exports = {
   i18n,
-  target: 'serverless',
+  target: 'experimental-serverless-trace',
   images: {
     domains: ['localhost', 'www.thewandererdeveloper.com'],
   },
